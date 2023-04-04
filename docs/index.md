@@ -5,7 +5,7 @@ title: Silent Hunter
 titleTemplate: C语言从入门到大神系列
 
 hero:
-  name: Silent Hunter
+  name: silenthunter0814
   text: C语言从入门到大神系列
   actions:
     - theme: brand
