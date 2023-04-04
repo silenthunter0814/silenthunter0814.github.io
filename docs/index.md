@@ -12,11 +12,14 @@ hero:
       text: Get Started
       link: /guide/what-is-shadowsocks
     - theme: alt
-      text: View on GitHub
-      link: https://github.com/shadowsocks
+      text: code on GitHub
+      link: https://github.com/silenthunter0814
     - theme: alt
-      text: Download from IPFS
-      link: https://ipfs.io/ipns/k51qzi5uqu5dk1lfd73mo4gdtjkrdc54l1y3euowjj59o3j329zup8ixgbd444
+      text: videos on youtube
+      link: https://www.youtube.com/@silenthunter0814
+    - theme: alt
+      text: videos on bilibili
+      link: https://space.bilibili.com/1551957972
 
 features:
   - title: "Super Fast"
