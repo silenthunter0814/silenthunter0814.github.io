@@ -1,8 +1,8 @@
 ---
 layout: home
 
-title: Shadowsocks
-titleTemplate: A fast tunnel proxy that helps you bypass firewalls.
+title: Silent Hunter
+titleTemplate: C 语言从入门到大神系列
 
 hero:
   name: Shadowsocks
