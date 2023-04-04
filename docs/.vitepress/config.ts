@@ -21,7 +21,7 @@ export default {
     },
 
     editLink: {
-      pattern: 'https://github.com/silenthunter0814/silenthunter0814.github.io.git/edit/main/docs/:path',
+      pattern: 'https://github.com/silenthunter0814/silenthunter0814.github.io/edit/main/docs/:path',
       text: 'Edit this page on GitHub'
     },
 
