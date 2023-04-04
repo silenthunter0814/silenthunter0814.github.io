@@ -1,7 +1,7 @@
 ---
 layout: home
 
-title: Silent Hunter
+title: silenthunter0814
 titleTemplate: C语言从入门到大神系列
 
 hero:
