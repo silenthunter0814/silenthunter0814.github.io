@@ -5,8 +5,8 @@ title: Silent Hunter
 titleTemplate: C语言从入门到大神系列
 
 hero:
-  name: Silent Hunter
-  text: The C programming language from zero to SUPER Hero
+  name: C程序设计语言
+  text: 从入门到大神课程系列
   actions:
     - theme: brand
       text: Get Started
