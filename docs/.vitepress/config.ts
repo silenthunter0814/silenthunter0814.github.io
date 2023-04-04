@@ -1,6 +1,6 @@
 export default {
   lang: 'en-US',
-  title: 'Silent Hunter',
+  title: 'silenthunter0814',
   description: 'C语言从入门到大神系列',
 
   lastUpdated: true,
