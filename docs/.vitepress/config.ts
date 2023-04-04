@@ -1,7 +1,7 @@
 export default {
   lang: 'en-US',
   title: 'Silent Hunter',
-  description: 'A fast tunnel proxy that helps you bypass firewalls.',
+  description: 'C语言从入门到大神系列',
 
   lastUpdated: true,
 
