@@ -26,7 +26,7 @@ export default {
     },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/shadowsocks/shadowsocks-org' }
+      { icon: 'github', link: 'https://github.com/silenthunter0814/silenthunter0814.github.io' }
     ],
 
     footer: {
