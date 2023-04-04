@@ -14,7 +14,7 @@ export default {
   ],
 
   themeConfig: {
-    logo: '/sh.png',
+    logo: '/gsh.png',
     nav: nav(),
 
     sidebar: {
