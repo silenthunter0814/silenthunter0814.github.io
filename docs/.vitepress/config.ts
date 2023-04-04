@@ -28,7 +28,8 @@ export default {
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/silenthunter0814/silenthunter0814.github.io' },
-      { icon: 'youtube', link: 'https://www.youtube.com/@silenthunter0814' }
+      { icon: 'youtube', link: 'https://www.youtube.com/@silenthunter0814' },
+      { icon: 'bilibili', link: 'https://space.bilibili.com/1551957972' }
     ],
 
     footer: {
