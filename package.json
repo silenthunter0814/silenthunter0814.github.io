@@ -10,7 +10,7 @@
     "docs:serve": "vitepress serve docs"
   },
   "repository": "https://github.com/silenthunter0814/silenthunter0814.github.io.git",
-  "author": "Silent Hunter",
+  "author": "silenthunter0814",
   "license": "MIT",
   "devDependencies": {
     "vitepress": "^1.0.0-alpha.4",
