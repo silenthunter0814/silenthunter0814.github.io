@@ -40,6 +40,7 @@ export default {
 function nav() {
   return [
     { text: 'Guide', link: '/guide/what-is-shadowsocks', activeMatch: '/guide/' },
+    { icon: 'youtube', link: 'https://www.youtube.com/@silenthunter0814' },
     {
       text: 'youtube',
       link: 'https://www.youtube.com/@silenthunter0814'
