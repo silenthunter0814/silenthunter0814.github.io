@@ -27,14 +27,7 @@ export default {
     },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/silenthunter0814/silenthunter0814.github.io' },
-      { icon: 'youtube', link: 'https://www.youtube.com/@silenthunter0814' },
-      {
-        icon: {
-          svg: '<svg role="img" viewBox="0 0 24 24" xmlns="https://upload.wikimedia.org/wikipedia/en/b/b7/Bilibili_logo.svg"><title>bilibili</title><path d="M12...6.38z"/></svg>'
-        },
-        link: 'https://space.bilibili.com/1551957972'
-      }
+      { icon: 'github', link: 'https://github.com/silenthunter0814/silenthunter0814.github.io' }
     ],
 
     footer: {
