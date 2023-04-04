@@ -33,12 +33,6 @@ export default {
       message: 'This website is released under the MIT License.',
       copyright: 'Copyright © 2023 silenthunter0814 contributors'
     },
-
-    algolia: {
-      appId: '63UAAQ8ZPC',
-      apiKey: '6807c68bb3792d05a235f3f7eb93a0cf',
-      indexName: 'Silent Hunter'
-    },
   }
 }
 
