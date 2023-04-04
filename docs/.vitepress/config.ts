@@ -50,8 +50,8 @@ function nav() {
       link: 'https://github.com/silenthunter0814/silenthunter0814.github.io/issues'
     },
     {
-      text: 'Community',
-      link: 'https://github.com/shadowsocks/shadowsocks-org/discussions'
+      text: 'bilibili',
+      link: 'https://space.bilibili.com/1551957972'
     }
   ]
 }
