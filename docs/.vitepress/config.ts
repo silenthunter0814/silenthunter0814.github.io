@@ -21,7 +21,7 @@ export default {
     },
 
     editLink: {
-      pattern: 'https://github.com/shadowsocks/shadowsocks-org/edit/main/docs/:path',
+      pattern: 'https://github.com/silenthunter0814/silenthunter0814.github.io.git/edit/main/docs/:path',
       text: 'Edit this page on GitHub'
     },
 
@@ -31,7 +31,7 @@ export default {
 
     footer: {
       message: 'This website is released under the MIT License.',
-      copyright: 'Copyright © 2022 silenthunter0814 contributors'
+      copyright: 'Copyright © 2023 silenthunter0814 contributors'
     },
 
     algolia: {
