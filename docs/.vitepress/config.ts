@@ -47,7 +47,7 @@ function nav() {
     { text: 'Guide', link: '/guide/what-is-shadowsocks', activeMatch: '/guide/' },
     {
       text: 'Github Issues',
-      link: 'https://github.com/shadowsocks/shadowsocks-org/issues'
+      link: 'https://github.com/silenthunter0814/silenthunter0814.github.io/issues'
     },
     {
       text: 'Community',
