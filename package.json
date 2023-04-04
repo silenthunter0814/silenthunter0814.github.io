@@ -9,7 +9,7 @@
     "docs:build": "vitepress build docs",
     "docs:serve": "vitepress serve docs"
   },
-  "repository": "https://github.com/silenthunter0814/main.git",
+  "repository": "https://github.com/silenthunter0814/silenthunter0814.github.io.git",
   "author": "Silent Hunter",
   "license": "MIT",
   "devDependencies": {
