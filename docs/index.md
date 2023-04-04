@@ -2,11 +2,11 @@
 layout: home
 
 title: Silent Hunter
-titleTemplate: C 语言从入门到大神系列
+titleTemplate: C语言从入门到大神系列
 
 hero:
   name: Silent Hunter
-  text: C 语言从入门到大神系列
+  text: C语言从入门到大神系列
   actions:
     - theme: brand
       text: Get Started
