@@ -5,8 +5,8 @@ title: Silent Hunter
 titleTemplate: C 语言从入门到大神系列
 
 hero:
-  name: Shadowsocks
-  text: A fast tunnel proxy that helps you bypass firewalls
+  name: Silent Hunter
+  text: C 语言从入门到大神系列
   actions:
     - theme: brand
       text: Get Started
