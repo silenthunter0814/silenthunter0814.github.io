@@ -46,8 +46,8 @@ function nav() {
   return [
     { text: 'Guide', link: '/guide/what-is-shadowsocks', activeMatch: '/guide/' },
     {
-      text: 'Github Issues',
-      link: 'https://github.com/silenthunter0814/silenthunter0814.github.io/issues'
+      text: 'youtube',
+      link: 'https://www.youtube.com/@silenthunter0814'
     },
     {
       text: 'bilibili',
