@@ -1,17 +1,22 @@
-# 前言
 
-## 1 编程基础
+
+
+## 课程大纲
+
+# C 语言快速入门
+
+### 1 编程基础
 - 1.1 number system - 数字系统
 - 1.2 数据存储格式
 - 1.3 基础架构
 - 1.4 操作系统
 - 1.5 开发环境
 
-## 2 hello world
+### 2 hello world
 - 2.1 hello.c
 - 2.2 C程序的编译
 
-## 3 数据类型，变量，运算符，表达式和语句
+### 3 数据类型，变量，运算符，表达式和语句
 data type, variable, expression and statement
 - 3.1 数据类型 - data type
 - 3.2 变量 - variable
