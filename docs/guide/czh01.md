@@ -147,11 +147,6 @@ S = 2^0 + 2^1 + 2^2 + … + 2^(n-1)		(1)
 
 	
 
-<p id="gdcalert1" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image1.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert2">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image1.png "image_tooltip")
-
 
 位和位组
 
@@ -231,12 +226,6 @@ quadword (64 bits)		2^64 		0 to 2^64 - 1		 -2^63 to 2^63 - 1
 
 
 
-<p id="gdcalert2" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image2.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert3">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image2.png "image_tooltip")
-
-
 计算机的基本组件包括中央处理单元 (CPU)、主存储器或随机存取存储器 (RAM)、辅助存储器、输入/输出设备（例如，屏幕、键盘、鼠标）以及称为总线的互连 .
 
 该架构通常被称为冯诺依曼架构，由数学家和物理学家约翰冯诺依曼于 1945 年描述。
@@ -248,11 +237,6 @@ quadword (64 bits)		2^64 		0 to 2^64 - 1		 -2^63 to 2^63 - 1
 计算机硬件由三个独立的子系统组成：
 
 
-
-<p id="gdcalert3" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image3.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert4">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image3.png "image_tooltip")
 
 
 输入/输出 (Input/Output)
@@ -307,13 +291,6 @@ elf 可执行文件格式
 elf, 可执行与可链接格式 (Executable and Linkable Format), unix/linux的主要可执行文件格式。
 
 
-
-<p id="gdcalert4" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image4.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert5">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image4.png "image_tooltip")
-
-
 进程管理
 
 进程 - 可执行文件的运行实例。
@@ -326,12 +303,6 @@ elf, 可执行与可链接格式 (Executable and Linkable Format), unix/linux的
 
 3. 栈 (stack)
 
-
-
-<p id="gdcalert5" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image5.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert6">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image5.png "image_tooltip")
 
 
 text - 文本段： 
