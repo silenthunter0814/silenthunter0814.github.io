@@ -33,7 +33,7 @@ data type, variable, expression and statement
 两整数之和
 圆的面积
 
-##4 控制流 - flow control
+### 4 控制流 - flow control
 - 4.1 if-else
 - 4.2 else-if
 - 4.3 while loop and for loop
@@ -44,12 +44,12 @@ palindrome
 perfect number
 print stars
 
-## 5 函数 - function
+### 5 函数 - function
 - 5.1 函数概念
 - 5.2 参数传递
 - 5.3 递归函数 - recursion
 
-## 6 指针与数组 - pointer and array
+### 6 指针与数组 - pointer and array
 - 6.1 指针 - pointer
 - 6.2 数组 - array
 数组声明和初始化
@@ -63,20 +63,20 @@ average - 数组的平均值
 insert sort - 插入排序
 binsearch - 二分查找 (sorted array)
 
-## 7 常量，字符串，字符数组
+### 7 常量，字符串，字符数组
 - 7.1 数字常量，字符常量
 - 7.2 字符数组
 - 7.3 字符串 - string literal
 
-## 8 动态内存分配 - malloc and free
+### 8 动态内存分配 - malloc and free
 
-## 9 局部变量，全局变量，符号表
+### 9 局部变量，全局变量，符号表
 local, global, symbol table
 - 9.1 局部变量 - local variable
 - 9.2 全局变量 - global variable
 - 9.3 符号表，作用域 - symbol table, scope
 
-## 10 结构和联合 - struct and union
+### 10 结构和联合 - struct and union
 - 10.1 结构 - struct
 创建结构，结构变量
 结构作为函数的参数
@@ -87,14 +87,14 @@ switch 语句
 union 示例
 数据封装 
 
-## 11 链表 - link list
+### 11 链表 - link list
 - 11.1 自引用结构 - self referential structure
 - 11.2 链表 - link list
 创建，打印链表
 atolink - 数组转换为链表
 
-## 12 预处理器 - preprocessor
+### 12 预处理器 - preprocessor
 
-## 13 标准输入, 标准输出, 错误输出 - stdin, stdout, stderr
+### 13 标准输入, 标准输出, 错误输出 - stdin, stdout, stderr
 
-## 14 课程回顾
+### 14 课程回顾
