@@ -66,6 +66,7 @@ function sidebarGuide() {
       text: 'Configuration',
       collapsible: true,
       items: [
+        { text: 'C语言快速入门', link: '/guide/czh01' },
         { text: 'Config Format', link: '/guide/configs' },
         { text: 'Advanced', link: '/guide/advanced' }
       ]
