@@ -63,19 +63,14 @@ You have 17 H1 headings. You may want to use the "H1 -> H2" option to demote all
 
 ## 1.1 number system - 数字系统
 
-decimal system - 十进制
-
-0, 1, 2, 3, 4, 5, 6, 7, 8, 9
-
-1111 = 1 * 10^3 + 1 * 10^2 + 1 * 10^1 + 1 * 10^0
+decimal system - 十进制	0, 1, 2, 3, 4, 5, 6, 7, 8, 9
 
 $1111 = 1 \times 10^3 + 1 \times 10^2 + 1 \times 10^1 + 1 \times 10^0$
 
-binary system - 二进制
+binary system - 二进制	0, 1
 
-0, 1
-
-1111 = 1 * 2^3 + 1 * 2^2 + 1 * 2^1 + 1 * 2^0 = 8 + 4 + 2 + 1 = 15
+$$1111 	= 1 \times 2^3 + 1 \times 2^2 + 1 \times 2^1 + 1 \times 2^0
+	= 8 + 4 + 2 + 1 = 15$$
 
 2^0 = 1
 
