@@ -6,7 +6,7 @@ export default {
       // use more markdown-it plugins!
       md.use(require('markdown-it-mathjax3'))
     }
-  }
+  },
 
   
   lang: 'en-US',
