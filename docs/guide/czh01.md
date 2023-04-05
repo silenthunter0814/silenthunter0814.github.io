@@ -39,8 +39,8 @@ $1111 = 1 \times 10^3 + 1 \times 10^2 + 1 \times 10^1 + 1 \times 10^0$
 
 binary system - 二进制	0, 1
 
-$$\left(1111 	= 1 \times 2^3 + 1 \times 2^2 + 1 \times 2^1 + 1 \times 2^0
-	= 8 + 4 + 2 + 1 = 15)\left$$
+$1111 	= 1 \times 2^3 + 1 \times 2^2 + 1 \times 2^1 + 1 \times 2^0
+	= 8 + 4 + 2 + 1 = 15$
 
 2^0 = 1
 
