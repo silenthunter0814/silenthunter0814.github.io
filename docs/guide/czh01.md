@@ -1,6 +1,6 @@
 
 # 语言快速入门
-课程教材 [The Linux Command Line](pdfs/czh01.pdf)
+课程教材 [The Linux Command Line](http://silenthunter0814.github.io/pdfs/czh01.pdf)
 
 ## C 课程大纲
 ### 1 编程基础
