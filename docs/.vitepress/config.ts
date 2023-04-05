@@ -1,4 +1,6 @@
-module.exports = {
+
+export default {
+  module.exports = {
   markdown: {
     config: (md) => {
       // use more markdown-it plugins!
@@ -6,9 +8,7 @@ module.exports = {
     }
   }
 }
-
-
-export default {
+  
   lang: 'en-US',
   title: 'Silent Hunter',
   description: 'C语言从入门到大神系列',
