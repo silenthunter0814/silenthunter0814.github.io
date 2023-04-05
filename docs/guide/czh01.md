@@ -69,6 +69,8 @@ decimal system - 十进制
 
 1111 = 1 * 10^3 + 1 * 10^2 + 1 * 10^1 + 1 * 10^0
 
+$1111 = 1 \times 10^3 + 1 \times 10^2 + 1 \times 10^1 + 1 \times 10^0$
+
 binary system - 二进制
 
 0, 1
