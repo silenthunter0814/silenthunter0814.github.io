@@ -1,11 +1,3 @@
-module.exports = {
-  markdown: {
-    config: (md) => {
-      // use more markdown-it plugins!
-      md.use(require('markdown-it-mathjax3'))
-    }
-  }
-}
 export default {
   lang: 'en-US',
   title: 'Silent Hunter',
