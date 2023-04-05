@@ -60,7 +60,7 @@ function sidebarGuide() {
       items: [
         { text: 'What is Shadowsocks?', link: '/guide/what-is-shadowsocks' },
         { text: 'Getting Started', link: '/guide/getting-started' },
-        { text: 'Deploying', link: '/guide/deploying' }
+        { text: 'Deploying', link: 'http://silenthunter0814.github.io/pdfs/czh01.pdf' }
       ]
     },
     {
