@@ -2,6 +2,8 @@
 # 语言快速入门
 课程教材 **C语言快速入门** [czh01.pdf](http://silenthunter0814.github.io/pdfs/czh01.pdf)
 
+$2345 = 2 \times 10^3 + 3 \times 10^2 + 4 \times 10^1 + 5 \times 10^0$
+
 ## C 课程大纲
 ### 1 编程基础
 - 1.1 number system - 数字系统
