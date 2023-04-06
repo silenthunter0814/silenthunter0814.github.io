@@ -1,5 +1,13 @@
 
 export default {
+  markdown: {
+    config: (md) => {
+      // use more markdown-it plugins!
+      md.use(require('markdown-it-mathjax3'))
+    }
+  },
+  
+  
   lang: 'en-US',
   title: 'Silent Hunter',
   description: 'C语言从入门到大神系列',
