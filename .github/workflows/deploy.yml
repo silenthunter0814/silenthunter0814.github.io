@@ -18,7 +18,6 @@ jobs:
     - name: Build
       run: |
         yarn install
-        yarn add markdown-it-mathjax3
         yarn docs:build
 
     - name: Deploy
