@@ -6,8 +6,8 @@
     - 中文 html 在线版 [**Linux 命令行**](http://billie66.github.io/TLCL/book/index.html)
 2. 白板课件
 3. 在线视频
-    - [**油管 Youtube**](https://www.youtube.com/watch?v=FuiKqWJmBK8&list=PLTAMfyudM4Zv21seNLop76EJKfUwC_B6w)
-    - [**B站 Bilibili**](https://www.bilibili.com/list/1551957972?sid=3068281&desc=1&oid=949862607&bvid=BV1rs4y1b7pZ)
+    - <img src="https://silenthunter0814.github.io/pub/assets/youtube.png" width="2%" height="2%">  [**油管 Youtube**](https://www.youtube.com/watch?v=FuiKqWJmBK8&list=PLTAMfyudM4Zv21seNLop76EJKfUwC_B6w)
+    - <img src="https://silenthunter0814.github.io/pub/assets/bilibili.png" width="3%" height="3%"> [**B站 Bilibili**](https://www.bilibili.com/list/1551957972?sid=3068281&desc=1&oid=949862607&bvid=BV1rs4y1b7pZ)
 
 
 ## 课程列表
