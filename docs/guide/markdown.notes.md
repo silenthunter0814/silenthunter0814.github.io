@@ -59,7 +59,7 @@ $$\left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right) \
 
 ### 二次方程
 
-<details>
+
 <pre>
 
 $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}$$
@@ -87,7 +87,7 @@ $$\eqalign{
         &= a^2 - b^2
 }$$
 </pre>
-</details>
+---
 
 $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}$$
  
