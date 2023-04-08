@@ -1,4 +1,4 @@
-name: deploy
+name: build
 
 on:
   push:
@@ -10,15 +10,22 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+  
+    - name: Install pnpm
+      uses: pnpm/action-setup@v2
+      with:
+        version: 8
 
-    - uses: actions/setup-node@v3
+    - name: Set node version
+      uses: actions/setup-node@v3
       with:
         node-version: 16
+        cache: pnpm
 
     - name: Build
       run: |
-        yarn install
-        yarn docs:build
+        pnpm install --no-frozen-lockfile        
+        pnpm run build
 
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3

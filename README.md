@@ -1,6 +1,3 @@
-## Introduction
+# The official lecture website of Silent Hunter.
 
-[![deploy](https://github.com/silenthunter0814/silenthunter0814.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/silenthunter0814/silenthunter0814.github.io/actions/workflows/deploy.yml)
-
-The official website of Silent Hunter.
-
+[![build](https://github.com/silenthunter0814/run/actions/workflows/build.yml/badge.svg)](https://github.com/silenthunter0814/run/actions/workflows/build.yml)
