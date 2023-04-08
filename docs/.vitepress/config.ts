@@ -5,7 +5,7 @@ export default {
   title: 'Silent Hunter',  
   description: 'C语言从入门到大神系列',
   
-  base: '/run/',
+  base: '/',
 
   lastUpdated: true,
 
