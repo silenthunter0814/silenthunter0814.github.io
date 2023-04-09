@@ -23,9 +23,9 @@ hero:
 
 features:
   - title: 高效学习
-    details: Bleeding edge techniques using Asynchronous I/O and Event-driven programming.
+    details: 
   - title: 圣经教材
-    details: Secured with industry level encryption algorithm. Flexible to support custom algorithms.
+    details: 
   - title: 创新教学
-    details: Optimized for mobile device and wireless network, with low CPU and bandwidth usage.
+    details: 
 ---
