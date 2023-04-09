@@ -12,6 +12,18 @@
 
 ## 1 hello world
 ### 1.1 hello.c
+vi/vscode 编辑器编写第一个程序  
+hello.c:  
+
+```c
+1   #include <stdio.h>
+2   
+3   int main()
+4   {
+5       printf("hello, world\n");
+6       return 0;
+7   }
+```
 ### 1.1 C程序的编译
 ## 2 数据类型，变量，运算符，表达式和语句
 data type, variable, expression and statement
