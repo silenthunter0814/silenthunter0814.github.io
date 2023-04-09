@@ -6,10 +6,10 @@
 - 通过实践（编程）学习掌握 C 标准，而不是通过学习 C 标准来指导实践（编程）
 
 ## 资源链接
-课程视频
+- 课程视频
+- 课程源码  https://github.com/silenthunter0814/czh01.git
 
 # C语言快速入门
-
 ## 1 hello world
 ### 1.1 hello.c
 vi/vscode 编辑器编写第一个程序 `hello.c`:  
@@ -30,7 +30,6 @@ vi/vscode 编辑器编写第一个程序 `hello.c`:
 - 第 6 行： `return 0;`, 返回语句，值 0 通常表示成功终止。
 
 ### 1.2 预处理，编译，汇编，链接和运行
-
 #### gcc 编译器集合
 - 预处理  Preprocess	  将 `stdio.h` 文件的内容复制到 `hello.c`
 - 编译		Compile	     将C语言源文件翻译为汇编语言  `hello.c` -> `hello.asm`
