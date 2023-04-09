@@ -1,12 +1,12 @@
 
-# 语言快速入门
+# czh01 语言快速入门
 
 ## 资源链接
 
 
 
 
-# czh01 C语言快速入门
+#  C语言快速入门
 
 ## 1 hello world
 ### 1.1 hello.c
@@ -80,5 +80,5 @@ union 示例
 创建，打印链表
 atolink - 数组转换为链表
 ## 11 预处理器 - preprocessor
-## 11 标准输入, 标准输出, 错误输出 - stdin, stdout, stderr
+## 12 标准输入, 标准输出, 错误输出 - stdin, stdout, stderr
 
