@@ -7,7 +7,7 @@
 2. 白板课件
 3. 在线视频
     - [**油管 Youtube**](https://www.youtube.com/watch?v=FuiKqWJmBK8&list=PLTAMfyudM4Zv21seNLop76EJKfUwC_B6w)
-    - [**B站 Bilibili**](https://www.bilibili.com/list/1551957972?sid=3068281&desc=1&oid=949862607&bvid=BV1rs4y1b7pZ)
+    - [**B站 Bilibili**](https://www.bilibili.com/video/BV1rs4y1b7pZ/?spm_id_from=333.999.0.0&vd_source=059281850a5bba75a4353df70d0d18b3)
 
 
 ## 课程列表
