@@ -1,3 +1,5 @@
+<div style="page-break-after: always"></div>
+
 # Markdown 学习笔记
 
 ## Tips
