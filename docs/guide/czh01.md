@@ -30,6 +30,7 @@ vi/vscode 编辑器编写第一个程序 `hello.c`:
 - 第 6 行： `return 0;`, 返回语句，值 0 通常表示成功终止。
 
 ### 1.2 预处理，编译，汇编，链接和运行
+
 #### gcc 编译器集合
 - 预处理  Preprocess	  将 `stdio.h` 文件的内容复制到 `hello.c`
 - 编译		Compile	     将C语言源文件翻译为汇编语言  `hello.c` -> `hello.asm`
@@ -43,6 +44,16 @@ $ ./a.out
 hello, world
 $
 ```
+
+### 1.3 ELF文件格式，进程地址空间
+
+- `ELF`可执行文件  
+  `ELF` = `ELF header` + `text section` + `data section`
+- 进程地址空间  
+  `address space` = `text` + `data` + `stack`
+  - `text`    文本段（指令）
+  - `data`    数据段
+  - `stack`   栈
 
 ## 2 数据类型，变量，运算符，表达式和语句，
 data type, variable, expression and statement
