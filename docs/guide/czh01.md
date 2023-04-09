@@ -29,7 +29,21 @@ vi/vscode 编辑器编写第一个程序 `hello.c`:
 - 第 5 行： `printf()` 是一个标准库函数，用于在标准输出上打印一些东西。末尾的 `;` 用来表示语句的结束。
 - 第 6 行： `return 0;`, 返回语句，值 0 通常表示成功终止。
 
-### 1.2 预处理，编译，链接和运行
+### 1.2 预处理，编译，汇编，链接和运行
+#### gcc 编译器集合
+- 预处理  Preprocess	  将 `stdio.h` 文件的内容复制到 `hello.c`
+- 编译		Compile	     将C语言源文件翻译为汇编语言  `hello.c` -> `hello.asm`
+- 汇编		Assembly	   由汇编源文件生成机器指令二进制代码 `hello.asm` -> `hello.o`
+- 链接		Linking      将二进制对象文件链接成可执行文件  `hello.o` + `printf.o` => `a.out`  
+
+#### 终端命令行
+```bash
+$ gcc hello.c     # create a.out
+$ ./a.out
+hello, world
+$
+```
+
 ## 2 数据类型，变量，运算符，表达式和语句，
 data type, variable, expression and statement
 ### 2.1 数据类型 - data type
