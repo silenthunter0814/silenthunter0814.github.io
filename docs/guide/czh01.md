@@ -12,8 +12,7 @@
 
 ## 1 hello world
 ### 1.1 hello.c
-vi/vscode 编辑器编写第一个程序  
-hello.c:  
+vi/vscode 编辑器编写第一个程序 `hello.c`:  
 
 ```c
 1   #include <stdio.h>
