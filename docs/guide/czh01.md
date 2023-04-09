@@ -2,17 +2,8 @@
 # 语言快速入门
 
 ## 资源链接
-- 课程教材 英文 pdf 版 [**The Linux Command Line**](https://silenthunter0814.github.io/pub/lfm/TLCL-17.10.pdf)
 
 
-
-$2345 = 2 \times 10^3 + 3 \times 10^2 + 4 \times 10^1 + 5 \times 10^0$
-
-$$\eqalign{
-1101    &= 1 \times 2^3 + 1 \times 2^2 + 0 \times 2^1 + 1 \times 2^0 \\
-        &= 8 + 4 + 0 + 1 \\
-        &= 13
-}$$
 
 
 $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}$$
