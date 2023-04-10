@@ -65,8 +65,20 @@ $
   - `data`    数据段
   - `stack`   栈
 
-## 2 数据类型，变量，运算符，表达式和语句，
-data type, variable, expression and statement
+## 2 数据类型，变量，运算符，表达式和语句
+
+### 2.1 数字系统
+
+- 十进制  0, 1, 2, 3, 4, 5, 6, 7, 8, 9  
+  $$1234 = 1 \times 10^3 + 2 \times 10^2 + 3 \times 10^1 + 4 \times 10^0$$
+- 二进制  0, 1  
+$$\begin{aligned}
+1101 &= 1 \times 2^3 + 1 \times 2^2 + 0 \times 2^1 + 1 \times 2^0 \\
+&= 8 + 4 + 0 + 1 \\
+&= 13
+\end{aligned}
+$$
+
 ### 2.1 数据类型 - data type
 ### 2.2 变量 - variable
 ### 2.2 语句 - statement
