@@ -15,9 +15,9 @@
 # C语言快速入门
 
 Author: Silent Hunter  
+  | [1](#1) | [2](#2) | [3](#3) | [4](#4) | [5](#5) | [6](#6) | [7](#7) | [8](#8) | [9](#9) | [10](#10) | [11](#11) | [12](#12) |
 
-
-## <a name="ch1"></a>1 hello world
+## <a name="1"></a>1 hello world
 - [1.1 hello world](#1.1)
 - [1.2 预处理，编译，汇编，链接和运行](#1.2)
 - [1.3 ELF文件格式，进程地址空间](#1.3)
@@ -117,7 +117,7 @@ binsearch - 二分查找 (sorted array)
 ### 6.2 字符数组
 ### 6.3 字符串 - string literal
 
-## <a name=""></a>7 动态内存分配 - malloc and free
+## <a name="7"></a>7 动态内存分配 - malloc and free
 
 ## <a name="8"></a>8 局部变量，全局变量，符号表
 local, global, symbol table
