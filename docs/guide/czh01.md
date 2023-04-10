@@ -57,7 +57,7 @@ $
 
 ### 1.3 文件格式，进程地址空间
 
-- `ELF`可执行文件  
+- `ELF`可执行文件    [wiki](https://en.wikipedia.org/wiki/Executable_and_Linkable_Format)
   `ELF` = `ELF header` + `text section` + `data section`
 - 进程地址空间  
   `address space` = `text` + `data` + `stack`
