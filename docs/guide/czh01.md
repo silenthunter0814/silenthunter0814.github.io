@@ -15,9 +15,8 @@
 # C语言快速入门
 
 Author: Silent Hunter  
-  | [1](#1) | [2](#2) | [3](#3) | [4](#4) | [5](#5) | [6](#6) | [7](#7) | [8](#8) | [9](#9) | [10](#10) | [11](#11) | [12](#12) |
 
-## <a name="1"></a>1 hello world
+## 1 hello world
 - [1.1 hello world](#1.1)
 - [1.2 预处理，编译，汇编，链接和运行](#1.2)
 - [1.3 ELF文件格式，进程地址空间](#1.3)
@@ -65,7 +64,7 @@ $
   - `data`    数据段
   - `stack`   栈
 
-## <a name="2"></a>2 数据类型，变量，运算符，表达式和语句，
+## 2 数据类型，变量，运算符，表达式和语句，
 data type, variable, expression and statement
 ### 2.1 数据类型 - data type
 ### 2.2 变量 - variable
@@ -82,7 +81,7 @@ data type, variable, expression and statement
 两整数之和
 圆的面积
 
-## <a name="3"></a>3 控制流 - flow control
+## 3 控制流 - flow control
 ### 3.1 if-else
 ### 3.2 else-if
 ### 3.3 while loop and for loop
@@ -93,12 +92,12 @@ palindrome
 perfect number
 print stars
 
-## <a name="4"></a>4 函数 - function
+## 4 函数 - function
 ### 4.1 函数概念
 ### 4.2 参数传递
 ### 4.3 递归函数 - recursion
 
-## <a name="5"></a>5 指针与数组 - pointer and array
+## 5 指针与数组 - pointer and array
 ### 5.1 指针 - pointer
 ### 5.2 数组 - array
 数组声明和初始化
@@ -112,20 +111,20 @@ average - 数组的平均值
 insert sort - 插入排序
 binsearch - 二分查找 (sorted array)
 
-## <a name="6"></a>6 常量，字符串，字符数组
+## 6 常量，字符串，字符数组
 ### 6.1 数字常量，字符常量
 ### 6.2 字符数组
 ### 6.3 字符串 - string literal
 
-## <a name="7"></a>7 动态内存分配 - malloc and free
+## 7 动态内存分配 - malloc and free
 
-## <a name="8"></a>8 局部变量，全局变量，符号表
+## 8 局部变量，全局变量，符号表
 local, global, symbol table
 ### 8.1 局部变量 - local variable
 ### 8.2 全局变量 - global variable
 ### 8.3 符号表，作用域 - symbol table, scope
 
-## <a name="9"></a>9 结构和联合 - struct and union
+## 9 结构和联合 - struct and union
 ### 9.1 结构 - struct
 创建结构，结构变量
 结构作为函数的参数
@@ -136,13 +135,13 @@ switch 语句
 union 示例
 数据封装 
 
-## <a name="10"></a>10 链表 - link list
+## 10 链表 - link list
 ### 10.1 自引用结构 - self referential structure
 ### 10.2 链表 - link list
 创建，打印链表
 atolink - 数组转换为链表
 
-## <a name="11"></a>11 预处理器 - preprocessor
+## 11 预处理器 - preprocessor
 
-## <a name="12"></a>12 标准输入, 标准输出, 错误输出 - stdin, stdout, stderr
+## 12 标准输入, 标准输出, 错误输出 - stdin, stdout, stderr
 
