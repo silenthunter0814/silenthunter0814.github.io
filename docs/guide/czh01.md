@@ -10,10 +10,12 @@
 - 课程源码  https://github.com/silenthunter0814/czh01.git
 
 # C语言快速入门
+
+## 1 hello world
 - [1.1 hello world](#1.1)
 - [1.2 预处理，编译，汇编，链接和运行](#1.2)
 - [1.3 ELF文件格式，进程地址空间](#1.3)
-## 1 hello world
+
 ### <a name="1.1"></a>1.1 hello.c
 vi/vscode 编辑器编写第一个程序 `hello.c`:  
 
