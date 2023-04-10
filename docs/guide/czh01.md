@@ -9,7 +9,11 @@
 - 课程视频
 - 课程源码  https://github.com/silenthunter0814/czh01.git
 
+---
+
 # C语言快速入门
+
+Author: Silent Hunter
 
 ## 1 hello world
 - [1.1 hello world](#1.1)
