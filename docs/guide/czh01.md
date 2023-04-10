@@ -19,7 +19,7 @@ Author: Silent Hunter
 ## 1 hello world
 - [1.1 hello.c](#_1-1-hello-c)
 - [1.2 预处理，编译，汇编，链接和运行](#_1-2-预处理-编译-汇编-链接和运行)
-- [1.3 ELF文件格式，进程地址空间](#_1-3-ELF-文件格式-进程地址空间)
+- [1.3 文件格式，进程地址空间](#_1-3-文件格式-进程地址空间)
 
 ### 1.1 hello.c
 vi/vscode 编辑器编写第一个程序 `hello.c`:  
@@ -54,7 +54,7 @@ hello, world
 $
 ```
 
-### 1.3 ELF文件格式，进程地址空间
+### 1.3 文件格式，进程地址空间
 
 - `ELF`可执行文件  
   `ELF` = `ELF header` + `text section` + `data section`
