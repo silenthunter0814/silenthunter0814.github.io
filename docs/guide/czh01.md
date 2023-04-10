@@ -14,7 +14,8 @@
 
 # C语言快速入门
 
-Author: Silent Hunter
+Author: Silent Hunter  
+  | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 |
 
 ## 1 hello world
 - [1.1 hello world](#1.1)
