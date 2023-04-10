@@ -14,8 +14,9 @@
 
 # C语言快速入门
 
-Author: Silent Hunter  
-
+Author: Silent Hunter 
+| [c1](#_1-hello-world) | [c2](#_2-数据类型-变量-运算符-表达式和语句) | [c3](#_3-控制流-flow-control) | 
+[c4]() | [c5] | [c6]() | [c7]() | [c8]() | [c9]() | [c10]() | [c11]() | [c12]() |
 ## 1 hello world
 - [1.1 hello.c](#_1-1-hello-c)
 - [1.2 预处理，编译，汇编，链接和运行](#_1-2-预处理-编译-汇编-链接和运行)
