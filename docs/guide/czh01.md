@@ -135,7 +135,14 @@ bit, byte and memory
 | low | off | 0 |  
 | high | on | 1 |  
 
-- byte 8bit 位组合形成一个字节，物理上是一个内存单元格(cell)
+- byte 8bit 位组合形成一个字节，物理上是一个内存单元格(cell)  
+  <br />
+  binary: 1010 1101  
+  decimal: 173  
+  A cell:
+  | 1 | 0 | 1 | 0 | 1 | 1 | 0 | 1|  
+  | - | - | - | - | - | - | - | - |  
+  
 - memory 连续的单元格(byte)形成的长数组，由起始为0的数字进行编号寻址
 
 ### 2.1 数据类型 - data type
