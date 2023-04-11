@@ -42,7 +42,11 @@ export default {
   
 function nav() {
   return [ 
-    { text: 'Guide', link: '/guide/roadmap', activeMatch: '/guide/' },      
+    { text: 'Guide', link: '/guide/roadmap', activeMatch: '/guide/' }, 
+    {
+      text: 'Issues',
+      link: 'https://github.com/silenthunter0814/silenthunter0814.github.io/issues'
+    },     
     {
       text: 'Youtube',
       link: 'https://www.youtube.com/@silenthunter0814'
