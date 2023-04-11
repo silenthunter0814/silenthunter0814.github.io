@@ -145,7 +145,8 @@ bit, byte and memory
   | 173 |  
   | --- |  
   
-- memory 连续的单元格(byte)形成的长数组，由起始为0的数字进行编号寻址
+- memory 连续的单元格(byte)形成的长数组，由起始为0的数字进行编号寻址  
+  <img src="https://silenthunter0814.github.io/pub/czh01/fig2_1.png"  width="30%" height="30%">  
 
 ### 2.1 数据类型 - data type
 ### 2.2 变量 - variable
