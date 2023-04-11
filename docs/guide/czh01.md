@@ -129,10 +129,6 @@ $1111 \ 1111 \ 1111 \ 1111 = 2^{16} - 1 = 65535$
 ### 2.2 位，字节和内存  
 bit, byte and memory
 - bit 二进制数字，`0` 或 `1`，物理上低电平表示 `0`，高电平表示 `1`  
-
-$\mathlarger{0} \qquad \Huge\bullet$  
-$\mathlarger{1} \qquad \bigcirc$  
-
 - byte 8bit 位组合形成一个字节，物理上是一个内存单元格(cell)
 - memory 连续的单元格(byte)形成的长数组，由起始为0的数字进行编号寻址
 
