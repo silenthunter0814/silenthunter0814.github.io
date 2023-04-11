@@ -24,6 +24,7 @@ export default {
     },
 
     socialLinks: [
+      { icon: 'youtube', link: 'https://www.youtube.com/@silenthunter0814' },
       { icon: 'github', link: 'https://github.com/silenthunter0814/silenthunter0814.github.io' }
     ],
 
