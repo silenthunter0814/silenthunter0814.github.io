@@ -160,10 +160,12 @@ bit, byte and memory
 
 ### 2.3 ASCII 编码 
 
-ASCII： 美国信息交换标准代码  
+ASCII： 美国信息交换标准代码 &emsp;[wiki](https://zh.wikipedia.org/zh-cn/ASCII)  
 ASCII 码是 7 位码，其格式（排列）为  
 
 $X_6X_5X_4X_3X_2X_1X_0$  
+
+需要 `1 byte` 来存储  
 
 | binary | dec | char | comment |
 | --- | --- | --- |:--- |  
