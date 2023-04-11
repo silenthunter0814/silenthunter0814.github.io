@@ -42,7 +42,7 @@ vi/vscode 编辑器编写第一个程序 `hello.c`:
 
 ### 1.2 预处理，编译，汇编，链接和运行
 #### gcc 编译器集合
-- 预处理  Preprocess	  将 `stdio.h` 文件的内容复制到  
+- 预处理  Preprocess	  将 `stdio.h` 文件的内容复制到 `hello.c`   
 `stdio.h` + `hello.c` => `hello.c`
 - 编译		Compile	     将C语言源文件翻译为汇编语言  
 `hello.c` -> `hello.s`
