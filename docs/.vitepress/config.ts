@@ -10,7 +10,7 @@ export default {
   lastUpdated: true,
 
   themeConfig: {
-    logo: 'https://silenthunter0814.github.io/pub/assets/sh.svg',
+    logo: 'https://silenthunter0814.github.io/pub/assets/sh.png',
 
     nav: nav(),
 
