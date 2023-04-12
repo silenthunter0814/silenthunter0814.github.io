@@ -218,7 +218,6 @@ $X_6X_5X_4X_3X_2X_1X_0$
 data type and variable
 
 ---
-
 **数据类型**  
 
 C 语言只提供了下列几种基本数据类型  
@@ -233,7 +232,6 @@ C 语言只提供了下列几种基本数据类型
 | double | double float | 8 | signed |  
 
 ---
-
 **变量**  
 
  
