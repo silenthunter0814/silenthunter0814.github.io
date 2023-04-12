@@ -222,11 +222,15 @@ C 语言提供了下列几种基本数据类型
 | keyword | data type | size | range |  
 | --- | --- | --- | --- |  
 | char | integer | 1 | $-2^7$ to $2^7-1$ |  
-| short | integer | 2 | $-2^15$ to $2^15-1$ |  
-| int | integer | 4 | $-2^31$ to $2^31-1$ |  
-| long | integer | 8 | $-2^63$ to $2^63-1$ |  
+| short | integer | 2 | $-2^{15{$ to $2^{15}-1$ |  
+| int | integer | 4 | $-2^{31}$ to $2^{31}-1$ |  
+| long | integer | 8 | $-2^{63}$ to $2^{63}-1$ |  
 | float | single float | 4 | signed |  
 | double | double float | 8 | signed |  
+
+无符号整型：
+| unsigned char |	unsigned short | unsigned int	| unsigned long |  
+| --- | --- | --- | --- |  
 
 ---
 #### 变量  
