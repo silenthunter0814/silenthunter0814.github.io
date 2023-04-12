@@ -80,6 +80,7 @@ $
 ## 2 数据类型，变量，运算符，表达式和语句
 
 ### 2.1 数字系统
+number system
 
 - 十进制  0, 1, 2, 3, 4, 5, 6, 7, 8, 9  
   $$1234_{10} = 1 \times 10^3 + 2 \times 10^2 + 3 \times 10^1 + 4 \times 10^0$$
@@ -122,7 +123,7 @@ S &= 2^0 + 2^1 + ... + 2^{n-1} &(1) \\
 2S &= 2^1 + 2^2 + ... + 2^n &(2) 
 }$$  
 
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; do (2) - (1)  
+&emsp; &emsp; do (2) - (1)  
 
 $$\eqalign{
   S &= 2^n - 2^0 \\
@@ -189,9 +190,17 @@ $X_6X_5X_4X_3X_2X_1X_0$
 | 77 | 97 | 114 | 121 |  
 
 
-### 2.1 数据类型 - data type
-### 2.2 变量 - variable
-### 2.2 语句 - statement
+### 2.4 数据类型
+data type  
+
+
+### 2.5 变量
+variable  
+
+
+### 2.6 语句
+statement  
+
 ### 2.4 小结
 变量声明/定义 - declaration and definition
 格式化输出转换函数 - printf
