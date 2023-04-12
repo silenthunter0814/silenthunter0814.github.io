@@ -77,12 +77,11 @@ $
   - `data`    数据段
   - `stack`   栈
 
-## 2 数据类型，变量，运算符，表达式和语句
+## 2 数据存储和C语言
 
-### 2.1 数据存储
+### 2.1 数据存储格式
 
----  
-
+--- 
 #### 2.1.1 数字系统
 number system
 
@@ -140,10 +139,10 @@ $0111 \ 1111 \ 1111 \ 1111 = 2^{15} - 1 = 32767$
 $1111 \ 1111 \ 1111 \ 1111 = 2^{16} - 1 = 65535$  
 
 ---  
-
 #### 2.1.2 位，字节和内存  
 
 bit, byte and memory
+
 - bit 二进制数字，`0` 或 `1`，物理上低电平表示 `0`，高电平表示 `1`  
 
 | volt | LED | binary |  
@@ -166,10 +165,9 @@ bit, byte and memory
   ![](https://silenthunter0814.github.io/pub/czh01/fig2_1.png)  
 
 ---  
-
 #### 2.1.3 ASCII 编码 
 
-ASCII： 美国信息交换标准代码 &emsp;[wiki](https://zh.wikipedia.org/zh-cn/ASCII)  
+ASCII： 美国信息交换标准代码 &emsp;扩展阅读 [wiki](https://zh.wikipedia.org/zh-cn/ASCII)  
 ASCII 码是 7 位码，其格式（排列）为  
 
 $X_6X_5X_4X_3X_2X_1X_0$  
@@ -198,13 +196,12 @@ $X_6X_5X_4X_3X_2X_1X_0$
 | 77 | 97 | 114 | 121 |  
 
 ---
+#### 内存支持的位组
 
-**内存支持的位组**  
-
-- byte &emsp; 1 byte
-- word &emsp; 2 bytes
-- double-word &emsp; 4 bytes
-- quad-word &emsp; 8 bytes
+- byte &emsp; 1-byte
+- word &emsp; 2-bytes
+- double-word &emsp; 4-bytes
+- quad-word &emsp; 8-bytes
 
 | name | bytes | unsigned range | signed range |  
 | --- | --- | --- | --- |  
@@ -218,7 +215,7 @@ $X_6X_5X_4X_3X_2X_1X_0$
 data type and variable
 
 ---
-**数据类型**  
+#### 数据类型
 
 C 语言只提供了下列几种基本数据类型  
 
@@ -232,12 +229,26 @@ C 语言只提供了下列几种基本数据类型
 | double | double float | 8 | signed |  
 
 ---
-**变量**  
+#### 变量  
 
+- 内存地址的人类可读名称
+- 关联内存地址易于记忆的标签
+- 存储、读取和更改内存中的数据
+- 总是同具体的数据类型相关联
+
+变量的声明  
+变量在使用前必须进行声明，这是通过声明语句完成的。
+
+```c
+int x;
+long lx;
+char c;
+``` 
+行尾的分号表示一条语句的结束。  
+变量的内存空间由编译器在 stack 中自动分配(auto)。  
  
-
-
-### 2.4 语句
+---
+#### 语句  
 statement  
 
 ### 2.5 小结
