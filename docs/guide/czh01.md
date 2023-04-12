@@ -217,7 +217,7 @@ data type and variable
 ---
 #### 数据类型
 
-C 语言只提供了下列几种基本数据类型  
+C 语言提供了下列几种基本数据类型  
 
 | keyword | data type | size | range |  
 | --- | --- | --- | --- |  
@@ -248,11 +248,9 @@ char c;
 变量的内存空间由编译器在 stack 中自动分配(auto)。  
  
 ---
-#### 语句  
-statement  
 
-### 2.5 小结
-变量声明/定义 - declaration and definition
+### 2.3 sizeof, printf
+
 格式化输出转换函数 - printf
 变量初始化 - initialization
 ### 2.6 运算符和表达式 - operator and expression
