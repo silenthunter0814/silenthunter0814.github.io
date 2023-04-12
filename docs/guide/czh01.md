@@ -81,6 +81,8 @@ $
 
 ### 2.1 数据存储
 
+---  
+
 #### 2.1.1 数字系统
 number system
 
@@ -137,6 +139,8 @@ $1111 \ 1111 = 2^8 -1 = 255$
 $0111 \ 1111 \ 1111 \ 1111 = 2^{15} - 1 = 32767$  
 $1111 \ 1111 \ 1111 \ 1111 = 2^{16} - 1 = 65535$  
 
+---  
+
 #### 2.1.2 位，字节和内存  
 
 bit, byte and memory
@@ -160,6 +164,8 @@ bit, byte and memory
   
 - memory 连续的单元格(byte)形成的长数组，由起始为0的数字进行编号寻址  
   ![](https://silenthunter0814.github.io/pub/czh01/fig2_1.png)  
+
+---  
 
 #### 2.1.3 ASCII 编码 
 
@@ -192,6 +198,7 @@ $X_6X_5X_4X_3X_2X_1X_0$
 | 77 | 97 | 114 | 121 |  
 
 **内存支持的位组**  
+
 - byte &emsp; 1 byte
 - word &emsp; 2 bytes
 - double-word &emsp; 4 bytes
