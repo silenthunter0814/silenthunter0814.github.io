@@ -214,10 +214,14 @@ $X_6X_5X_4X_3X_2X_1X_0$
 | qword | 8 | $0$ ~ $2^{64}-1$ | $-2^{63}$ ~ $2^{63}-1$ |  
 
 
-### 2.2 数据类型
-data type  
+### 2.2 数据类型和变量
+data type and variable
 
-- C 语言只提供了下列几种基本数据类型  
+---
+
+**数据类型**  
+
+C 语言只提供了下列几种基本数据类型  
 
 | keyword | data type | size | range |  
 | --- | --- | --- | --- |  
@@ -228,8 +232,11 @@ data type
 | float | single float | 4 | signed |  
 | double | double float | 8 | signed |  
 
-### 2.3 变量
-variable  
+---
+
+**变量**  
+
+ 
 
 
 ### 2.4 语句
