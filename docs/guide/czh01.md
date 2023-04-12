@@ -197,6 +197,8 @@ $X_6X_5X_4X_3X_2X_1X_0$
 | --- | --- | --- | --- |  
 | 77 | 97 | 114 | 121 |  
 
+---
+
 **内存支持的位组**  
 
 - byte &emsp; 1 byte
@@ -207,17 +209,24 @@ $X_6X_5X_4X_3X_2X_1X_0$
 | name | bytes | unsigned range | signed range |  
 | --- | --- | --- | --- |  
 | byte | 1 | $0$ ~ $2^8-1$ | $-2^7$ ~ $2^7-1$ |  
-| word | 2 | $0$ ~ $2^{16}-1$ | $-2^{15}$ ~ $2^{15}-1 |  
+| word | 2 | $0$ ~ $2^{16}-1$ | $-2^{15}$ ~ $2^{15}-1$ |  
 | dword | 4 | $0$ ~ $2^{32}-1$ | $-2^{31}$ ~ $2^{31}-1$ |  
 | qword | 8 | $0$ ~ $2^{64}-1$ | $-2^{63}$ ~ $2^{63}-1$ |  
-
-
-#### 2.1.4 补码
 
 
 ### 2.2 数据类型
 data type  
 
+- C 语言只提供了下列几种基本数据类型  
+
+| keyword | data type | size | range |  
+| --- | --- | --- | --- |  
+| char | integer | 1 | $-2^7$ to $2^7-1$ |  
+| short | integer | 2 | $-2^15$ to $2^15-1$ |  
+| int | integer | 4 | $-2^31$ to $2^31-1$ |  
+| long | integer | 8 | $-2^63$ to $2^63-1$ |  
+| float | single float | 4 | signed |  
+| double | double float | 8 | signed |  
 
 ### 2.3 变量
 variable  
