@@ -47,7 +47,7 @@ vi/vscode 编辑器编写第一个程序 `hello.c`:
 
 ### 1.2 预处理，编译，汇编，链接和运行
 
-#### gcc 编译器集合
+#### 1.2.1 gcc 编译器集合
 
 - 预处理  Preprocess	  将 `stdio.h` 文件的内容复制到 `hello.c`   
 `stdio.h` + `hello.c` => `hello.c`
@@ -58,7 +58,7 @@ vi/vscode 编辑器编写第一个程序 `hello.c`:
 - 链接		Linking      将二进制对象文件链接成可执行文件  
 `hello.o` + `printf.o` => `a.out`  
 
-#### 终端命令行
+#### 1.2.2 终端命令行
 
 ```bash
 $ gcc hello.c     # create a.out
@@ -82,7 +82,7 @@ $
 ### 2.1 数据存储格式
 
 --- 
-#### 数字系统
+#### 2.1.1 数字系统
 number system
 
 - 十进制  0, 1, 2, 3, 4, 5, 6, 7, 8, 9  
@@ -139,7 +139,7 @@ $0111 \ 1111 \ 1111 \ 1111 = 2^{15} - 1 = 32767$
 $1111 \ 1111 \ 1111 \ 1111 = 2^{16} - 1 = 65535$  
 
 ---  
-#### 位，字节和内存  
+#### 2.1.2位，字节和内存  
 
 bit, byte and memory
 
@@ -165,7 +165,7 @@ bit, byte and memory
   ![](https://silenthunter0814.github.io/pub/czh01/fig2_1.png)  
 
 ---  
-#### ASCII 编码 
+#### 2.1.3 ASCII 编码 
 
 ASCII： 美国信息交换标准代码 &emsp;扩展阅读 [wiki](https://zh.wikipedia.org/zh-cn/ASCII)  
 ASCII 码是 7 位码，其格式（排列）为  
@@ -196,7 +196,7 @@ $X_6X_5X_4X_3X_2X_1X_0$
 | 77 | 97 | 114 | 121 |  
 
 ---
-#### 内存支持的位组
+#### 2.1.4 内存支持的位组
 
 - byte &emsp; 1-byte
 - word &emsp; 2-bytes
@@ -215,7 +215,7 @@ $X_6X_5X_4X_3X_2X_1X_0$
 data type and variable
 
 ---
-#### 数据类型
+#### 2.2.1 数据类型
 
 C 语言提供了下列几种基本数据类型  
 
@@ -232,7 +232,7 @@ C 语言提供了下列几种基本数据类型
 unsigned char, unsigned short, unsigned int, unsigned long   
 
 ---
-#### 变量  
+#### 2.2.2 变量  
 
 - 内存地址的人类可读名称
 - 关联内存地址易于记忆的标签
@@ -240,14 +240,14 @@ unsigned char, unsigned short, unsigned int, unsigned long
 - 总是同具体的数据类型相关联  
 
 ---
-#### 变量命名规则
+#### 2.2.3 变量命名规则
 
 - 由`字符`，`数字`，`下划线`组成  
 - 首字符不能是数字
 - 不能与C关键字冲突  
 
 ---
-#### 变量的声明  
+#### 2.2.4 变量的声明  
 变量在使用前必须进行声明，这是通过声明语句完成的。
 
 ```c
@@ -269,7 +269,7 @@ int main()
 operator and expression  
 
 ---
-#### 赋值运算符 `=`
+#### 2.3.1 赋值运算符 `=`
 asignment operator
 
 - 赋值语句  
@@ -308,7 +308,7 @@ int main()
 ```
 
 ---
-#### 算术运算符，表达式
+#### 2.3.2 算术运算符，表达式
 算术运算符属于二元运算符(有左、右两个操作数的运算符) `binary operator` 
 - 算术运算符  
 `+`, `-`, `*`, `/`, `%`  
@@ -322,7 +322,7 @@ int main()
     - `i = i + x * y;`  
 
 ---
-#### 赋值运算符 `op=`
+#### 2.3.3 赋值运算符 `op=`
 大多数二元运算符都有一个相应的赋值运算符 `op=`  
 `expr1 op= expr2;` \<=\> `expr1 = expr1 op expr2`  
 例如：  
@@ -342,14 +342,14 @@ int main()
 
         i = 3;
         x = 5;
-        i *= x +6;
+        i *= x + 6;
         printf("i = %d\n", i);
         return 0;
 }
 ```
 
 ---
-#### `++`, `--` 运算符
+#### 2.3.4 `++`, `--` 运算符
 属于一元运算符(只有一个操作数) `unary operator`  
 一元运算符拥有最高的优先级  
 
@@ -363,6 +363,8 @@ int main()
   `y = 10 + i--;`  
   `y = i-- * 2;`  
 
+#### 2.3.5 相等运算符 `==` `!=`
+equality operator  
 
 
 
