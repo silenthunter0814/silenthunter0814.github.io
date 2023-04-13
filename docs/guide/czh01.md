@@ -288,7 +288,6 @@ operator and expression
 /* 
  * file name: var.c
  */
-
 int main()
 {
     int x;
