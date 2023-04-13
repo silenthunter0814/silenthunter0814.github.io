@@ -315,10 +315,10 @@ int main()
   `express` = `operator` `op` ...  
 - 语句 &emsp; 表达式后跟一个 `;` 形成语句  
   `statement` = `express` `;`  
-  
-    - `3 + 4`
-    - `i = x * y`
-    - `i = i + x * y`
+
+    - `3 + 4;`
+    - `i = x * y;`
+    - `i = i + x * y;`
 
 
 !, & 一元运算符 - unary
