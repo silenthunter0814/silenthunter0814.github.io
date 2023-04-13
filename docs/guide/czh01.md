@@ -288,6 +288,9 @@ operator and expression
 /* 
  * file name: var.c
  */
+
+#include <stdio.h>
+
 int main()
 {
     int x;
