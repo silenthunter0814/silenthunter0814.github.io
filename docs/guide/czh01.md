@@ -82,7 +82,7 @@ $
 ### 2.1 数据存储格式
 
 --- 
-#### 2.1.1 数字系统
+#### 数字系统
 number system
 
 - 十进制  0, 1, 2, 3, 4, 5, 6, 7, 8, 9  
@@ -139,7 +139,7 @@ $0111 \ 1111 \ 1111 \ 1111 = 2^{15} - 1 = 32767$
 $1111 \ 1111 \ 1111 \ 1111 = 2^{16} - 1 = 65535$  
 
 ---  
-#### 2.1.2 位，字节和内存  
+#### 位，字节和内存  
 
 bit, byte and memory
 
@@ -165,7 +165,7 @@ bit, byte and memory
   ![](https://silenthunter0814.github.io/pub/czh01/fig2_1.png)  
 
 ---  
-#### 2.1.3 ASCII 编码 
+#### ASCII 编码 
 
 ASCII： 美国信息交换标准代码 &emsp;扩展阅读 [wiki](https://zh.wikipedia.org/zh-cn/ASCII)  
 ASCII 码是 7 位码，其格式（排列）为  
@@ -237,8 +237,16 @@ unsigned char, unsigned short, unsigned int, unsigned long
 - 内存地址的人类可读名称
 - 关联内存地址易于记忆的标签
 - 存储、读取和更改内存中的数据
-- 总是同具体的数据类型相关联
+- 总是同具体的数据类型相关联  
 
+---
+#### 变量命名规则
+
+- 由`字符`，`数字`，`下划线`组成  
+- 首字符不能是数字
+- 不能与C关键字冲突  
+
+---
 #### 变量的声明  
 变量在使用前必须进行声明，这是通过声明语句完成的。
 
@@ -257,12 +265,28 @@ int main()
 变量的内存空间由编译器在 stack 中自动分配(auto)。  
  
 ---
+### 2.3 运算符和表达式  
+operator and expression  
 
-### 2.3 sizeof, printf
+---
+#### 赋值运算符 `=`
 
-格式化输出转换函数 - printf
-变量初始化 - initialization
-### 2.6 运算符和表达式 - operator and expression
+```c
+int main()
+{
+    int x;
+    long lx;
+    char c;
+
+    x = 28;
+    lx = 3523;
+    c = 97;
+
+    return 0;
+}
+
+```
+
 !, & 一元运算符 - unary
 小结
 ### 2.6 编程练习
