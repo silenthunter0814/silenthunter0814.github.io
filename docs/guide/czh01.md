@@ -311,10 +311,10 @@ int main()
 
 - 算术运算符  
 `+`, `-`, `*`, `/`, `%`  
-- 表达式 &emsp； 运算符和操作数形成表达式  
-  `express` = `operator` `op` ...  
-- 语句 &emsp; 表达式后跟一个 `;` 形成语句  
-  `statement` = `express` `;`  
+- 表达式 &emsp； 运算符和操作数形成表达式 `expression`  
+  `expr` = `operator` `op` ...  
+- 语句 &emsp; 表达式后跟一个 `;` 形成语句 `statement` 
+  `stmt` = `expr` `;`  
 
     - `3 + 4;`
     - `i = x * y;`
