@@ -174,10 +174,7 @@ $X_6X_5X_4X_3X_2X_1X_0$
 
 需要 `1 byte` 来存储  
 
-<details>
-<summary>ASCII Table</summary>
-<img href=https://silenthunter0814.github.io/pub/czh01/ASCII.svg>
-</details> 
+![](https://silenthunter0814.github.io/pub/czh01/ASCII.svg)  
 
 | binary | dec | char | comment |
 | --- | --- | --- |:--- |  
