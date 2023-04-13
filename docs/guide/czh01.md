@@ -239,13 +239,19 @@ unsigned char, unsigned short, unsigned int, unsigned long
 - 存储、读取和更改内存中的数据
 - 总是同具体的数据类型相关联
 
-变量的声明  
+#### 变量的声明  
 变量在使用前必须进行声明，这是通过声明语句完成的。
 
 ```c
-int x;
-long lx;
-char c;
+int main()
+{
+    int x;
+    long lx;
+    char c;
+
+    return 0;
+}
+
 ``` 
 行尾的分号表示一条语句的结束。  
 变量的内存空间由编译器在 stack 中自动分配(auto)。  
