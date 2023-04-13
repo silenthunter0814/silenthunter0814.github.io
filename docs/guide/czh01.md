@@ -271,6 +271,12 @@ operator and expression
 ---
 #### 赋值运算符 `=`
 
+- 赋值语句  
+  `x = 28;`  
+  `lx = 3523;`
+- `printf` 格式化输出函数  
+  int printf(const char *format, ...)；  
+  
 ```c
 int main()
 {
