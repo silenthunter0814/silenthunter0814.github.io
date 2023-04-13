@@ -270,6 +270,7 @@ operator and expression
 
 ---
 #### 赋值运算符 `=`
+asignment operator
 
 - 赋值语句  
   `x = 28;`  
@@ -308,17 +309,30 @@ int main()
 
 ---
 #### 算术运算符，表达式
-
+算术运算符属于二元运算符(有左、右两个操作数的运算符)  
 - 算术运算符  
 `+`, `-`, `*`, `/`, `%`  
-- 表达式： &emsp; 运算符和操作数形成表达式 `expression`  
+- 表达式：运算符和操作数形成表达式 `expression`  
   `expr` = `operator` `op` ...  
-- 语句： &emsp; 表达式后跟一个 `;` 形成语句 `statement` 
+- 语句：表达式后跟一个 `;` 形成语句 `statement` 
   `stmt` = `expr` `;`  
-
+- 合法的表达式和语句  
     - `3 + 4;`
     - `i = x * y;`
-    - `i = i + x * y;`
+    - `i = i + x * y;`  
+
+---
+#### 赋值运算符 `op=`
+大多数二元运算符都有一个相应的赋值运算符 `op=`  
+`expr1 op= expr2;` \<=\> `expr1 = expr1 op expr2`  
+例如：  
+- `i += 6;` &emsp; `i = i + 6;`
+- `i += x + 6;` &emsp; `i = i + (x+6)`  
+
+
+
+
+
 
 
 !, & 一元运算符 - unary
