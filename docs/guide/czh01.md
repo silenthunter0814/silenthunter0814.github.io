@@ -276,7 +276,7 @@ operator and expression
   `int n = 3523;`  
 - `printf` 格式化输出函数  
   `printf("x = %d\n", x);`  
-  
+
   `%` - 转换说明符
 
     - %d &emsp; int 类型，十进制数字
@@ -285,6 +285,10 @@ operator and expression
     - %f &emsp; double 类型，十进制小数
 
 ```c
+/* 
+ * file name: var.c
+ */
+
 int main()
 {
     int x;
@@ -292,6 +296,9 @@ int main()
 
     x = 28;
     y = 3523;
+    printf("x = %d\n", x);
+    printf("y = %d\n", y);
+    printf("x = %d\ty=%d\n", x, y);
 
     return 0;
 }
