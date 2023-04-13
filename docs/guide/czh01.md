@@ -287,7 +287,7 @@ asignment operator
 
 ```c
 /* 
- * file name: var.c
+ * file name: variable.c
  */
 
 #include <stdio.h>
