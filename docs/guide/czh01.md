@@ -276,9 +276,13 @@ operator and expression
   `int n = 3523;`  
 - `printf` 格式化输出函数  
   `printf("x = %d\n", x);`  
-  `%` - 格式说明符
-  - %d &emsp; 十进制数字
-  - %f &emsp; 
+  
+  `%` - 转换说明符
+
+    - %d &emsp; int 类型，十进制数字
+    - %u &emsp; unsigned int 类型， 无符号十进制数
+    - %c &emsp; int 类型，单个字符
+    - %f &emsp; double 类型，十进制小数
 
 ```c
 int main()
