@@ -254,8 +254,8 @@ unsigned char, unsigned short, unsigned int, unsigned long
 int main()
 {
     int x;
-    long lx;
-    char c;
+    int y;
+    int m, n;
 
     return 0;
 }
@@ -273,20 +273,21 @@ operator and expression
 
 - 赋值语句  
   `x = 28;`  
-  `lx = 3523;`
+  `int n = 3523;`  
 - `printf` 格式化输出函数  
-  int printf(const char *format, ...)；  
-  
+  `printf("x = %d\n", x);`  
+  `%` - 格式说明符
+  - %d &emsp; 十进制数字
+  - %f &emsp; 
+
 ```c
 int main()
 {
     int x;
-    long lx;
-    char c;
+    int y;
 
     x = 28;
-    lx = 3523;
-    c = 97;
+    y = 3523;
 
     return 0;
 }
