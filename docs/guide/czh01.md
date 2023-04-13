@@ -287,7 +287,7 @@ asignment operator
 
 ```c
 /* 
- * file name: variable.c
+ * file name: prog2_1.c
  */
 
 #include <stdio.h>
@@ -313,7 +313,7 @@ int main()
 - 算术运算符  
 `+`, `-`, `*`, `/`, `%`  
 - 表达式：运算符和操作数形成表达式 `expression`  
-  `expr` = `operator` `op` ...  
+  `expr` = `operand` `op` ...  
 - 语句：表达式后跟一个 `;` 形成语句 `statement`  
   `stmt` = `expr` `;`  
 - 合法的表达式和语句  
@@ -331,7 +331,7 @@ int main()
 
 ```c
 /* 
- * file name: oprator.c
+ * file name: prog2_2.c
  */
 
 #include <stdio.h>
@@ -348,7 +348,20 @@ int main()
 }
 ```
 
+---
+#### `++`, `--` 运算符
+属于一元运算符(只有一个操作数) `unary operator`  
+一元运算符拥有最高的优先级  
 
+- prefix `++` `--`  
+  `++i;`  
+  `y = 10 + --i;`  
+  `y = ++i * 2;`  
+
+- postfix `++` `--`  
+  `i++`;  
+  `y = 10 + i--;`  
+  `y = i-- * 2;`  
 
 
 
