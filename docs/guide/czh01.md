@@ -294,15 +294,15 @@ asignment operator
 
 int main()
 {
-    int x;
-    int y;
+        int x;
+        int y;
 
-    x = 28;
-    y = 3523;
-    printf("x = %d\n", x);
-    printf("y = %d\n", y);
-    printf("x = %d\ty=%d\n", x, y);
-    return 0;
+        x = 28;
+        y = 3523;
+        printf("x = %d\n", x);
+        printf("y = %d\n", y);
+        printf("x = %d\ty=%d\n", x, y);
+        return 0;
 }
 
 ```
@@ -327,7 +327,26 @@ int main()
 `expr1 op= expr2;` \<=\> `expr1 = expr1 op expr2`  
 例如：  
 - `i += 6;` &emsp; `i = i + 6;`
-- `i += x + 6;` &emsp; `i = i + (x+6)`  
+- `i *= x + 6;` &emsp; `i = i * (x+6)`  
+
+```c
+/* 
+ * file name: oprator.c
+ */
+
+#include <stdio.h>
+
+int main()
+{
+        int x, i;
+
+        i = 3;
+        x = 5;
+        i *= x +6;
+        printf("i = %d\n", i);
+        return 0;
+}
+```
 
 
 
