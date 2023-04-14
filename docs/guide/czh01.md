@@ -417,9 +417,9 @@ logical operator `&&` `||`
 unary operator `!` `&`  
 
 - `!` logical NOT, 运算结果是 `0` 或 `1`  
-  `!8;        /* 0 */`  
-  `!0;        /* 1 */`  
-  `!x;        /* 1 if x == 0; otherwise 0 */`  
+  `!8;` &emsp; 0  
+  `!0;` &emsp; 1  
+  `!x;` &emsp; 1 if x == 0; otherwise 0   
 
 - `&` 取地址运算符  
   `&x;        /* get address of variable x */`  
@@ -440,7 +440,7 @@ int main()
         printf("input width and length: ");
         scanf("%d %d", &a, &b);
         s = a * b;
-        printf("The rectangle read is: %d\n", s);
+        printf("The rectangle's area is: %d\n", s);
         return 0;
 }
 ```
