@@ -416,14 +416,43 @@ logical operator `&&` `||`
 #### 2.3.8 一元运算符
 unary operator `!` `&`  
 
-  
+- `!` logical NOT, 运算结果是 `0` 或 `1`
+  `!8;        /* 0 */`  
+  `!0;        /* 1 */`  
+  `!x;        /* 1 if x == 0; otherwise 0 */`  
 
-!, & 一元运算符 - unary
-小结
-### 2.6 编程练习
-数据类型大小
-两整数之和
-圆的面积
+- `&` 取地址运算符  
+  `&x;        /* get address of variable x */`  
+  `scanf("%d%, &x);` 这里 `scanf` 是标准输入格式化函数，`%d`说明符接收终端十进制数字输入并存入变量`x`中，`&x`说明传递给`scanf`的是变量`x`的地址。  
+
+```c
+/*
+ * filename: prog2_4.c
+ * calculate rectangle's area
+ */
+ 
+#include <stdio.h>
+
+int main()
+{
+        int a, b, s;       /* width, length, area */
+        
+        printf("input width and length: ");
+        scanf("%d %d", &a, &b);
+        s = a * b;
+        printf("The rectangle read is: %d\n", s);
+        return 0;
+}
+```
+
+---
+#### 2.3.9 运算符的优先级与结合性
+| Operators | Associativity |
+| :--- | --- |
+| `()` `[]` `->` `.` | left to right |
+
+
+
 
 ## 3 控制流 - flow control
 ### 3.1 if-else
