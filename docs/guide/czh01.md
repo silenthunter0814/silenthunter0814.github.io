@@ -416,7 +416,7 @@ logical operator `&&` `||`
 #### 2.3.8 一元运算符
 unary operator `!` `&`  
 
-- `!` logical NOT, 运算结果是 `0` 或 `1`
+- `!` logical NOT, 运算结果是 `0` 或 `1`  
   `!8;        /* 0 */`  
   `!0;        /* 1 */`  
   `!x;        /* 1 if x == 0; otherwise 0 */`  
