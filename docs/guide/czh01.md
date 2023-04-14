@@ -366,13 +366,13 @@ int main()
   `y = i-- * 2;`  
 
 ---
-#### 2.3.5 相等运算符 `==` `!=`
-equality operator  
+#### 2.3.5 相等运算符
+equality operator  `==` `!=`
 
 - `x == y` 1 if x equals y, otherwise 0
 - `x != y` 1 if x does not equals y, otherwise 0  
 
-```
+```c
 /*
  * file name: prog2_3.c
  */
@@ -395,7 +395,27 @@ int main()
         return 0;
 }
 ```
+---
+#### 2.3.6 关系运算符
+relational operator `>` `>=` `<` `<=`  
 
+- `x > y` &emsp; 1 if x greater than y, otherwise 0
+- `x >= y` &emsp; 1 if x greater or equal y, otherwise 0
+- `x < y` &emsp; 1 if x is less than y, otherwise 0
+- `x <= y` &emsp; 1 if x less or equal y, otherwise 0  
+
+---
+#### 2.3.7 逻辑运算符
+logical operator `&&` `||`
+
+- `x && y` &emsp; 1 if x != 0 and y != 0, otherwise 0
+- `x || y` &emsp; 1 if x != 0 or y != 0, otherwise 0
+
+---
+#### 2.3.8 一元运算符
+unary operator `!` `&`  
+
+  
 
 !, & 一元运算符 - unary
 小结
