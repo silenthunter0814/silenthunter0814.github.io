@@ -458,7 +458,7 @@ int main()
 | `==` `!=` | left to right |
 | `&` | left to right |
 | `^` | left to right |
-| `|` | left to right |
+| `\|` | left to right |
 | `&&` | left to right |
 | `||` | left to right |
 | `?:` | right to left |
