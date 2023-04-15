@@ -547,6 +547,7 @@ int main()
 </details>  
 
 ::: tip code style
+<pre>
 if (expr)            if (expr != 0)  
 if (0.2)             if (0.2 != 0)  
 if (i && j)          if (i != 0 && j != 0)
@@ -563,6 +564,7 @@ if (i && j) {
         i++;
         j++;
 }
+</pre>
 :::
 
 ### 3.2 else-if
