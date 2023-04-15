@@ -501,7 +501,9 @@ else  /* optional */
     - 如果存在 `else` 子句，并且 `expr` 值为假(0)，则执行 `statement2`  
 2. 继续执行后面的程序代码  
 
-::: details code example prog3_1.c
+<details>
+<summary>code example prog3_1.c</summary>
+
 ```c
 /*
  * filename prog3_1.c
@@ -528,7 +530,7 @@ int main()
         return 0;
 }
 ```  
-:::  
+</details>  
 
 
 ### 3.2 else-if
