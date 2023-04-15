@@ -252,7 +252,6 @@ unsigned char, unsigned short, unsigned int, unsigned long
 #### 2.2.4 变量的声明  
 变量在使用前必须进行声明，这是通过声明语句完成的。
 
-::: details exampe
 ```c
 int main()
 {
@@ -263,7 +262,6 @@ int main()
     return 0;
 }
 ```  
-:::  
 
 行尾的分号表示一条语句的结束。  
 变量的内存空间由编译器在 stack 中自动分配(auto)。  
