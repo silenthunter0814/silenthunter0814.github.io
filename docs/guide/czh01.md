@@ -423,6 +423,7 @@ unary operator `!` `&`
 
 - `&` 取地址运算符  
   `&x;        /* get address of variable x */`  
+  `printf("%p\n", &x);    /* p - pointer, print address */`  
   `scanf("%d%, &x);` 这里 `scanf` 是标准输入格式化函数，`%d`说明符接收终端十进制数字输入并存入变量`x`中，`&x`说明传递给`scanf`的是变量`x`的地址。  
 
 ```c
@@ -441,6 +442,7 @@ int main()
         scanf("%d %d", &a, &b);
         s = a * b;
         printf("The rectangle's area is: %d\n", s);
+        printf("Address of var x: %p\n", &x);
         return 0;
 }
 ```
