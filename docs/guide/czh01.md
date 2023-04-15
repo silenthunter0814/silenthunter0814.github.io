@@ -21,7 +21,7 @@ Author: Silent Hunter
 [c4](#) | [c5](#) | [c6](#) | [c7](#) | [c8](#) | [c9](#) | [c10](#) | [c11](#) | [c12](#) |  
 
 <details>
-<summary>课程目录</summary>
+<summary>章节目录</summary>
 
 [[toc]]
 
