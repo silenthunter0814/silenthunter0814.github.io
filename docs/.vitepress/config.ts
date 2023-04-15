@@ -46,6 +46,7 @@ export default {
     config: (md) => {
       md.use(mathjax3);
     },
+    lineNumbers: true
   },
 }
   
