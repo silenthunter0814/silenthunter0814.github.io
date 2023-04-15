@@ -64,28 +64,28 @@ function sidebarGuide() {
   return [
     {
       text: '课程简介',
-      collapsible: true,
+      collapsed: false,
       items: [
         { text: 'C语言学习路线图', link: '/guide/roadmap' }
       ]
     },
     {
       text: 'C 编程语言课程',
-      collapsible: true,
+      collapsed: false,
       items: [
         { text: '01 C语言快速入门', link: '/guide/czh01' }
       ]
     },
     {
       text: 'Linux 操作系统课程',
-      collapsible: true,
+      collapsed: false,
       items: [
         { text: '跟我学 Linux', link: '/guide/lfm' }
       ]
     },
     {
       text: 'Private Channel',
-      collapsible: true,
+      collapsed: false,
       items: [
         { text: 'Markdown Notes', link: '/guide/markdown.notes.md' }
       ]
