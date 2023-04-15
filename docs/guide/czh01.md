@@ -483,12 +483,40 @@ if (expr)
         statement1;
 else  /* optional */
         statement2;
-```
+```  
+
 `if-else` 语句执行逻辑：
 1. 计算 `expr` 值  
     - 如果其值为真(非 0)，则执行 `statement1`  
     - 如果存在 `else` 子句，并且 `expr` 值为假(0)，则执行 `statement2`  
-2. 继续执行后面的程序代码
+2. 继续执行后面的程序代码  
+
+```c
+/*
+ * filename prog3_1.c
+ * get max from two absolute value
+ */
+ 
+#include <stdio.h>
+
+int main()
+{
+        int x1, x2, max;
+    
+        printf("input x1 and x2: ");
+        scanf("%d %d", &x1, &x2);
+        if (x1 < 0)
+                x1 = -x1;
+        if (x2 < 0)
+                x2 = -x2;
+        if (x1 >= x2)
+                max = x1;
+        else
+                max = x2;
+        printf("The max value is: %d\n", max);
+        return 0;
+}
+```
 
 ### 3.2 else-if
 ### 3.3 while loop and for loop
