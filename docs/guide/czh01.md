@@ -20,7 +20,12 @@ Author: Silent Hunter
 | [c1](#_1-hello-world) | [c2](#_2-数据类型-变量-运算符-表达式和语句) | [c3](#_3-控制流-flow-control) | 
 [c4](#) | [c5](#) | [c6](#) | [c7](#) | [c8](#) | [c9](#) | [c10](#) | [c11](#) | [c12](#) |  
 
+<details>
+<summary>课程目录</summary>
+
 [[toc]]
+
+</details>
 
 ## 1 hello world
 
