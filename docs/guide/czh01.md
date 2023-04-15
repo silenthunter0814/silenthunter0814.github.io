@@ -485,7 +485,7 @@ else  /* optional */
         statement2;
 ```  
 
-`if-else` 语句执行逻辑：
+`if-else` 语句执行逻辑：  
     1. 计算 `expr` 值  
         - 如果其值为真(非 0)，则执行 `statement1`  
         - 如果存在 `else` 子句，并且 `expr` 值为假(0)，则执行 `statement2`  
