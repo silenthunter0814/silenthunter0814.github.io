@@ -546,6 +546,20 @@ int main()
 ```  
 </details>  
 
+::: INFO code style
+if (expr)       <<=>>     if (expr != 0)  
+if (0.2)        <<=>>     if (0.2 != 0)  
+if (i && j)     <<=>>     if (i != 0 && j != 0)
+------------------------------------------------  
+if (i && j) { i++; j++; }  
+equal to  
+if (i && j)  
+{
+    i++;
+	  j++;
+}
+
+:::
 
 ### 3.2 else-if
 
