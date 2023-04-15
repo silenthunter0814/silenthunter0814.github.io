@@ -441,8 +441,8 @@ int main()
         printf("input width and length: ");
         scanf("%d %d", &a, &b);
         s = a * b;
-        printf("The rectangle's area is: %d\n", s);
-        printf("Address of var x: %p\n", &x);
+        printf("The rectangle's area is: %d\n\n", s);
+        printf("Address of var a: %p\n", &a);
         return 0;
 }
 ```
