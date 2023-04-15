@@ -502,7 +502,7 @@ else  /* optional */
 2. 继续执行后面的程序代码  
 
 <details>
-<summary>code example prog3_1.c</summary>
+<summary>`code example prog3_1.c`</summary>
 
 ```c
 /*
