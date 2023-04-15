@@ -31,13 +31,13 @@ Author: Silent Hunter
 vi/vscode 编辑器编写第一个程序 `hello.c`:  
 
 ```c
-1   #include <stdio.h>
-2   
-3   int main()
-4   {
-5       printf("hello, world\n");
-6       return 0;
-7   }
+#include <stdio.h>
+
+int main()
+{
+        printf("hello, world\n");
+        return 0;
+}
 ```
 - 第 1 行：以 `#` 开头的行都由预处理器处理，预处理器将 `stdio.h` 文件的内容复制到我们的文件中。`xxx.h` 文件称为预处理头文件，通常包含函数声明。 `stdio.h` 文件中包含函数 `printf(...)`的声明。
 - 第 3 行： `main` 函数，程序开始执行的入口点。`int` 表示 `main()` 的返回类型。`()` 表示 `main` 函数不带任何参数。
