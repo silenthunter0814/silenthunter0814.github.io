@@ -252,6 +252,7 @@ unsigned char, unsigned short, unsigned int, unsigned long
 #### 2.2.4 变量的声明  
 变量在使用前必须进行声明，这是通过声明语句完成的。
 
+::: details exampe
 ```c
 int main()
 {
@@ -261,8 +262,9 @@ int main()
 
     return 0;
 }
+```  
+:::  
 
-``` 
 行尾的分号表示一条语句的结束。  
 变量的内存空间由编译器在 stack 中自动分配(auto)。  
  
@@ -288,6 +290,7 @@ asignment operator
     - `%f` &emsp; float 类型， 十进制小数
     - `%lf` &emsp; double 类型，十进制小数
 
+::: details code example prog2_1.c
 ```c
 /* 
  * file name: prog2_1.c
@@ -307,8 +310,8 @@ int main()
         printf("x = %d\ty=%d\n", x, y);
         return 0;
 }
-
-```
+```  
+:::  
 
 ---
 #### 2.3.2 算术运算符，表达式
@@ -333,6 +336,7 @@ int main()
 - `i += 6;` \<=\> `i = i + 6;`
 - `i *= x + 6;` \<=\> `i = i * (x+6)`  
 
+::: details code example prog2_2.c
 ```c
 /* 
  * file name: prog2_2.c
@@ -350,7 +354,8 @@ int main()
         printf("i = %d\n", i);
         return 0;
 }
-```
+```  
+:::  
 
 ---
 #### 2.3.4 `++`, `--` 运算符
@@ -374,6 +379,7 @@ equality operator  `==` `!=`
 - `x == y` 1 if x equals y, otherwise 0
 - `x != y` 1 if x does not equals y, otherwise 0  
 
+::: details code example prog2_3.c
 ```c
 /*
  * file name: prog2_3.c
@@ -396,7 +402,9 @@ int main()
         printf("x != y\tz = %d\n", z);
         return 0;
 }
-```
+```  
+:::  
+
 ---
 #### 2.3.6 关系运算符
 relational operator `>` `>=` `<` `<=`  
@@ -427,6 +435,7 @@ unary operator `!` `&`
   `printf("%p\n", &x);    /* p - pointer, print address */`  
   `scanf("%d", &x);` 这里 `scanf` 是标准输入格式化函数，`%d`说明符接收终端十进制数字输入并存入变量`x`中，`&x`说明传递给`scanf`的是变量`x`的地址。  
 
+::: details code example prog2_4.c
 ```c
 /*
  * filename: prog2_4.c
@@ -447,9 +456,12 @@ int main()
         return 0;
 }
 ```
+:::  
 
 ---
 #### 2.3.9 运算符的优先级与结合性
+
+::: details
 | Operators | Associativity |
 | :--- | --- |
 | `()` `[]` `->` `.` | left to right |
@@ -467,7 +479,7 @@ int main()
 | `?:` | right to left |
 | `=` `+=` `-=` `*=` `/=` `%=` `&=` `^=` `\|= ` `<<=` `>>=` | right to left |
 | `,` | left to right |  
-
+:::
 
 ## 3 控制流
 flow control  
