@@ -469,8 +469,27 @@ int main()
 | `,` | left to right |  
 
 
-## 3 控制流 - flow control
-### 3.1 if-else
+## 3 控制流
+flow control  
+
+- 普通语句以 `;` 结尾，包括声明语句和表达式语句
+- 复合/块语句，以 `{` 开头， 以 `}` 结尾， 最后不需要分号；块语句中包括一条或多条声明语句和表达式语句
+
+### 3.1 if-else 语句
+if-else 语句用于条件判断，语法格式为
+
+```c
+if (expr)
+        statement1;
+else  /* optional */
+        statement2;
+```
+`if-else` 语句执行逻辑：
+1. 计算 `expr` 值
+  - 如果其值为真(非 0)，则执行 `statement1`
+  - 如果存在 `else` 子句，并且 `expr` 值为假(0)，则执行 `statement2`
+2. 继续执行后面的程序代码
+
 ### 3.2 else-if
 ### 3.3 while loop and for loop
 ### 3.4 编程练习
