@@ -468,7 +468,9 @@ int main()
 | `,` | left to right |  
 
 <script src="//onlinegdb.com/embed/js/PlaBryBSW?theme=dark"></script>
-
+<div>
+<p>Here is example of using arithmetic operators. <script src="//onlinegdb.com/embed/js/rkDkBHocb"></script></p>
+</div>
 
 ## 3 控制流 - flow control
 ### 3.1 if-else
