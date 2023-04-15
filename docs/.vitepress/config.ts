@@ -12,6 +12,8 @@ export default {
   themeConfig: {
     logo: 'https://silenthunter0814.github.io/pub/assets/sh.png',
 
+    outline: [2, 4],
+
     nav: nav(),
 
     sidebar: {
