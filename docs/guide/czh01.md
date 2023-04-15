@@ -440,7 +440,7 @@ unary operator `!` `&`
   `scanf("%d", &x);` 这里 `scanf` 是标准输入格式化函数，`%d`说明符接收终端十进制数字输入并存入变量`x`中，`&x`说明传递给`scanf`的是变量`x`的地址。  
 
 <details>
-<summary>code example prog2_4.c</summary>
+<summary>code example prog2_4.c</summary>  
 
 ```c
 /*
@@ -467,8 +467,6 @@ int main()
 ---
 #### 2.3.9 运算符的优先级与结合性
 
-<details>
-<summary>运算符优先级表</summary>
 | Operators | Associativity |
 | :--- | --- |
 | `()` `[]` `->` `.` | left to right |
@@ -486,7 +484,7 @@ int main()
 | `?:` | right to left |
 | `=` `+=` `-=` `*=` `/=` `%=` `&=` `^=` `\|= ` `<<=` `>>=` | right to left |
 | `,` | left to right |  
-<details>
+
 
 ## 3 控制流
 flow control  
