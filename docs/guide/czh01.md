@@ -580,6 +580,8 @@ if (i != 0 && j != 0) {
 | Separate                         | cols    | with a tab or 4 spaces |       -2,027.1 |
 | This is a row with only one cell |         |                        |                |
 
+<details>
+<summary>ASCII TABLE<summary>
 
 | Dec |  Char | Dec  |  Char |  Dec  |  Char |  Dec   |  Char |
 |-----|-------|------|-------|-------|-------|--------|-------|
@@ -616,7 +618,7 @@ if (i != 0 && j != 0) {
 |  30 |  RS   |   62 |   >   |    94 |   ^   |    126 |  ~    |
 |  31 |  US   |   63 |   ?   |    95 |   _   |    127 |  DEL  |
 
-
+</details>
 
 
 ### 3.3 while loop and for loop
