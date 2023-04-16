@@ -591,6 +591,8 @@ int main()
 ```  
 </details>  
 
+编码风格：  
+
 ::: info code style
 <pre>
 if (expr)            if (expr != 0)
@@ -607,7 +609,7 @@ if (i != 0 && j != 0)
     j++;
 }                           等价于
 
-if (i != 0 && j != 0) {
+if (i != 0 && j != 0) {   /* K&R C code style */
         i++;
         j++;
 } else {
