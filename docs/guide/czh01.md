@@ -674,6 +674,23 @@ else
 
 ---
 ### 3.3 else-if 语句
+多路判定语句，语法格式  
+
+```c
+if (expr1)
+        statement1
+else if (expr2)
+        statement2
+else if (expr3)
+        statement3
+else
+        statement4
+```
+
+- 依次测试 `expr`, 如果某个 `expr` 为真，则执行相关联的 `statement`，后续 `else if` 子句不再执行
+- 最后的 `else` 子句可选，意为在前面的多路判定都为假时执行
+- `statement` 既可以是以 `;` 结尾的单条语句，也可以是 `{}` 复合语句块  
+
 
 
 |               Col1               |  Col2   |          Col3          | Numeric Column |
