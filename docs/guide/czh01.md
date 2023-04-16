@@ -627,7 +627,7 @@ int main()
         printf("input integer i and j: ");
         scanf("%d %d", &i, &j);
     
-        if (i > 0 && j > 0) {   /* not equal if (i && j) */
+        if (i > 0 && j > 0) {   /* not equal to (i && j) */
                 i--;
                 j--;
         } else {
