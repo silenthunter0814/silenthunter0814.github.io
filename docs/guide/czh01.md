@@ -691,6 +691,7 @@ else
 - 最后的 `else` 子句可选，意为在前面的多路判定都为假时执行
 - `statement` 既可以是以 `;` 结尾的单条语句，也可以是 `{}` 复合语句块  
 
+---  
 <details>
 <summary>code example prog3_3.c</summary>
 
