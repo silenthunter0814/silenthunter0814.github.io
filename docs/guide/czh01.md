@@ -659,9 +659,15 @@ tenary operator `?:`
 - 如果 `expr1 == 0`, 则计算 `expr3`，并将该值作为三元表达式的值
 - `expr2` 和 `expr3` 只有一个被计算  
 例如：  
-`max = (x > y)? x : y;`
 
+```c
+max = (x > y)? x : y;
 
+if (x > y)
+        max = x;
+else
+        max = y;
+```
 
 
 ---
