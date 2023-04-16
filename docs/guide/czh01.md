@@ -581,7 +581,7 @@ if (i != 0 && j != 0) {
 | This is a row with only one cell |         |                        |                |
 
 <details>
-<summary>ASCII TABLE<summary>
+<summary>ASCII TABLE</summary>
 
 | Dec |  Char | Dec  |  Char |  Dec  |  Char |  Dec   |  Char |
 |-----|-------|------|-------|-------|-------|--------|-------|
