@@ -611,6 +611,7 @@ if (i != 0 && j != 0) {
 </pre>
 :::
 
+---
 <details>
 <summary>code example prog3_2.c</summary>
 
