@@ -609,6 +609,37 @@ if (i != 0 && j != 0) {
 </pre>
 :::
 
+<details>
+<summary>code example prog3_2.c</summary>
+
+```c
+/*
+ * file name prog3_2.c
+ * K&R C code style
+ */
+
+#include <stdio.h>
+
+int main()
+{
+        int 	i, j;
+    
+        printf("input integer i and j: ");
+        scanf("%d %d", &i, &j);
+    
+        if (i > 0 && j > 0) {   /* not equal if (i && j) */
+                i--;
+                j--;
+        } else {
+                i++;
+                j++;
+        }
+        printf("i = %d\tj = %d\n", i, j);
+        return 0;
+}
+```
+</details>
+
 ### 3.2 else-if
 
 
