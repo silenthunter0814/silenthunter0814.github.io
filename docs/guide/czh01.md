@@ -219,7 +219,9 @@ $X_6X_5X_4X_3X_2X_1X_0$
 |  30 |  RS   |   62 |   >   |    94 |   ^   |    126 |  ~    |
 |  31 |  US   |   63 |   ?   |    95 |   _   |    127 |  DEL  |
 
-</details>  
+</details>   
+
+需要熟悉的 ASCII 编码
 
 | binary | dec | char | comment |
 | --- | --- | --- |:--- |  
