@@ -650,7 +650,22 @@ int main()
 ```
 </details>
 
-### 3.2 else-if
+### 3.2 条件表达式
+tenary operator `?:`  
+三元运算符形成条件表达式语句等价于 `if-else` 语句：  
+`expr1 ? expr2 : expr3`  
+- 先计算表达式 `expr1`
+- 如果 `expr1 != 0`, 则计算 `expr2`，并将该值作为三元表达式的值
+- 如果 `expr1 == 0`, 则计算 `expr3`，并将该值作为三元表达式的值
+- `expr2` 和 `expr3` 只有一个被计算  
+例如：  
+`max = (x > y)? x : y;`
+
+
+
+
+---
+### 3.3 else-if 语句
 
 
 |               Col1               |  Col2   |          Col3          | Numeric Column |
