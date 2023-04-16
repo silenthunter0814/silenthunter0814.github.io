@@ -650,6 +650,7 @@ int main()
 ```
 </details>
 
+---
 ### 3.2 条件表达式
 tenary operator `?:`  
 三元运算符形成条件表达式语句等价于 `if-else` 语句：  
