@@ -593,7 +593,7 @@ int main()
 
 编码风格：  
 
-::: info code style
+::: info coding style
 <pre>
 if (expr)            if (expr != 0)
 ---------------------------------------------
@@ -609,7 +609,7 @@ if (i != 0 && j != 0)
     j++;
 }                           等价于
 
-if (i != 0 && j != 0) {   /* K&R C code style */
+if (i != 0 && j != 0) {   /* K&R C coding style */
         i++;
         j++;
 } else {
@@ -625,7 +625,7 @@ if (i != 0 && j != 0) {   /* K&R C code style */
 ```c
 /*
  * file name prog3_2.c
- * K&R C code style
+ * K&R C coding style
  */
 
 #include <stdio.h>
