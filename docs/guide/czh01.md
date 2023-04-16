@@ -691,7 +691,40 @@ else
 - 最后的 `else` 子句可选，意为在前面的多路判定都为假时执行
 - `statement` 既可以是以 `;` 结尾的单条语句，也可以是 `{}` 复合语句块  
 
+<details>
+<summary>code example prog3_3.c</summary>
 
+```c
+/*
+ * file name prog3_3.c
+ */
+
+#include <stdio.h>
+
+int main()
+{
+        int marks, grade;
+
+        printf("Enter your marks: ");
+        scanf("%d", &marks);
+        if (marks >= 85 && marks <= 100)
+                grade = 'A';
+        else if (marks >= 60 && marks <85)
+                grade = 'B';
+        else if (marks >= 40 && marks <60)
+                grade = 'C';
+        else if (marks >= 0 && marks < 40)
+                grade = 'D';
+        else {
+                printf("marks input error!!!\n");
+                printf("marks = %d\n", marks);
+                return 0;
+        }
+        printf("Scored Grade: %c\n", grade);
+        return 0;
+}
+```
+</details>
 
 |               Col1               |  Col2   |          Col3          | Numeric Column |
 |----------------------------------|---------|------------------------|---------------:|
