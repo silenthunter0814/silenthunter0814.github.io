@@ -333,8 +333,9 @@ asignment operator
     - `%u` &emsp; unsigned int 类型， 无符号十进制数
     - `%c` &emsp; int 类型，单个字符
     - `%f` &emsp; float 类型， 十进制小数
-    - `%lf` &emsp; double 类型，十进制小数
+    - `%lf` &emsp; double 类型，十进制小数  
 
+---
 <details>
 <summary>code example prog2_1.c</summary>
 
@@ -383,6 +384,7 @@ int main()
 - `i += 6;` \<=\> `i = i + 6;`
 - `i *= x + 6;` \<=\> `i = i * (x+6)`  
 
+---
 <details>
 <summary>code example prog2_2.c</summary>
 
@@ -428,6 +430,7 @@ equality operator  `==` `!=`
 - `x == y` 1 if x equals y, otherwise 0
 - `x != y` 1 if x does not equals y, otherwise 0  
 
+---
 <details>
 <summary>code example prog2_3.c</summary>
 
@@ -486,6 +489,7 @@ unary operator `!` `&`
   `printf("%p\n", &x);    /* p - pointer, print address */`  
   `scanf("%d", &x);` 这里 `scanf` 是标准输入格式化函数，`%d`说明符接收终端十进制数字输入并存入变量`x`中，`&x`说明传递给`scanf`的是变量`x`的地址。  
 
+---
 <details>
 <summary>code example prog2_4.c</summary>  
 
