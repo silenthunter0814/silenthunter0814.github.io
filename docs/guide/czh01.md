@@ -819,10 +819,25 @@ while (expr2) {
 ``` 
 
 
-### 3.4 编程练习
-the Sum of Natural Numbers
-reverse integer
-palindrome
+## 4 编程示例
+---
+### 4.1 自然数之和
+the Sum of Natural Numbers  
+$sum = 1 + 2 + ... + n$  
+
+---
+### 4.2 整数反转
+reverse integer  
+$i_{n-1}...i_2i_1i_0  ->  i_0i_1i_2...i_{n-1}$  
+
+
+
+---
+### 4.3 整数回文
+palindrome of integer
+
+---
+### 4.4 完美数字
 perfect number
 print stars
 
