@@ -778,13 +778,35 @@ for (expr1; expr2; expr3)
 ```
 
 循环逻辑：  
-    - expr1 进行初始化(initialize),只执行一次  
-    - expr2 进行条件判断(condition)  
-      如果为真，则执行 statement->expr3->expr2,进行下一次循环  
+- `expr1` 进行初始化(initialize),只执行一次  
+- `expr2` 进行条件判断(condition)  
+      如果为真，则执行 `statement`->`expr3`->`expr2`,进行下一次循环  
       如果为假，退出循环，继续执行 `rest C code` 注释后面的部分  
 
+---  
+<details>
+<summary>code example prog3_5.c</summary>
 
-等价于
+```c
+/*
+ * file name: prog3_5.c
+ */
+
+#include <stdio.h>
+
+int main()
+{
+        int i;
+        
+        for (i = 5; i > 0; i--) 
+                printf("%d\n", i);
+        printf("loop over!\n");
+        return 0;
+}
+```
+</details>
+
+`for` 循环等价于 `while` 循环
 
 ```c
 expr1;
