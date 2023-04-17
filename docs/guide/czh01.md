@@ -729,23 +729,72 @@ int main()
 
 ---
 ### 3.3 循环语句 `while` `for`
-`while` 循环语句语法格式:
+`while` 循环语法格式:
 
 ```c
 while (expr)
         statement
 /* rest C code */
 ...
----  
+```  
 
 循环逻辑：  
     首先计算 `expr` 的值。如果其值非 0，则执行 `statement`，并再次计算 `expr` 的值。这一循环过程
-一直进行下去，直到 `expr` 的值为 0 为止，随后继续执行 `rest C code` 注释后面的部分。
+一直进行下去，直到 `expr` 的值为 0 为止，随后继续执行 `rest C code` 注释后面的部分。  
+
+---  
+<details>
+<summary>code example prog3_4.c</summary>
+
+```c
+/*
+ * file name: prog3_4.c
+ */
+
+#include <stdio.h>
+
+int main()
+{
+        int i;
+        
+        i = 5;
+        while (i > 0) {
+                printf("%d\n", i);
+                i--;
+        }
+        printf("loop over!\n");
+        return 0;
+}
+```
+</details>
+
+`for` 循环语法格式:
+
+```c
+for (expr1; expr2; expr3)
+        statement
+/* rest C code */
+...
+```
+
+循环逻辑：  
+    - expr1 进行初始化(initialize),只执行一次  
+    - expr2 进行条件判断(condition)  
+      如果为真，则执行 statement->expr3->expr2,进行下一次循环  
+      如果为假，退出循环，继续执行 `rest C code` 注释后面的部分  
 
 
+等价于
 
-
-
+```c
+expr1;
+while (expr2) {
+        statement
+        expr3;
+}
+/* rest C code */
+...
+``` 
 
 
 ### 3.4 编程练习
