@@ -727,16 +727,27 @@ int main()
 ```
 </details>
 
-|               Col1               |  Col2   |          Col3          | Numeric Column |
-|----------------------------------|---------|------------------------|---------------:|
-| Value 1                          | Value 2 | 123                    |           10.0 |
-| Separate                         | cols    | with a tab or 4 spaces |       -2,027.1 |
-| This is a row with only one cell |         |                        |                |
+---
+### 3.3 循环语句 `while` `for`
+`while` 循环语句语法格式:
+
+```c
+while (expr)
+        statement
+/* rest C code */
+...
+---  
+
+循环逻辑：  
+    首先计算 `expr` 的值。如果其值非 0，则执行 `statement`，并再次计算 `expr` 的值。这一循环过程
+一直进行下去，直到 `expr` 的值为 0 为止，随后继续执行 `rest C code` 注释后面的部分。
 
 
 
 
-### 3.3 while loop and for loop
+
+
+
 ### 3.4 编程练习
 the Sum of Natural Numbers
 reverse integer
