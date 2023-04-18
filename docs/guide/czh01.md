@@ -818,12 +818,46 @@ while (expr2) {
 ...
 ``` 
 
-
 ## 4 编程示例
+
+`exit` 函数
+- 头文件： #include <stdlib.h>
+- 函数原型： void exit(int status);
+- 导致正常进程终止，并且 `status` 返回调用者  
+
 ---
 ### 4.1 自然数之和
 the Sum of Natural Numbers  
 $sum = 1 + 2 + ... + n$  
+
+---  
+<details>
+<summary>code example prog3_5.c</summary>
+
+```c
+/*
+ * file name: prog4_1.c
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+        int n, i, sum = 0;
+        
+        printf("enter a positive integer: ");
+        scanf("%d", &n);
+        if (n <= 0) {
+                printf("input error, n must greater than 0\n");
+                exit(1);
+        }
+        for (i = 1; i <= n; i++)
+                sum += i;
+        printf("sum = %d\n", sum);
+        return 0;
+}
+```
 
 ---
 ### 4.2 整数反转
