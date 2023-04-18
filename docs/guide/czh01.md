@@ -837,6 +837,7 @@ $sum = 1 + 2 + ... + n$
 ```c
 /*
  * file name: prog4_1.c
+ * the Sum of Natural Numbers
  */
 
 #include <stdio.h>
@@ -858,6 +859,7 @@ int main()
         return 0;
 }
 ```
+</details>
 
 ---
 ### 4.2 整数反转
