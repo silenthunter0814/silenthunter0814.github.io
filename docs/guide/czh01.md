@@ -832,7 +832,7 @@ $sum = 1 + 2 + ... + n$
 
 ---  
 <details>
-<summary>code example prog3_5.c</summary>
+<summary>code example prog4_1.c</summary>
 
 ```c
 /*
