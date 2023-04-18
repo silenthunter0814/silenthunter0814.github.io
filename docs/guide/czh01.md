@@ -861,8 +861,8 @@ int main()
 ```
 </details>
 
-space: 3  
-time: n  
+allocate space: 3  
+consume time: n  
 
 ---
 ### 4.2 整数反转
