@@ -864,9 +864,21 @@ int main()
 ---
 ### 4.2 整数反转
 reverse integer  
-$i_{n-1}...i_2i_1i_0  ->  i_0i_1i_2...i_{n-1}$  
+- 123 &emsp; -> &emsp; 321
+- -25 &emsp; -> &emsp; -52
 
+---  
+<details>
+<summary>code example prog4_2.c</summary>
 
+```c
+/*
+ * file name: prog4_2.c
+ * reverse integer
+ */
+
+```
+</details>
 
 ---
 ### 4.3 整数回文
