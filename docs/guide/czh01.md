@@ -878,12 +878,6 @@ $$T(n) = \cases{
 | ... |   ... | ...    | ...  | ... | ...   |
 | n   |     1 | n+1    | n    | n   | 3n+2  |
 
-
-
-
-allocate space: 3  
-consume time: n  
-
 ---
 ### 4.2 整数反转
 reverse integer  
