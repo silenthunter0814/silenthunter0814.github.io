@@ -919,7 +919,7 @@ int main()
 
 $$T(n) = \cases{
         5 & if $ n == 0 $ \\
-        3n + 6 & if $ n \ != 0 $
+        \lg n & if $ n \ != 0 $
 }$$  
 
 `while` 循环分析  
