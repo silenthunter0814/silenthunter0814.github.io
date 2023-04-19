@@ -867,9 +867,9 @@ consume time: n
 ---
 ### 4.2 整数反转
 reverse integer  
-- 123 &emsp; -> &emsp; 321
-- -25 &emsp; -> &emsp; -52
-- 0 &emsp; -> &emsp; 0
+- `123` &emsp; -> &emsp; `321`
+- `-25` &emsp; -> &emsp; `-52`
+- `0` &emsp; -> &emsp; `0`
 
 ---  
 <details>
