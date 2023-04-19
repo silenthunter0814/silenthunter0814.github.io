@@ -897,7 +897,6 @@ int main()
         printf("Reversed number = %d\n", rev);
         return 0;
 }
-
 ```
 </details>
 
