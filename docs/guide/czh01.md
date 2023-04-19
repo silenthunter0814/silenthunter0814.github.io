@@ -922,7 +922,7 @@ $$T(n) = \cases{
         3n + 6 & if $ n \ != 0 $
 }$$  
 
-`while 循环分析  
+`while` 循环分析  
 
 
 |       n       | k's loop |
@@ -934,7 +934,14 @@ $$T(n) = \cases{
 | $n/10^{k-1}$  | k        |
 | $n/10^k == 0$ | -        |
 
-
+$$\begin{gather}
+1 <= n/10^{k-1} < 10 \\
+1/n <= 1/10^{k-1} < 10/n \\
+n/10 < 10^{k-1} <= n \\
+\lg n - 1 < k-1 <= lg n \\
+\lg n < k <= lgn + 1 \\
+k = lgn + 1
+\end{gather}$$  
 
 
 
