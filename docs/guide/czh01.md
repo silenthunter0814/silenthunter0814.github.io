@@ -1088,18 +1088,18 @@ $$\eqalign{
         &= \frac{n(n+1)} 2
 }$$
 
-## 4 函数 - function
-### 4.1 函数概念
-### 4.2 参数传递
-### 4.3 递归函数 - recursion
+## 5 函数 - function
+### 5.1 函数概念
+### 5.2 参数传递
+### 5.3 递归函数 - recursion
 
-## 5 指针与数组 - pointer and array
-### 5.1 指针 - pointer
-### 5.2 数组 - array
+## 6 指针与数组 - pointer and array
+### 6.1 指针 - pointer
+### 6.2 数组 - array
 数组声明和初始化
 数组访问
-### 5.3 指针与数组
-### 5.4 编程练习
+### 6.3 指针与数组
+### 6.4 编程练习
 printarray - 打印数组
 findelem - 查找数组元素
 maxofa - 数组的最大值
@@ -1107,37 +1107,36 @@ average - 数组的平均值
 insert sort - 插入排序
 binsearch - 二分查找 (sorted array)
 
-## 6 常量，字符串，字符数组
-### 6.1 数字常量，字符常量
-### 6.2 字符数组
-### 6.3 字符串 - string literal
+## 7 常量，字符串，字符数组
+### 7.1 数字常量，字符常量
+### 7.2 字符数组
+### 7.3 字符串 - string literal
 
-## 7 动态内存分配 - malloc and free
+## 8 动态内存分配 - malloc and free
 
-## 8 局部变量，全局变量，符号表
+## 9 局部变量，全局变量
 local, global, symbol table
-### 8.1 局部变量 - local variable
-### 8.2 全局变量 - global variable
-### 8.3 符号表，作用域 - symbol table, scope
+### 9.1 局部变量 - local variable
+### 9.2 全局变量 - global variable
 
-## 9 结构和联合 - struct and union
-### 9.1 结构 - struct
+## 10 结构和联合 - struct and union
+### 10.1 结构 - struct
 创建结构，结构变量
 结构作为函数的参数
 指向结构的指针
-### 9.2 联合 - union
+### 10.2 联合 - union
 typedef
 switch 语句
 union 示例
 数据封装 
 
-## 10 链表 - link list
-### 10.1 自引用结构 - self referential structure
-### 10.2 链表 - link list
+## 11 链表 - link list
+### 11.1 自引用结构 - self referential structure
+### 11.2 链表 - link list
 创建，打印链表
 atolink - 数组转换为链表
 
-## 11 预处理器 - preprocessor
+## 12 预处理器 - preprocessor
 
-## 12 标准输入, 标准输出, 错误输出 - stdin, stdout, stderr
+## 13 标准输入, 标准输出, 错误输出 - stdin, stdout, stderr
 
