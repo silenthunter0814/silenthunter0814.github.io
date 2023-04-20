@@ -945,11 +945,48 @@ $$\begin{gather}
 k = \lg n + 1
 \end{gather}$$  
 
-
-
 ---
 ### 4.3 整数回文
-palindrome of integer
+palindrome of integer  
+回文数：当其数字反转时保持不变。`16461`, `33`, `262`, `3553`.  
+
+---  
+<details>
+<summary>code example prog4_3.c</summary>
+
+```c
+/*
+ * file name: prog4_3.c
+ * reverse integer
+ */
+
+#include <stdio.h>
+
+int main()
+{
+        int n, orig, rem, rev = 0;      /* original, remainder, reversed */
+        
+        printf("Enter an integer: ");
+        scanf("%d", &n);
+        orig = n;
+        while (n != 0) {
+                rem = n % 10;
+                rev = rev * 10 + rem;
+                n /= 10;
+        }
+        printf("%d is %s palindrome.\n", orig, (rev==orig)? "a" : "not a");
+        return 0;
+}
+```
+</details>
+
+- 空间分析： $S(n) = 1$  
+- 时间分析：  
+
+$$T(n) = \cases{
+        1 & if $ n == 0 $ \\
+        \lg n & if $ n \ != 0 $
+}$$  
 
 ---
 ### 4.4 完美数字
