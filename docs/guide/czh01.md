@@ -1085,7 +1085,7 @@ i 值与对应的 j loop 循环次数：
 j loop 循环次数 k：  
 $$\eqalign{
         k &= 1 + 2 + 3 + ... + n \\
-        &= \frac{n(n-1)} 2
+        &= \frac{n(n+1)} 2
 }$$
 
 ## 4 函数 - function
