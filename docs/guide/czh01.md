@@ -940,9 +940,9 @@ $$\begin{gather}
 1 <= \frac n {10^{k-1}} < 10 \\
 \frac 1 n <= \frac 1 {10^{k-1}} < \frac {10} n \\
 \frac n {10} < 10^{k-1} <= n \\
-\lg n - 1 < k-1 <= lg n \\
-\lg n < k <= lgn + 1 \\
-k = lgn + 1
+\lg n - 1 < k-1 <= \lg n \\
+\lg n < k <= \lg n + 1 \\
+k = \lg n + 1
 \end{gather}$$  
 
 
