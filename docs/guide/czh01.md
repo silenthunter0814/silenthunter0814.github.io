@@ -998,9 +998,44 @@ perfect number
 - `496` = ...
 - `8128` = ...  
 
+---  
+<details>
+<summary>code example prog4_4.c</summary>
 
+```c
+/*
+ * file name: prog4_4.c
+ * reverse integer
+ */
 
-print stars
+#include <stdio.h>
+
+int main()
+{
+        int num, rem, sum = 0;
+        
+        printf("Enter an integer: ");
+        scanf("%d", &num);
+        
+        for (int i = 1; i < num; i++) {
+                rem = num % i;
+                if (rem == 0)
+                        sum += i;
+        }
+        if (sum == num)
+                printf("%d is a Perfect Number.\n", num);
+        else
+                printf("%d is not a Perfect Number.\n", num);
+        return 0;
+}
+ ```
+ </details>
+
+- 空间分析： $S(n) = 1$  
+- 时间分析： $T(n) =n$  
+
+---
+### print stars
 
 ## 4 函数 - function
 ### 4.1 函数概念
