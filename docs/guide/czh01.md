@@ -957,7 +957,7 @@ palindrome of integer
 ```c
 /*
  * file name: prog4_3.c
- * reverse integer
+ * palindrome of integer
  */
 
 #include <stdio.h>
@@ -1005,7 +1005,7 @@ perfect number
 ```c
 /*
  * file name: prog4_4.c
- * reverse integer
+ * perfect number
  */
 
 #include <stdio.h>
@@ -1035,7 +1035,40 @@ int main()
 - 时间分析： $T(n) =n$  
 
 ---
-### print stars
+### 4.5 打印星号
+星号图案：  
+*  
+\* *  
+\* * *  
+\* * * *  
+
+---  
+<details>
+<summary>code example prog4_5.c</summary>
+
+```c
+/*
+ * file name: prog4_5.c
+ * print stars
+ */
+
+#include <stdio.h>
+
+int main() 
+{
+        int i, j, rows;
+   
+   	printf("Enter the number of rows: ");
+   	scanf("%d", &rows);
+   	for (i = 1; i <= rows; ++i) {
+                for (j = 1; j <= i; ++j) 
+                        printf("* ");
+      		printf("\n");
+   	}
+   	return 0;
+}
+ ```
+ </details>
 
 ## 4 函数 - function
 ### 4.1 函数概念
