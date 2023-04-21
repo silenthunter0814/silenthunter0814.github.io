@@ -1088,8 +1088,63 @@ $$\eqalign{
         &= \frac{n(n+1)} 2
 }$$
 
-## 5 函数 - function
+## 5 函数
+观察函数：`printf`, `scanf`, `exit`，`main`  
+- `printf`：  函数声明和调用
+  - declaration: `int printf(const char *format, ...);  /* stdio.h */`
+  - call: `printf("hello world\n");`
+- `scanf`： 函数声明和调用
+  - declaration: `int scanf(const char *format, ...);   /* stdio.h */`
+  - call: `scanf("%d", &n);`
+- `exit`：  函数声明和调用
+  - declaration: `void exit(int status);    /* stdlib.h */`
+  - call: `exit(1);`
+- `main`：  函数声明和定义
+
+```c
+int main()        /* function declaration */
+{         /* function definition */
+        ...
+        return 0;
+}
+```
+
 ### 5.1 函数概念
+执行特定任务或计算的代码块 `{}`。  
+接受一组输入，执行特定计算并产生输出(返回值)。  
+函数包含三个方面:  
+- 函数声明：  函数原型, 告知编译器函数名称、函数参数列表和返回类型。
+- 函数定义：  函数体 (由 `{}` 界定) 包含要执行的实际语句。
+- 函数调用：  可以从程序中的任何位置调用函数。必须传递与函数声明一致的参数。
+
+函数定义的一般形式：
+
+```c
+return-type function-name(argument declarations)
+{
+        declarations
+
+        statements
+        return expr;
+}
+```
+
+函数示例：
+
+```c
+int sum(int, int);    /* function declaration */
+
+int sum(int a, int b)     /* function declaration and definition */
+{
+        int sum;
+
+        sum = a + b;
+        return sum;
+}
+```
+
+
+
 ### 5.2 参数传递
 ### 5.3 递归函数 - recursion
 
