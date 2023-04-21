@@ -548,9 +548,9 @@ if-else 语句用于条件判断，语法格式为
 
 ```c
 if (expr)
-        statement1;
+        statement1
 else  /* optional */
-        statement2;
+        statement2
 ```  
 
 `if-else` 语句执行逻辑：  
