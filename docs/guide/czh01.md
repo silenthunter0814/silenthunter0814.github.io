@@ -1146,7 +1146,7 @@ int sum(int a, int b)     /* function declaration and definition */
 
 
 
-### 5.2 参数传递
+### 5.2 局部变量和全局变量
 ### 5.3 递归函数 - recursion
 
 ## 6 指针与数组 - pointer and array
