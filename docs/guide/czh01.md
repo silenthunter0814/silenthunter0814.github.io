@@ -329,11 +329,12 @@ asignment operator
 
   `%` - 转换说明符
 
-    - `%d` &emsp; int 类型，十进制数字
-    - `%u` &emsp; unsigned int 类型， 无符号十进制数
-    - `%c` &emsp; int 类型，单个字符
-    - `%f` &emsp; float 类型， 十进制小数
-    - `%lf` &emsp; double 类型，十进制小数  
+    - `%d` &emsp; `int` 类型，十进制数字
+    - `%u` &emsp; `unsigned int` 类型， 无符号十进制数
+    - `%c` &emsp; `int` 类型，单个字符
+    - `%f` &emsp; `double` 类型， 十进制小数
+    - `%s` &emsp; `char *` 类型，顺序打印字符串中的字符
+    - `%p` &emsp; `void *` 类型；指针(十六进制地址)  
 
 ---
 <details>
