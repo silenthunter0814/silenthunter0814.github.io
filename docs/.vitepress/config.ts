@@ -84,6 +84,14 @@ function sidebarGuide() {
       ]
     },
     {
+      text: 'web 开发',
+      collapsed: false,
+      items: [
+        { text: 'web 入门', link: '/guide/web' },
+        { text: 'HTML - 构建 web', link: '' }
+      ]
+    },    
+    {
       text: 'Private Channel',
       collapsed: false,
       items: [
