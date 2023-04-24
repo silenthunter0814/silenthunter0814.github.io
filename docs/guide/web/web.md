@@ -11,7 +11,7 @@
   - `images` 目录，存放图像文件，位于 `site` 目录下面。
   - `styles` 目录，存放设置网页样式的 CSS 代码文件，位于 `site` 目录下面。
   - `scripts` 目录，存放 javascript 脚本文件，位于 `site` 目录下面。
-- 下载 firefox logo 图像文件，保存到 `images` 目录。
+- 下载 firefox logo 图像文件 `firefox.png`，保存到 `images` 目录。
 
 ### 1.2 第一个 html 文件
 
