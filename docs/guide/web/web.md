@@ -28,7 +28,7 @@
     <title>My test page</title>
   </head>
   <body>
-    <img src="images/firefox1.png" alt="My test image" />
+    <img src="images/firefox.png" alt="My test image" />
   </body>
 </html>
 ```
