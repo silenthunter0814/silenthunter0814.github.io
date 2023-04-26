@@ -198,7 +198,7 @@ CSS (Cascading Style Sheets) 层叠样式表是为网页添加样式的代码。
 和 HTML 类似，CSS 也不是真正的编程语言，甚至不是标记语言。它是一门样式表语言，这也就是说人们可以用它来选择性地为 HTML 元素添加样式。
 
 - 新建文件 `styles/style.css`  
-  ```html
+  ```css
   p {
     color: red;
   }
@@ -234,7 +234,7 @@ CSS (Cascading Style Sheets) 层叠样式表是为网页添加样式的代码。
 #### 2.1.2 多属性
 如果要同时修改多个属性，只需要将它们用分号隔开：
 
-```html
+```css
 p {
   color: red;
   width: 500px;
@@ -246,7 +246,7 @@ p {
 #### 2.1.3 多元素选择
 可以选择多种类型的元素并为它们添加一组相同的样式。将不同的选择器用逗号分开。
 
-```html
+```css
 p, li, h1 {
   color: red;
 }
@@ -274,11 +274,16 @@ p, li, h1 {
   `<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" />`  
   以上代码为当前网页下载 Open Sans 字体，从而使自定义 CSS 中可以对 HTML 元素应用这个字体
 
-- 将下列代码添加到相应的位置，用在 Google Fonts 找到的字体替代 font-family 中的占位行。
+- 将下列代码添加到相应的位置，用在 Google Fonts 找到的字体替代 font-family 中的占位行。这条规则首先为整个页面设定了一个全局字体和字号。
 
   ```css
   html {
-    font-size: 10px; /* "pixels": 10 pixels high */
+    font-size: 10px; /* 10 pixels high */
     font-family: "Open Sans", sans-serif; 
   }
   ```
+
+::: info CSS 注释
+CSS 文档中所有位于 `/*` 和 `*/` 之间的内容都是 CSS 注释，它会被浏览器在渲染代码时忽略。
+:::
+
