@@ -151,4 +151,12 @@ HTML 中 `<!-- and -->` 之间的任何内容都是 HTML 注释。 浏览器在�
 ---
 #### 1.2.5 `<a>` Links 链接
 
+a 是 "anchor" (锚)的缩写，要将一些文本添加到链接中，只需如下几步：
+- 选择一些文本。比如 `Mozilla Manifesto`。
+- 将文本包含在 `<a>` 元素内：  
+  `<a>Mozilla Manifesto</a>`
+- 为此 `<a>` 元素添加一个 `href` (hypertext reference)属性：  
+  `<a href="">Mozilla Manifesto</a>`
+- 把属性的值设置为所需网址：  
+`<a href="https://www.mozilla.org/en-US/about/manifesto/">Mozilla Manifesto</a>`
 
