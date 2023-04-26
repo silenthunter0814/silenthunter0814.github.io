@@ -1,1 +1,0 @@
-import{_ as s,c as a,o as l,O as n}from"./chunks/framework.1ff2b322.js";const h=JSON.parse('{"title":"web 入门","description":"","frontmatter":{},"headers":[],"relativePath":"guide/web/web.md","lastUpdated":1682472824000}'),e={name:"guide/web/web.md"},o=n("",7),p=[o];function t(c,r,i,D,F,y){return l(),a("div",null,p)}const m=s(e,[["render",t]]);export{h as __pageData,m as default};
