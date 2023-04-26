@@ -48,8 +48,14 @@ HTML 是一种用于定义内容结构的超文本标记语言 `HyperText Markup
 
 #### 1.2.1 `<p>` Paragraphs 段落
 
-一段文字由 `<p></p>` 标签封装形成段落  
-`<p>My cat is very grumpy</p>`  
+一段文字由 `<p></p>` 标签封装形成段落 
+
+```html
+<body>
+    <p>My cat is very grumpy</p>
+</body>
+```
+
 ![](https://silenthunter0814.github.io/pub/web/tag.png)  
 
 这个元素的主要部分有：
