@@ -269,3 +269,16 @@ p, li, h1 {
 
 ### 2.2 字体和文本
 
+- 访问 [Google Fonts](https://www.google.com/fonts) 选择一种喜欢的字体。以 `<link>` 元素的形式添加进 `<head></head>`:
+
+  `<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" />`  
+  以上代码为当前网页下载 Open Sans 字体，从而使自定义 CSS 中可以对 HTML 元素应用这个字体
+
+- 将下列代码添加到相应的位置，用在 Google Fonts 找到的字体替代 font-family 中的占位行。
+
+  ```css
+  html {
+    font-size: 10px; /* "pixels": 10 pixels high */
+    font-family: "Open Sans", sans-serif; 
+  }
+  ```
