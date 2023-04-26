@@ -301,3 +301,16 @@ p, li, h1 {
     letter-spacing: 1px;
   }
   ```
+
+### 2.3 CSS: all about boxes
+
+CSS 布局主要基于 `box` 模型。每个占据页面空间的块都有这样的属性：
+
+- `padding`：即内边距，围绕着内容(比如段落)的空间
+- `border`：即边框，紧接着内边距的线
+- `margin`：即外边距，围绕元素外部的空间
+
+  ![](https://silenthunter0814.github.io/pub/web/box.png)
+
+
+我们还应用了以下属性：
