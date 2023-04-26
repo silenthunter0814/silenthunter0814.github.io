@@ -5,7 +5,8 @@
 ### 1.1 搭建环境
 
 - 软件： google chrome 浏览器
-- 网站目录结构
+- 网站目录结构  
+![](https://silenthunter0814.github.io/pub/web/site.png)
   - `site` 网站目录
   - `index.html` 网站主页，新建一个 `index.html` 空文件，位于 `site` 目录下面。
   - `images` 目录，存放图像文件，位于 `site` 目录下面。
