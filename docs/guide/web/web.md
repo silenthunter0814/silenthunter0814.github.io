@@ -160,3 +160,34 @@ a 是 "anchor" (锚)的缩写，要将一些文本添加到链接中，只需如
 - 把属性的值设置为所需网址：  
 `<a href="https://www.mozilla.org/en-US/about/manifesto/">Mozilla Manifesto</a>`
 
+### 1.3 小结
+
+跟随前面章节的指导，应该能完成并完全理解一个像下面这样的 html 文档：
+
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <title>WWEB 初学者指南</title>
+  </head>
+  <body>
+    <h1>Mozilla is cool</h1>
+    <img src="images/firefox.png" alt="The Firefox logo: a flaming fox surrounding the Earth.">
+
+    <p>在 Mozilla，我们是一个全球社区</p>
+
+    <ul> <!-- changed to list in the tutorial -->
+      <li>技术人员</li>
+      <li>思想家</li>
+      <li>建设者</li>
+    </ul>
+
+    <p>共同努力保持 Internet 的活力和可访问性，以便全世界的人们都可以成为 Web 的知情贡献者和创建者。我们相信这种跨开放平台的人类协作行为对于个人成长和我们共同的未来至关重要。</p>
+
+    <p>阅读 <a href="https://www.mozilla.org/en-US/about/manifesto/">Mozilla 宣言 </a> 
+      ，进一步了解指导我们追求使命的价值观和原则。</p>
+  </body>
+</html>
+```
+
