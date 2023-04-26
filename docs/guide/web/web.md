@@ -90,7 +90,7 @@ HTML 是一种用于定义内容结构的超文本标记语言 `HyperText Markup
 换行或硬回车 `<brk />` 也是空元素。
 :::
 
-#### 1.2.3 `<h1>` Headings 标题
+#### 1.2.3 Headings 标题
 
 标题元素用于指定内容的标题和子标题。HTML 包括六个级别的标题，`<h1> - <h6>`，一般最多用到 3-4 级标题。
 
@@ -107,4 +107,35 @@ HTML 中 `<!-- and -->` 之间的任何内容都是 HTML 注释。 浏览器在�
 ::: info 备注
 你可以看到第一级标题是有隐式的主题样式。不要使用标题元素来加大、加粗字体，因为标题对于 无障碍访问 和 搜索引擎优化 等问题非常有意义。要保持页面结构清晰，标题整洁，不要发生标题级别跳跃。
 :::
+
+#### 1.2.4 List 列表
+
+最常用的列表类型为：
+- `<ul>`: 无序列表 (Unordered List)，项目中的顺序并不重要，就像购物列表。
+- `<ol>`: 有序列表 (Ordered List)，项目中的顺序很重要，就像烹调指南。
+
+列表的每个项目用一个列表项目 (List Item) 元素 `<li>` 包围。
+
+比如，要将下面的段落片段改成一个列表：
+
+```html
+<p>
+  At Mozilla, we're a global community of technologists, thinkers, and builders
+  working together…
+</p>
+```
+
+可以这样更改标记：
+
+```html
+<p>At Mozilla, we're a global community of</p>
+
+<ul>
+  <li>technologists</li>
+  <li>thinkers</li>
+  <li>builders</li>
+</ul>
+
+<p>working together…</p>
+```
 
