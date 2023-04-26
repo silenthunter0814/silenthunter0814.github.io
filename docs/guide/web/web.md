@@ -26,8 +26,7 @@ HTML 是一种用于定义内容结构的超文本标记语言 `HyperText Markup
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8" />    
     <title>welcome MDN</title>
   </head>
   <body>
@@ -46,6 +45,7 @@ HTML 是一种用于定义内容结构的超文本标记语言 `HyperText Markup
 
 ### 1.2 html 元素
 
+---
 #### 1.2.1 `<p>` Paragraphs 段落
 
 一段文字由 `<p></p>` 标签封装形成段落 
@@ -82,6 +82,7 @@ HTML 是一种用于定义内容结构的超文本标记语言 `HyperText Markup
 元素必须正确地开始和结束，才能清楚地显示出正确的嵌套层次。
 :::
 
+---
 #### 1.2.2 `<img>` image 图像
 
 `<img>` 元素通过包含图像文件路径的地址属性 src，可在所在位置嵌入图像。  
@@ -96,7 +97,8 @@ HTML 是一种用于定义内容结构的超文本标记语言 `HyperText Markup
 换行或硬回车 `<brk />` 也是空元素。
 :::
 
-#### 1.2.3 Headings 标题
+---
+#### 1.2.3 `<h1>` Headings 标题
 
 标题元素用于指定内容的标题和子标题。HTML 包括六个级别的标题，`<h1> - <h6>`，一般最多用到 3-4 级标题。
 
@@ -114,7 +116,8 @@ HTML 中 `<!-- and -->` 之间的任何内容都是 HTML 注释。 浏览器在�
 你可以看到第一级标题是有隐式的主题样式。不要使用标题元素来加大、加粗字体，因为标题对于 无障碍访问 和 搜索引擎优化 等问题非常有意义。要保持页面结构清晰，标题整洁，不要发生标题级别跳跃。
 :::
 
-#### 1.2.4 List 列表
+---
+#### 1.2.4 `<ul>` `<ol>` List 列表
 
 最常用的列表类型为：
 - `<ul>`: 无序列表 (Unordered List)，项目中的顺序并不重要，就像购物列表。
@@ -144,4 +147,8 @@ HTML 中 `<!-- and -->` 之间的任何内容都是 HTML 注释。 浏览器在�
 
 <p>working together…</p>
 ```
+
+---
+#### 1.2.5 `<a>` Links 链接
+
 
