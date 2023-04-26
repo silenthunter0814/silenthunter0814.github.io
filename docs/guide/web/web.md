@@ -283,7 +283,21 @@ p, li, h1 {
   }
   ```
 
-::: info CSS 注释
-CSS 文档中所有位于 `/*` 和 `*/` 之间的内容都是 CSS 注释，它会被浏览器在渲染代码时忽略。
-:::
+  ::: info CSS 注释
+  CSS 文档中所有位于 `/*` 和 `*/` 之间的内容都是 CSS 注释，它会被浏览器在渲染代码时忽略。
+  :::
 
+- 为 `<body></body>` 内的元素设置字号。将标题居中显示，并为正文设置行高和字间距，从而提高页面的可读性。
+
+  ```css
+  h1 {
+    font-size: 60px;
+    text-align: center;
+  }
+
+  p, li { 
+    font-size: 16px;
+    line-height: 2;
+    letter-spacing: 1px;
+  }
+  ```
