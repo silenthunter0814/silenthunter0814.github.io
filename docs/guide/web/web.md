@@ -313,4 +313,108 @@ CSS 布局主要基于 `box` 模型。每个占据页面空间的块都有这样
   ![](https://silenthunter0814.github.io/pub/web/box.png)
 
 
-我们还应用了以下属性：
+本节我们还将学习应用以下属性：
+- `width` ：元素的宽度
+- `background-color` ：元素内容和内边距底下的颜色
+- `color` ：元素内容（通常是文本）的颜色
+- `text-shadow` ：为元素内的文本设置阴影
+- `display` ：设置元素的显示模式 （后续学习介绍）
+
+---
+#### 2.3.1 更改页面颜色
+设置整个页面的背景颜色:
+
+```css
+html {
+  background-color: #00539f;
+}
+```
+
+---
+#### 2.3.2 `body` 样式设置
+
+```css
+body {
+  width: 600px;
+  margin: 0 auto;
+  background-color: #ff9500;
+  padding: 0 20px 20px 20px;
+  border: 5px solid black;
+}
+```
+`<body>` 元素有多个属性声明：
+- `width: 600px;` : 强制页面永远保持 600 像素宽。
+- `margin: 0 auto;` : 为 margin 或 padding 等属性设置两个值时，第一个值代表元素的上方和下方（在这个例子中设置为 0），而第二个值代表左边和右边（在这里，auto 是一个特殊的值，意思是水平方向上左右对称）。
+- `background-color: #FF9500;` : 指定元素的背景颜色。
+- `padding: 0 20px 20px 20px;` : 给内边距设置了四个值来让内容四周产生一点空间。值以 **上,右,下,左** 的顺序排列。
+- `border: 5px solid black;` : 为 body 设置 5 像素的黑色实线边框。
+
+--- 
+#### 2.3.3 页面主标题
+
+```css
+h1 {
+  margin: 0;
+  padding: 20px 0;
+  color: #00539f;
+  text-shadow: 3px 3px 1px black;
+}
+```
+- 浏览器在没有任何 CSS 的情况下会给 `<h1>` 等元素设置一些默认样式。通过设置 `margin: 0;` 来覆盖默认样式。
+- 把标题的上下内边距设置为 20 像素，并且将标题文本与 HTML 的背景颜色设为一致。
+- `text-shadow` 属性，它可以为元素中的文本提供阴影：
+  - 水平偏移值: 即阴影右移的像素数（负值左移）。
+  - 垂直偏移值: 即阴影下移的像素数（负值上移）。
+  - 阴影的模糊半径: 值越大产生的阴影越模糊。
+  - 阴影的基色。
+
+---
+#### 2.3.4 图像居中
+
+```css
+img {
+  display: block;
+  margin: 0 auto;
+}
+```
+
+`<body>` 元素是块级元素，意味着它占据了页面的空间并且能够赋予外边距和其他改变间距的值。而 `<img>` 是内联元素，不具备块级元素的一些功能。所以为了使图像有外边距，我们必须使用 `display: block` 给予其块级行为。
+
+### 2.3 小结
+有了前面这些知识，最终实现 `style.css`:
+
+```css
+html {
+  font-size: 10px;
+  font-family: 'Noto Sans SC', sans-serif;
+  background-color: #00539F;
+}
+
+body {
+  width: 600px;
+  margin: 0 auto;
+  background-color: #FF9500;
+  padding: 0 20px 20px 20px;
+  border: 5px solid black;
+}
+
+h1 {
+  font-size: 60px;
+  text-align: center;
+  margin: 0;
+  padding: 20px 0;
+  color: #00539F;
+  text-shadow: 3px 3px 1px black;
+}
+
+p, li {
+  font-size: 16px;
+  line-height: 2;
+  letter-spacing: 1px;
+}
+
+img {
+  display: block;
+  margin: 0 auto;
+}
+```
