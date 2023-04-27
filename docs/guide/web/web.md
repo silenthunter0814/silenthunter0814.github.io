@@ -433,7 +433,7 @@ JavaScript 相当简洁，却非常灵活。开发者们基于 JavaScript 核心
 在页面中添加一些基本的 JavaScript 脚本来建造一个“Hello world!”示例：
 
 - 在 `scripts` 文件夹创建一个名为 `main.js` 的文件
-- 在 `index.html` 文件 `</body>` 标签前插入以下代：  
+- 在 `index.html` 文件 `</body>` 标签前插入以下代码：  
   `<script src="scripts/main.js"></script>`
 - 与 CSS 的 <link> 元素类似，它将 JavaScript 引入页面以作用于 HTML（以及 CSS 等页面上所有内容）
 - 将以下代码添加到 main.js 文件中：  
