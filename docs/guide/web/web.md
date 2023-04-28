@@ -627,7 +627,7 @@ document.querySelector("html").addEventListener("click", () => {
   function setUserName() {
     const myName = prompt("Please enter your name.");
     localStorage.setItem("name", myName);
-    myHeading.textContent = `Mozilla is cool, ${myName}`;
+    myHeading.textContent = 'Mozilla is cool' + myName;
   }
   ```
   - `prompt(...)` 函数: 显示一个对话框，要求用户输入数据，并在用户单击“确定”后将其存储在一个变量中。
@@ -641,6 +641,17 @@ document.querySelector("html").addEventListener("click", () => {
     setUserName();
   } else {
     const storedName = localStorage.getItem("name");
-    myHeading.textContent = `Mozilla is cool, ${storedName}`;
+    myHeading.textContent = 'Mozilla is cool' + storedName;
   }
+  ```
+  - `!`: logical NOT, 检查 `name` 数据是否存在。
+  - 如果不存在，`setUserName()` 函数将运行以创建它。
+  - 如果存在（用户在上次访问期间设置了用户名），`getItem()` 检索 `name` 并获取键值 `myName` 的引用。
+
+- 最后，为按钮设置 `onclick` 事件处理器。单击按钮时，`setUserName()` 运行。
+
+  ```js
+  myButton.onclick = ()=> {
+    setUserName();
+  };
   ```
