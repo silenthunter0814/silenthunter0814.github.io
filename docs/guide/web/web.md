@@ -571,4 +571,20 @@ document.querySelector("html").addEventListener("click", () => {
 
 #### 3.8.1 添加一个图像切换器
 
+使用 JavaScript 和 DOM API 功能来交替显示两个图像之一。当用户单击显示的图像时，将发生这种变化。
+- 选择另一张图片 `firefox2.png`，保存在 `images` 目录
+- 将以下 JavaScript 代码添加到 `main.js`文件中：
 
+  ```js
+  const myImage = document.querySelector("img");
+
+  myImage.onclick = ()=> {
+    const mySrc = myImage.getAttribute("src");
+    if (mySrc === "images/firefox-icon.png") {
+      myImage.setAttribute("src", "images/firefox2.png");
+    } else {
+      myImage.setAttribute("src", "images/firefox.png");
+    }
+  };
+  ```
+- 保存所有文件并用浏览器打开 index.html，当单击图像时，它应该会更改为另一幅图像。
