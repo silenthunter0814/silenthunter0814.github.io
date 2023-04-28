@@ -463,9 +463,112 @@ JavaScript 相当简洁，却非常灵活。开发者们基于 JavaScript 核心
   ```
 
 注意变量可以有不同的 数据类型 ：
+- `String` : `let myVar = 'Bob'`; 或 `let myVar = "Bob";`
+- `Number` : `let myVar = 10;`
+- `Boolean` : `let myVar = true;` `/* or false */`
+- `Array` : `let myVar = [1,'Bob','Steve',10];`, 元素引用： `myVar[0], myVar[1]`
+- `Object` : `let myVar = document.querySelector('h1');`
+
+### 3.3 comment 注释
+- 单行注释 `// 这是一条注释。`
+- 多行注释
+  ```js
+  /*
+  这里的所有内容
+  都是注释。
+  */
+  ```
+
+### 3.4 operator 运算符
+
+比较常用的运算符：
+- `+` : 将两个数字相加，或连接两个字符串。  
+  `6 + 9;`, `'Hello ' + 'world!';`
+- `-`, `*`, `/` : 算术运算符  
+  `9 - 3;`, `8 * 2;` , `9 / 3;`
+- `=` : 赋值运算符  
+  `myVariable = 'Bob';`
+- `===` : 相等运算符，返回一个 `true`/`false` （布尔）值。  
+  `myVariable === 4;`
+- `!==` : 不相等运算符，返回一个 `true`/`false` （布尔）值。  
+  `myVariable !== 3;`
+- `!` : 逻辑非运算符，返回一个 `true`/`false` （布尔）值。  
 
 
+### 3.5 condition 条件语句
+测试表达式的真假，并根据测试结果运行不同的代码。一个常用的条件语句是 `if ... else`。
 
+```js
+let iceCream = "chocolate";
+if (iceCream === "chocolate") {
+  alert("Yay, I love chocolate ice cream!");
+} else {
+  alert("Awwww, but chocolate is my favorite…");
+}
+```
 
+`if ( ... )` 中的表达式进行测试，如果返回 `true`，则运行第一个代码块；如果返回 `false`，则跳过第一块直接运行 `else` 之后的第二个代码块。
+
+### 3.6 function 函数
+
+函数用来封装可复用的功能。  
+
+`let myVariable = document.querySelector("h1");`  
+`alert("hello!");`  
+
+`document.querySelector` 和 `alert` 是浏览器内置的函数，随时可用。
+
+函数一般形式：
+
+```js
+function name(arguments) {
+  ...
+}
+```
+
+函数通常包括参数，它们位于小括号内部，多个参数之间用逗号分开。  
+
+定义一个包含两个参数进行乘法运算的函数：
+
+```js
+function multiply(num1, num2) {
+  let result = num1 * num2;
+  return result;
+}
+```
+函数调用：
+
+```js
+multiply(4, 7);
+multiply(20, 20);
+multiply(0.5, 3);
+```
+
+### 3.7 event 事件
+
+事件能为网页添加真实的交互能力。它可以捕捉浏览器操作并运行一些代码做为响应。  
+
+鼠标点击操作会触发事件：
+
+```js
+document.querySelector("html").addEventListener("click", function () {
+  alert("Ouch! Stop poking me!");
+});
+```
+
+ `<html>` 元素调用它的 `addEventListener(...)` 方法，将事件名称（`'click'`）以及其回调函数（当事件发生时，调用该函数）传入该函数中作为调用参数。  
+刚刚传递给 `addEventListener()` 的函数被称为匿名函数，因为它没有名字。匿名函数还有另一种称之为箭头函数的写法，箭头函数使用 `() =>` 代替 `function ()`：
+
+```js
+document.querySelector("html").addEventListener("click", () => {
+  alert("Ouch! Stop poking me!");
+});
+```
+
+### 3.8 完善示例网页
+
+现在我们已经具备了一些 JavaScript 基础，可以为示例网页添加一些更酷的特性。
+
+#### 3.8.1 添加一个图像切换器
 
 
