@@ -655,3 +655,23 @@ document.querySelector("html").addEventListener("click", () => {
     setUserName();
   };
   ```
+
+---
+#### 3.3.3 空用户名
+运行示例代码，弹出输入用户名的对话框，试着按下 **取消** 按钮。此时标题会显示为 “Mozilla is cool, null”。这是因为取消提示对话框后值将设置为 `null`，这是 JavaScript 中的一个特殊值，表示引用不存在。
+
+为避免这些问题，需要检查用户是否输入了空白名称：
+
+```js
+function setUserName() {
+  const myName = prompt("Please enter your name.");
+  if (!myName) {
+    setUserName();
+  } else {
+    localStorage.setItem("name", myName);
+    myHeading.textContent = 'Mozilla is cool' + myName;
+  }
+}
+```
+如果 `myName` 没有值，则 `setUserName()` 从头开始重新运行。如果它确实有一个值，则将值存储在中 `localStorage` 并将其设置为标题的文本。
+
