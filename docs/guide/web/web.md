@@ -604,7 +604,7 @@ document.querySelector("html").addEventListener("click", () => {
 - 获取这张图片的 `src` 属性值。
 - 用一个条件句来判断 `src` 的值是否等于原始图像的路径：  
 
-  i. 如果是，则将 `src` 的值改为第二张图片的路径，并在 `<img>` 内加载该图片。
+  i. 如果是，则将 `src` 的值改为第二张图片的路径，并在 `<img>` 内加载该图片。  
   ii. 如果不是（意味着它已经修改过）, 则把 `src` 的值重新设置为原始图片的路径，回到原始状态。
 
 ---
@@ -612,3 +612,35 @@ document.querySelector("html").addEventListener("click", () => {
 
 添加另一段代码，在用户初次进入站点时将网页的标题改成一段个性化欢迎信息（即在标题中添加用户的名字）。名字信息会由 Web Storage API 保存下来，即使用户关闭页面之后再重新打开，仍可得到之前的信息。还会添加一个选项，可以根据需要改变用户名字以更新欢迎信息。
 
+- 打开 index.html，在 `<script>` 元素之前添加以下行：  
+  `<button>Change user</button>`
+- 在 main.js 中，将以下代码放在文件的底部。  
+
+  ```js
+  let myButton = document.querySelector('button');
+  let myHeading = document.querySelector('h1');
+  ```
+
+- 添加以下函数来设置个性化问候语。  
+
+  ```js
+  function setUserName() {
+    const myName = prompt("Please enter your name.");
+    localStorage.setItem("name", myName);
+    myHeading.textContent = `Mozilla is cool, ${myName}`;
+  }
+  ```
+  - `prompt(...)` 函数: 显示一个对话框，要求用户输入数据，并在用户单击“确定”后将其存储在一个变量中。
+  - `localStorage`: 本地存储对象，它允许我们在浏览器中存储数据并稍后检索。
+  - `setItem(...)`: `localStorage` 方法，创建和存储一个名为 `name` 的数据项，将其值设置为 `myName` 变量。
+
+- 添加以下的 `if ... else` 块。我们可以称之为初始化代码，因为它会在首次加载时构建应用程序。
+
+  ```js
+  if (!localStorage.getItem("name")) {
+    setUserName();
+  } else {
+    const storedName = localStorage.getItem("name");
+    myHeading.textContent = `Mozilla is cool, ${storedName}`;
+  }
+  ```
