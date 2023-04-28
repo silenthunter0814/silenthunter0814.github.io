@@ -442,5 +442,30 @@ JavaScript 相当简洁，却非常灵活。开发者们基于 JavaScript 核心
   const myHeading = document.querySelector("h1");
   myHeading.textContent = "Hello world!";
   ```
-- 保存 HTML 和 JavaScript 文件，用浏览器打开 index.html。
+- 保存 HTML 和 JavaScript 文件，用浏览器打开 index.html。JavaScript 把页面的标题改成了 “Hello world!” 。
+  - `querySelector()` 函数获取标题的引用，并把它储存在 `myHeading` 变量中。
+  - 把 `myHeading` 变量的属性 `textContent` （标题内容）修改为 “Hello world!” 。
+
+### 3.2 variable 变量
+
+变量 是存储值的容器。要声明一个变量，先输入关键字 `let`，然后输入合适的名称：  
+  `let myVariable;`
+- 行末的分号表示当前语句结束
+- 变量声明后可以进行赋值：  
+  `myVariable = "Bob";`
+- 变量声明和赋值可以同时进行：  
+  `let myVariable = "Bob";`
+- 变量在赋值后可以更改：  
+
+  ```js
+  let myVariable = "Bob";
+  myVariable = "Steve";
+  ```
+
+注意变量可以有不同的 数据类型 ：
+
+
+
+
+
 
