@@ -673,5 +673,9 @@ function setUserName() {
   }
 }
 ```
-如果 `myName` 没有值，则 `setUserName()` 从头开始重新运行。如果它确实有一个值，则将值存储在中 `localStorage` 并将其设置为标题的文本。
+如果 `myName` 没有值，则 `setUserName()` 从头开始重新运行。如果它确实有一个值，则将值存储在 `localStorage` 中并将其设置为标题的文本。
+
+### 3.4 小结
+
+有了前面这些知识，最终实现 index.html, main.js:
 
