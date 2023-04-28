@@ -446,7 +446,12 @@ JavaScript 相当简洁，却非常灵活。开发者们基于 JavaScript 核心
   - `querySelector()` 函数获取标题的引用，并把它储存在 `myHeading` 变量中。
   - 把 `myHeading` 变量的属性 `textContent` （标题内容）修改为 “Hello world!” 。
 
-### 3.2 variable 变量
+### 3.2 JavaScript 快速入门
+
+JavaScript 是最流行的现代网络技术之一。然而，熟悉 JavaScript 比熟悉 HTML 和 CSS 更具挑战性。我们必须从小处着手，逐渐进步。
+
+---
+#### 3.2.1 variable 变量
 
 变量 是存储值的容器。要声明一个变量，先输入关键字 `let`，然后输入合适的名称：  
   `let myVariable;`
@@ -469,7 +474,8 @@ JavaScript 相当简洁，却非常灵活。开发者们基于 JavaScript 核心
 - `Array` : `let myVar = [1,'Bob','Steve',10];`, 元素引用： `myVar[0], myVar[1]`
 - `Object` : `let myVar = document.querySelector('h1');`
 
-### 3.3 comment 注释
+---
+#### 3.2.2 comment 注释
 - 单行注释 `// 这是一条注释。`
 - 多行注释
   ```js
@@ -479,7 +485,8 @@ JavaScript 相当简洁，却非常灵活。开发者们基于 JavaScript 核心
   */
   ```
 
-### 3.4 operator 运算符
+---
+#### 3.2.3 operator 运算符
 
 比较常用的运算符：
 - `+` : 将两个数字相加，或连接两个字符串。  
@@ -494,8 +501,8 @@ JavaScript 相当简洁，却非常灵活。开发者们基于 JavaScript 核心
   `myVariable !== 3;`
 - `!` : 逻辑非运算符，返回一个 `true`/`false` （布尔）值。  
 
-
-### 3.5 condition 条件语句
+---
+#### 3.2.4 condition 条件语句
 测试表达式的真假，并根据测试结果运行不同的代码。一个常用的条件语句是 `if ... else`。
 
 ```js
@@ -509,7 +516,8 @@ if (iceCream === "chocolate") {
 
 `if ( ... )` 中的表达式进行测试，如果返回 `true`，则运行第一个代码块；如果返回 `false`，则跳过第一块直接运行 `else` 之后的第二个代码块。
 
-### 3.6 function 函数
+---
+#### 3.2.5 function 函数
 
 函数用来封装可复用的功能。  
 
@@ -544,7 +552,8 @@ multiply(20, 20);
 multiply(0.5, 3);
 ```
 
-### 3.7 event 事件
+---
+#### 3.2.6 event 事件
 
 事件能为网页添加真实的交互能力。它可以捕捉浏览器操作并运行一些代码做为响应。  
 
@@ -565,10 +574,11 @@ document.querySelector("html").addEventListener("click", () => {
 });
 ```
 
-### 3.8 完善示例网页
+### 3.3 完善示例网页
 
 现在我们已经具备了一些 JavaScript 基础，可以为示例网页添加一些更酷的特性。
 
+---
 #### 3.8.1 添加一个图像切换器
 
 使用 JavaScript 和 DOM API 功能来交替显示两个图像之一。当用户单击显示的图像时，将发生这种变化。
