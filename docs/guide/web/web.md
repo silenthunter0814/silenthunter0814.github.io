@@ -1,5 +1,17 @@
 # web 入门
 
+完全初学者
+如果完全是 Web 开发的初学者，建议先学习 Web 入门课程，对 HTML CSS JavaScript 形成一个整体概念的了解。这也是本课程的主要内容。
+
+超越基础
+如果已经有了一些知识，下一步就是详细学习 HTML 和 CSS。
+
+转向脚本
+如果已经熟悉 HTML 和 CSS，或者主要对编码感兴趣，希望继续进行 JavaScript 或服务器端开发。
+
+框架和工具
+在掌握了 vanilla HTML、CSS 和 JavaScript 的基础知识之后，应该学习客户端 Web 开发工具，然后考虑深入研究客户端 JavaScript 框架和服务器端网站编程。
+
 **搭建环境**
 
 - 软件： google chrome 浏览器
@@ -679,3 +691,127 @@ function setUserName() {
 
 有了前面这些知识，最终实现 index.html, main.js:
 
+<details>
+<summary>index.html</summary>
+
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" />
+        <link href="styles/style.css" rel="stylesheet" />
+        <title>WEB 初学者指南</title>
+    </head>
+    <body>
+        <h1>Mozilla 酷毙了</h1>
+        <img src="images/firefox.png" alt="The Firefox logo: a flaming fox surrounding the Earth.">
+        <p>在 Mozilla，我们是一个全球社区</p>
+        <ul>
+            <!-- changed to list in the tutorial -->
+            <li>技术人员</li>
+            <li>思想家</li>
+            <li>建设者</li>
+        </ul>
+        <p>共同努力保持 Internet 的活力和可访问性，以便全世界的人们都可以成为 Web 的知情贡献者和创建者。我们相信这种跨开放平台的人类协作行为对于个人成长和我们共同的未来至关重要。</p>
+        <p>共同努力保持 Internet 的活力和可访问性，以便全世界的人们都可以成为 Web 的知情贡献者和创建者。我们相信这种跨开放平台的人类协作行为对于个人成长和我们共同的未来至关重要。</p>
+        <p>
+            阅读 <a href="https://www.mozilla.org/en-US/about/manifesto/">Mozilla 宣言 </a>
+            ，进一步了解指导我们追求使命的价值观和原则。
+        </p>
+        <button>Change user</button>
+        <script src= "scripts/main.js"></script>
+    </body>
+</html>
+```
+</details>
+
+<details>
+<summary>style.css</summary>
+
+```css
+html {
+    font-size: 10px;
+    /* 10 pixels high */
+    font-family: "Open Sans", sans-serif;
+    background-color: #2196F3;
+}
+body {
+    width: 600px;
+    margin: 0 auto;
+    background-color: #ff9500;
+    padding: 0 20px 20px 20px;
+    border: 5px solid black;
+}
+h1 {
+    font-size: 60px;
+    text-align: center;
+    margin: 0;
+    padding: 20px 0;
+    color: #00539f;
+    text-shadow: 3px 3px 1px black;
+}
+img {
+    display: block;
+    margin: 0 auto;
+}
+p, li {
+    font-size: 16px;
+    line-height: 2;
+    letter-spacing: 1px;
+}
+```
+</details>
+
+---
+main.js:
+
+```js
+const myImage = document.querySelector("img");
+
+myImage.onclick = ()=>{
+    const mySrc = myImage.getAttribute("src");
+    if (mySrc === "images/firefox.png") {
+        myImage.setAttribute("src", "images/firefox2.png");
+    } else {
+        myImage.setAttribute("src", "images/firefox.png");
+    }
+}
+
+let myButton = document.querySelector("button");
+let myHeading = document.querySelector("h1");
+
+function setUserName() {
+    const myName = prompt("Please enter your name");
+    if (!myName) {
+        setUserName();
+    }
+    {
+        localStorage.setItem("name", myName);
+        myHeading.textContent = "Mozilla is cool " + myName;
+    }
+}
+
+if (!localStorage.getItem("name")) {
+    setUserName();
+} else {
+    const storedName = localStorage.getItem("name");
+    myHeading.textContent = "Mozilla is cool " + storedName;
+}
+
+myButton.onclick = ()=>{
+    setUserName();
+}
+```
+
+## 4 通过 GitHub 发布网站
+
+通过 GitHub Pages 发布站点。
+
+- 注册 GitHub并验证电子邮件地址
+- 创建一个存储库名称为 web 来存储文件。
+- 将网站文件夹 (site) 的内容上传到存储库中。然后单击提交更改。
+- 在 web 存储库页面，点击 "Settings"
+- 在左侧边栏 Code and automation 项，点击 "pages"
+- 在 GitHub Pages 页，Build and deployment -> Branch 项，选择 `main` 分支，`save`。
+- 浏览器访问 `https://silenthunter0814.github.io/web/`，在弹出小窗口输入一个名字。
