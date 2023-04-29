@@ -689,7 +689,7 @@ function setUserName() {
 
 ### 3.4 小结
 
-有了前面这些知识，最终实现 index.html, main.js:
+有了前面这些知识，最终实现 index.html, style.css, main.js:
 
 <details>
 <summary>index.html</summary>
