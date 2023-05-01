@@ -1,5 +1,9 @@
+---
+decription: czh01 C语言入门教程。 数据类型，变量，函数，数组，指针，结构， 链表，输入输出。
+author: silenthunter0814, Silent Hunter
+---
 
-# czh01 C语言快速入门
+# czh01 C语言入门教程
 
 **学习方法**  
 - coding and parsing  

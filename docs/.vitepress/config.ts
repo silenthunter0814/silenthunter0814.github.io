@@ -73,7 +73,7 @@ function sidebarGuide() {
       text: 'C 编程语言课程',
       collapsed: false,
       items: [
-        { text: '01 C语言快速入门', link: '/guide/czh01' }
+        { text: '01 C语言入门教程', link: '/guide/czh01' }
       ]
     },
     {
@@ -87,7 +87,7 @@ function sidebarGuide() {
       text: 'web 开发',
       collapsed: false,
       items: [
-        { text: 'web 入门', link: '/guide/web/web' },
+        { text: 'web 开发入门教程', link: '/guide/web/web' },
         { text: 'HTML - 构建 web', link: '' }
       ]
     },    

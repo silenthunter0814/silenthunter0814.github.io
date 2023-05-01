@@ -1,10 +1,10 @@
 ---
-description: web 开发入门。web 课程课件，学习笔记。文档教程来自 MDN。  
+description: web 开发入门教程。web 课程课件，学习笔记。文档教程来自 MDN。  
 author: silenthunter0814, Silent Hunter
 ---
 
 
-# web 开发入门
+# web 开发入门教程
 
 ## 从哪里开始
 
