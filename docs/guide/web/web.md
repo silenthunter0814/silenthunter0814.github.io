@@ -189,7 +189,7 @@ a 是 "anchor" (锚)的缩写，要将一些文本添加到链接中，只需如
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8">
-    <title>WWEB 初学者指南</title>
+    <title>WEB 初学者指南</title>
   </head>
   <body>
     <h1>Mozilla is cool</h1>
