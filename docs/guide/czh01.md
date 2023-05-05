@@ -1324,11 +1324,12 @@ q = &y;
 p = NULL;   /* p 的值为 0, 空指针 */
 p = q;      /* p 指向 y */
 ```
+
+一个简单例子：
+
 <details>
 <summary>code example prog6_1.c</summary>
 
-```c
-#include <stdio.h>
 ```c
 #include <stdio.h>
 int main()
