@@ -1113,7 +1113,7 @@ int main()        /* function declaration */
         return 0;
 }
 ```
-
+---
 ### 5.1 函数概念
 执行特定任务或计算的代码块 `{}`。  
 接受一组输入，执行特定计算并产生输出(返回值)。  
@@ -1192,9 +1192,110 @@ int main()
 ```
 </details>
 
-
+---
 ### 5.2 局部变量和全局变量
+
+C 程序由全局变量和函数组成。
+- local variable: 局部变量，在函数体内部或块内声明/定义的变量称为局部变量，局部变量由编译器在栈 (stack) 中自动分配内存，因此也叫做自动变量。
+- global variable: 全局变量，在函数体之外声明的变量称为全局变量。全局变量对于其后定义的所有函数均可见。
+
+---  
+<details>
+<summary>code example prog5_3.c</summary>
+
+```c
+#include <stdio.h>
+
+void f();
+
+int 	x = 10;
+int 	y;
+
+int main()
+{
+    	int 	x;
+    
+    	x = 20;
+    	y = 5;
+    	printf("main():\tx = %d\ty = %d\n\n", x, y);    
+    	f();
+    	return 0;
+}
+
+void f()
+{
+    	printf("f():\tx = %d\ty = %d\n", x, y);
+}
+
+```
+</details>
+
+---
 ### 5.3 递归函数 - recursion
+
+调用自身的函数称为递归函数。而且，这种技术被称为递归。  
+
+---  
+自然数之和 - 递归算法
+<details>
+<summary>code example prog5_4.c</summary>
+
+```c
+#include <stdio.h>
+
+int sum(int n)
+{
+        if (n == 0)
+                return 0;
+        return sum(n-1) + n;
+}
+
+int main()
+{
+        int n = 3;
+
+        printf("sum = %d\n", sum(n));
+        return 0;
+}
+```
+</details>
+
+---
+正序和倒序打印 n 个自然数
+<details>
+<summary>code example prog5_5.c</summary>
+
+```c
+#include <stdio.h>
+
+void prtd(int n)
+{
+        for (int i = 1; i <= n; i++)
+                printf("%d\t", i);
+        printf("\n");
+}
+
+void rprtd(int n)
+{
+        if (n == 0)
+                printf("\n");
+        rprtd(n-1);
+        printf("%d\t", n);
+}
+
+int main()
+{
+        int n = 3;
+
+        prtd(n);
+        rprtd(n);
+        printf("\n");
+        return 0;
+}
+
+```
+</details>
+
 
 ## 6 指针与数组 - pointer and array
 ### 6.1 指针 - pointer
