@@ -1346,10 +1346,49 @@ int main()
 ```
 </details>
 
+整数交换版本1：
+
+<details>
+<summary>code example prog6_1.c</summary>
+
+```c
+void swap(int x, int y)
+{
+        int temp;
+
+        temp = x;
+        x = y;
+        y = temp;
+}
+```
+</details>
+
+整数交换版本2：
+
+<details>
+<summary>code example prog6_1.c</summary>
+
+```c
+void swap(int *px, int *py)
+{
+        int temp;
+
+        temp = *px;
+        *px = *py;
+        *py = temp;
+}
+```
+</details>
+
 
 ### 6.2 数组 - array
-数组声明和初始化
-数组访问
+
+数组是存储在连续内存位置的相同数据类型的数据项的集合，可以使用数组的索引随机访问元素。
+
+#### 6.2.1 数组声明和初始化
+
+#### 6.2.2 数组访问
+
 ### 6.3 指针与数组
 ### 6.4 编程练习
 printarray - 打印数组
