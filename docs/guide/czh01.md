@@ -1278,7 +1278,7 @@ void prtd(int n)
 void rprtd(int n)
 {
         if (n == 0)
-                printf("\n");
+                return;
         rprtd(n-1);
         printf("%d\t", n);
 }
