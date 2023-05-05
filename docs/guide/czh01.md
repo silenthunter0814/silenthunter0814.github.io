@@ -16,14 +16,6 @@ author: silenthunter0814, Silent Hunter
 - 课程源码  https://github.com/silenthunter0814/czh01.git
   
 ---  
-
-
-# C语言快速入门
-
-Author: Silent Hunter    
-| [c1](#_1-hello-world) | [c2](#_2-数据类型-变量-运算符-表达式和语句) | [c3](#_3-控制流-flow-control) | 
-[c4](#) | [c5](#) | [c6](#) | [c7](#) | [c8](#) | [c9](#) | [c10](#) | [c11](#) | [c12](#) |  
-
 <details>
 <summary>章节目录</summary>
 
@@ -1299,6 +1291,61 @@ int main()
 
 ## 6 指针与数组 - pointer and array
 ### 6.1 指针 - pointer
+
+指针是一种保存变量地址的变量。指针本身的数据类型是 (unsigned long)，声明指针需要表明指针指向的变量类型。  
+
+打印变量地址：
+```c
+#include <stdio.h> 
+
+int main()
+{
+    	int x;
+ 
+    	printf("%p", &x); 
+    	return 0;
+}
+```
+
+指针声明与赋值:
+- `int *p, x = 8;` &emsp; `p` is a pointer to integer
+- `p = &x;` &emsp; 指针赋值； 在表达式中 `*ptr` 同 `x` 的使用效果相同
+  - `x = x + 1;` <=> `*p = *p + 1;` (`p` 指向的对象 + 1)
+  - `x++;` <=> `(*p)++;`
+  - `++x;` <=> `++*p;`
+
+指针本身也是变量，可以进行赋值：
+
+```c
+int *p, *q;
+p = &x;
+q = &y;
+
+p = NULL;   /* p 的值为 0, 空指针 */
+p = q;      /* p 指向 y */
+```
+<details>
+<summary>code example prog6_1.c</summary>
+
+```c
+#include <stdio.h>
+```c
+#include <stdio.h>
+int main()
+{ 
+    	int x = 10;
+    	int *ptr;
+
+    	ptr = &x;
+    	printf("%d\n", *ptr);
+	    *ptr = 20;
+	    printf("%d\n", x);
+    	return 0;
+}
+```
+</details>
+
+
 ### 6.2 数组 - array
 数组声明和初始化
 数组访问
