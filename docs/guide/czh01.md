@@ -1136,8 +1136,25 @@ return-type function-name(argument declarations)
 
 函数示例：
 
+---  
+<details>
+<summary>code example prog5_1.c</summary>
+
 ```c
+#include <stdio.h>
+
 int sum(int, int);    /* function declaration */
+
+int main()
+{
+        int x, y, z;
+
+        x = 3;
+        y = 8;
+        z = sum(x, y);
+        printf("%d\n", z);
+        return 0;
+}
 
 int sum(int a, int b)     /* function declaration and definition */
 {
@@ -1147,7 +1164,33 @@ int sum(int a, int b)     /* function declaration and definition */
         return sum;
 }
 ```
+</details>
 
+---  
+<details>
+<summary>code example prog5_2.c</summary>
+
+```c
+#include <stdio.h>
+
+int max(int x, int y)
+{
+        return (x > y)? x : y;
+}
+
+int main()
+{
+        int a, b, c;
+
+        a = 8;
+        b = 10;
+        c = max(a, b);
+        printf("%d\n", c);
+        return 0;
+}
+
+```
+</details>
 
 
 ### 5.2 局部变量和全局变量
