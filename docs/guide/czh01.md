@@ -1349,9 +1349,11 @@ int main()
 整数交换版本1：
 
 <details>
-<summary>code example prog6_1.c</summary>
+<summary>code example prog6_2.c</summary>
 
 ```c
+#include <stdio.h>
+
 void swap(int x, int y)
 {
         int temp;
@@ -1360,15 +1362,28 @@ void swap(int x, int y)
         x = y;
         y = temp;
 }
+
+int main()
+{
+    	int a, b;
+    
+    	a = 10;
+    	b = 20;
+    	swap(a, b);
+    	printf("a = %d\tb = %d\n", a, b);
+    	return 0;
+}
 ```
 </details>
 
 整数交换版本2：
 
 <details>
-<summary>code example prog6_1.c</summary>
+<summary>code example prog6_3.c</summary>
 
 ```c
+#include <stdio.h>
+
 void swap(int *px, int *py)
 {
         int temp;
@@ -1376,6 +1391,17 @@ void swap(int *px, int *py)
         temp = *px;
         *px = *py;
         *py = temp;
+}
+
+int main()
+{
+    	int a, b;
+    
+    	a = 10;
+    	b = 20;
+    	swap(&a, &b);
+    	printf("a = %d\tb = %d\n", a, b);
+    	return 0;
 }
 ```
 </details>
