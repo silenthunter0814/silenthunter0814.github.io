@@ -1393,7 +1393,7 @@ int main()
 
 可以通过多种方式声明数组。可以通过指定它的类型和大小，通过初始化它或两者来完成。
 
-```c
+::: info 声明和初始化
 int arr[10];
 
 int n = 10;
@@ -1404,7 +1404,7 @@ int arr[] = { 10, 20, 30, 40 };		/* initialization */
 int arr[4] = {10, 20, 30, 40};		/* initialization */
 
 int arr[6] = { 10, 20, 30, 40 }		/* {10, 20, 30, 40, 0, 0} */
-```
+:::
 
 
 #### 6.2.2 数组访问
@@ -1412,6 +1412,9 @@ int arr[6] = { 10, 20, 30, 40 }		/* {10, 20, 30, 40, 0, 0} */
 - 使用整数索引访问数组元素。
 - 数组索引从 0 开始，一直到数组大小减 1。
 - 数组元素与变量等同。
+
+<details>
+<summary>code example</summary>
 
 ```c
 #include <stdio.h>
@@ -1432,7 +1435,12 @@ int main()
       	return 0;
 }
 ```
+</details>
+
 数组索引没有越界检查。
+
+<details>
+<summary>code example</summary>
 
 ```c
 #include <stdio.h>
@@ -1448,10 +1456,15 @@ int main()
         return 0;
 }
 ```
+</details>
+
 数组具有地址和大小两个属性:
 
   - 地址为首元素（索引0）地址
   - 大小为数组所有元素大小之和（sizeof运算符，编译时属性）
+
+<details>
+<summary>code example</summary>
 
 ```c
 #include <stdio.h>
@@ -1467,10 +1480,13 @@ int main()
           		  printf("address of arr[%d] is %p\n", i, &arr[i]); 
     	  return 0;
 }
-
 ```
+</details>
 
 数组的遍历 - 打印数组元素
+
+<details>
+<summary>code example</summary>
 
 ```c
 #include <stdio.h>
@@ -1486,6 +1502,7 @@ int main()
     	  return 0;
 }
 ```
+</details>
 
 ---
 ### 6.3 指针与数组
