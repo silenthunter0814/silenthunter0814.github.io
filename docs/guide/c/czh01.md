@@ -1055,14 +1055,14 @@ int main()
 {
         int i, j, rows;
    
-   	printf("Enter the number of rows: ");
-   	scanf("%d", &rows);
-   	for (i = 1; i <= rows; ++i) {
+        printf("Enter the number of rows: ");
+        scanf("%d", &rows);
+        for (i = 1; i <= rows; ++i) {
                 for (j = 1; j <= i; ++j) 
                         printf("* ");
-      		printf("\n");
-   	}
-   	return 0;
+          		  printf("\n");
+        }
+        return 0;
 }
  ```
  </details>
@@ -1200,23 +1200,23 @@ C 程序由全局变量和函数组成。
 
 void f();
 
-int 	x = 10;
-int 	y;
+int 	  x = 10;
+int 	  y;
 
 int main()
 {
-    	int 	x;
-    
-    	x = 20;
-    	y = 5;
-    	printf("main():\tx = %d\ty = %d\n\n", x, y);    
-    	f();
-    	return 0;
+    	  int 	x;
+
+    	  x = 20;
+    	  y = 5;
+    	  printf("main():\tx = %d\ty = %d\n\n", x, y);    
+    	  f();
+    	  return 0;
 }
 
 void f()
 {
-    	printf("f():\tx = %d\ty = %d\n", x, y);
+    	  printf("f():\tx = %d\ty = %d\n", x, y);
 }
 
 ```
@@ -1290,6 +1290,8 @@ int main()
 
 
 ## 6 指针与数组 - pointer and array
+
+---
 ### 6.1 指针 - pointer
 
 指针是一种保存变量地址的变量。指针本身的数据类型是 (unsigned long)，声明指针需要表明指针指向的变量类型。  
@@ -1300,10 +1302,10 @@ int main()
 
 int main()
 {
-    	int x;
- 
-    	printf("%p", &x); 
-    	return 0;
+    	  int x;
+  
+    	  printf("%p", &x); 
+    	  return 0;
 }
 ```
 
@@ -1334,14 +1336,14 @@ p = q;      /* p 指向 y */
 #include <stdio.h>
 int main()
 { 
-    	int x = 10;
-    	int *ptr;
+    	  int x = 10;
+    	  int *ptr;
 
-    	ptr = &x;
-    	printf("%d\n", *ptr);
-	    *ptr = 20;
-	    printf("%d\n", x);
-    	return 0;
+    	  ptr = &x;
+    	  printf("%d\n", *ptr);
+	      *ptr = 20;
+	      printf("%d\n", x);
+    	  return 0;
 }
 ```
 </details>
@@ -1365,13 +1367,13 @@ void swap(int x, int y)
 
 int main()
 {
-    	int a, b;
-    
-    	a = 10;
-    	b = 20;
-    	swap(a, b);
-    	printf("a = %d\tb = %d\n", a, b);
-    	return 0;
+    	  int a, b;
+
+    	  a = 10;
+    	  b = 20;
+    	  swap(a, b);
+    	  printf("a = %d\tb = %d\n", a, b);
+    	  return 0;
 }
 ```
 </details>
@@ -1395,18 +1397,18 @@ void swap(int *px, int *py)
 
 int main()
 {
-    	int a, b;
-    
-    	a = 10;
-    	b = 20;
-    	swap(&a, &b);
-    	printf("a = %d\tb = %d\n", a, b);
-    	return 0;
+    	  int a, b;
+
+    	  a = 10;
+    	  b = 20;
+    	  swap(&a, &b);
+    	  printf("a = %d\tb = %d\n", a, b);
+    	  return 0;
 }
 ```
 </details>
 
-
+---
 ### 6.2 数组 - array
 
 数组是存储在连续内存位置的相同数据类型的数据项的集合，可以使用数组的索引随机访问元素。
@@ -1435,7 +1437,87 @@ int arr[6] = { 10, 20, 30, 40 }		/* {10, 20, 30, 40, 0, 0} */
 - 数组索引从 0 开始，一直到数组大小减 1。
 - 数组元素与变量等同。
 
+```c
+#include <stdio.h>
+ 
+int main()
+{
+      	int 	arr[5], x, y = 18;
+
+      	arr[0] = 5;
+      	arr[2] = -10;
+      	arr[3 / 2] = 2; 			/* this is same as arr[1] = 2 */
+      	arr[3] = arr[0];
+  
+   	    x = arr[3];
+  	    arr[4] = y;
+
+      	printf("%d %d %d %d", arr[0], arr[1], arr[2], arr[3]); 
+      	return 0;
+}
+```
+数组索引没有越界检查。
+
+```c
+#include <stdio.h>
+ 
+int main()
+{
+        int arr[2];
+
+        arr[0] = 12;
+        arr[1] = 5;
+        printf("%d ", arr[3]);
+        printf("%d ", arr[-2]); 
+        return 0;
+}
+```
+数组具有地址和大小两个属性。
+
+  - 其地址为首元素（索引0）地址
+  - 大小为数组所有元素大小之和（sizeof运算符，编译时属性）
+
+```c
+#include <stdio.h>
+int main()
+{
+    	  int arr[3], i;
+  
+    	  printf("int size: %lu\n\n", sizeof(int));
+    	  printf("size of arr: %lu\n", sizeof(arr));
+    	  printf("number of elems: %lu\n", sizeof arr / sizeof arr[0]);
+    	  printf("arr address: %p\n\n", arr);
+    	  for (i = 0; i < 5; i++)				/* overflow */
+          		  printf("address of arr[%d] is %p\n", i, &arr[i]); 
+    	  return 0;
+}
+
+```
+
+数组的遍历 - 打印数组元素
+
+```c
+#include <stdio.h>
+
+int main() 
+{
+    	  int n, arr[] = {1, 2, 3, 4};
+
+    	  n = sizeof(arr) / sizeof(arr[0]);
+    	  for (int i = 0; i < n; i++)
+          		  printf("%d\t", arr[i]);
+        printf("\n");
+    	  return 0;
+}
+```
+
+---
 ### 6.3 指针与数组
+
+在 C 语言中，指针和数组之间的关系十分密切，指针与数组适合放在一起讨论。
+
+
+---
 ### 6.4 编程练习
 printarray - 打印数组
 findelem - 查找数组元素
