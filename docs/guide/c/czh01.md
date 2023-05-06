@@ -1399,11 +1399,11 @@ int arr[10];
 int n = 10;
 int arr[n];
 
-int arr[] = { 10, 20, 30, 40 };		/* initialization */
+int arr[] = { 10, 20, 30, 40 };		&emsp; /* initialization */
 
-int arr[4] = {10, 20, 30, 40};		/* initialization */
+int arr[4] = {10, 20, 30, 40};		&emsp; /* initialization */
 
-int arr[6] = { 10, 20, 30, 40 }		/* {10, 20, 30, 40, 0, 0} */
+int arr[6] = { 10, 20, 30, 40 };		&emsp; /* {10, 20, 30, 40, 0, 0} */
 :::
 
 
@@ -1425,7 +1425,7 @@ int main()
 
       	arr[0] = 5;
       	arr[2] = -10;
-      	arr[3 / 2] = 2; 			/* this is same as arr[1] = 2 */
+      	arr[3 / 2] = 2; 			/* same as arr[1] = 2 */
       	arr[3] = arr[0];
   
    	    x = arr[3];
