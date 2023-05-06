@@ -63,34 +63,26 @@ function nav() {
 function sidebarGuide() {
   return [
     {
-      text: '课程简介',
+      text: 'C语言从入门到大神',
       collapsed: false,
       items: [
-        { text: 'C语言学习路线图', link: '/guide/roadmap' }
+        { text: '01 C语言入门教程', link: '/guide/c/czh01' }
       ]
     },
     {
-      text: 'C 编程语言课程',
+      text: 'WEB 开发从前端到全栈',
       collapsed: false,
       items: [
-        { text: '01 C语言入门教程', link: '/guide/czh01' }
+        { text: 'web 开发入门教程', link: '/guide/web/web' }
       ]
     },
     {
-      text: 'Linux 操作系统课程',
+      text: '操作系统和工具链',
       collapsed: false,
       items: [
         { text: '跟我学 Linux', link: '/guide/lfm' }
       ]
-    },
-    {
-      text: 'web 开发',
-      collapsed: false,
-      items: [
-        { text: 'web 开发入门教程', link: '/guide/web/web' },
-        { text: 'HTML - 构建 web', link: '' }
-      ]
-    },    
+    },   
     {
       text: 'Private Channel',
       collapsed: false,
