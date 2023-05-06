@@ -334,7 +334,7 @@ asignment operator
 
 ---
 <details>
-<summary>code example prog2_1.c</summary>
+<summary>code example</summary>
 
 ```c
 /* 
@@ -383,13 +383,9 @@ int main()
 
 ---
 <details>
-<summary>code example prog2_2.c</summary>
+<summary>code example</summary>
 
 ```c
-/* 
- * file name: prog2_2.c
- */
-
 #include <stdio.h>
 
 int main()
@@ -429,13 +425,9 @@ equality operator  `==` `!=`
 
 ---
 <details>
-<summary>code example prog2_3.c</summary>
+<summary>code example</summary>
 
 ```c
-/*
- * file name: prog2_3.c
- */
-
 #include <stdio.h>
 
 int main()
@@ -488,11 +480,10 @@ unary operator `!` `&`
 
 ---
 <details>
-<summary>code example prog2_4.c</summary>  
+<summary>code example</summary>  
 
 ```c
 /*
- * filename: prog2_4.c
  * calculate rectangle's area
  */
  
@@ -558,11 +549,10 @@ else  /* optional */
 
 ---
 <details>
-<summary>code example prog3_1.c</summary>
+<summary>code example</summary>
 
 ```c
 /*
- * filename prog3_1.c
  * get max from two absolute value
  */
  
@@ -598,13 +588,17 @@ if (0.2)             if (0.2 != 0)
 ---------------------------------------------
 if (i && j)          if (i != 0 && j != 0)
 --------------------------------------------- 
-if (i && j) { i++; j++; }   等价于
+if (i && j) { i++; j++; }   
+
+等价于
 
 if (i != 0 && j != 0)  
 {
     i++;
     j++;
-}                           等价于
+}                           
+
+等价于
 
 if (i != 0 && j != 0) {   /* K&R C coding style */
         i++;
@@ -617,11 +611,10 @@ if (i != 0 && j != 0) {   /* K&R C coding style */
 
 ---
 <details>
-<summary>code example prog3_2.c</summary>
+<summary>code example</summary>
 
 ```c
 /*
- * file name prog3_2.c
  * K&R C coding style
  */
 
@@ -690,13 +683,9 @@ else
 
 ---  
 <details>
-<summary>code example prog3_3.c</summary>
+<summary>code example</summary>
 
 ```c
-/*
- * file name prog3_3.c
- */
-
 #include <stdio.h>
 
 int main()
@@ -741,13 +730,9 @@ while (expr)
 
 ---  
 <details>
-<summary>code example prog3_4.c</summary>
+<summary>code example</summary>
 
 ```c
-/*
- * file name: prog3_4.c
- */
-
 #include <stdio.h>
 
 int main()
@@ -782,13 +767,9 @@ for (expr1; expr2; expr3)
 
 ---  
 <details>
-<summary>code example prog3_5.c</summary>
+<summary>code example</summary>
 
 ```c
-/*
- * file name: prog3_5.c
- */
-
 #include <stdio.h>
 
 int main()
@@ -829,11 +810,10 @@ $sum = 1 + 2 + ... + n$
 
 ---  
 <details>
-<summary>code example prog4_1.c</summary>
+<summary>code example</summary>
 
 ```c
 /*
- * file name: prog4_1.c
  * the Sum of Natural Numbers
  */
 
@@ -884,11 +864,10 @@ reverse integer
 
 ---  
 <details>
-<summary>code example prog4_2.c</summary>
+<summary>code example</summary>
 
 ```c
 /*
- * file name: prog4_2.c
  * reverse integer
  */
 
@@ -949,11 +928,10 @@ palindrome of integer
 
 ---  
 <details>
-<summary>code example prog4_3.c</summary>
+<summary>code example</summary>
 
 ```c
 /*
- * file name: prog4_3.c
  * palindrome of integer
  */
 
@@ -997,11 +975,10 @@ perfect number
 
 ---  
 <details>
-<summary>code example prog4_4.c</summary>
+<summary>code example</summary>
 
 ```c
 /*
- * file name: prog4_4.c
  * perfect number
  */
 
@@ -1041,11 +1018,10 @@ int main()
 
 ---  
 <details>
-<summary>code example prog4_5.c</summary>
+<summary>code example</summary>
 
 ```c
 /*
- * file name: prog4_5.c
  * print stars
  */
 
@@ -1130,7 +1106,7 @@ return-type function-name(argument declarations)
 
 ---  
 <details>
-<summary>code example prog5_1.c</summary>
+<summary>code example</summary>
 
 ```c
 #include <stdio.h>
@@ -1160,7 +1136,7 @@ int sum(int a, int b)     /* function declaration and definition */
 
 ---  
 <details>
-<summary>code example prog5_2.c</summary>
+<summary>code example</summary>
 
 ```c
 #include <stdio.h>
@@ -1193,7 +1169,7 @@ C 程序由全局变量和函数组成。
 
 ---  
 <details>
-<summary>code example prog5_3.c</summary>
+<summary>code example</summary>
 
 ```c
 #include <stdio.h>
@@ -1230,7 +1206,7 @@ void f()
 ---  
 自然数之和 - 递归算法
 <details>
-<summary>code example prog5_4.c</summary>
+<summary>code example</summary>
 
 ```c
 #include <stdio.h>
@@ -1255,7 +1231,7 @@ int main()
 ---
 正序和倒序打印 n 个自然数
 <details>
-<summary>code example prog5_5.c</summary>
+<summary>code example</summary>
 
 ```c
 #include <stdio.h>
@@ -1330,7 +1306,7 @@ p = q;      /* p 指向 y */
 一个简单例子：
 
 <details>
-<summary>code example prog6_1.c</summary>
+<summary>code example</summary>
 
 ```c
 #include <stdio.h>
@@ -1351,7 +1327,7 @@ int main()
 整数交换版本1：
 
 <details>
-<summary>code example prog6_2.c</summary>
+<summary>code example</summary>
 
 ```c
 #include <stdio.h>
@@ -1381,7 +1357,7 @@ int main()
 整数交换版本2：
 
 <details>
-<summary>code example prog6_3.c</summary>
+<summary>code example</summary>
 
 ```c
 #include <stdio.h>
