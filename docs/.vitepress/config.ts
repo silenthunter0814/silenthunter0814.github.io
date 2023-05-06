@@ -80,7 +80,7 @@ function sidebarGuide() {
       text: '操作系统和工具链',
       collapsed: false,
       items: [
-        { text: '跟我学 Linux', link: '/guide/lfm' }
+        { text: '跟我学 Linux', link: '/guide/os/lfm' }
       ]
     },   
     {
