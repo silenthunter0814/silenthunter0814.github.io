@@ -1529,7 +1529,7 @@ int a[5], *p, x;
 p = a;
 ```
 
-::: INFO  数组名称在编译时转换为指针：
+::: info  数组名称在编译时转换为指针：
 p = a;	&harr;	p = &a[0];  
 a[0]; &harr; p[0]; &harr; *p; &harr; *a; &harr; *(p + 0); &harr; *(a+0);  
 a[i]; &harr; p[i]; &harr; *(p + i);  
