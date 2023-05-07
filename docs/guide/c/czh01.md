@@ -1529,7 +1529,7 @@ int a[5], *p, x;
 p = a;
 ```
 
-::: info  数组名称在编译时转换为指针：
+::: info  数组名称在编译时转换为指针：  
 p = a;	&harr;	p = &a[0];  
 a[0]; &harr; p[0]; &harr; *p; &harr; *a; &harr; *(p + 0); &harr; *(a+0);  
 a[i]; &harr; p[i]; &harr; *(p + i);  
@@ -1577,29 +1577,26 @@ binsearch - 二分查找 (sorted array)
 
 ## 8 动态内存分配 - malloc and free
 
-## 9 局部变量，全局变量
-local, global, symbol table
-### 9.1 局部变量 - local variable
-### 9.2 全局变量 - global variable
 
-## 10 结构和联合 - struct and union
-### 10.1 结构 - struct
+
+## 9 结构和联合 - struct and union
+### 9.1 结构 - struct
 创建结构，结构变量
 结构作为函数的参数
 指向结构的指针
-### 10.2 联合 - union
+### 9.2 联合 - union
 typedef
 switch 语句
 union 示例
 数据封装 
 
-## 11 链表 - link list
-### 11.1 自引用结构 - self referential structure
-### 11.2 链表 - link list
+## 10 链表 - link list
+### 10.1 自引用结构 - self referential structure
+### 10.2 链表 - link list
 创建，打印链表
 atolink - 数组转换为链表
 
-## 12 预处理器 - preprocessor
+## 11 预处理器 - preprocessor
 
-## 13 标准输入, 标准输出, 错误输出 - stdin, stdout, stderr
+## 12 标准输入, 标准输出, 错误输出 - stdin, stdout, stderr
 
