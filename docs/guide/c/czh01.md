@@ -1397,18 +1397,20 @@ int main()
 
 可以通过多种方式声明数组。可以通过指定它的类型和大小，通过初始化它或两者来完成。
 
-::: info 声明和初始化
+声明和初始化
+
+```c
 int arr[10];
 
 int n = 10;
 int arr[n];
 
-int arr[] = { 10, 20, 30, 40 };		&emsp; /* initialization */
+int arr[] = { 10, 20, 30, 40 };		  /* initialization */
 
-int arr[4] = {10, 20, 30, 40};		&emsp; /* initialization */
+int arr[4] = {10, 20, 30, 40};		  /* initialization */
 
-int arr[6] = { 10, 20, 30, 40 };		&emsp; /* {10, 20, 30, 40, 0, 0} */
-:::
+int arr[6] = { 10, 20, 30, 40 };		/* {10, 20, 30, 40, 0, 0} */
+```
 
 ::: WARNING  
 数组不能直接赋值，下面的语句是非法的：  
