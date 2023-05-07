@@ -1563,8 +1563,67 @@ p = &a[i] &harr; p = a + i
 
 ---
 ### 6.4 编程练习
-printarray - 打印数组
-findelem - 查找数组元素
+
+---
+<details>
+<summary>printarray - 打印数组</summary>
+
+```c
+#include <stdio.h>
+
+void printarray(int a[], int n)       /* a[] 等同于 *a */
+{
+        int i;
+        
+        for (i = 0; i < n; i++) {
+                printf("%3d", a[i]);
+                if (i%5 == 4 || i == n-1)
+                        printf("\n");
+                else
+                        printf(" ");
+    	}
+}
+int main() 
+{
+        int arr[] = {1, 2, 3, 4, 5, 6};
+        int n = sizeof(arr) / sizeof arr[0];
+        
+        printarray(arr, n);
+        return 0;
+}
+```
+</details>
+
+---
+<details>
+<summary>findelem - 查找数组元素</summary>
+```c
+#include <stdio.h>
+
+int findelem(int key, int a[], int n)
+{
+        for (int i = 0; i < n; i++)
+                if (a[i] == key)
+                        return i;
+        return -1;      /* not found */
+}
+
+int main()
+{
+        int idx, arr[5] = { 10, 30, 15, 40, 20 };
+            
+        idx = findelem(15, arr, 5);
+        if (idx != -1)
+                printf("key 15 found at index: %d\n", idx);
+        else
+                printf("key 15 does not found\n");
+        return 0;
+}
+```
+</details>
+
+---
+
 maxofa - 数组的最大值
 average - 数组的平均值
 insert sort - 插入排序
