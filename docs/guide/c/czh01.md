@@ -1410,6 +1410,10 @@ int arr[4] = {10, 20, 30, 40};		&emsp; /* initialization */
 int arr[6] = { 10, 20, 30, 40 };		&emsp; /* {10, 20, 30, 40, 0, 0} */
 :::
 
+::: WARNING 数组不能直接赋值
+int a[3];
+a = {2, 10, 7}; &emsp; /* compile error!!! */
+:::
 
 #### 6.2.2 数组访问
 
