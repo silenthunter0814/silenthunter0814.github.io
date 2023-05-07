@@ -1412,7 +1412,7 @@ int arr[4] = {10, 20, 30, 40};		  /* initialization */
 int arr[6] = { 10, 20, 30, 40 };		/* {10, 20, 30, 40, 0, 0} */
 ```
 
-::: WARNING  
+::: warning  
 数组不能直接赋值，下面的语句是非法的：  
 int a[3];  
 a = {2, 10, 7}; &emsp; /* compile error!!! */  
@@ -1537,7 +1537,7 @@ x = a[i]; &harr; x = p[i]; &harr; x = *(p + i);
 p = &a[i] &harr; p = a + i
 :::
 
-::: WARNING
+::: warning
 指针是变量，而数组名不是变量，类似下列语句是非法的：  
   `a = p;`  
   `a++;`  
