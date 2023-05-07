@@ -1410,8 +1410,10 @@ int arr[4] = {10, 20, 30, 40};		&emsp; /* initialization */
 int arr[6] = { 10, 20, 30, 40 };		&emsp; /* {10, 20, 30, 40, 0, 0} */
 :::
 
-::: WARNING 数组不能直接赋值
-int a[3];
+::: WARNING 
+数组不能直接赋值，下面的语句是非法的：
+
+int a[3];  
 a = {2, 10, 7}; &emsp; /* compile error!!! */
 :::
 
@@ -1526,7 +1528,7 @@ int a[5], *p, x;
 p = a;
 ```
 
-::: info 
+::: INFO  
 p = a;	&harr;	p = &a[0];  
 a[0]; &harr; p[0]; &harr; *p; &harr; *a; &harr; *(p + 0); &harr; *(a+0);  
 a[i]; &harr; p[i]; &harr; *(p + i);  
