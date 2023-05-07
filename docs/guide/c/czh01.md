@@ -1624,9 +1624,61 @@ int main()
 </details>
 
 ---
+<details>
+<summary>maxofa - 数组的最大值</summary>
 
-maxofa - 数组的最大值
-average - 数组的平均值
+```c
+#include <stdio.h>
+
+int maxofa(int a[], int n)
+{
+        int i, max;
+
+        for (max = a[0], i = 0; i < n; i++)
+                if (a[i] > max)
+                        max = a[i];
+        return max;
+}
+int main()
+{
+        int arr[] = {12, 2, 8, 7, 24, 11};
+        int n = sizeof(arr) / sizeof(arr[0]);
+        
+        printf("max of array is: %d\n", maxofa(arr, n));
+        return 0;
+}
+```
+</details>
+
+---
+<details>
+<summary>average - 数组的平均值</summary>
+
+```c
+#include <stdio.h>
+
+double average(int a[], int n)
+{
+        int i;
+        double sum;
+
+        for (sum = 0.0, i = 0; i < n; i++)
+                sum += a[i];
+        return sum/n;
+}
+int main() 
+{
+        int arr[] = {88, 76, 92, 83, 80, 95};
+    	int n = sizeof(arr) / sizeof(arr[0]);
+
+        printf("average of array is: %.2f\n", average(arr, n));
+        return 0;
+}
+```
+</details>
+
+
+
 insert sort - 插入排序
 binsearch - 二分查找 (sorted array)
 
