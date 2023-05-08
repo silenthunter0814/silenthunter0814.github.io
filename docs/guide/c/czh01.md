@@ -1307,10 +1307,9 @@ p = NULL;   /* p 的值为 0, 空指针 */
 p = q;      /* p 指向 y */
 ```
 
-一个简单例子：
-
+---
 <details>
-<summary>code example</summary>
+<summary>一个简单例子</summary>
 
 ```c
 #include <stdio.h>
@@ -1328,10 +1327,9 @@ int main()
 ```
 </details>
 
-整数交换版本1：
-
+---
 <details>
-<summary>code example</summary>
+<summary>整数交换版本1</summary>
 
 ```c
 #include <stdio.h>
@@ -1358,10 +1356,9 @@ int main()
 ```
 </details>
 
-整数交换版本2：
-
+---
 <details>
-<summary>code example</summary>
+<summary>整数交换版本2</summary>
 
 ```c
 #include <stdio.h>
@@ -1494,10 +1491,9 @@ int main()
 ```
 </details>
 
-数组的遍历 - 打印数组元素
-
+---
 <details>
-<summary>code example</summary>
+<summary>数组的遍历 - 打印数组元素</summary>
 
 ```c
 #include <stdio.h>
@@ -1748,6 +1744,8 @@ int main()
 }
 ```
 </details>
+
+
 
 ### 7.3 字符串 - string literal
 
