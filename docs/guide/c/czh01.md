@@ -1827,6 +1827,9 @@ int l = strlen(name);
 printf("hello, world\n");  
 当类似于这样的一个字符串出现在程序中时，实际上是通过字符指针访问该字符串的。在上述语句中，printf 接受的是一个指向字符数组第一个字符的指针。  
 也就是说，字符串常量可通过一个指向其第一个元素的指针访问。
+
+char	*s;  
+s = "my test";
 :::
 
 ---
@@ -1867,6 +1870,34 @@ int main() {
 ```
 </details>
 
+`malloc`, `free` 动态内存分配和释放函数：
+
+```c
+#include <stdlib.h>
+
+void *malloc(size_t size);
+void free(void *ptr);
+```
+
+- `malloc` 分配 size 字节并返回一个指针到分配的内存。 内存未初始化。
+- `free` 释放 ptr 指向的内存空间 (由 malloc 分配) 
+
+```c
+int     *p;
+
+p = (int *) malloc(sizeof(int));
+if (p == NULL) {
+        fprintf(stderr, "malloc error");
+        exit(1);
+}
+
+…
+
+free(p);
+```
+
+- `fprintf`: 格式化打印输出函数，`printf` 的完全版
+- `stderr`: 标准错误输出
 
 ## 9 结构和联合 - struct and union
 ### 9.1 结构 - struct
