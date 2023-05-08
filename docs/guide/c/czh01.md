@@ -1899,6 +1899,49 @@ free(p);
 - `fprintf`: 格式化打印输出函数，`printf` 的完全版
 - `stderr`: 标准错误输出
 
+<details>
+<summary>字符串复制</summary>
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+char *sdup(char *s)
+{
+    	char    *t;
+    	int     len;
+
+    	len = strlen(s);
+    	if ((t = malloc(len + 1)) == NULL) {
+                fprintf(stderr, "malloc error");
+                exit(1);
+    	}
+    	for (int i = 0; i < len; i++)
+                t[i] = s[i];
+    	t[len] = '\0';
+    	return t;
+}
+
+int main()
+{
+    	char    *str;
+    
+    	str = sdup("Hellow, world");
+    	printf("%s\n", str);
+    	free(str);
+    	return 0;
+}
+```
+</details>
+
+C 语言提供了库函数 `strdup`
+
+```c
+#include <string.h>
+char *strdup(const char *s);
+```
+
 ## 9 结构和联合 - struct and union
 ### 9.1 结构 - struct
 创建结构，结构变量
