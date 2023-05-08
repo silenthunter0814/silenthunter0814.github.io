@@ -1815,10 +1815,10 @@ int l = strlen(name);
 
 几个常用字符串函数 (include <string.h>):
 
-- `char *strcpy(s, ct)`	将字符串 `ct`（包括 `'\0'`）复制到字符串 `s` 中，并返回 `s`
-- `char *strcat(s, ct)`	将字符串 `ct` 连接到 `s` 的尾部，并返回 `s`
-- `int strcmp(cs,ct)`	比较字符串 `cs` 和 `ct`；当 `cs<ct` 时，返回一个负数；当 `cs==ct` 时，返回 0；当 `cs>ct` 时，返回一个正数
-- `size_t strlen(cs)`	返回字符串 `cs` 的长度
+- `char *strcpy(s, ct)`：	将字符串 `ct`（包括 `'\0'`）复制到字符串 `s` 中，并返回 `s`
+- `char *strcat(s, ct)`：	将字符串 `ct` 连接到 `s` 的尾部，并返回 `s`
+- `int strcmp(cs,ct)`：	比较字符串 `cs` 和 `ct`；当 `cs<ct` 时，返回一个负数；当 `cs==ct` 时，返回 0；当 `cs>ct` 时，返回一个正数
+- `size_t strlen(cs)`：	返回字符串 `cs` 的长度
 
 ::: info 字符串常量 - string literal  
 字符串常量是一个字符数组，例如：  
@@ -1832,6 +1832,40 @@ printf("hello, world\n");
 ---
 ## 8 动态内存分配 - malloc and free
 
+动态内存分配，在运行时分配内存。
+
+`void *` 通用指针
+- 不与任何数据类型关联的指针
+- 指向存储中的某个数据位置，即指向变量的地址
+- 可以同其它类型指针进行自由转换
+
+<details>
+<summary>指针类型转换</summary>
+
+```c
+#include <stdio.h>
+#include<stdlib.h>
+
+int main() {
+        int	i = 5;
+        float	f = 8.3;
+        void 	*p;
+        int  	*ip;
+        float 	*fp;
+        
+        p = &i;
+        ip = (int *) p;
+        printf("Integer variable is = %d\n", *((int*) p));
+        printf("*ip value: %d\n\n", *ip);
+
+        p = &f;
+        fp = (float *) p;
+        printf("Float variable is = %f\n", *((float*) p));
+        printf("*fp value: %f\n", *fp);
+        return 0;
+}
+```
+</details>
 
 
 ## 9 结构和联合 - struct and union
