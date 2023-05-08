@@ -1728,6 +1728,7 @@ c = 'a' + i;
 
 数据类型为 char 的数组，或者说字节 (bytes) 数组。
 
+---
 <details>
 <summary>code example</summary>
 
@@ -1750,6 +1751,7 @@ int main()
 
 当一个字符数组以 `'\0'` (0) 结尾时，这样的字符数组称为字符串。
 
+---
 <details>
 <summary>code example</summary>
 
@@ -1784,6 +1786,7 @@ int main()
 
 以 `"` `"` 包围的字符串称为 字符串字面值 - string literal。
 
+---
 <details>
 <summary>计算字符串长度</summary>
 
@@ -1832,7 +1835,6 @@ char	*s;
 s = "my test";
 :::
 
----
 ## 8 动态内存分配 - malloc and free
 
 动态内存分配，在运行时分配内存。
@@ -1842,6 +1844,7 @@ s = "my test";
 - 指向存储中的某个数据位置，即指向变量的地址
 - 可以同其它类型指针进行自由转换
 
+---
 <details>
 <summary>指针类型转换</summary>
 
@@ -1899,6 +1902,7 @@ free(p);
 - `fprintf`: 格式化打印输出函数，`printf` 的完全版
 - `stderr`: 标准错误输出
 
+---
 <details>
 <summary>字符串复制</summary>
 
@@ -1944,8 +1948,13 @@ char *strdup(const char *s);
 
 `strdup()` 函数返回一个指向新字符串的指针，该字符串是字符串 `s` 的副本。 新字符串的内存使用 `malloc` 获得，并且可以使用 `free` 释放。
 
-## 9 结构和联合 - struct and union
+
+## 9 结构和联合
+
+---
 ### 9.1 结构 - struct
+
+结构是 C 中一个用户定义的数据类型，它允许组合不同类型的数据项。
 创建结构，结构变量
 结构作为函数的参数
 指向结构的指针
