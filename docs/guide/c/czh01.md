@@ -1530,7 +1530,7 @@ p = a;	<=>	p = &a[0];
 a[0]; <=> p[0]; <=> *p; <=> *a; <=> *(p + 0); <=> *(a+0);  
 a[i]; <=> p[i]; <=> *(p + i);  
 x = a[i]; <=> x = p[i]; <=> x = *(p + i);  
-p = &a[i] <=> p = a + i
+p = &a[i]; <=> p = a + i;
 :::
 
 ::: warning
@@ -1955,6 +1955,66 @@ char *strdup(const char *s);
 ### 9.1 结构 - struct
 
 结构是 C 中一个用户定义的数据类型，它允许组合不同类型的数据项。
+
+结构类型声明：
+
+```c
+struct point {
+	int	x;
+	int	y;
+};
+```
+
+结构类型要点：
+- 复杂数据类型在内存中的布局描述
+- 结构类型变量的声明和定义：`struct point a, *pa;`
+- 结构变量通过 `.` 运算符访问结构成员：`a.x`
+- 结构指针通过 `->` 运算符访问结构成员：`pa->y`
+- 结构通过 `{}`进行声明初始化
+- 结构可以进行赋值，也可以作为函数参数传递
+
+
+---
+<details>
+<summary>定义并访问结构</summary>
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+struct book {
+        char    title[50];
+        char    author[50];
+        int     id;
+};
+
+int main()
+{
+    	struct book book = {}, book1;
+    
+    	strcpy(book1.title, "The C programming language");
+    	strcpy(book1.author, "Brain W. Kernighan & Dennis M. Ritchie");
+    	book1.id = 12806;
+    
+    	struct book book2 = {"The UNIX programming environment",
+                            		"Kernighan & Rob Pike", 937699};
+    
+    	book = book1;		/* struct assignment, memory copy */
+    	printf("title: %s\n", book.title);
+    	printf("author: %s\n", book.author);
+    	printf("book id: %d\n\n", book.id);
+
+    	book = book2;
+    	printf("title: %s\n", book.title);
+    	printf("author: %s\n", book.author);
+    	printf("book id: %d\n", book.id);
+    	return 0;
+}
+```
+</details>
+
+
 创建结构，结构变量
 结构作为函数的参数
 指向结构的指针
