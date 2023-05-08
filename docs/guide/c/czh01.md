@@ -1850,11 +1850,11 @@ s = "my test";
 #include<stdlib.h>
 
 int main() {
-        int	i = 5;
+        int	  i = 5;
         float	f = 8.3;
         void 	*p;
         int  	*ip;
-        float 	*fp;
+        float *fp;
         
         p = &i;
         ip = (int *) p;
@@ -1909,28 +1909,28 @@ free(p);
 
 char *sdup(char *s)
 {
-    	char    *t;
-    	int     len;
+    	  char    *t;
+    	  int     len;
 
-    	len = strlen(s);
-    	if ((t = malloc(len + 1)) == NULL) {
+    	  len = strlen(s);
+    	  if ((t = malloc(len + 1)) == NULL) {
                 fprintf(stderr, "malloc error");
                 exit(1);
-    	}
-    	for (int i = 0; i < len; i++)
+    	  }
+    	  for (int i = 0; i < len; i++)
                 t[i] = s[i];
-    	t[len] = '\0';
-    	return t;
+    	  t[len] = '\0';
+    	  return t;
 }
 
 int main()
 {
-    	char    *str;
-    
-    	str = sdup("Hellow, world");
-    	printf("%s\n", str);
-    	free(str);
-    	return 0;
+    	  char    *str;
+
+    	  str = sdup("Hellow, world");
+    	  printf("%s\n", str);
+    	  free(str);
+    	  return 0;
 }
 ```
 </details>
