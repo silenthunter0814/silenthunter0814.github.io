@@ -1723,6 +1723,7 @@ i = '8' - '0';
 c = 'a' + i;
 ```
 
+---
 ### 7.2 字符数组
 
 数据类型为 char 的数组，或者说字节 (bytes) 数组。
@@ -1745,9 +1746,32 @@ int main()
 ```
 </details>
 
+当一个字符数组以 `'\0'` (0) 结尾时，这样的字符数组称为字符串。
 
+<details>
+<summary>code example</summary>
 
-### 7.3 字符串 - string literal
+```c
+#include <stdio.h>
+
+int main()
+{
+        char name[] = { 'R', 'i', 't', 'c', 'h', 'i', 'e', '\0' };
+
+        for (int i = 0; name[i] != '\0'; i++)
+                printf("%c", name[i]);
+        printf("\n\n");
+        
+        printf("%s\n", name);
+        return 0;
+}
+```
+</details>
+
+---
+### 7.3 字符串与字符串常量
+
+字符串常量：string literal
 
 ## 8 动态内存分配 - malloc and free
 
