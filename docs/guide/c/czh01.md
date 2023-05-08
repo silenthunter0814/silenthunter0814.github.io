@@ -1984,8 +1984,8 @@ struct point {
 #include <string.h>
 
 struct book {
-        char    title[50];
-        char    author[50];
+        char    *title;
+        char    *author;
         int     id;
 };
 
@@ -1993,12 +1993,12 @@ int main()
 {
     	struct book book = {}, book1;
     
-    	strcpy(book1.title, "The C programming language");
-    	strcpy(book1.author, "Brain W. Kernighan & Dennis M. Ritchie");
+    	book1.title = "The C programming language";
+    	book1.author = "Brain W. Kernighan & Dennis M. Ritchie";
     	book1.id = 12806;
     
     	struct book book2 = {"The UNIX programming environment",
-                            		"Kernighan & Rob Pike", 937699};
+                            	"Kernighan & Rob Pike", 937699};
     
     	book = book1;		/* struct assignment, memory copy */
     	printf("title: %s\n", book.title);
