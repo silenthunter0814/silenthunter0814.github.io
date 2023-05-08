@@ -1980,8 +1980,6 @@ struct point {
 
 ```c
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
 struct book {
         char    *title;
@@ -1991,25 +1989,25 @@ struct book {
 
 int main()
 {
-    	struct book book = {}, book1;
-    
-    	book1.title = "The C programming language";
-    	book1.author = "Brain W. Kernighan & Dennis M. Ritchie";
-    	book1.id = 12806;
-    
-    	struct book book2 = {"The UNIX programming environment",
-                            	"Kernighan & Rob Pike", 937699};
-    
-    	book = book1;		/* struct assignment, memory copy */
-    	printf("title: %s\n", book.title);
-    	printf("author: %s\n", book.author);
-    	printf("book id: %d\n\n", book.id);
-
-    	book = book2;
-    	printf("title: %s\n", book.title);
-    	printf("author: %s\n", book.author);
-    	printf("book id: %d\n", book.id);
-    	return 0;
+    	  struct book book = {}, book1;
+      
+    	  book1.title = "The C programming language";
+    	  book1.author = "Brain W. Kernighan & Dennis M. Ritchie";
+    	  book1.id = 12806;
+      
+    	  struct book book2 = {"The UNIX programming environment",
+                              	"Kernighan & Rob Pike", 937699};
+      
+    	  book = book1;		/* struct assignment, memory copy */
+    	  printf("title: %s\n", book.title);
+    	  printf("author: %s\n", book.author);
+    	  printf("book id: %d\n\n", book.id);
+  
+    	  book = book2;
+    	  printf("title: %s\n", book.title);
+    	  printf("author: %s\n", book.author);
+    	  printf("book id: %d\n", book.id);
+    	  return 0;
 }
 ```
 </details>
