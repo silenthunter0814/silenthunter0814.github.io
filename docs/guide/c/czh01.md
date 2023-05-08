@@ -1526,11 +1526,11 @@ p = a;
 ```
 
 ::: info  数组名称在编译时转换为指针：  
-p = a;	&harr;	p = &a[0];  
-a[0]; &harr; p[0]; &harr; *p; &harr; *a; &harr; *(p + 0); &harr; *(a+0);  
-a[i]; &harr; p[i]; &harr; *(p + i);  
-x = a[i]; &harr; x = p[i]; &harr; x = *(p + i);  
-p = &a[i] &harr; p = a + i
+p = a;	<=>	p = &a[0];  
+a[0]; <=> p[0]; <=> *p; <=> *a; <=> *(p + 0); <=> *(a+0);  
+a[i]; <=> p[i]; <=> *(p + i);  
+x = a[i]; <=> x = p[i]; <=> x = *(p + i);  
+p = &a[i] <=> p = a + i
 :::
 
 ::: warning
