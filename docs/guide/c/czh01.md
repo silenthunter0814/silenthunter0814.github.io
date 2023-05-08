@@ -1942,6 +1942,8 @@ C 语言提供了库函数 `strdup`
 char *strdup(const char *s);
 ```
 
+`strdup()` 函数返回一个指向新字符串的指针，该字符串是字符串 `s` 的副本。 新字符串的内存使用 `malloc` 获得，并且可以使用 `free` 释放。
+
 ## 9 结构和联合 - struct and union
 ### 9.1 结构 - struct
 创建结构，结构变量
