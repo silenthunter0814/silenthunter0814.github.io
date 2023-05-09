@@ -298,11 +298,11 @@ unsigned char, unsigned short, unsigned int, unsigned long
 ```c
 int main()
 {
-    int x;
-    int y;
-    int m, n;
+	int x;
+	int y;
+	int m, n;
 
-    return 0;
+	return 0;
 }
 ```  
 
@@ -1036,7 +1036,7 @@ int main()
         for (i = 1; i <= rows; ++i) {
                 for (j = 1; j <= i; ++j) 
                         printf("* ");
-          		  printf("\n");
+          		printf("\n");
         }
         return 0;
 }
