@@ -1853,7 +1853,7 @@ s = "my test";
 #include<stdlib.h>
 
 int main() {
-        int	  i = 5;
+        int	i = 5;
         float	f = 8.3;
         void 	*p;
         int  	*ip;
