@@ -2187,7 +2187,59 @@ int main()
 ---
 ### 10.1 自引用结构 - self referential structure
 
+具有一个或多个指针成员，这些成员指针指向结构本身类型。
 
+```c
+struct node {
+        int     data;
+        struct node *next;
+};
+```
+
+需要考虑的重要一点是指针应该在访问之前正确初始化，因为默认情况下它包含垃圾值。
+
+---
+<details>
+<summary>创建新节点</summary>
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node {
+        int     data;
+        struct node *next;
+};
+
+struct node *newnode(int x)
+{
+        struct node *n;
+
+        if ((n = malloc(sizeof(*n))) == NULL) {
+                fprintf(stderr, "newnode: malloc error\n");
+                exit(1);
+        }
+        n->data = x;
+        n->next = NULL;
+        return n;
+}
+int main()
+{
+        struct node *p;
+
+        p = newnode(10);
+        p->next = newnode(20);
+        printf("node data: %d\n", p->data);
+        printf("next node data: %d\n", p->next->data);
+        return 0;
+}
+```
+</details>
+
+::: warning
+为了简化问题，在本示例中，我们最后没有释放 (`free`) `malloc` 分配的 node 节点内存。  
+当程序退出时，`malloc` 分配的内存会被释放。
+:::
 
 ---
 ### 10.2 链表 - link list
