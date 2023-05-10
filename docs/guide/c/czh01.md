@@ -2127,6 +2127,7 @@ default:
         statements
 }
 ```
+
 - break 语句将导致程序的执行立即从 switch 语句中退出
 - 当所有 case 语句都不匹配时执行 default 语句,并从 switch 语句中退出
 - 在 switch 语句中，case 的作用只是一个标号
