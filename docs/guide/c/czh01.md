@@ -2416,7 +2416,7 @@ int main()
 **一些关注点:**
 
   - `define NULL (void *)0
-  - `typedef long unsigned in size_t`
+  - `typedef long unsigned int size_t`
   - `'\0'` 空字符 0
   - `""` 空字符串，只包含字符 `'\0'`
   - `void` 空类型，作为函数无返回值类型，或者函数参数为空
