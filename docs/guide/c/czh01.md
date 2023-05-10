@@ -2180,10 +2180,15 @@ int main()
 ```
 </details>
 
-数据封装 
 
 ## 10 链表 - link list
+
+---
 ### 10.1 自引用结构 - self referential structure
+
+
+
+---
 ### 10.2 链表 - link list
 创建，打印链表
 atolink - 数组转换为链表
