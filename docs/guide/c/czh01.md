@@ -2431,7 +2431,7 @@ int main()
 ```
 </details>
 
-::: attention 注意
+::: attention 注意  
 宏参数 a, b 可以是表达式，为了保证正确的优先级，将 a, b 分别用 () 括起来是必要的。
 :::
 
@@ -2449,12 +2449,14 @@ int main()
 
 **C 语言关键字：**
 
+|---|---|---|---|---|---|
 | auto     | break  | case    | char   | const    | continue |
 | default  | do     | double  | else   | enum     | extern   |
 | float    | for    | goto    | if     | int      | long     |
 | register | return | short   | signed | sizeof   | static   |
 | struct   | switch | typedef | union  | unsigned | void     |
 | volatile | while  |         |        |          |          |
+
 
 **C 语言库函数:**
 
