@@ -2200,7 +2200,7 @@ struct node {
 
 ---
 <details>
-<summary>创建新节点</summary>
+<summary>newnode - 创建新节点</summary>
 
 ```c
 #include <stdio.h>
@@ -2243,10 +2243,233 @@ int main()
 
 ---
 ### 10.2 链表 - link list
-创建，打印链表
-atolink - 数组转换为链表
+
+链表 (link list) 是包含一系列链接节点 (node)的线性数据结构。每个节点 (node) 存储数据和下一个节点的地址。
+
+每个节点都是相同的自引用结构，包括： 
+- 一个数据项 (data item)
+- 下一个节点的地址 (pointer to another node, or NULL)
+
+---
+<details>
+<summary>printlink - 打印链表</summary>
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node {
+        int data;
+        struct node *next;
+};
+
+struct node *newnode(int);
+void printlink(struct node *);
+
+int main()
+{
+        struct node *head, *one, *two, *three;
+
+        one = newnode(10);
+        two = newnode(20);
+        three = newnode(30);
+
+        one->next = two;
+        two->next = three;
+        head = one;
+        printlink(head);
+        return 0;
+}
+
+void printlink(struct node *p)
+{
+        while (p != NULL) {
+                printf("%3d ", p->data);
+                p = p->next;
+        }
+        printf("\n");
+}
+
+struct node *newnode(int x)
+{
+        struct node *n;
+
+        if ((n = malloc(sizeof(*n))) == NULL) {
+                fprintf(stderr, "newnode: malloc error\n");
+                exit(1);
+        }
+        n->data = x;
+        n->next = NULL;
+        return n;
+}
+```
+</details>
+
+
+---
+<details>
+<summary>atolink - 数组转换为链表</summary>
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node {
+        int data;
+        struct node *next;
+};
+
+struct node *newnode(int);
+void printlink(struct node *);
+struct node *atolink(int *, int);
+
+int main()
+{
+        int arr[] = { 10, 20, 30, 40, 50 };
+        struct node *head;
+    
+        head = atolink(arr, sizeof(arr)/sizeof(arr[0]));
+        printlink(head);
+        return 0;
+}
+
+struct node *atolink(int a[], int n)    /* convert array to link list */
+{
+        struct node head = {}, *cur;
+    
+        cur = &head;
+        for (int i = 0; i < n; i++)
+                cur = cur->next = newnode(a[i]);
+        return head.next;
+}
+
+void printlink(struct node *p)
+{
+        while (p != NULL) {
+                printf("%3d ", p->data);
+                p = p->next;
+        }
+        printf("\n");
+}
+
+struct node *newnode(int x)
+{
+        struct node *n;
+
+        if ((n = malloc(sizeof(*n))) == NULL) {
+                fprintf(stderr, "newnode: malloc error\n");
+                exit(1);
+        }
+        n->data = x;
+        n->next = NULL;
+        return n;
+}
+```
+</details>
 
 ## 11 预处理器 - preprocessor
 
-## 12 标准输入, 标准输出, 错误输出 - stdin, stdout, stderr
+预处理器执行宏替换、条件编译以及包含指定的文件，以 `#` 开头的命令行就是预处理器处理的对象。
 
+预处理器有单独的语法，它不是 C 语言的一部分。
+
+- `#include` 指令
+
+  包含预定义的头文件名，并以 < > 包围， 如:  
+  `#include <stdio.h>`  
+  `#include <stdlib.h>`  
+
+- `#define` 指令
+
+  `#define` 指令允许在源代码中定义宏。这些宏定义允许声明常量值以在整个代码中使用。  
+  宏定义不是变量，不能像变量一样被程序代码更改。在创建表示数字、字符串或表达式的常量时，通常会使用此语法。
+
+
+---
+<details>
+<summary>define 宏定义</summary>
+
+```c
+#include <stdio.h>
+
+#define NAME    "Tom"
+#define AGE     10
+#define PI      3.14
+
+int main()
+{
+        printf("%s is over %d years old.\n", NAME, AGE);
+        printf("PI's value: %f\n", PI);
+        return 0;
+}
+```
+</details>
+
+- 参数宏
+
+  类函数宏可以接受参数，就像真正的函数一样。参数必须是有效的 C 标识符，以逗号和可选的空格分隔。
+
+---
+<details>
+<summary>参数宏</summary>
+
+```c
+#include <stdio.h>
+
+#define MAX(a,b) (a) > (b) ? (a) : (b)
+
+int main()
+{
+        int x, y, z;
+
+        x = 10;
+        y = 20;
+        z = MAX(x, y);  /* (x) > (y) ? (x) : (y) */
+        printf("max of x and y: %d\n", z);
+        return 0;
+}
+```
+</details>
+
+::: attention 注意
+宏参数 a, b 可以是表达式，为了保证正确的优先级，将 a, b 分别用 () 括起来是必要的。
+:::
+
+- 跨行连接
+
+  预处理器单行解析，行尾不需要 `;` 终结，如果一条指令需要跨越多行，需要在行尾添加 `\` 进行连接：
+
+```c
+#define MACROS	long line ...   \
+                continue line   \
+                end line
+```
+
+## 12 课程回顾
+
+**C 语言关键字：**
+
+| auto     | break  | case    | char   | const    | continue |
+| default  | do     | double  | else   | enum     | extern   |
+| float    | for    | goto    | if     | int      | long     |
+| register | return | short   | signed | sizeof   | static   |
+| struct   | switch | typedef | union  | unsigned | void     |
+| volatile | while  |         |        |          |          |
+
+**C 语言库函数:**
+
+  - `int printf(const char *format, ...);`
+  - `int fprintf(FILE *tream, const char *format, ...);`
+  - `int scanf(const char *format, ...);`
+  - `void exit(int status);`
+  - `char *strcpy(char *dest, const char *src);`
+  - `char *strcat(char *dest, const char *src);`
+  - `int strcmp(const char *s1, const char *s2);`
+  - `size_t strlen(const char *s);`
+  - `void *malloc(size_t size);`
+  - `void free(void *ptr);`
+
+
+**下一步是什么**
+
+数据结构和算法，C语言实现
