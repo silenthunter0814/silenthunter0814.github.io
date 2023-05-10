@@ -2065,7 +2065,7 @@ int main()
 
 ---
 <details>
-<summary>变量与指针，参数传递</summary>
+<summary>动态内存分配</summary>
 
 ```c
 #include <stdio.h>
