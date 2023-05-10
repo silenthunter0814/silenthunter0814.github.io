@@ -2117,14 +2117,18 @@ switch 语句是一种多路判定语句，它测试表达式是否与一些常�
 
 ```c
 switch(expr) {
-case const-expr: statements
-case const-expr: statements
+case const-expr: 
+        statements
+        break;
+case const-expr: 
+        statements
+        break;
 default:
         statements
 }
 ```
 - break 语句将导致程序的执行立即从 switch 语句中退出
-- 当所有 case 语句都不匹配时执行 default 语句
+- 当所有 case 语句都不匹配时执行 default 语句,并从 switch 语句中退出
 - 在 switch 语句中，case 的作用只是一个标号
 
 ---
