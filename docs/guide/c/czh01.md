@@ -2431,7 +2431,7 @@ int main()
 ```
 </details>
 
-::: attention 注意
+::: warning
 
 宏参数 a, b 可以是表达式，为了保证正确的优先级，将 a, b 分别用 () 括起来是必要的。
 
