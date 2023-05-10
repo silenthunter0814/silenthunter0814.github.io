@@ -2152,7 +2152,7 @@ datum add(datum d1, datum d2, int flag)
                 d.fval = d1.fval + d2.fval;
                 break;
         default:
-                fprintf(stderr, "add: unsupport datum type");
+                fprintf(stderr, "add: unsupport flag: %d\n", flag);
                 exit(1);
         }
         return d;
