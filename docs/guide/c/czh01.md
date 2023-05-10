@@ -2451,7 +2451,7 @@ int main()
 
 **C 语言关键字：**
 
-| | | | | | |
+| 1 | 2 | 3 | 4 | 5 | 6 |
 |---|---|---|---|---|---|
 | auto     | break  | case    | char   | const    | continue |
 | default  | do     | double  | else   | enum     | extern   |
