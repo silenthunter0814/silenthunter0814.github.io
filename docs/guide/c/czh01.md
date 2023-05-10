@@ -2111,8 +2111,71 @@ union 允许在同一内存位置存储不同的数据类型。可以定义具�
 
 union 的语法同 struct 相同。
 
-switch 语句
-union 示例
+**switch - case 语句**
+
+switch 语句是一种多路判定语句，它测试表达式是否与一些常量整数值中的某一个值匹配，并执行相应的分支动作。
+
+```c
+switch(expr) {
+case const-expr: statements
+case const-expr: statements
+default:
+        statements
+}
+```
+- break 语句将导致程序的执行立即从 switch 语句中退出
+- 当所有 case 语句都不匹配时执行 default 语句
+- 在 switch 语句中，case 的作用只是一个标号
+
+---
+<details>
+<summary>union 示例</summary>
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef union {
+    	int ival;
+    	float fval;
+}datum;
+
+datum add(datum d1, datum d2, int flag)
+{
+        datum   d;
+    
+        switch(flag) {  /* 0 integer val, 1 float val */
+        case 0:
+                d.ival = d1.ival + d2.ival;
+                break;
+        case 1:
+                d.fval = d1.fval + d2.fval;
+                break;
+        default:
+                fprintf(stderr, "add: unsupport datum type");
+                exit(1);
+        }
+        return d;
+}
+
+int main()
+{
+        datum   d1, d2, d3;
+
+        d1.ival = 3;
+        d2.ival = 10;
+        d3 = add(d1, d2, 0);
+        printf("3 + 10 = %d\n", d3.ival);
+
+        d1.fval = 2.5;
+        d2.fval = 3.1;
+        d3 = add(d1, d2, 1);
+        printf("2.5 + 3.1 = %.2f\n", d3.fval);
+        return 0;
+}
+```
+</details>
+
 数据封装 
 
 ## 10 链表 - link list
