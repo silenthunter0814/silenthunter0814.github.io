@@ -2413,7 +2413,7 @@ int main()
   - `void *malloc(size_t size);`
   - `void free(void *ptr);`
 
-**一些关注点**
+**一些关注点:**
 
   - `define NULL (void *)0
   - `typedef long unsigned in size_t`
@@ -2423,7 +2423,7 @@ int main()
   - `void *` 通用指针类型
   - `stdin, stdout, stderr` 预定义的文件指针 (`File *`) 类型，标准输入，标准输出和标准错误
 
-**下一步是什么**
+**下一步是什么?**
 
 数据结构和算法，C语言实现
 
