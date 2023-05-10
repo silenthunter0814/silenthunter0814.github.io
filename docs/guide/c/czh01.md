@@ -2464,7 +2464,7 @@ int main()
 **C 语言库函数:**
 
   - `int printf(const char *format, ...);`
-  - `int fprintf(FILE *tream, const char *format, ...);`
+  - `int fprintf(FILE *stream, const char *format, ...);`
   - `int scanf(const char *format, ...);`
   - `void exit(int status);`
   - `char *strcpy(char *dest, const char *src);`
