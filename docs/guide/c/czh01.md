@@ -2062,9 +2062,55 @@ int main()
 ### typedef
 
 用于为一种数据类型创建附加名称（别名），但不创建新类型，通常用于简化声明复杂的类型组成的结构。
+
 ---
-### 9.2 联合 - union
-typedef
+<details>
+<summary>变量与指针，参数传递</summary>
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct tag_point point;
+struct tag_point{
+	int     x;
+	int	y;
+};
+
+typedef struct tag_book{
+	char    *title;
+	char	*author;
+	int	id;
+}book;
+
+int main()
+{
+        point	p = {3, 5};
+        book    *b;
+        
+        if ((b = malloc(sizeof(*b))) == NULL) {
+                fprintf(stderr, "malloc error\n");
+                exit(1);
+        }
+        b->title = "tcpl";
+        b->author = "bwk & dmr";
+        b->id = 12598;
+        
+        printf("point:\nx = %d\ny = %d\n\n", p.x, p.y);
+        printf("book:\n");
+        printf("title: %s\nauthor: %s\nid: %d\n",b->title, b->author, b->id);
+        return 0;
+}
+```
+</details>
+
+---
+### 9.3 联合 - union
+
+union 允许在同一内存位置存储不同的数据类型。可以定义具有许多成员的联合，但在任何给定时间只有一个成员可以包含值。联合提供了一种将同一内存位置用于多种用途的有效方式。
+
+union 的语法同 struct 相同。
+
 switch 语句
 union 示例
 数据封装 
