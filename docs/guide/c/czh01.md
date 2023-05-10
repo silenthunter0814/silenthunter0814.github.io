@@ -1106,7 +1106,7 @@ return-type function-name(argument declarations)
 
 ---  
 <details>
-<summary>code example</summary>
+<summary>两数之和</summary>
 
 ```c
 #include <stdio.h>
@@ -1136,7 +1136,7 @@ int sum(int a, int b)     /* function declaration and definition */
 
 ---  
 <details>
-<summary>code example</summary>
+<summary>两数最大值</summary>
 
 ```c
 #include <stdio.h>
@@ -1169,7 +1169,7 @@ C 程序由全局变量和函数组成。
 
 ---  
 <details>
-<summary>code example</summary>
+<summary>全局变量</summary>
 
 ```c
 #include <stdio.h>
@@ -1204,9 +1204,8 @@ void f()
 调用自身的函数称为递归函数。而且，这种技术被称为递归。  
 
 ---  
-自然数之和 - 递归算法
 <details>
-<summary>code example</summary>
+<summary>自然数之和 - 递归算法</summary>
 
 ```c
 #include <stdio.h>
@@ -1229,9 +1228,8 @@ int main()
 </details>
 
 ---
-正序和倒序打印 n 个自然数
 <details>
-<summary>code example</summary>
+<summary>正序和倒序打印 n 个自然数</summary>
 
 ```c
 #include <stdio.h>
@@ -1433,7 +1431,7 @@ int main()
 
       	arr[0] = 5;
       	arr[2] = -10;
-      	arr[3 / 2] = 2; 			/* same as arr[1] = 2 */
+      	arr[3 / 2] = 2; 	/* same as arr[1] = 2 */
       	arr[3] = arr[0];
   
    	    x = arr[3];
@@ -1730,7 +1728,7 @@ c = 'a' + i;
 
 ---
 <details>
-<summary>code example</summary>
+<summary>字符数组</summary>
 
 ```c
 #include <stdio.h>
@@ -1753,7 +1751,7 @@ int main()
 
 ---
 <details>
-<summary>code example</summary>
+<summary>字符串</summary>
 
 ```c
 #include <stdio.h>
@@ -2060,8 +2058,11 @@ int main()
 ```
 </details>
 
-结构作为函数的参数
-指向结构的指针
+---
+### typedef
+
+用于为一种数据类型创建附加名称（别名），但不创建新类型，通常用于简化声明复杂的类型组成的结构。
+---
 ### 9.2 联合 - union
 typedef
 switch 语句
