@@ -2362,6 +2362,49 @@ void printarray(int arr[], int n)
 ---
 ### 11.2 二分查找 - binary search
 
+---
+<details>
+<summary>bubble - 冒泡排序</summary>
+
+```c
+#include <stdio.h>
+
+void swap(int *, int *);
+void printarray(int *, int);
+void bubble(int *, int);
+
+int binsearch(int x, int v[], int n)
+{
+        int low, high, mid;
+
+        low = 0;
+        high = n - 1;
+        while (low <= high) {
+                mid = (low + high) / 2;
+                if (x < v[mid])
+                        high = mid - 1;
+                else if (x > v[mid])
+                        low = mid + 1;
+                else    /* found match */
+                        return mid;
+    	}
+    	return -1;      /* no match */
+}
+
+int main()
+{
+        int arr[] = {64, 34, 25, 12, 22, 11, 90};
+        int n = sizeof(arr)/sizeof(arr[0]);
+
+        bubble(arr, n);
+        printf("Sorted array: \n");
+        printarray(arr, n);
+        printf("Index of 25 is: %d\n", binsearch(25, arr, n));
+        printf("Index of 8 is: %d\n", binsearch(8, arr, n));
+        return 0;
+}
+```
+</details>
   
 ## 12 预处理器 - preprocessor
 
