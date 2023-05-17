@@ -2364,7 +2364,7 @@ void printarray(int arr[], int n)
 
 ---
 <details>
-<summary>bubble - 冒泡排序</summary>
+<summary>binsearch - 二分查找</summary>
 
 ```c
 #include <stdio.h>
