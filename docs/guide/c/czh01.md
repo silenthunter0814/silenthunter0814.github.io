@@ -2342,7 +2342,8 @@ int main()
         return 0;
 }
 
-void swap(int *x, int *y) {
+void swap(int *x, int *y)
+{
         int t = *x;
         *x = *y;
         *y = t;
