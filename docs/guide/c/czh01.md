@@ -2312,6 +2312,54 @@ struct node *newnode(int x)
 ### 11.1 冒泡排序 - bubblesort
 
 ---
+<details>
+<summary>bubble - 冒泡排序</summary>
+
+```c
+#include <stdio.h>
+
+void swap(int *, int *);
+void printarray(int *, int);
+
+void bubble(int v[], int n)
+{
+        int i, j;
+
+        for (i = 0; i < n; i++)
+                for (j = 0; j < n-i-1; j++)
+                        if (v[j] > v[j+1])
+                                swap(&v[j], &v[j+1]);
+}
+
+
+int main()
+{
+        int arr[] = {64, 34, 25, 12, 22, 11, 90};
+        int n = sizeof(arr)/sizeof(arr[0]);
+
+        bubble(arr, n);
+        printf("Sorted array: \n");
+        printarray(arr, n);
+        return 0;
+}
+
+void swap(int *x, int *y) {
+        int t = *x;
+        *x = *y;
+        *y = t;
+}
+
+void printarray(int arr[], int n)
+{
+        int i;
+
+        for (i=0; i < n; i++)
+                printf("%d ", arr[i]);
+        printf("\n");
+}
+```
+</details>
+---
 ### 11.2 二分查找 - binary search
 
   
