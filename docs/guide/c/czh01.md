@@ -2331,7 +2331,6 @@ void bubble(int v[], int n)
                                 swap(&v[j], &v[j+1]);
 }
 
-
 int main()
 {
         int arr[] = {64, 34, 25, 12, 22, 11, 90};
