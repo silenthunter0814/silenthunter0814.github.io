@@ -74,7 +74,7 @@ function sidebarGuide() {
       collapsed: false,
       items: [
         { text: 'web 开发入门教程', link: '/guide/web/web' },
-        { text: 'Eloquent JavaScript', link: '/guide/web/Eloquent' }
+        { text: 'Eloquent JavaScript', link: '/guide/web/eloquent' }
       ]
     },
     {
