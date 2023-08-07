@@ -4,7 +4,7 @@ author: silenthunter0814, Silent Hunter
 ---
 
 
-# js01 web 开发入门教程
+# web01 web 开发入门教程
 
 ## 从哪里开始
 
