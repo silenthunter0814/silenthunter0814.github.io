@@ -73,7 +73,7 @@ function sidebarGuide() {
       text: 'WEB 开发从前端到全栈',
       collapsed: false,
       items: [
-        { text: 'web 开发入门教程', link: '/guide/web/web' }
+        { text: '01 web 开发入门教程', link: '/guide/web/js01' }
       ]
     },
     {
