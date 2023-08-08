@@ -7,7 +7,7 @@ author: silenthunter0814, Silent Hunter
 
 环境需求
   - google chrome 浏览器
-  - google devtools 开发者工具
+  - google chrome devtools 开发者工具
 
 
 ## 1 JavaScript 基础
