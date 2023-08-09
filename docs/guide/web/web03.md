@@ -221,6 +221,69 @@ console.log(child.nodeValue);
 </html>
 ```
 
+### 1.7 使用 JavaScript 方法创建元素和文本节点
+
+当浏览器解析 HTML 文档时，它会根据 HTML 文件的内容构造节点并形成 DOM 树。  
+然后，可以使用 JavaScript 在 DOM 树中动态创建新的节点。
+
+- createElement(tagName) 创建一个由标签名称 tagName 指定的 HTML 元素。
+- createTextNode(string) 创建一个新的文本节点。
+
+```html
+<!DOCTYPE html>
+<html lang="en-US">
+<body>    
+<script>
+
+var elem = document.createElement('div');
+console.log(elem, elem.nodeType);
+
+var textNode = document.createTextNode('Hi');
+console.log(textNode, textNode.nodeType);
+
+</script>
+</body>
+</html>
+```
+
+### 1.8 使用 JavaScript 字符串创建元素和文本节点并将其添加到 DOM
+innerHTML，outerHTML，textContent 属性和 insertAdjacentHTML() 方法提供了使用 JavaScript 字符串创建节点并将其添加到 DOM 的功能。  
+- document.getElementById(id) 返回一个匹配特定 ID的元素。
+
+```html
+<!DOCTYPE html>
+<html lang="en-US">
+<body> 
+
+<div id="A"></div> 
+<span id="B"></span> 
+<div id="C"></div> 
+<div id="D"></div> 
+<div id="E"></div> 
+
+<script>
+
+document.getElementById('A').innerHTML = '<strong>Hi</strong>';
+
+document.getElementById('B').outerHTML = '<div id="B" class="new">Whats shaking</div>';
+
+document.getElementById('C').textContent = 'dude';
+
+document.getElementById('D').innerText = 'Keep it';
+
+document.getElementById('E').outerText = 'real!';
+
+console.log(document.body.innerHTML);
+      
+</script>
+</body>
+</html>
+
+```
+
+
+
+
 ## 2 文档节点
 
 
