@@ -11,6 +11,28 @@ author: silenthunter0814, Silent Hunter
 
 ## 1 节点概述
 
+### 1.1 DOM 文档对象模型
+
+Document Object Model, 浏览器加载 HTML 文件并解析创建一个树形内存数据结构，这被称作文档对象模型。
+
+```html
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>  
+    <title>DOM Enlightenment</title>
+  </head>
+  <body>
+
+  </body>
+</html>
+```
+DOM:
+
+- document
+  - html
+    - head
+      - title
+    - body
 
 
 ## 2 文档节点
