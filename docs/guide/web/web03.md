@@ -71,6 +71,7 @@ for (let key in Node) {
 NOTE: Node只是一个 JavaScript 构造函数。因此逻辑上Node继承自Object.prototype就像 JavaScript 中的所有对象一样。
 
 ```javascript
+// <a href="#">Hi</a>
 var anchor = document.querySelector('a');
 var props = [];
 
@@ -80,6 +81,9 @@ for(var key in anchor){
 console.log(props.sort());
 console.dir(anchor);
 ```
+
+Document 方法 querySelector() 返回文档中与指定选择器或选择器组匹配的第一个元素。 如果未找到匹配项，则返回 null。  
+NOTE: 匹配是使用文档节点的深度优先前序遍历来完成的。  
 
 锚节点(a)继承自 HTMLAnchorElement、HTMLElement、Element、Node、EventTarget 和 Object。  
 该继承链为所有节点类型提供了大量共享方法和属性。
