@@ -90,7 +90,9 @@ NOTE: 匹配是使用文档节点的深度优先前序遍历来完成的。
 
 ### 1.4 工作节点的属性和方法
 
-常见的节点属性和方法
+常见的节点属性和方法  
+
+Node 属性：
 - childNodes
 - firstChild
 - lastChild
@@ -101,7 +103,9 @@ NOTE: 匹配是使用文档节点的深度优先前序遍历来完成的。
 - parentNode
 - previousSibling 当前节点的前一个兄弟节点，如果没有则为 null。
 
-
+Node 方法：
+- appendchild(aChild) 返回新追加的节点
+- cloneNode(bool) 返回调用该方法的节点的副本。true: 克隆子节点树
 
 
 ## 2 文档节点
