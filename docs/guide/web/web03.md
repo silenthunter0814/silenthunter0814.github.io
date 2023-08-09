@@ -52,12 +52,35 @@ DOM 的目的是提供一个编程接口，用于使用 JavaScript 编写此实�
 这些节点属性是常量值，用于存储映射到特定类型的节点对象的数字代码值。
 
 ```javascript
-const prefix = '<p style=color:green;>';
-const suffix = '</p>';
 for (let key in Node) {
-    document.writeln(prefix + key + ' = ' + Node[key] + suffix);
+    console.log(key + ' = ' + Node[key]);
 }
 ```
+
+### 1.3 子节点对象继承自Node对象
+
+典型 DOM 树中的每个节点对象都继承 Node 的属性和方法。
+
+- HTML*Element > HTMLElement > Element > Node > EventTarget > Object
+- Text > CharacterData > Node > EventTarget > Object
+- HTMLDocument > Document > Node > EventTarget > Object
+- DocumentFragment > Node > EventTarget > Object
+
+例如，所有 HTMLAnchorElement 节点都从 HTMLElement、Element、Node 和 Object 对象继承属性和方法。
+
+NOTE: Node只是一个 JavaScript 构造函数。因此逻辑上Node继承自Object.prototype就像 JavaScript 中的所有对象一样。
+
+```javascript
+var anchor = document.querySelector('a');
+var props = [];
+
+for(var key in anchor){
+    props.push(key);   
+}
+console.log(props.sort());
+console.dir(anchor);
+```
+
 
 ## 2 文档节点
 
