@@ -70,8 +70,15 @@ for (let key in Node) {
 
 NOTE: Node只是一个 JavaScript 构造函数。因此逻辑上Node继承自Object.prototype就像 JavaScript 中的所有对象一样。
 
-```javascript
-// <a href="#">Hi</a>
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<a href="#">Hi</a> <!-- this is a HTMLAnchorElement which inherits from... -->
+
+<script>
+  
 var anchor = document.querySelector('a');
 var props = [];
 
@@ -79,7 +86,10 @@ for (var key in anchor){
     props.push(key);   
 }
 console.log(props.sort());
-console.dir(anchor);
+
+</script>
+</body>
+</html>
 ```
 
 Document 方法 querySelector() 返回文档中与指定选择器或选择器组匹配的第一个元素。 如果未找到匹配项，则返回 null。  
@@ -133,7 +143,7 @@ HTML element 方法：
 - insertAdjacentHTML(pos, text) 将指定的文本解析为 HTML 或 XML，并将结果节点插入到 DOM 树中的指定位置。
 
 ### 1.5 识别节点的类型和名称
-
+每个节点都有一个继承自 Node 的 nodeType 和 nodeName 属性。 例如，文本节点的 nodeType 代码为 3 (Node.TEXT_NODE === 3)，nodeName 值为“#text”。
 
 
 
