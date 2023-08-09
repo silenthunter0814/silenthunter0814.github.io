@@ -66,7 +66,7 @@ for (let key in Node) {
 - HTMLDocument > Document > Node > EventTarget > Object
 - DocumentFragment > Node > EventTarget > Object
 
-例如，所有 HTMLAnchorElement 节点都从 HTMLElement、Element、Node 和 Object 对象继承属性和方法。
+例如，所有 HTMLAnchorElement 节点都从 HTMLElement、Element、Node、EventTarget 和 Object 对象继承属性和方法。
 
 NOTE: Node只是一个 JavaScript 构造函数。因此逻辑上Node继承自Object.prototype就像 JavaScript 中的所有对象一样。
 
@@ -81,6 +81,8 @@ console.log(props.sort());
 console.dir(anchor);
 ```
 
+锚节点(a)继承自 HTMLAnchorElement、HTMLElement、Element、Node、EventTarget 和 Object。  
+该继承链为所有节点类型提供了大量共享方法和属性。
 
 ## 2 文档节点
 
