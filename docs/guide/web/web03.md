@@ -248,7 +248,7 @@ console.log(textNode, textNode.nodeType);
 
 ### 1.8 使用 JavaScript 字符串创建元素和文本节点并将其添加到 DOM
 innerHTML，outerHTML，textContent 属性和 insertAdjacentHTML() 方法提供了使用 JavaScript 字符串创建节点并将其添加到 DOM 的功能。  
-- document.getElementById(id) 返回一个匹配特定 ID的元素。
+- document.getElementById(id) 返回一个匹配特定 ID 的元素。
 
 ```html
 <!DOCTYPE html>
@@ -291,7 +291,10 @@ element.insertAdjacentHTML(position, text)
   - 'afterend' 元素自身的后面
 - text 要被解析为 HTML 或 XML 元素，并插入到 DOM 树中的 DOMString。
 
-
+### 1.9 将 DOM 树的一部分提取为 JavaScript 字符串
+### 1.10 使用 appendChild() & insertBefore()将 节点对象添加到DOM
+### 1.11 使用 removeChild() 和 replaceChild()删除和替换节点
+### 1.12 使用 cloneNode() 克隆节点
 
 ## 2 文档节点
 
