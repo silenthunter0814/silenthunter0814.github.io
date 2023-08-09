@@ -23,7 +23,9 @@ Document Object Model, 浏览器加载 HTML 文件并解析创建一个树形内
   </head>
   <body>
 
-    <script src="./main.js"></script>
+    <script>
+
+    </script>
   </body>
 </html>
 ```
@@ -281,7 +283,7 @@ console.log(document.body.innerHTML);
 
 ```
 
-element.insertAdjacentHTML(position, text)  
+element.insertAdjacentHTML(position, text) 方法仅适用于Element节点，比前面提到的方法更精确。  
 将指定的文本解析为 Element 元素，并将结果节点插入到 DOM 树中的指定位置。
 
 - position 插入内容相对于元素的位置:
@@ -290,6 +292,38 @@ element.insertAdjacentHTML(position, text)
   - 'beforeend' 插入元素内部的最后一个子节点之后
   - 'afterend' 元素自身的后面
 - text 要被解析为 HTML 或 XML 元素，并插入到 DOM 树中的 DOMString。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+  
+<i id="elm">how</i>
+
+<script>
+
+var elm = document.getElementById('elm');
+
+elm.insertAdjacentHTML('beforebegin', '<span>Hey-</span>');
+elm.insertAdjacentHTML('afterbegin', '<span>dude-</span>');
+elm.insertAdjacentHTML('beforeend', '<span>-are</span>');
+elm.insertAdjacentHTML('afterend', '<span>-you?</span>');
+
+console.log(document.body.innerHTML);
+
+</script>
+</body>
+</html>
+
+```
+
+- NOTE
+  - innerHTML 属性会将字符串中找到的 html 元素转换为实际的 DOM 节点，而 textContent 只能用于构造文本节点。
+  - insertAdjacentHTML 选项“beforebegin”和“afterend”仅在节点位于 DOM 树中并且具有父元素时才起作用。
+  - innerHTML 调用一个笨重且昂贵的 HTML 解析器。
+
+
+
 
 ### 1.9 将 DOM 树的一部分提取为 JavaScript 字符串
 ### 1.10 使用 appendChild() & insertBefore()将 节点对象添加到DOM
