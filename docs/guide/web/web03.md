@@ -197,6 +197,30 @@ console.log(
 ### 1.6 获取节点值
 对于大多数节点类型（Text和Comment除外）， nodeValue属性都会返回null。它的用途主要是从文本和注释节点中提取实际的文本字符串。
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<a href="#">Hi</a> 
+
+<script>
+
+console.log(document.doctype.nodeValue);
+console.log(document.nodeValue);
+console.log(document.createDocumentFragment().nodeValue);
+console.log(document.querySelector('a').nodeValue);
+
+var child = document.querySelector('a').firstChild;
+console.log(child.nodeValue);
+child.nodeValue = "hello";
+console.log(child.nodeValue);
+
+</script>
+</body>
+</html>
+```
+
 ## 2 文档节点
 
 
