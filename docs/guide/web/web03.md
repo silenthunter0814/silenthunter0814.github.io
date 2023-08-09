@@ -88,9 +88,25 @@ NOTE: 匹配是使用文档节点的深度优先前序遍历来完成的。
 锚节点(a)继承自 HTMLAnchorElement、HTMLElement、Element、Node、EventTarget 和 Object。  
 该继承链为所有节点类型提供了大量共享方法和属性。
 
+### 1.4 工作节点的属性和方法
+
+常见的节点属性和方法
+- childNodes
+- firstChild
+- lastChild
+- nextSibling 当前节点的下一个同级节点，如果没有则为 null。
+- nodeName
+- nodeType
+- nodeValue 包含当前节点值（如果有）的字符串。 对于 document 本身，nodeValue 返回 null。
+- parentNode
+- previousSibling 当前节点的前一个兄弟节点，如果没有则为 null。
+
+
+
+
 ## 2 文档节点
 
-### 1.4 工作节点的属性和方法
+
 
 
 
