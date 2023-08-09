@@ -78,7 +78,7 @@ NOTE: Node只是一个 JavaScript 构造函数。因此逻辑上Node继承自Obj
 <a href="#">Hi</a> <!-- this is a HTMLAnchorElement which inherits from... -->
 
 <script>
-  
+
 var anchor = document.querySelector('a');
 var props = [];
 
@@ -145,8 +145,55 @@ HTML element 方法：
 ### 1.5 识别节点的类型和名称
 每个节点都有一个继承自 Node 的 nodeType 和 nodeName 属性。 例如，文本节点的 nodeType 代码为 3 (Node.TEXT_NODE === 3)，nodeName 值为“#text”。
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
 
+<a href="#">Hi</a> 
 
+<script>
+  
+console.log(
+    document.doctype.nodeName,
+    document.doctype.nodeType
+);
+
+console.log(
+    document.nodeName,
+    document.nodeType
+);
+
+console.log(
+    document.createDocumentFragment().nodeName,
+    document.createDocumentFragment().nodeType
+);
+
+console.log(
+    document.querySelector('a').nodeName,
+    document.querySelector('a').nodeType
+);
+    
+console.log(
+    document.querySelector('a').firstChild.nodeName,
+    document.querySelector('a').firstChild.nodeType,
+    document.querySelector('a').firstChild.nodeValue
+);
+
+</script>
+</body>
+</html>
+```
+确定节点是否属于某种类型的最快方法就是简单地检查其 nodeType 属性。
+
+检查一个节点类型是否为元素节点：
+
+```javascript
+console.log(
+    document.querySelector('a').nodeType === 1,
+    document.querySelector('a').nodeType === Node.ELEMENT_NODE
+);
+```
 
 ## 2 文档节点
 
