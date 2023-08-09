@@ -23,6 +23,7 @@ Document Object Model, 浏览器加载 HTML 文件并解析创建一个树形内
   </head>
   <body>
 
+    <script src="./main.js"></script>
   </body>
 </html>
 ```
@@ -33,7 +34,9 @@ DOM:
     - head
       - title
     - body
+      - script
 
+DOM 的目的是提供一个编程接口，用于使用 JavaScript 编写此实时文档的脚本（删除、添加、替换、事件处理、修改）。
 
 ## 2 文档节点
 
