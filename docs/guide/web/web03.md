@@ -176,8 +176,7 @@ console.log(
     
 console.log(
     document.querySelector('a').firstChild.nodeName,
-    document.querySelector('a').firstChild.nodeType,
-    document.querySelector('a').firstChild.nodeValue
+    document.querySelector('a').firstChild.nodeType
 );
 
 </script>
@@ -194,6 +193,9 @@ console.log(
     document.querySelector('a').nodeType === Node.ELEMENT_NODE
 );
 ```
+
+### 1.6 获取节点值
+对于大多数节点类型（Text和Comment除外）， nodeValue属性都会返回null。它的用途主要是从文本和注释节点中提取实际的文本字符串。
 
 ## 2 文档节点
 
