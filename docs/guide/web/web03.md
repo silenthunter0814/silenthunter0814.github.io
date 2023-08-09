@@ -38,6 +38,17 @@ DOM:
 
 DOM 的目的是提供一个编程接口，用于使用 JavaScript 编写此实时文档的脚本（删除、添加、替换、事件处理、修改）。
 
+### 1.2 节点对象类型
+
+最常见节点类型:
+
+- DOCUMENT_NODE (`window.document`)
+- ELEMENT_NODE  (`<body>, <a>, <p>, <script>, <style>, <html>, <h1>...`)
+- ATTRIBUTE_NODE  (`class="funEgges"`)
+- TEXT_NODE (html 文档中的文本字符，包括回车符和空格)
+- DOCUMENT_FRAGMENT_NODE  (`document.createDocumentFragment()`)
+- DOCUMENT_TYPE_NODE  (`<!DOCTYPE html>`)
+
 ## 2 文档节点
 
 
