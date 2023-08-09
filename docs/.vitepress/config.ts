@@ -75,7 +75,7 @@ function sidebarGuide() {
       items: [
         { text: '01 web 开发入门教程', link: '/guide/web/web01' },
         { text: '02 JavaScript 教程', link: '/guide/web/web02' },
-        { text: '3 DOM 启示录', link: '/guide/web/web03' }
+        { text: '03 DOM 启示录', link: '/guide/web/web03' }
       ]
     },
     {

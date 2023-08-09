@@ -75,7 +75,7 @@ NOTE: Node只是一个 JavaScript 构造函数。因此逻辑上Node继承自Obj
 var anchor = document.querySelector('a');
 var props = [];
 
-for(var key in anchor){
+for (var key in anchor){
     props.push(key);   
 }
 console.log(props.sort());
@@ -116,6 +116,26 @@ Node 方法：
 Document 方法：
 - document.createElement(tagname) 返回一个新的 HTMLElement
 - document.createTextNode(string) 返回一个Text节点。
+
+HTML*Element 属性：
+- innerHTML 获取或设置元素中包含的 HTML 或 XML 标记。
+- outerHTML 获取描述元素（包括其后代）的序列化HTML 片段。或设置为用从给定字符串解析的节点替换元素。
+- textContent 节点及其后代的文本内容。返回字符串或 null。
+- innerText 表示元素的呈现文本内容的字符串。
+- outerText 表示元素及其后代的呈现文本内容的字符串。
+- firstElementChild 获取第一个子元素 Element 对象，或者 null。
+- lastElementChild 
+- nextElementSibling
+- previiousElementSibling
+- children 返回一个实时 HTMLCollection，其中包含调用它的元素的所有子元素。for...of 遍历。
+
+HTML element 方法：
+- insertAdjacentHTML(pos, text) 将指定的文本解析为 HTML 或 XML，并将结果节点插入到 DOM 树中的指定位置。
+
+### 1.5 识别节点的类型和名称
+
+
+
 
 
 ## 2 文档节点
