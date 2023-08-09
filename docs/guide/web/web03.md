@@ -321,11 +321,15 @@ console.log(document.body.innerHTML);
   - innerHTML 属性会将字符串中找到的 html 元素转换为实际的 DOM 节点，而 textContent 只能用于构造文本节点。
   - insertAdjacentHTML 选项“beforebegin”和“afterend”仅在节点位于 DOM 树中并且具有父元素时才起作用。
   - innerHTML 调用一个笨重且昂贵的 HTML 解析器。
-
-
-
+  - textContent 获取所有元素的内容，包括 <script> 和 <style> 元素，innerText 不获取
+  - innerText 能够识别样式，并且不会返回隐藏元素的文本，而 textContent 会
 
 ### 1.9 将 DOM 树的一部分提取为 JavaScript 字符串
+
+
+
+
+
 ### 1.10 使用 appendChild() & insertBefore()将 节点对象添加到DOM
 ### 1.11 使用 removeChild() 和 replaceChild()删除和替换节点
 ### 1.12 使用 cloneNode() 克隆节点
