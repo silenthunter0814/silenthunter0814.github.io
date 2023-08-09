@@ -281,6 +281,15 @@ console.log(document.body.innerHTML);
 
 ```
 
+element.insertAdjacentHTML(position, text)  
+将指定的文本解析为 Element 元素，并将结果节点插入到 DOM 树中的指定位置。
+
+- position 插入内容相对于元素的位置:
+  - 'beforebegin' 元素自身的前面
+  - 'afterbegin' 插入元素内部的第一个子节点之前
+  - 'beforeend' 插入元素内部的最后一个子节点之后
+  - 'afterend' 元素自身的后面
+- text 要被解析为 HTML 或 XML 元素，并插入到 DOM 树中的 DOMString。
 
 
 
