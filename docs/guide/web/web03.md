@@ -104,8 +104,18 @@ Node 属性：
 - previousSibling 当前节点的前一个兄弟节点，如果没有则为 null。
 
 Node 方法：
-- appendchild(aChild) 返回新追加的节点
-- cloneNode(bool) 返回调用该方法的节点的副本。true: 克隆子节点树
+- appendchild(aChild) 返回新追加的节点。
+- cloneNode(bool) 返回调用该方法的节点的副本。true: 克隆子节点树。
+- contains(otherNode) 如果节点中包含 otherNode，则为 true；如果不包含，则为 false。
+- hasChildNodes() 如果节点有子节点，则为 true，否则为 false。
+- insertBefore(new, ref)
+- isEqualNode(other)
+- removeChild(child)
+- replaceChild(new, old) 如果 new 在 DOM 中已经存在，则首先将其从原位置删除。
+
+Document 方法：
+- document.createElement(tagname) 返回一个新的 HTMLElement
+- document.createTextNode(string) 返回一个Text节点。
 
 
 ## 2 文档节点
