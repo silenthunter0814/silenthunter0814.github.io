@@ -49,6 +49,16 @@ DOM 的目的是提供一个编程接口，用于使用 JavaScript 编写此实�
 - DOCUMENT_FRAGMENT_NODE  (`document.createDocumentFragment()`)
 - DOCUMENT_TYPE_NODE  (`<!DOCTYPE html>`)
 
+这些节点属性是常量值，用于存储映射到特定类型的节点对象的数字代码值。
+
+```javascript
+const prefix = '<p style=color:green;>';
+const suffix = '</p>';
+for (let key in Node) {
+    document.writeln(prefix + key + ' = ' + Node[key] + suffix);
+}
+```
+
 ## 2 文档节点
 
 
