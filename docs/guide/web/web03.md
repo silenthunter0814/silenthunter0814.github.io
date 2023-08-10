@@ -935,7 +935,7 @@ console.log(document.body);
 </html>
 ```
 
-NOTE:
+NOTE:  
 - document.doctype 不会出现在 document.childNodes 列表中。
 
 ### 2.6 使用 document.implementation.hasFeature() 检测 DOM 规范/特性
@@ -957,7 +957,7 @@ console.log(document.implementation.hasFeature('Core', '3.0'));
 </html>
 ```
 
-NOTE
+NOTE  
 - 不再被使用，但继续存在（并且只是返回 true），以便旧页面不会停止工作。
 
 ### 2.7 获取文档中焦点/活动节点的引用
@@ -978,6 +978,47 @@ HTMLElement.focus()方法将焦点设置在指定元素上（如果可以聚焦�
 document.querySelector('textarea').focus();
 
 console.log(document.activeElement);
+      
+</script>
+</body>
+</html>
+```
+
+NOTE:  
+- 不要将节点的选择（使用鼠标突出显示 HTML 页面的部分）与通过击键、空格键或鼠标输入内容而获得焦点的元素混淆。
+
+### 2.8 确定文档或文档内的任何节点是否具有焦点
+
+使用 document.hasFocus() 方法可以知道用户当前是否聚焦在已加载 HTML 文档的窗口上。
+
+```html
+<!DOCTYPE html>
+<html lang="en-US">
+<body>
+
+<script>
+
+setTimeout(function() {
+    console.log(document.hasFocus());
+}, 5000);
+      
+</script>
+</body>
+</html>
+```
+
+### 2.9 document.defaultview 是 head/global 对象的快捷方式
+
+Web 浏览器中的 head 对象是 window 对象，defaultView 在 JavaScript 浏览器环境中将指向该对象
+
+```html
+<!DOCTYPE html>
+<html lang="en-US">
+<body>
+
+<script>
+
+console.log(document.defaultView);  // window object
       
 </script>
 </body>
