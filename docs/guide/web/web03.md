@@ -410,12 +410,122 @@ insertBefore() 需要两个参数，即要插入的节点和文档中您希望�
 
 
 ### 1.11 使用 removeChild() 和 replaceChild()删除和替换节点
+从 DOM 中删除节点是一个多步骤的过程:
+- 选择要删除的节点。
+- 使用 parentNode 属性来访问其父元素。
+- 在父节点上调用 removeChild() 方法，并向其传递对要删除的节点的引用。
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+  
+<div id="A">Hi</div>
+<div id="B">Dude</div>
 
+<script>
 
+var divA = document.getElementById('A');
+divA.parentNode.removeChild(divA);
 
+var text = document.getElementById('B').firstChild;
+text.parentNode.removeChild(text);
+
+console.log(document.body.innerHTML);
+
+</script>
+</body>
+</html>
+```
+
+replaceChild(new, old) 替换节点，如果 new 在 DOM 中已经存在，则首先将其从原位置删除。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+  
+<div id="A">Hi</div>
+<div id="B">Dude</div>
+
+<script>
+
+var divA = document.getElementById('A');
+var span = document.createElement('span');
+span.textContent = 'Howdy';
+divA.parentNode.replaceChild(span, divA);
+
+var text = document.getElementById('B').firstChild;
+var newText = document.createTextNode('buddy');
+text.parentNode.replaceChild(newText, text);
+
+console.log(document.body.innerHTML);nerHTML);
+
+</script>
+</body>
+</html>
+```
+
+ReplaceChild() 和removeChild() 都返回被替换或删除的节点。
 
 ### 1.12 使用 cloneNode() 克隆节点
+使用cloneNode()方法可以复制单个节点或节点及其所有子节点。
+
+在下面的代码中，仅克隆 <ul> （即 HTMLUListElement），一旦克隆，就可以像任何节点引用一样对待。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+  
+<ul>
+  <li>Hi</li>
+  <li>there</li>
+</ul>
+
+<script>
+
+var cloneUL = document.querySelector('ul').cloneNode();
+
+console.log(cloneUL.constructor);
+console.log(cloneUL.innerHTML);
+
+</script>
+</body>
+</html>
+```
+
+要克隆一个节点及其所有子节点，需要向 cloneNode(bool) 方法传递 true 参数。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+  
+<ul>
+  <li>Hi</li>
+  <li>there</li>
+</ul>
+
+<script>
+
+var cloneUL = document.querySelector('ul').cloneNode(true);
+
+console.log(cloneUL.constructor);
+console.log(cloneUL.innerHTML);
+
+</script>
+</body>
+</html>
+```
+
+克隆 Element 节点时，所有属性和值也会被克隆。 节点的所有其他内容（例如事件处理程序）都会丢失。
+
+cloneNode() 可能会导致文档中出现重复的元素 ID。
+
+
+
+
 
 ## 2 文档节点
 
