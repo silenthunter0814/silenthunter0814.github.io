@@ -788,9 +788,25 @@ NOTE：
 
 ## 2 文档节点
 
+### 2.1 文档节点概述
 
+HTMLDocument 构造函数在实例化时具体表示 DOM 中的 DOCUMENT_NODE（即 window.document）。
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
 
+<script>
+
+console.log(document.constructor === HTMLDocument);
+console.log(document.constructor);
+console.log(document.nodeType === Node.DOCUMENT_NODE); // 9
+
+</script>
+</body>
+</html>
+```
 
 
 ## 3 元素节点
