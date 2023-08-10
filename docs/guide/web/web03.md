@@ -1223,9 +1223,11 @@ NOTE:
 <html lang="en-US">
 <body>
 
-<a href='#' title="title" data-foo="dataFoo" style="margin:0;" class="yes" foo="boo" hidden="hidden">#link</a>
+<a href='#' title="title" data-foo="dataFoo" 
+  style="margin:0;" class="yes" foo="boo" 
+  hidden="hidden">#link</a>
 
-<script src="./main.js">
+<script>
 
 var anchor = document.querySelector('a');
 
@@ -1254,6 +1256,37 @@ console.log(anchor.getAttribute('foo'));
 console.log(anchor.getAttribute('hidden'));
 
 console.log(document.body.innerHTML);
+      
+</script>
+</body>
+</html>
+```
+
+### 3.7 验证元素是否具有特定属性
+
+确定（即布尔值）元素是否具有属性的最佳方法是使用 hasAttribute() 方法。
+
+```html
+<!DOCTYPE html>
+<html lang="en-US">
+<body>
+
+<a href='#' title="title" data-foo="dataFoo" 
+    style="margin:0;" class="yes" foo="boo" 
+    hidden="hidden">#link</a>
+
+<script>
+
+var anchor = document.querySelector('a');
+
+console.log(
+    anchor.hasAttribute('href'),
+    anchor.hasAttribute('title'),
+    anchor.hasAttribute('style'),
+    anchor.hasAttribute('data-foo'),
+    anchor.hasAttribute('class'),
+    anchor.hasAttribute('goo')    // false
+);
       
 </script>
 </body>
