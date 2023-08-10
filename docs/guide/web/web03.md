@@ -351,10 +351,70 @@ console.log(document.getElementById('B').outerText);
 - NOTE  
   - 读取 textContent、innerText、outerText 属性时，将返回所选节点中包含的所有文本节点。
 
-
-
 ### 1.10 使用 appendChild() & insertBefore()将 节点对象添加到DOM
+
+appendChild() 方法会将一个节点附加到调用该方法的节点的子节点的末尾。 如果没有子节点，则附加的节点将作为第一个子节点附加。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+  
+<p>Hi</p>
+
+<script>
+
+var eNode = document.createElement('strong');
+var tNode = document.createTextNode(' Dude');
+
+document.querySelector('p').appendChild(eNode);
+document.querySelector('strong').appendChild(tNode);
+
+console.log(document.body.innerHTML);
+
+</script>
+</body>
+</html>
+```
+
+当需要控制插入位置而不是将节点附加到子节点列表的末尾时，我们可以使用 insertBefore()。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+  
+<ul>
+    <li>2</li>
+    <li>3</li>
+</ul>
+
+<script>
+
+var text1 = document.createTextNode('1');
+var li = document.createElement('li');
+li.appendChild(text1);
+
+var ul = document.querySelector('ul');
+ul.insertBefore(li, ul.firstChild);
+
+console.log(document.body.innerHTML);
+
+</script>
+</body>
+</html>
+```
+
+insertBefore() 需要两个参数，即要插入的节点和文档中您希望之前插入的节点的引用节点。  
+如果您没有向 insertBefore() 方法传递第二个参数，那么它的功能就像 appendChild() 一样。
+
+
 ### 1.11 使用 removeChild() 和 replaceChild()删除和替换节点
+
+
+
+
+
 ### 1.12 使用 cloneNode() 克隆节点
 
 ## 2 文档节点
