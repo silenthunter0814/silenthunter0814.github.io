@@ -841,13 +841,13 @@ for (let prop in document) {
 }
 console.log(props.sort());
 
-var inheritProps = [];
+var inherits = [];
 for (let prop in document) {
     if (!document.hasOwnProperty(prop)) {
-        inheritProps.push(prop);
+        inherits.push(prop);
     }
 }
-console.log(inheritProps.sort());
+console.log(inherits.sort());
 
 </script>
 </body>
@@ -1079,8 +1079,6 @@ console.log(document.querySelector('a').constructor);
 DOM 中的每个元素都是由唯一的 JavaScript 接口/构造函数构造的。  
 下面的列表（不是完整的列表）用于创建 HTML*Element 元素的接口/构造函数。
 
-
-
 |   |    A    |      B       |     C     |      D       |     E     |     F     |
 |---|---------|--------------|-----------|--------------|-----------|-----------|
 | 1 | Html    | Head         | Link      | Title        | Meta      | Base      |
@@ -1093,11 +1091,8 @@ DOM 中的每个元素都是由唯一的 JavaScript 接口/构造函数构造的
 | 8 | Table   | TableCaption | TableCol  | TableSection | TableRow  | TableCell |
 | 9 | Script  | FrameSet     | Frame     | IFrame       |           |           |
 
-
-
-                        
-
-请记住，上面的每个 HTML*Element 都继承了 HTMLElement、Element、Node 和 Object 的属性和方法。
+                     
+上面的每个 HTML*Element 都继承了 HTMLElement、Element、Node 和 Object 的属性和方法。
 
 ### 3.2 HTML*Element对象属性和方法（包括继承）
 
@@ -1115,17 +1110,62 @@ DOM 中的每个元素都是由唯一的 JavaScript 接口/构造函数构造的
 var anchor = document.querySelector('a');
 console.log(Object.keys(anchor));
 
-var inherit = [];
+var inherits = [];
 for (let prop in anchor) {
-    inherit.push(prop);
+    inherits.push(prop);
 }
-console.log(inherit.sort());
+console.log(inherits.sort());
       
 </script>
 </body>
 </html>
 ```
 
+本章的上下文值得注意的属性和方法（也是继承的）。
+
+- createElement()
+- tagName
+- children
+- getAttribute()
+- setAttribute()
+- hasAttribute()
+- removeAttribute()
+- classList()
+- dataset
+- attributes
+
+### 3.3 创建元素 document.createElement()
+
+当浏览器输入 HTML 文档时，元素节点就会为我们实例化，并根据文档的内容构建相应的 DOM。  
+在此之后，还可以使用 createElement() 以编程方式创建 Element 节点。
+
+```html
+<!DOCTYPE html>
+<html lang="en-US">
+<body>
+
+<script>
+
+var elem = document.createElement('textarea');
+document.body.appendChild(elem);
+
+console.log(document.querySelector('textarea'));
+      
+</script>
+</body>
+</html>
+```
+
+传递给 createElement() 方法的值是一个字符串，它指定要创建的元素（也称为 tagName）的类型。
+
+NOTE:
+- 在创建元素之前，传递给 createElement 的值将更改为小写字符串。
+
+### 3.4 获取元素的标签名
+
+使用 tagName 属性访问元素的名称。  
+tagName 属性返回的值与使用 nodeName 返回的值相同。  
+无论源 HTML 文档中的大小写如何，两者都返回大写的值。
 
 ## 4 元素节点选择
 
