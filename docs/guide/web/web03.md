@@ -1025,6 +1025,27 @@ console.log(document.defaultView);  // window object
 </html>
 ```
 
+### 2.10 使用 ownerDocument 从元素获取对 Document 的引用
+
+在节点上调用时，ownerDocument 属性返回对包含该节点的文档的引用
+
+```html
+<!DOCTYPE html>
+<html lang="en-US">
+<body>
+
+<script>
+
+console.log(document.body.ownerDocument);
+      
+</script>
+</body>
+</html>
+```
+
+如果在 Document 节点上调用ownerDocument，则返回值为 null。
+
+
 
 ## 3 元素节点
 
