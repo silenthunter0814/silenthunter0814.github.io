@@ -1336,6 +1336,109 @@ console.log(div.className);
 </html>
 ```
 
+NOTE:
+- classList 是一个类似数组的集合，它具有只读长度属性。
+- classList 是只读的，但可以使用 add()、remove()、contains() 和toggle() 方法进行修改
+
+### 3.9 添加和删除 class 类属性的子值
+
+使用 classList.add() 和 classList.remove() 方法编辑 class 类属性的值非常简单。
+
+```html
+<!DOCTYPE html>
+<html lang="en-US">
+<body>
+
+<div class="dog"></div>
+
+<script>
+
+var div = document.querySelector('div');
+
+div.classList.add('cat');
+div.classList.remove('dog');
+console.log(div.className);
+      
+</script>
+</body>
+</html>
+```
+
+### 3.10 切换 class 类属性值
+
+使用 classList.toggle() 方法切换 class 类属性的子值。  
+这允许我们在缺少值时添加值，或者在已添加值时删除值。
+
+```html
+<!DOCTYPE html>
+<html lang="en-US">
+<body>
+
+<div class="visible"></div>
+
+<script>
+
+var div = document.querySelector('div');
+
+div.classList.toggle('visible');
+div.classList.toggle('grow');
+console.log(div.className);
+      
+</script>
+</body>
+</html>
+```
+
+### 3.11 判断 class 类属性值是否包含特定值
+
+使用 classList.contains() 方法可以确定（布尔值）类属性值是否包含特定子值。
+
+```html
+<!DOCTYPE html>
+<html lang="en-US">
+<body>
+
+<div class="big brown bear"></div>
+
+<script>
+
+var div = document.querySelector('div');
+
+console.log(div.classList.contains('brown'));  // true
+console.log(div.classList.contains('red'));  // false
+      
+</script>
+</body>
+</html>
+```
+
+### 3.12 获取和设置 data-* 属性
+
+元素节点的 dataset 属性提供了一个对象，其中包含以 data-* 开头的元素的所有属性。 因为它只是一个 JavaScript 对象，所以我们可以操作数据集并让 DOM 中的元素反映这些更改。
+
+```html
+<!DOCTYPE html>
+<html lang="en-US">
+<body>
+
+<div data-foo-foo="foo" data-bar-bar="bar"></div>
+
+<script>
+
+var div = document.querySelector('div');
+
+console.log(div.dataset.fooFoo);
+console.log(div.dataset.barBar);
+
+div.dataset.gooGoo = 'goo';
+console.log(div.dataset);
+
+console.log(div);
+      
+</script>
+</body>
+</html>
+```
 
 ## 4 元素节点选择
 
