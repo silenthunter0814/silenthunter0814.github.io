@@ -534,6 +534,38 @@ cloneNode() 可能会导致文档中出现重复的元素 ID。
 
 使用 childNodes 属性会生成一个类似数组的直接子节点列表（即 NodeList）。
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+  
+<ul>
+  <li>Hi</li>
+  <li>there</li>
+</ul>
+
+<script>
+
+var children = document.querySelector('ul').childNodes;
+
+console.log(children);
+
+Array.prototype.forEach.call(children, function(item) {
+    console.log(item);
+});
+
+</script>
+</body>
+</html>
+```
+
+NOTES:
+- childNodes 返回的 NodeList 仅包含直接子节点
+- childNodes 不仅包含 Element 节点，还包含所有其他节点类型（例如 Text 和 Comment 节点）
+
+### 1.15 将 NodeList 或 HTMLCollection 转换为 JavaScript 数组
+
+
 
 
 ## 2 文档节点
