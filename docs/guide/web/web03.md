@@ -293,6 +293,7 @@ element.insertAdjacentHTML(position, text) 方法仅适用于Element节点，比
   - 'afterend' 元素自身的后面
 - text 要被解析为 HTML 或 XML 元素，并插入到 DOM 树中的 DOMString。
 
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -314,7 +315,6 @@ console.log(document.body.innerHTML);
 </script>
 </body>
 </html>
-
 ```
 
 - NOTE
