@@ -620,6 +620,43 @@ console.log(nodeArray);
 ```
 
 ### 1.16 遍历 DOM 中的节点
+通过使用以下属性遍历 DOM 来获取不同的节点引用：
+- parentNode
+- firstChild
+- lastChild
+- nextSibling
+- previousSibling
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+  
+<ul>
+    <!-- comment -->
+    <li id="A"></li>
+    <li id="B"></li>
+    <!-- comment -->
+</ul>
+
+<script>
+
+var ul = document.querySelector('ul');
+console.log(ul.parentNode.nodeName);
+
+console.log(ul.firstChild.nodeName);
+console.log(ul.firstChild.nextSibling.nodeName);
+
+console.log(ul.lastChild.nodeName);
+console.log(ul.lastChild.previousSibling.nodeName);
+
+console.log(ul.querySelector('#A').nextSibling.nodeName);
+console.log(ul.querySelector('#B').previousSibling.nodeName);
+
+</script>
+</body>
+</html>
+```
 
 
 
