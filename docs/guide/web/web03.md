@@ -732,16 +732,16 @@ compareDocumentPosition(otherNode) 报告其参数节点相对于调用它的节
 - Node.DOCUMENT_POSITION_PRECEDING (2)  
   otherNode 在包含两者的树的前序深度优先遍历中位于该节点之前任意但一致的排序。
 
-- Node.DOCUMENT_POSITION_FOLLOWING (4)
+- Node.DOCUMENT_POSITION_FOLLOWING (4)  
   otherNode 在包含两者的树的前序深度优先遍历中跟随该节点任意但一致的排序。
 
-- Node.DOCUMENT_POSITION_CONTAINS (8)
+- Node.DOCUMENT_POSITION_CONTAINS (8)  
   otherNode 是该节点的祖先。
 
-- Node.DOCUMENT_POSITION_CONTAINED_BY (16)
+- Node.DOCUMENT_POSITION_CONTAINED_BY (16)  
   otherNode 是该节点的后代。
 
-- Node.DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC (32)
+- Node.DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC (32)  
   结果依赖于任意和/或特定于实现的行为，并且不保证可移植。
 
 
@@ -751,9 +751,40 @@ NOTE:
 
 ### 1.18 How to determine if two nodes are identical
 
+当且仅当满足以下条件时，两个节点相等：
+- 两个节点属于同一类型。
+- 字符串属性相等：nodeName、localName、namespaceURI、prefix、nodeValue。
+- NamedNodeMaps 属性相等。对于一个映射中存在的每个节点，另一个映射中存在一个节点并且相等，尽管不一定位于相同的索引处。
+- 子节点 NodeList 相等。
 
+在 DOM 中的节点上调用 isEqualNode() 方法将询问该节点是否等于作为参数传递的节点。
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
 
+<input type="text">
+<input type="text">
+
+<textarea>foo</textarea>
+<textarea>bar</textarea>
+
+<script>
+
+var input = document.querySelectorAll('input');
+console.log(input[0].isEqualNode(input[1]));
+
+var textarea = document.querySelectorAll('textarea');
+console.log(textarea[0].isEqualNode(textarea[1]));
+
+</script>
+</body>
+</html>
+```
+
+NOTE：
+- 如果只是想知道两个节点是否引用同一个节点，可以使用 === 运算符进行检查（即 document.body === document.body）。 
 
 ## 2 文档节点
 
