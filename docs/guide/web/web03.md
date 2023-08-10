@@ -1053,8 +1053,48 @@ console.log(document.body.ownerDocument);
 如果在 Document 节点上调用ownerDocument，则返回值为 null。
 
 
-
 ## 3 元素节点
+
+### 3.1 HTML*Element 对象概述
+
+html 文档中的元素都具有独特的性质，因此它们都有一个独特的 JavaScript 构造函数，该构造函数将元素实例化为 DOM 树中的节点对象。  
+例如，通过 HTMLAnchorElement() 构造函数将 <a> 元素创建为 DOM 节点。
+
+```html
+<!DOCTYPE html>
+<html lang="en-US">
+<body>
+
+<a></a>
+
+<script>
+
+console.log(document.querySelector('a').constructor);
+      
+</script>
+</body>
+</html>
+```
+
+DOM 中的每个元素都是由唯一的 JavaScript 接口/构造函数构造的。  
+下面的列表（不是完整的列表）用于创建 HTML*Element 元素的接口/构造函数。
+
+
+| Html    | Head         | Link      | Title        | Meta      | Base      |
+| IsIndex | Style        | Body      | Form         | Select    | OptGroup  |
+| Option  | Input        | TextArea  | Button       | Label     | FieldSet  |
+| Legend  | UList        | OList     | DList        | Directory | Menu      |
+| LI      | Div          | Paragraph | Heading      | Quote     | Pre       |
+| BR      | BaseFont     | Font      | HR           | Mod       | Anchor    |
+| Image   | Object       | Param     | Applet       | Map       | Area      |
+| Table   | TableCaption | TableCol  | TableSection | TableRow  | TableCell |
+| Script  | FrameSet     | Frame     | IFrame       |           |           |
+
+请记住，上面的每个 HTML*Element 都继承了 HTMLElement、Element、Node 和 Object 的属性和方法。
+
+### 3.2 HTML*Element对象属性和方法（包括继承）
+
+检查下面的代码中创建的数组，详细说明 HTML 元素节点可用的属性和方法。
 
 
 
