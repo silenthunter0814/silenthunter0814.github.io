@@ -523,7 +523,16 @@ console.log(cloneUL.innerHTML);
 
 cloneNode() 可能会导致文档中出现重复的元素 ID。
 
+### 1.13 Nodelist & HTMLcollection 节点集合
+当从树中选择节点组（第 3 章中介绍）或访问预定义的节点集时，节点要么放置在 NodeList（例如 document.querySelectorAll('*')）中，要么放置在 HTMLCollection（例如 document.scripts）中 。 这些类似数组（即不是真正的数组）的对象集合具有以下特征。
 
+- 集合可以是实时的也可以是静态的。 这意味着集合中包含的节点要么是实时文档的字面意思，要么是实时文档的快照。
+- 默认情况下，节点在集合内部按树顺序排序。 这意味着该顺序与从树干到树枝的线性路径相匹配。
+- 集合有一个 length 属性，反映列表中元素的数量
+
+### 1.14 获取所有直接子节点的列表/集合
+
+使用 childNodes 属性会生成一个类似数组的直接子节点列表（即 NodeList）。
 
 
 
