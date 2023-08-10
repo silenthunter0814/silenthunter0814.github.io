@@ -808,6 +808,109 @@ console.log(document.nodeType === Node.DOCUMENT_NODE); // 9
 </html>
 ```
 
+HTMLDocument 构造函数构造了 window.document 节点对象，并且该节点是一个 DOCUMENT_NODE 类型对象。
+
+NOTES:
+- Document 和 HTMLDocument 构造函数通常在加载 HTML 文档时由浏览器实例化。
+- 使用 document.implementation.createHTMLDocument() 可以在当前加载到浏览器中的文档之外创建自己的 HTML 文档。 
+- 使用 createDocument() 创建尚未设置为 HTML 文档的文档对象。 
+- 通常，这些方法的使用与以编程方式向 iframe 提供 HTML 文档相关。
+
+### 2.2 HTMLDocument 属性和方法（包括继承的）
+要获得有关 HTMLDocument 节点上可用属性和方法的准确信息，最好忽略规范并询问浏览器可用的内容。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<script>
+
+console.log(Object.keys(document).sort());
+
+var props = [];
+for (let prop in document) {
+    props.push(prop);
+}
+console.log(props.sort());
+
+var inheritProps = [];
+for (let prop in document) {
+    if (!document.hasOwnProperty(prop)) {
+        inheritProps.push(prop);
+    }
+}
+console.log(inheritProps.sort());
+
+</script>
+</body>
+</html>
+```
+
+本章的上下文值得注意的属性和方法。
+- doctype
+- documentElement
+- implementation.*
+- activeElement
+- body
+- head
+- title
+- lastModified
+- referrer
+- URL
+- defaultview
+- compatMode
+- ownerDocument
+- hasFocus()
+
+### 2.3 获取 HTML 文档信息 (title, URL, referrer, lastModified, compatMode)
+document 对象提供对有关正在加载的 HTML 文档/DOM 的一些常规信息的访问。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>DOM Enlightenment</title>
+</head>
+<body>
+
+<script>
+
+var doc = document;
+
+console.log('title = ' + doc.title);
+console.log('url = ' + doc.URL);
+console.log('referrer = ' + doc.referrer);
+console.log('lastModified = ' + doc.lastModified);
+
+console.log('compatibility mode = ' + doc.compatMode);
+
+</script>
+</body>
+</html>
+```
+
+### 2.4 文档子节点
+
+文档节点可以包含1个 DocumentType 节点对象和1个 Element 节点对象。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<script src= "./main.js">
+// Node.DOCUMENT_TYPE_NODE
+console.log(document.childNodes[0].nodeType);
+// Node.ELEMENT_NODE
+console.log(document.childNodes[1].nodeType);
+
+</script>
+</body>
+</html>
+```
+
+### 2.5 document 提供了 `<!DOCTYPE>, <html lang="en">, <head>, <body>` 的快捷方式
 
 ## 3 元素节点
 
