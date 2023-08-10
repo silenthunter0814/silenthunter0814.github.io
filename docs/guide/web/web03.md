@@ -583,6 +583,44 @@ console.log(Array.isArray(document.querySelectorAll('a'))); // NodeList
 </html>
 ```
 
+将节点列表和 html 集合列表转换为真正的 JavaScript 数组可以提供很多优势:
+- 创建不与实时 DOM 绑定的列表快照。 
+- 可以访问 Array 对象提供的方法（例如 forEach、pop、map、reduce 等）。
+
+构造节点数组：
+- 使用数组方法 Array.from(nodeList) 构造一个节点数组
+- 调用数组原型方法 Array.prototype.slice.call(nodeList) 提取一个未切片的数组
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+  
+<a href="#"></a>
+
+<script>
+
+var nodeArray;
+
+nodeArray = Array.from(document.links);
+console.log(Array.isArray(nodeArray));
+console.log(nodeArray);
+
+nodeArray = Array.prototype.slice.call(document.links);
+console.log(Array.isArray(nodeArray));
+console.log(nodeArray);
+
+nodeArray = Array.prototype.slice.call(document.querySelectorAll('a'));
+console.log(Array.isArray(nodeArray));
+console.log(nodeArray);
+
+</script>
+</body>
+</html>
+```
+
+### 1.16 遍历 DOM 中的节点
+
 
 
 ## 2 文档节点
