@@ -564,7 +564,24 @@ NOTES:
 - childNodes 不仅包含 Element 节点，还包含所有其他节点类型（例如 Text 和 Comment 节点）
 
 ### 1.15 将 NodeList 或 HTMLCollection 转换为 JavaScript 数组
+节点列表和 html 集合类似于数组，但不是继承数组方法的真正的 JavaScript 数组。
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+  
+<a href="#"></a>
+
+<script>
+
+console.log(Array.isArray(document.liinks));  // HTMLCollection
+console.log(Array.isArray(document.querySelectorAll('a'))); // NodeList
+
+</script>
+</body>
+</html>
+```
 
 
 
