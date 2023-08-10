@@ -627,6 +627,8 @@ console.log(nodeArray);
 - nextSibling
 - previousSibling
 
+遍历 DOM 不仅包括遍历元素节点，还包括遍历文本和注释节点。
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -657,6 +659,13 @@ console.log(ul.querySelector('#B').previousSibling.nodeName);
 </body>
 </html>
 ```
+使用以下属性，我们可以遍历 DOM，忽略文本和注释节点。
+- firstElementChild
+- lastElementChild
+- nextElementChild
+- previousElementChild
+- children
+
 
 
 
