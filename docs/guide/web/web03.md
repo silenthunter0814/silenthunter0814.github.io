@@ -701,9 +701,53 @@ console.log(ul.children);
 
 ### 1.17 使用 contains() 和compareDocumentPosition() 验证 DOM 树中的节点位置
 
+使用 Node contains() 方法可以知道一个节点是否包含在另一个节点内。  
+如果选择的节点和传入的节点相同，则 contains() 将返回 true。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<script>
+
+var html = document.querySelector('html');
+var body = document.querySelector('body');
+
+console.log(html.contains(body));
+
+</script>
+</body>
+</html>
+```
+
+compareDocumentPosition(otherNode) 报告其参数节点相对于调用它的节点的位置。
+
+返回值
+一个整数值，表示 otherNode 相对于 Node 的位置，作为位掩码，结合了 Node 的以下常量属性：
+
+- Node.DOCUMENT_POSITION_DISCONNECTED (1)  
+  两个节点位于不同的文档中或同一文档中的不同树中。
+
+- Node.DOCUMENT_POSITION_PRECEDING (2)  
+  otherNode 在包含两者的树的前序深度优先遍历中位于该节点之前任意但一致的排序。
+
+- Node.DOCUMENT_POSITION_FOLLOWING (4)
+  otherNode 在包含两者的树的前序深度优先遍历中跟随该节点任意但一致的排序。
+
+- Node.DOCUMENT_POSITION_CONTAINS (8)
+  otherNode 是该节点的祖先。
+
+- Node.DOCUMENT_POSITION_CONTAINED_BY (16)
+  otherNode 是该节点的后代。
+
+- Node.DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC (32)
+  结果依赖于任意和/或特定于实现的行为，并且不保证可移植。
 
 
-
+NOTE:
+- 由于返回的结果是位掩码，因此必须使用按位 AND 运算符才能获得有意义的结果。
+- 当节点既 contains (8) 又 preceding (2) 时，返回的值将为 10 (0x0A)。
 
 ## 2 文档节点
 
