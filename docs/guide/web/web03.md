@@ -665,6 +665,42 @@ console.log(ul.querySelector('#B').previousSibling.nodeName);
 - nextElementChild
 - previousElementChild
 - children
+- childElementCount
+
+仅使用元素遍历方法再次检查我们的代码示例。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+  
+<ul>
+    <!-- comment -->
+    <li id="A"></li>
+    <li id="B"></li>
+    <!-- comment -->
+</ul>
+
+<script>
+
+var ul = document.querySelector('ul');
+
+console.log(ul.firstElementChild.nodeName);
+console.log(ul.lastElementChild.nodeName);
+
+
+console.log(ul.querySelector('#A').nextElementSibling.nodeName);
+console.log(ul.querySelector('#B').previousElementSibling.nodeName);
+
+console.log(ul.children);
+
+</script>
+</body>
+</html>
+```
+
+### 1.17 使用 contains() 和compareDocumentPosition() 验证 DOM 树中的节点位置
+
 
 
 
