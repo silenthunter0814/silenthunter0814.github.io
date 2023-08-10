@@ -749,6 +749,12 @@ NOTE:
 - 由于返回的结果是位掩码，因此必须使用按位 AND 运算符才能获得有意义的结果。
 - 当节点既 contains (8) 又 preceding (2) 时，返回的值将为 10 (0x0A)。
 
+### 1.18 How to determine if two nodes are identical
+
+
+
+
+
 ## 2 文档节点
 
 
