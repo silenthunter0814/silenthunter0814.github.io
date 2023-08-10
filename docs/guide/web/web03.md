@@ -912,6 +912,14 @@ console.log(document.childNodes[1].nodeType);
 
 ### 2.5 document 提供了 `<!DOCTYPE>, <html lang="en">, <head>, <body>` 的快捷方式
 
+使用 document 的属性，可以获得以下节点的快捷方式引用：
+- document.doctype : `<!DOCTYPE>`
+- document.documentElement : `<html lang="en">`
+- document.head : `<head>`
+- document.body : `<body>`
+
+
+
 ## 3 元素节点
 
 
