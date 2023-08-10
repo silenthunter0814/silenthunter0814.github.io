@@ -1167,6 +1167,28 @@ NOTE:
 tagName 属性返回的值与使用 nodeName 返回的值相同。  
 无论源 HTML 文档中的大小写如何，两者都返回大写的值。
 
+```html
+<!DOCTYPE html>
+<html lang="en-US">
+<body>
+
+<a href="#">Hi</a>
+
+<script>
+
+console.log(document.querySelector('a').tagName);
+console.log(document.querySelector('a').nodeName);
+      
+</script>
+</body>
+</html>
+```
+
+### 3.5 获取元素属性和值的列表/集合
+
+使用 attributes 属性（元素节点从Node继承）可以获得元素当前定义的 Attr 节点的集合。  
+返回的列表是一个NameNodeMap。
+
 ## 4 元素节点选择
 
 
