@@ -1293,6 +1293,50 @@ console.log(
 </html>
 ```
 
+如果元素包含该属性，即使该属性没有值，此方法也会返回 true。
+
+```html
+<!DOCTYPE html>
+<html lang="en-US">
+<body>
+
+<input type="checkbox" checked></input>
+
+<script>
+
+var input = document.querySelector('input');
+
+console.log(input.hasAttribute('checked'));
+      
+</script>
+</body>
+</html>
+```
+
+### 3.8 获取 class 类属性值列表
+
+使用元素节点上可用的 classList 属性，我们可以访问类属性值的列表（即 DOMTokenList），该列表比从 className 属性返回的空格分隔的字符串值更容易使用。
+
+```html
+<!DOCTYPE html>
+<html lang="en-US">
+<body>
+
+<div class="big brown bear"></div>
+
+<script>
+
+var div = document.querySelector('div');
+
+console.log(div.classList);
+console.log(div.className);
+      
+</script>
+</body>
+</html>
+```
+
+
 ## 4 元素节点选择
 
 
