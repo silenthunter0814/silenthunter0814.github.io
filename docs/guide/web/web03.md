@@ -1187,7 +1187,78 @@ console.log(document.querySelector('a').nodeName);
 ### 3.5 获取元素属性和值的列表/集合
 
 使用 attributes 属性（元素节点从Node继承）可以获得元素当前定义的 Attr 节点的集合。  
-返回的列表是一个NameNodeMap。
+返回的列表是一个 NameNodeMap。
+
+```html
+<!DOCTYPE html>
+<html lang="en-US">
+<body>
+
+<a href='#' title="title" data-foo="dataFoo" class="yes" style="margin:0;" foo="boo"></a>
+
+<script>
+
+var atts = document.querySelector('a').attributes;
+
+for (let i = 0; i < atts.length; i++) {
+    console.log(atts[i].nodeName + ' = ' + atts[i].nodeValue);
+}
+      
+</script>
+</body>
+</html>
+```
+
+NOTE:
+- 访问 attribute 属性返回的数组应被视为活动数组。 这意味着它的内容可以随时更改。
+- attributes 属性是一个类似数组的集合，并且具有只读 length 属性。
+- 布尔属性（例如 `<option selected>foo</option>`）显示在属性列表中，但没有任何值。
+
+### 3.6 获取、设置和删除元素的属性值
+
+获取、设置或删除元素属性值的最一致的方法是使用 getAttribute()、setAttribute() 和 removeAttribute() 方法。
+
+```html
+<!DOCTYPE html>
+<html lang="en-US">
+<body>
+
+<a href='#' title="title" data-foo="dataFoo" style="margin:0;" class="yes" foo="boo" hidden="hidden">#link</a>
+
+<script src="./main.js">
+
+var anchor = document.querySelector('a');
+
+anchor.removeAttribute('href');
+anchor.removeAttribute('title');
+anchor.removeAttribute('style');
+anchor.removeAttribute('data-foo');
+anchor.removeAttribute('class');
+anchor.removeAttribute('foo');
+anchor.removeAttribute('hidden');
+
+anchor.setAttribute('href', '#');
+anchor.setAttribute('title', 'title');
+anchor.setAttribute('style', 'margin: 0;');
+anchor.setAttribute('data-foo', 'dataFoo');
+anchor.setAttribute('class', 'yes');
+anchor.setAttribute('foo', 'boo');
+anchor.setAttribute('hidden', 'hidden');
+
+console.log(anchor.getAttribute('href'));
+console.log(anchor.getAttribute('title'));
+console.log(anchor.getAttribute('style'));
+console.log(anchor.getAttribute('data-foo'));
+console.log(anchor.getAttribute('class'));
+console.log(anchor.getAttribute('foo'));
+console.log(anchor.getAttribute('hidden'));
+
+console.log(document.body.innerHTML);
+      
+</script>
+</body>
+</html>
+```
 
 ## 4 元素节点选择
 
