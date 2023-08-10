@@ -325,8 +325,31 @@ console.log(document.body.innerHTML);
   - innerText 能够识别样式，并且不会返回隐藏元素的文本，而 textContent 会
 
 ### 1.9 将 DOM 树的一部分提取为 JavaScript 字符串
+innerHTML、outerHTML、textContent 也可用于将 DOM 的一部分（或者实际上是整个 DOM）提取为 JavaScript 字符串。
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+  
+<div id="A"><i>Hi</i></div>
+<div id="B">Dude<strong> !</strong></div>
 
+<script>
+
+console.log(document.getElementById('A').innerHTML);
+console.log(document.getElementById('A').outerHTML);
+
+console.log(document.getElementById('B').textContent);
+console.log(document.getElementById('B').innerText);
+console.log(document.getElementById('B').outerText);
+
+</script>
+</body>
+</html>
+```
+- NOTE  
+  - 读取 textContent、innerText、outerText 属性时，将返回所选节点中包含的所有文本节点。
 
 
 
