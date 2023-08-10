@@ -962,7 +962,27 @@ NOTE
 
 ### 2.7 获取文档中焦点/活动节点的引用
 
+使用 document.activeElement 可以快速获取文档中焦点/活动节点的引用。
 
+HTMLElement.focus()方法将焦点设置在指定元素上（如果可以聚焦）。
+
+```html
+<!DOCTYPE html>
+<html lang="en-US">
+<body>
+
+<textarea></textarea>
+
+<script>
+
+document.querySelector('textarea').focus();
+
+console.log(document.activeElement);
+      
+</script>
+</body>
+</html>
+```
 
 
 ## 3 元素节点
