@@ -1080,15 +1080,22 @@ DOM 中的每个元素都是由唯一的 JavaScript 接口/构造函数构造的
 下面的列表（不是完整的列表）用于创建 HTML*Element 元素的接口/构造函数。
 
 
-| Html    | Head         | Link      | Title        | Meta      | Base      |
-| IsIndex | Style        | Body      | Form         | Select    | OptGroup  |
-| Option  | Input        | TextArea  | Button       | Label     | FieldSet  |
-| Legend  | UList        | OList     | DList        | Directory | Menu      |
-| LI      | Div          | Paragraph | Heading      | Quote     | Pre       |
-| BR      | BaseFont     | Font      | HR           | Mod       | Anchor    |
-| Image   | Object       | Param     | Applet       | Map       | Area      |
-| Table   | TableCaption | TableCol  | TableSection | TableRow  | TableCell |
-| Script  | FrameSet     | Frame     | IFrame       |           |           |
+
+|   |    A    |      B       |     C     |      D       |     E     |     F     |
+|---|---------|--------------|-----------|--------------|-----------|-----------|
+| 1 | Html    | Head         | Link      | Title        | Meta      | Base      |
+| 2 | IsIndex | Style        | Body      | Form         | Select    | OptGroup  |
+| 3 | Option  | Input        | TextArea  | Button       | Label     | FieldSet  |
+| 4 | Legend  | UList        | OList     | DList        | Directory | Menu      |
+| 5 | LI      | Div          | Paragraph | Heading      | Quote     | Pre       |
+| 6 | BR      | BaseFont     | Font      | HR           | Mod       | Anchor    |
+| 7 | Image   | Object       | Param     | Applet       | Map       | Area      |
+| 8 | Table   | TableCaption | TableCol  | TableSection | TableRow  | TableCell |
+| 9 | Script  | FrameSet     | Frame     | IFrame       |           |           |
+
+
+
+                        
 
 请记住，上面的每个 HTML*Element 都继承了 HTMLElement、Element、Node 和 Object 的属性和方法。
 
@@ -1096,6 +1103,28 @@ DOM 中的每个元素都是由唯一的 JavaScript 接口/构造函数构造的
 
 检查下面的代码中创建的数组，详细说明 HTML 元素节点可用的属性和方法。
 
+```html
+<!DOCTYPE html>
+<html lang="en-US">
+<body>
+
+<a href="#">Hi</a>
+
+<script>
+
+var anchor = document.querySelector('a');
+console.log(Object.keys(anchor));
+
+var inherit = [];
+for (let prop in anchor) {
+    inherit.push(prop);
+}
+console.log(inherit.sort());
+      
+</script>
+</body>
+</html>
+```
 
 
 ## 4 元素节点选择
