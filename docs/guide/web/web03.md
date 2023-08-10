@@ -1058,7 +1058,7 @@ console.log(document.body.ownerDocument);
 ### 3.1 HTML*Element 对象概述
 
 html 文档中的元素都具有独特的性质，因此它们都有一个独特的 JavaScript 构造函数，该构造函数将元素实例化为 DOM 树中的节点对象。  
-例如，通过 HTMLAnchorElement() 构造函数将 <a> 元素创建为 DOM 节点。
+例如，通过 HTMLAnchorElement() 构造函数将 `<a>` 元素创建为 DOM 节点。
 
 ```html
 <!DOCTYPE html>
