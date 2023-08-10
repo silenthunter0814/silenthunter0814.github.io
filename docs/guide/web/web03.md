@@ -1440,6 +1440,10 @@ console.log(div);
 </html>
 ```
 
+NOTE:
+- 数据集包含数据属性的驼峰式版本。 意味着 data-foo-foo 将被列为数据集 DOMStringMap 对象中的属性 fooFoo。 - 被驼峰肠衣取代。
+- 从 DOM 中删除 data-* 属性就像在数据集的属性上使用删除运算符一样简单（例如删除 dataset.fooFoo）
+
 ## 4 元素节点选择
 
 
