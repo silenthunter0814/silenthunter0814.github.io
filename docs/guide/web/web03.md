@@ -918,6 +918,51 @@ console.log(document.childNodes[1].nodeType);
 - document.head : `<head>`
 - document.body : `<body>`
 
+```html
+<!DOCTYPE html>
+<html lang="en-US">
+<body> 
+
+<script>
+
+console.log(document.doctype);
+console.log(document.documentElement);
+console.log(document.head);
+console.log(document.body);
+      
+</script>
+</body>
+</html>
+```
+
+NOTE:
+- document.doctype 不会出现在 document.childNodes 列表中。
+
+### 2.6 使用 document.implementation.hasFeature() 检测 DOM 规范/特性
+
+在下面的代码中，询问浏览器是否实现了 Core 2.0 和 3.0 规范。
+
+```html
+<!DOCTYPE html>
+<html lang="en-US">
+<body> 
+
+<script>
+
+console.log(document.implementation.hasFeature('Core', '2.0'));
+console.log(document.implementation.hasFeature('Core', '3.0'));
+      
+</script>
+</body>
+</html>
+```
+
+NOTE
+- 不再被使用，但继续存在（并且只是返回 true），以便旧页面不会停止工作。
+
+### 2.7 获取文档中焦点/活动节点的引用
+
+
 
 
 ## 3 元素节点
