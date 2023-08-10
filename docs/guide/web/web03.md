@@ -471,7 +471,7 @@ ReplaceChild() 和removeChild() 都返回被替换或删除的节点。
 ### 1.12 使用 cloneNode() 克隆节点
 使用cloneNode()方法可以复制单个节点或节点及其所有子节点。
 
-在下面的代码中，仅克隆 <ul> （即 HTMLUListElement），一旦克隆，就可以像任何节点引用一样对待。
+在下面的代码中，仅克隆 `<ul>` （即 HTMLUListElement），一旦克隆，就可以像任何节点引用一样对待。
 
 ```html
 <!DOCTYPE html>
