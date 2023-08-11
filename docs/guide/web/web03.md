@@ -1994,6 +1994,33 @@ document.querySelector('content').children[4].scrollIntoView(true);
 
 ## 6 元素节点内联样式
 
+### 6.1 样式属性（又称元素内联 CSS 属性）概述
+
+每个HTML元素都有一个样式属性，可用于内联CSS属性。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<div style="background-color:red;border:1px solid black;height:100px;width:100px;"></div>
+    
+<script>
+
+var divStyle = document.querySelector('div').style;
+
+console.log(divStyle);
+
+</script>
+</body>
+</html>
+```
+
+- 从样式属性返回的内容是 CSSStyleDeclaration 对象，而不是字符串。  
+- 只有元素内联样式（即，不包括计算的样式）包含在 CSSStyleDeclartion 对象中。
+
+### 6.2 获取，设置和删除单个内联 CSS 属性
+
 
 ## 7 文本节点
 
