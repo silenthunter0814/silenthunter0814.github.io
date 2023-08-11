@@ -24,7 +24,7 @@ author: silenthunter0814, Silent Hunter
 
 - 软件： google chrome 浏览器
 - 网站目录结构  
-![](https://silenthunter0814.github.io/pub/web/site.png)
+![](https://silenthunter0814.github.io/pub/web01/site.png)
   - `site` 网站目录
   - `index.html` 网站主页，新建一个 `index.html` 空文件，位于 `site` 目录下面。
   - `images` 目录，存放图像文件，位于 `site` 目录下面。
@@ -76,7 +76,7 @@ HTML 是一种用于定义内容结构的超文本标记语言 `HyperText Markup
 </body>
 ```
 
-![](https://silenthunter0814.github.io/pub/web/tag.png)  
+![](https://silenthunter0814.github.io/pub/web01/tag.png)  
 
 这个元素的主要部分有：
 - 开始标签（Opening tag）：包含元素的名称（本例为 p），被大于号、小于号所包围。表示元素从这里开始或者开始起作用 —— 在本例中即段落由此开始。
@@ -85,7 +85,7 @@ HTML 是一种用于定义内容结构的超文本标记语言 `HyperText Markup
 - 元素（Element）：开始标签、结束标签与内容相结合，便是一个完整的元素。
 
 元素也可以有属性 (Attribute)：  
-![](https://silenthunter0814.github.io/pub/web/attribute.png)  
+![](https://silenthunter0814.github.io/pub/web01/attribute.png)  
 
 属性包含了关于元素的一些额外信息，这些信息本身不应显现在内容中。本例中，class 是属性名称，editor-note 是属性的值。class 属性可为元素提供一个标识名称，以便进一步为元素指定样式或进行其他操作时使用。
 

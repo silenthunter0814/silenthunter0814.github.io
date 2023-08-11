@@ -1667,6 +1667,41 @@ for (let li of lis) {
 在 Web 浏览器中查看 html 文档时，DOM 节点会被解析并绘制为可视形状。 
 为了以编程方式检查并在某些情况下操纵节点的视觉表示和几何测量，存在一组 API 来确定元素节点的几何形状（即使用偏移量的大小和位置），以及用于操作可滚动节点和获取滚动节点值的挂钩。
 
+### 5.2 获取元素相对于 offsetParent 的 offsetTop 和 offsetLeft 值
+
+使用 offsetTop 和 offsetLeft 属性，我们可以从 offsetParent 获取元素节点的偏移像素值。
+
+下面代码中的属性 offsetLeft 和 offsetTop 告诉我们 id 为 red 的 `<div>` 距 offsetParent 的顶部和左侧 60px（即本例中的 `<body>` 元素）。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+body{margin:0;}
+#blue{height:100px;width:100px;background-color:blue;border:10px solid gray; padding:25px;margin:25px;}
+#red{height:50px;width:50px;background-color:red;border:10px solid gray;}
+</style>
+</head>
+<body>
+
+<div id="blue"><div id="red"></div></div>
+    
+<script>
+
+var div = document.querySelector('#red');
+
+console.log(div.offsetLeft);   // 60
+console.log(div.offsetTop);   // 60
+console.log(div.offsetParent);   // <body>
+
+</script>
+</body>
+</html>
+```
+
+检查下图，显示代码在浏览器中直观显示的内容，以帮助您了解 offsetLeft 和 offsetTop 值是如何确定的。 图像中显示的红色 <div> 距 offsetParent 正好 60 像素。
+
 ## 6 元素节点内联样式
 
 
