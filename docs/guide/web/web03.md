@@ -1761,9 +1761,9 @@ div{height:50px;width:50px;background-color:red;border:10px solid gray;margin:10
     
 <script>
 
-var divEdges = document.querySelector('div').getBoundingClientRect();
+var rect = document.querySelector('div').getBoundingClientRect();
 
-console.log(divEdges.top, divEdges.right, divEdges.bottom, divEdges.left);
+console.log(rect.top, rect.right, rect.bottom, rect.left);
 
 </script>
 </body>
@@ -1785,7 +1785,7 @@ getBoundingClientRect() 返回一个具有顶部、右侧、底部和左侧属�
 <html lang="en">
 <head>
 <style>
-div{height: 5px;width:25px;background-color:red;border:25px solid gray;padding:25px;}
+div{height: 25px;width:25px;background-color:red;border:25px solid gray;padding:25px;}
 </style>
 </head>
 <body>
@@ -1794,9 +1794,9 @@ div{height: 5px;width:25px;background-color:red;border:25px solid gray;padding:2
     
 <script src="./main.js">
 
-var divEdges = document.querySelector('div').getBoundingClientRect();
+var rect = document.querySelector('div').getBoundingClientRect();
 
-console.log(divEdges.height, divEdges.width);  // 125 125
+console.log(rect.height, rect.width);  // 125 125
 
 // 25px border + 25px padding + 25 content + 25 padding + 25 border = 125
 
@@ -1804,6 +1804,35 @@ console.log(divEdges.height, divEdges.width);  // 125 125
 </body>
 </html>
 ```
+
+还可以使用 offsetHeight 和 offsetWidth 属性找到完全相同的大小值。 在下面的代码中，我利用这些属性来获取 getBoundingClientRect() 提供的相同的精确高度和宽度值。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+div{height: 25px;width:25px;background-color:red;border:25px solid gray;padding:25px;}
+</style>
+</head>
+<body>
+
+<div></div>
+    
+<script src="./main.js">
+
+var div = document.querySelector('div');
+
+console.log(div.offsetHeight, div.offsetWidth);  // 125 125
+
+</script>
+</body>
+</html>
+```
+
+### 5.5 获取视口中不包括边框的元素大小 (padding + content)
+
+
 
 ## 6 元素节点内联样式
 
