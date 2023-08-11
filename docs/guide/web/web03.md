@@ -1722,7 +1722,7 @@ console.log(div.offsetParent);   // <body>
 
 <div id="blue"><div id="red"></div></div>
     
-<script src="./main.js">
+<script>
 
 var div = document.querySelector('#red');
 
@@ -1757,28 +1757,18 @@ div{height:50px;width:50px;background-color:red;border:10px solid gray;margin:10
 </head>
 <body>
 
-<div></div></div>
+<div></div>
     
-<script src="./main.js">
+<script>
 
 var divEdges = document.querySelector('div').getBoundingClientRect();
 
-console.log(divEdges);
+console.log(divEdges.top, divEdges.right, divEdges.bottom, divEdges.left);
 
 </script>
 </body>
 </html>
 ```
-
-DOMRect:
-- bottom: 170
-- height: 70
-- left: 100
-- right: 170
-- top: 100
-- width: 70
-- x: 100
-- y: 100
 
 下图显示了上述代码的浏览器渲染视图，并添加了一些测量指示器，以准确显示 getBoudingClientRect() 的计算方式。
 
@@ -1786,6 +1776,34 @@ DOMRect:
 
 `<div>` 元素的顶部外边框边缘距视口顶部边缘 100 像素。 元素 `<div>` 的右外边框边缘距视口左边缘 170 像素。 元素 `<div>` 的底部外边框边缘距视口顶部边缘 170 像素。 元素 `<div>` 的左外边框边缘距视口左边缘 100px。
 
+### 5.4 获取视口中的元素大小 (border + padding + content)
+
+getBoundingClientRect() 返回一个具有顶部、右侧、底部和左侧属性/值的对象，还具有高度和宽度属性/值。 height 和 width 属性指示元素的大小，其中总大小是通过将 div 的内容、其内边距和边框添加在一起而得出的。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+div{height: 5px;width:25px;background-color:red;border:25px solid gray;padding:25px;}
+</style>
+</head>
+<body>
+
+<div></div>
+    
+<script src="./main.js">
+
+var divEdges = document.querySelector('div').getBoundingClientRect();
+
+console.log(divEdges.height, divEdges.width);  // 125 125
+
+// 25px border + 25px padding + 25 content + 25 padding + 25 border = 125
+
+</script>
+</body>
+</html>
+```
 
 ## 6 元素节点内联样式
 
