@@ -1709,6 +1709,38 @@ console.log(div.offsetParent);   // <body>
 如前所述，如果将上面代码中的蓝色 `<div>` 更改为绝对位置，这将改变 offsetParent 的值。  
 在下面的代码中，绝对定位蓝色 `<div>` 将导致从 offsetLeft 和 offsetTop 返回的值报告偏移量（即 25px）。 这是因为偏移父级现在是蓝色的 `<div>` 而不是 `<body>` 。
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+#blue{height:100px;width:100px;background-color:blue;border:10px solid gray; padding:25px;margin:25px;position:absolute;}
+#red{height:50px;width:50px;background-color:red;border:10px solid gray;}
+</style>
+</head>
+<body>
+
+<div id="blue"><div id="red"></div></div>
+    
+<script src="./main.js">
+
+var div = document.querySelector('#red');
+
+console.log(div.offsetLeft);   // 25
+console.log(div.offsetTop);   // 25
+console.log(div.offsetParent);   // <div id="blue">
+
+</script>
+</body>
+</html>
+```
+
+下面显示的浏览器视图的图像阐明了当 offsetParent 为蓝色 `<div>` 时从 offsetLeft 和 offsetTop 返回的新测量值。
+
+![](https://silenthunter0814.github.io/pub/web03/5.2.png)
+
+
+
 ## 6 元素节点内联样式
 
 
