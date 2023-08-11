@@ -1884,9 +1884,113 @@ console.log(document.elementFromPoint(50, 50));
 </html>
 ```
 
-### 5.7 使用scrollHeight和scrollWidth获取正在滚动的元素的大小
+### 5.7 使用 scrollHeight 和 scrollWidth 获取正在滚动的元素的大小
 
+scrollheight 和 scrollwidth 属性提供滚动节点的高度和宽度。
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+*{margin:0;padding:0;}
+div{height:100px;width:100px; overflow:auto;}
+p{height:1000px;width:1000px;background-color:red;}
+</style>
+</head>
+<body>
+
+<div><p></p></div>
+    
+<script>
+
+var div = document.querySelector('div');
+
+console.log(div.scrollHeight, div.scrollWidth);
+
+</script>
+</body>
+</html>
+```
+
+如果要滚动的节点小于滚动区域，使用 clientheight 和 clientwidth 确定可滚动区域中包含的节点的大小。
+
+### 5.8 使用 scrolltop 和 scrollleft 获取和设置滚动像素
+
+- Element.scrollTop 属性获取或设置元素内容垂直滚动的像素数。scrollTop 值是从元素顶部到其最顶部可见内容的距离的度量。
+- Element.scrollLeft 属性获取或设置元素内容从其左边缘滚动的像素数。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+*{margin:0;padding:0;}
+div{height:100px;width:100px; overflow:auto;}
+p{height:1000px;width:1000px;background-color:red;}
+</style>
+</head>
+<body>
+
+<div><p></p></div>
+    
+<script>
+
+var div = document.querySelector('div');
+
+div.scrollTop = 750;
+div.scrollLeft = 750;
+console.log(div.scrollTop, div.scrollLeft);
+
+</script>
+</body>
+</html>
+```
+
+750 报告了像素滚动的数量，并指示左侧的 750PX 在视口中不可查看。
+
+只需将这些属性视为在左侧或顶部的视口中未显示的内容的像素测量值。
+
+### 5.9 使用 scrollintoview() 将元素滚动到视图中
+
+通过选择可滚动的节点中包含的节点，可以使用 ScrollIntoview() 方法告诉所选的节点滚动到视图中。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+div{height:30px;width:30px; overflow:auto;}
+p{background-color:red;}
+</style>
+</head>
+<body>
+
+<div>
+<content>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>6</p>
+<p>7</p>
+<p>8</p>
+<p>9</p>
+<p>10</p>            
+</content>        
+</div>
+    
+<script>
+
+document.querySelector('content').children[4].scrollIntoView(true);
+
+</script>
+</body>
+</html>
+```
+
+参数 true 指示滚动到元素顶部，false 指示滚动到元素底部。
 
 ## 6 元素节点内联样式
 
