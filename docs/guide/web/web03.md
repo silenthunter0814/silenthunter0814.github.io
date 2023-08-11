@@ -2053,6 +2053,120 @@ divStyle.border = '';
 </html>
 ```
 
+样式对象是 CSSStyleDeclaration 对象，它不仅提供对单个CSS属性的访问，还提供:
+- setPropertyValue(propertyName)
+- getPropertyValue(propertyName,value)
+- removeProperty()
+
+用于操作元素节点上的各个 CSS 属性的方法。 
+
+在下面的代码中，我们使用这些方法设置、获取和删除 `<div>` 上的各个 CSS 属性。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<div style="background-color:green;border:1px solid purple;"></div>
+    
+<script>
+
+var divStyle = document.querySelector('div').style;
+
+divStyle.setProperty('background-color', 'red');
+divStyle.setProperty('border', '1px solid black');
+divStyle.setProperty('width', '100px');
+divStyle.setProperty('height', '100px');
+
+console.log(divStyle.getPropertyValue('background-color'));
+console.log(divStyle.getPropertyValue('border'));
+console.log(divStyle.getPropertyValue('width'));
+console.log(divStyle.getPropertyValue('height'));
+
+/* remove
+divStyle.removeProperty('background-color');
+*/
+
+</script>
+</body>
+</html>
+```
+
+### 6.3 获取、设置和删除所有内联 CSS 属性
+
+可以使用 CSSStyleDeclaration 对象的 cssText 属性以及 getAttribute() 和 setAttribute() 方法来使用 JavaScript 字符串获取、设置和删除 style 属性的整个（即所有内联 CSS 属性）值。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<div></div>
+    
+<script>
+
+var div = document.querySelector('div');
+var divStyle = div.style;
+
+divStyle.cssText = 'background-color: red; border: 1px solid black; height: 100px; width: 100px';
+console.log(divStyle.cssText);
+
+divStyle.cssText = '';
+
+div.setAttribute('style', 'background-color: red; border: 1px solid black; height: 100px; width: 100px');
+console.log(div.getAttribute('style'));
+
+div.removeAttribute('style');
+
+</script>
+</body>
+</html>
+```
+
+### 6.4 使用 getComputedStyle() 获取元素计算样式（即实际样式，包括级联中的任何样式）
+
+style 属性仅包含通过 style 属性定义的 css。 要从级联（即从内联样式表、外部样式表、浏览器样式表级联）及其内联样式中获取元素 css，可以使用 getComputedStyle()。  
+该方法提供了一个类似于 style 的只读 CSSStyleDeclaration 对象。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+div{
+    background-color:red;
+    border:1px solid black;
+    height:100px;
+    width:100px;
+}
+</style>
+</head>
+<body>
+
+<div style="background-color:green;border:1px solid purple;"></div>
+    
+<script>
+
+var div = document.querySelector('div');
+
+console.log(window.getComputedStyle(div).backgroundColor);
+console.log(window.getComputedStyle(div).border);
+console.log(window.getComputedStyle(div).height);
+console.log(window.getComputedStyle(div).width);
+
+</script>
+</body>
+</html>
+``` 
+
+NOTE:
+- 不能在从 getCompulatedStyles() 返回的只读 CSSStyleDeclaration 对象上设置任何值。
+- getComputedStyles() 方法返回 rgb(#,#,#) 格式的颜色值，无论它们最初是如何创作的。
+
+### 6.5 使用 class 和 id 属性在元素上应用和删除 css 属性
+
+
+
 ## 7 文本节点
 
 
