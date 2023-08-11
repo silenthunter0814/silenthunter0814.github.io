@@ -1747,8 +1747,45 @@ console.log(div.offsetParent);   // <div id="blue">
 在下面的代码中，创建一个 50px X 50px `<div>`，边框为 10px，边距为 100px。 为了获取 `<div>` 每个边框边缘的像素距离，在 `<div>` 上调用 getBoundingClientRect() 方法，该方法返回一个包含 top、right、bottom 和 left 属性的对象。
 
 ```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+body{margin:0;}
+div{height:50px;width:50px;background-color:red;border:10px solid gray;margin:100px;}
+</style>
+</head>
+<body>
 
+<div></div></div>
+    
+<script src="./main.js">
+
+var divEdges = document.querySelector('div').getBoundingClientRect();
+
+console.log(divEdges);
+
+</script>
+</body>
+</html>
 ```
+
+DOMRect:
+- bottom: 170
+- height: 70
+- left: 100
+- right: 170
+- top: 100
+- width: 70
+- x: 100
+- y: 100
+
+下图显示了上述代码的浏览器渲染视图，并添加了一些测量指示器，以准确显示 getBoudingClientRect() 的计算方式。
+
+![](https://silenthunter0814.github.io/pub/web03/5.3.png)
+
+`<div>` 元素的顶部外边框边缘距视口顶部边缘 100 像素。 元素 `<div>` 的右外边框边缘距视口左边缘 170 像素。 元素 `<div>` 的底部外边框边缘距视口顶部边缘 170 像素。 元素 `<div>` 的左外边框边缘距视口左边缘 100px。
+
 
 ## 6 元素节点内联样式
 
