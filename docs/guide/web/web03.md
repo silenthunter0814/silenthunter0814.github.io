@@ -1859,6 +1859,8 @@ console.log(div.clientHeight, div.clientWidth);  // 75 75
 </html>
 ```
 
+### 5.6 使用 elementFromPoint() 获取视口中特定点的最顶层元素
+
 ## 6 元素节点内联样式
 
 
