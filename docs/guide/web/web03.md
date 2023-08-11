@@ -1700,13 +1700,14 @@ console.log(div.offsetParent);   // <body>
 </html>
 ```
 
-检查下图，显示代码在浏览器中直观显示的内容，以帮助您了解 offsetLeft 和 offsetTop 值是如何确定的。 图像中显示的红色 <div> 距 offsetParent 正好 60 像素。
+检查下图，显示代码在浏览器中直观显示的内容，以帮助您了解 offsetLeft 和 offsetTop 值是如何确定的。 图像中显示的红色 `<div>` 距 offsetParent 正好 60 像素。
 
+![](https://silenthunter0814.github.io/pub/web03/5.1.png)
 
+请注意，测量的是从红色 `<div>` 元素的外边框到 offsetParent（即 `<body>`）的内边框。
 
-请注意，我测量的是从红色 <div> 元素的外边框到 offsetParent（即 <body>）的内边框。
-
-如前所述，如果我将上面代码中的蓝色 <div> 更改为绝对位置，这将改变 offsetParent 的值。 在下面的代码中，绝对定位蓝色 <div> 将导致从 offsetLeft 和 offsetTop 返回的值报告偏移量（即 25px）。 这是因为偏移父级现在是蓝色的 <div> 而不是 <body> 。
+如前所述，如果将上面代码中的蓝色 `<div>` 更改为绝对位置，这将改变 offsetParent 的值。  
+在下面的代码中，绝对定位蓝色 `<div>` 将导致从 offsetLeft 和 offsetTop 返回的值报告偏移量（即 25px）。 这是因为偏移父级现在是蓝色的 `<div>` 而不是 `<body>` 。
 
 ## 6 元素节点内联样式
 
