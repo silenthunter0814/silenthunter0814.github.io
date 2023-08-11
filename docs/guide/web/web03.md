@@ -1792,7 +1792,7 @@ div{height: 25px;width:25px;background-color:red;border:25px solid gray;padding:
 
 <div></div>
     
-<script src="./main.js">
+<script>
 
 var rect = document.querySelector('div').getBoundingClientRect();
 
@@ -1819,7 +1819,7 @@ div{height: 25px;width:25px;background-color:red;border:25px solid gray;padding:
 
 <div></div>
     
-<script src="./main.js">
+<script>
 
 var div = document.querySelector('div');
 
@@ -1832,7 +1832,32 @@ console.log(div.offsetHeight, div.offsetWidth);  // 125 125
 
 ### 5.5 获取视口中不包括边框的元素大小 (padding + content)
 
+clientWidth 和 clientHeight 属性通过将元素的内容及其填充（不包括边框大小）相加来返回元素的总大小。
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+div{height: 25px;width:25px;background-color:red;border:25px solid gray;padding:25px;}
+</style>
+</head>
+<body>
+
+<div></div>
+    
+<script>
+
+var div = document.querySelector('div');
+
+console.log(div.clientHeight, div.clientWidth);  // 75 75
+
+// 2 x 25px padding + 25 content
+
+</script>
+</body>
+</html>
+```
 
 ## 6 元素节点内联样式
 
