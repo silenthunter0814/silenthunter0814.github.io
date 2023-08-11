@@ -2021,6 +2021,37 @@ console.log(divStyle);
 
 ### 6.2 获取，设置和删除单个内联 CSS 属性
 
+内联 CSS 样式单独表示为元素节点对象上的样式对象属性（即对象属性）
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<div></div>
+    
+<script>
+
+var divStyle = document.querySelector('div').style;
+
+divStyle.backgroundColor = 'red';
+divStyle.border = '1px solid black';
+divStyle.width = '100px';
+divStyle.height = '100px';
+
+console.log(divStyle.backgroundColor);
+console.log(divStyle.border);
+console.log(divStyle.width);
+console.log(divStyle.height);
+
+/* remove
+divStyle.border = '';
+*/
+
+</script>
+</body>
+</html>
+```
 
 ## 7 文本节点
 
