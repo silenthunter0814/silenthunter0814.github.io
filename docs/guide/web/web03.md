@@ -1,5 +1,5 @@
 ---
-description: DOM 文档对象模型。jaascript 课程课件，学习笔记。  
+description: DOM 文档对象模型。javascript 课程课件，学习笔记。  
 author: silenthunter0814, Silent Hunter
 ---
 
