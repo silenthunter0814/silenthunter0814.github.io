@@ -1544,9 +1544,77 @@ NOTE:
 - HTMLCollection 按文档顺序包含元素，即它们按照元素在 DOM 中出现的顺序放置在数组中
 - HTMLCollection 是实时的，这意味着对文档的任何更改都将动态反映在集合中
 
+### 4.4 上下文元素选择
 
+通常从文档对象访问的方法:
+- querySelector()
+- querySelectorAll()
+- getElementsByTagName()
+- getElementsByClassName
 
+也在元素节点上定义。  
+这允许这些方法将其结果限制为 DOM 树的特定脉络上。
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<div>
+<ul>
+<li class="liClass">Hello</li>
+<li class="liClass">big</li>
+<li class="liClass">bad</li>
+<li class="liClass">world</li>
+</ul>
+</div>
+
+<ul>
+<li class="liClass">Hello</li>
+</ul>
+    
+<script>
+
+var div = document.querySelector('div');
+
+console.log(div.querySelector('ul'));
+console.log(div.querySelectorAll('li'));
+console.log(div.getElementsByTagName('li'));
+console.log(div.getElementsByClassName('liClass'));
+
+</script>
+</body>
+</html>
+```
+
+这些方法不仅可以在实时 DOM 上运行，还可以在代码中创建的编程 DOM 结构上运行。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    
+<script>
+
+var div = document.createElement('div');
+var ul = document.createElement('ul');
+var li = document.createElement('li');
+li.setAttribute('class', 'liClass');
+ul.appendChild(li);
+div.appendChild(ul);
+console.log(div.outerHTML);
+
+console.log(div.querySelector('ul'));
+console.log(div.querySelectorAll('li'));
+console.log(div.getElementsByTagName('li'));
+console.log(div.getElementsByClassName('liClass'));
+
+</script>
+</body>
+</html>
+```
+
+### 4.5 元素节点的预配置选择/列表
 
 ## 5 元素节点几何和滚动几何
 
