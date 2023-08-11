@@ -1446,6 +1446,8 @@ NOTE:
 
 ## 4 元素节点选择
 
+### 4.1 选择特定元素节点
+
 获取对单个元素节点的引用的最常见方法是：
 - querySelector()
 - getElementById()
@@ -1470,14 +1472,15 @@ console.log(document.getElementById('last').textContent);
 </script>
 </body>
 </html>
-``
+```
 
 NOTE:
 - querySelector() 方法允许使用 CSS 选择器语法形式的参数。
 - querySelector() 将根据选择器返回在文档中找到的第一个节点元素。
-- querySelector() 也在元素节点上定义。 这允许方法将其结果限制（允许上下文查询）到 DOM 树的特定脉络
+- querySelector() 也在元素节点上定义。 这允许方法将其结果限制（允许上下文查询）到 DOM 树的特定脉络。
 
-### 4.2 选择/创建元素节点列表/集合（NodeList/HTMLCollection）
+
+### 4.2 选择/创建元素节点列表（NodeList）
 
 选择/创建节点列表的最常见方法是：
 - querySelectorAll() NodeList
