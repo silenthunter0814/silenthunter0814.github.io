@@ -231,7 +231,7 @@ CSS (Cascading Style Sheets) 层叠样式表是为网页添加样式的代码。
 ---
 #### 2.1.1 规则集详解
 让我们来仔细看一看上述 CSS：  
-![](https://silenthunter0814.github.io/pub/web/css.png)
+![](https://silenthunter0814.github.io/pub/web01/css.png)
 
 整个结构称为 **规则集**（通常简称“规则”），各部分释义如下：
 
