@@ -1619,6 +1619,21 @@ console.log(div.getElementsByClassName('liClass'));
 
 ### 4.5 元素节点的预配置选择/列表
 
+预配置的类似数组的列表，包含 HTML 文档中的元素节点。
+
+- document.all HTML 文档中的所有元素
+- document.forms HTML 文档中的所有 `<form>` 元素
+- document.images HTML 文档中的所有 `<img>` 元素
+- document.links HTML 文档中的所有 `<a>` 元素
+- document.scripts HTML 文档中的所有 `<script>` 元素
+- document.styleSheets HTML 文档中的所有 `<link>` 或 `<style>` 对象
+
+这些预先配置的数组是从 HTMLCollection 接口/对象构造的，除了 document.styleSheets 它使用 StyleSheetList。
+
+### 4.6 使用 matchesSelector() 验证将选择一个元素
+
+使用 matchesSelector() 方法可以确定元素是否与选择器字符串匹配。
+
 ## 5 元素节点几何和滚动几何
 
 
