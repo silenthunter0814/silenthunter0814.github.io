@@ -1630,9 +1630,35 @@ console.log(div.getElementsByClassName('liClass'));
 
 这些预先配置的数组是从 HTMLCollection 接口/对象构造的，除了 document.styleSheets 它使用 StyleSheetList。
 
-### 4.6 使用 matchesSelector() 验证将选择一个元素
+### 4.6 使用 matches() 测试一个元素与 CSS 选择器匹配
 
-使用 matchesSelector() 方法可以确定元素是否与选择器字符串匹配。
+使用 matches() 方法可以确定元素是否与选择器字符串匹配。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<ul>
+<li class="first">Hello</li>
+<li class="second">world</li>
+</ul>
+    
+<script>
+
+var lis = document.querySelectorAll('li');
+
+for (let li of lis) {
+    if (li.matches(".second")) {
+        console.log(li.outerHTML);
+    }
+}
+
+</script>
+</body>
+</html>
+```
+
 
 ## 5 元素节点几何和滚动几何
 
