@@ -1446,6 +1446,107 @@ NOTE:
 
 ## 4 元素节点选择
 
+获取对单个元素节点的引用的最常见方法是：
+- querySelector()
+- getElementById()
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<ul>
+<li>Hello</li>
+<li>big</li>
+<li>bad</li>
+<li id="last">world</li>
+</ul>
+
+<script>
+
+console.log(document.querySelector('li').textContent);
+console.log(document.getElementById('last').textContent);
+
+</script>
+</body>
+</html>
+``
+
+NOTE:
+- querySelector() 方法允许使用 CSS 选择器语法形式的参数。
+- querySelector() 将根据选择器返回在文档中找到的第一个节点元素。
+- querySelector() 也在元素节点上定义。 这允许方法将其结果限制（允许上下文查询）到 DOM 树的特定脉络
+
+### 4.2 选择/创建元素节点列表/集合（NodeList/HTMLCollection）
+
+选择/创建节点列表的最常见方法是：
+- querySelectorAll() NodeList
+- getElementByTagName() HTMLCollection
+- getElementByClassName() HTMLCollection
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<ul>
+<li class="liClass">Hello</li>
+<li class="liClass">big</li>
+<li class="liClass">bad</li>
+<li class="liClass">world</li>
+</ul>
+
+<script>
+
+console.log(document.querySelectorAll('li'));
+console.log(document.getElementsByTagName('li'));
+console.log(document.getElementsByClassName('liClass'));
+
+</script>
+</body>
+</html>
+```
+
+NOTE:
+- 从 getElementsByTagName() 和 getElementsByClassName() 创建的 NodeList 被视为活动的。
+- querySelectorAll() 方法是文档创建时的快照。
+- 在元素节点上定义。 这允许该方法将其结果限制为 DOM 树的特定脉络。
+- 字符串“*”（通常表示全部）将返回文档中所有元素的列表。
+
+### 4.3 选择所有直接子元素节点
+
+使用元素节点的 Children 属性，可以获得所有作为元素节点的直接子节点的列表（也称为 HTMLCollection）。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<ul>
+<li><strong>Hi</strong></li>
+<li>there</li>
+</ul>
+    
+<script>
+
+var ul = document.querySelector('ul');
+
+console.log(ul.children);
+
+</script>
+</body>
+</html>
+```
+
+请注意，使用 children 只为我们提供直接元素节点，不包括任何不是元素的节点（例如文本节点）。 如果该元素没有子元素，则子元素将返回一个空的类似数组的列表。
+
+NOTE:
+- HTMLCollection 按文档顺序包含元素，即它们按照元素在 DOM 中出现的顺序放置在数组中
+- HTMLCollection 是实时的，这意味着对文档的任何更改都将动态反映在集合中
+
+
+
+
 
 ## 5 元素节点几何和滚动几何
 
