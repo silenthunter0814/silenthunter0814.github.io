@@ -1861,6 +1861,33 @@ console.log(div.clientHeight, div.clientWidth);  // 75 75
 
 ### 5.6 使用 elementFromPoint() 获取视口中特定点的最顶层元素
 
+使用 elementFromPoint() 可以在文档中的特定点获取对 html 文档中最顶层元素的引用。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+div{height:50px;width:50px;background-color:red;position:absolute;top:50px;left:50px;}
+</style>
+</head>
+<body>
+
+<div id="bottom"></div><div id="top"></div>
+    
+<script>
+
+console.log(document.elementFromPoint(50, 50));
+
+</script>
+</body>
+</html>
+```
+
+### 5.7 使用scrollHeight和scrollWidth获取正在滚动的元素的大小
+
+
+
 ## 6 元素节点内联样式
 
 
