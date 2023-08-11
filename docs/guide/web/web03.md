@@ -1739,7 +1739,16 @@ console.log(div.offsetParent);   // <div id="blue">
 
 ![](https://silenthunter0814.github.io/pub/web03/5.2.png)
 
+### 5.3 使用 getBoundingClientRect() 获取元素的上、右、下、左边框边缘相对于视口的偏移量
 
+使用 getBoundingClientRect() 方法，我们可以获得在浏览器视口中绘制的元素在边框边缘之外相对于视口的上边缘和左边缘的位置。  
+这意味着左边缘和右边缘是从元素的外边框边缘到视口的左边缘进行测量的。 顶部和底部边缘是从元素的外边框边缘到视口的顶部边缘进行测量的。
+
+在下面的代码中，创建一个 50px X 50px `<div>`，边框为 10px，边距为 100px。 为了获取 `<div>` 每个边框边缘的像素距离，在 `<div>` 上调用 getBoundingClientRect() 方法，该方法返回一个包含 top、right、bottom 和 left 属性的对象。
+
+```html
+
+```
 
 ## 6 元素节点内联样式
 
