@@ -3189,10 +3189,143 @@ console.log('hi');
 
 默认情况下，当解析 DOM 时遇到 `<script>` 元素，它将停止解析文档，阻止任何进一步的渲染和下载，并执行 JavaScript。 因为此行为是阻塞的，并且不允许并行解析 DOM 或执行 JavaScriopt，所以它被认为是同步的。 如果 JavaScript 位于 html 文档外部，则阻塞会加剧，因为必须首先下载 JavaScript，然后才能对其进行解析。
 
+### 10.3 使用 defer 推迟外部 JavaScript 的下载和执行
 
+`<script>` 元素有一个名为 defer 的属性，该属性将推迟外部 JavaScript 文件的阻止、下载和执行，直到浏览器解析结束 `<html>` 节点。
+
+`<script defer src=".../app.js"></scriipt>`
+
+### 10.4 使用 async 异步下载和执行外部 JavaScript 文件
+
+`<script>` 元素有一个名为 async 的属性，当 Web 浏览器构建 DOM 时，该属性将覆盖 `<script>` 元素的顺序阻塞性质。 通过使用此属性，我们告诉浏览器不要阻止 html 页面的构建（即 DOM 解析，包括下载其他资源，例如图像、样式表等...）并放弃顺序加载。
+
+`<script async src=".../app.js"></scriipt>`
+
+### 10.5 使用动态 `<script>` 强制异步下载和解析外部 JavaScript
+
+在不使用 async 属性的情况下强制 Web 浏览器进行异步 JavaScript 下载和解析的一种已知方法是以编程方式创建包含外部 JavaScript 文件的 `<script>` 元素并将其插入 DOM 中。
+
+```html
+<body>
+<script>
+
+var underscoreScript = document.createElement("script"); 
+underscoreScript.src = "http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js"; 
+document.body.appendChild(underscoreScript);
+
+</script>
+</body>
+```
+
+### 10.6 对异步 `<script>` 使用 onload 回调，以便我们知道它何时加载
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<!-- Don't block, just start downloading and then parse the file when it's done downloading -->
+<script>
+var underscoreScript = document.createElement("script"); 
+underscoreScript.src = "http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js";
+underscoreScript.onload = function(){console.log('underscsore is loaded and exectuted');};
+document.body.appendChild(underscoreScript);
+</script>
+
+<!-- Don't block, just start downloading and then parse the file when it's done downloading -->
+<script async src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" onload="console.log('jQuery is loaded and exectuted');"></script>
+
+</body>
+</html>
+```
+
+### 10.7 注意 `<script>` 在 HTML 中用于 DOM 操作的位置
+
+考虑到 `<script>` 元素的同步性质，如果 JavaScript 执行依赖于执行 `<script>` 的任何 DOM，则将其放置在 HTML 文档的 `<head>` 元素中会出现计时问题。 
+
+简而言之，如果 JavaScript 在操作 DOM 的文档开头执行，那么您将收到 JavaScript 错误。 通过以下代码示例证明：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+
+//Uncaught TypeError: Cannot read property 'innerHTML' of null
+console.log(document.body.innerHTML);  
+
+</script>
+</head>
+<body>
+<strong>Hi</strong>
+</body>
+</html>
+```
+
+许多开发人员因此会尝试将所有 `<script>` 元素放在结束 `</body>` 元素之前。 通过这样做，`<script>` 前面的 DOM 已被解析并准备好执行脚本。
+
+### 10.8 获取 DOM 中 `<script>` 的列表
+
+文档对象中的 document.scripts 属性提供了 DOM 中当前所有脚本的列表（即 HTMLCollection）。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.0.6/jquery.mousewheel.min.js"></script>
+
+<script>
+
+Array.prototype.slice.call(document.scripts).forEach(function(script){
+	console.log(script); 
+});  //will log each script element in the document
+
+</script>
+</body>
+</html>
+```
 
 ## 11 DOM 事件
 
+### 11.1 DOM 事件概述
+
+可以使用内联属性事件处理程序、属性事件处理程序或 addEventListener() 方法来完成事件设置。 
+
+在下面的代码中，演示了这三种设置事件的模式。 所有三种模式都添加了一个单击事件，每当鼠标单击 html 文档中的 `<div>` 时就会调用该事件。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<body onclick="console.log('fire/trigger attribure event handler')">
+
+<h1>Event Handler</h1>
+<div>click me</div>
+
+<script>
+
+var div = document.querySelector('div');
+
+div.onclick = function(){
+    console.log('fire/trigger property event handler');
+};
+
+div.addEventListener('click',function(){
+    console.log('fire/trigger addEventListener');
+});
+
+</script> 
+</body>
+</html>
+```
+
+虽然将事件附加到 DOM 的所有这三种模式都以编程方式安排事件，但只有 addEventListener() 提供了健壮且有组织的解决方案。 内联属性事件处理程序将 JavaScript 和 HTML 混合在一起，最佳实践建议将这些内容分开。
+
+使用属性事件处理程序的缺点是一次只能将一个值分配给事件属性。 这意味着，在将事件分配为属性值时，您不能向 DOM 节点添加多个属性事件处理程序。 
+
+下面的代码显示了一个示例，它为 onclick 属性分配了两次值，调用事件时使用最后设置的值。
 
 ## 12 创建 dom.js - 一个受 jQuery 启发的现代浏览器 DOM 库
 
