@@ -833,21 +833,11 @@ NOTES:
 
 <script>
 
-console.log(Object.keys(document).sort());
-
 var props = [];
 for (let prop in document) {
     props.push(prop);
 }
 console.log(props.sort());
-
-var inherits = [];
-for (let prop in document) {
-    if (!document.hasOwnProperty(prop)) {
-        inherits.push(prop);
-    }
-}
-console.log(inherits.sort());
 
 </script>
 </body>
@@ -1108,13 +1098,12 @@ DOM 中的每个元素都是由唯一的 JavaScript 接口/构造函数构造的
 <script>
 
 var anchor = document.querySelector('a');
-console.log(Object.keys(anchor));
 
-var inherits = [];
+var props = [];
 for (let prop in anchor) {
-    inherits.push(prop);
+    props.push(prop);
 }
-console.log(inherits.sort());
+console.log(props.sort());
       
 </script>
 </body>
@@ -1123,7 +1112,7 @@ console.log(inherits.sort());
 
 本章的上下文值得注意的属性和方法（也是继承的）。
 
-- createElement()
+- Document.createElement()
 - tagName
 - children
 - getAttribute()
@@ -2248,8 +2237,6 @@ Text() 构造函数构造了文本节点:
 
 var text = document.querySelector('p').firstChild;
 
-console.log(Object.keys(text).sort());
-
 var props = [];
 for (let prop in text) {
     props.push(prop);
@@ -2269,9 +2256,9 @@ console.log(props.sort());
 - insertData()
 - replaceData()
 - subStringData()
-- normalize()
+- Node.normalize()
 - data
-- document.createTextNode()
+- Document.createTextNode()
 
 ### 7.3 空白创建文本节点
 
