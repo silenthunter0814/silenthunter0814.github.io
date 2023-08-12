@@ -2500,6 +2500,72 @@ console.log(document.querySelector('div p').childNodes.length);
 </html>
 ```
 
+### 7.8 删除标记并使用 textContent 返回所有子 Text 节点
+
+textContent 属性可用于获取所有子文本节点，以及将节点的内容设置为特定的文本节点。  
+当它在节点上使用以获取该节点的文本内容时，它将返回节点中包含的所有文本节点的串联字符串。   
+此功能可以非常轻松地从 HTML 文档中提取所有文本节点。  
+textContent 不仅收集直接子文本节点，而且收集所有子文本节点，无论调用该方法的节点内部的封装深度如何。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<h1> Dude</h1>
+<p>you <strong>rock!</strong></p>
+
+<script>
+
+console.log(document.body.textContent);
+
+</script>
+</body>
+</html>
+```
+
+当使用 textContent 设置节点中包含的文本时，它将首先删除所有子节点，并用单个 Text 节点替换它们。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<div>
+<h1> Dude</h1>
+<p>you <strong>rock!</strong></p>
+</div>
+
+<script>
+
+var div = document.querySelector('div');
+
+div.textContent = "You don't rock!";
+console.log(div.textContent);
+
+</script>
+</body>
+</html>
+```
+
+NOTE:
+- 如果在文档或文档类型节点上使用，textContent 将返回 null。
+- textContent 返回 `<script>` 和 `<style>` 元素的内容
+
+### 7.9 textContent 和 innerText 的区别
+
+- innerText 能够识别 CSS。 因此，如果您有隐藏文本，innerText 会忽略此文本，而 textContent 不会
+- 因为 innerText 关心 CSS，所以它会触发回流，而 textContent 不会
+- innerText 忽略 `<script>` 和 `<style>` 元素中包含的文本节点
+- 与 textContent 不同，innerText 会标准化返回的文本。 只需将 textContent 视为准确返回文档中删除标记的内容即可。 这将包括空格、换行符和回车符
+- innerText 被认为是非标准且特定于浏览器的，而 textContent 是根据 DOM 规范实现的
+
+### 7.10 使用 normalize() 将同级文本节点合并为一个文本节点
+
+通常仅在以编程方式将文本添加到 DOM 时才会遇到同级文本节点。  
+为了消除不包含 Element 节点的同级 Text 节点，可以使用 normalize()。 这会将 DOM 中的同级文本节点连接成单个文本节点。
+
+
 ## 8 DocumentFragment 节点
 
 
