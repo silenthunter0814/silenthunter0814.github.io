@@ -2403,7 +2403,7 @@ NOTE:
 - `<p>` 包含两个文本节点和元素（即 `<strong>`）节点。 
 - 我们仅获取 `<p>` 中包含的第一个子节点的值。
 
-### 7.6 使用 *Data()操作文本节点
+### 7.6 使用 *Data() 操作文本节点
 
 文本节点继承方法的 CharacterData 对象提供了用于操作和提取子值的方法:
 - appendData()
@@ -2412,7 +2412,93 @@ NOTE:
 - replaceData()
 - subStringData()
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
 
+<p>Go big Blue Blue</p>
+    
+<script>
+
+var text = document.querySelector('p').firstChild;
+
+text.appendData('!');
+console.log(text.data);
+
+text.deleteData(7, 5);
+console.log(text.data);
+
+text.insertData(7, 'Blue ');
+console.log(text.data);
+
+text.replaceData(7, 5, 'Bunny ');
+console.log(text.data);
+
+console.log(text.substringData(7, 10));
+
+</script>
+</body>
+</html>
+```
+
+NOTE:
+- 注释节点可以利用这些相同的操作和子值提取方法。
+
+### 7.7 当出现多个兄弟 Text 节点时
+
+- 如果文本节点包含元素节点（例如 `<p>Hi, <strong>cody</strong>welcome!</p>`），则文本将被拆分为适当的节点分组。
+
+在下面的代码中，`<p>` 元素的内容不是单个 Text 节点，它实际上是 3 个节点：一个 Text 节点，Element 节点和另一个 Text 节点。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<p>Hi, <strong>cody</strong> welcome!</p>
+    
+<script>
+
+var p = document.querySelector('p');
+
+console.log(p.childNodes.length);
+
+console.log(p.firstChild.data);
+console.log(p.firstChild.nextSibling);
+console.log(p.lastChild.data);
+
+</script>
+</body>
+</html>
+```
+
+- 当以编程方式将多个文本节点添加到元素时，会产生同级文本节点。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<div></div>
+
+<script>
+
+var div = document.querySelector('div');
+var p = document.createElement('p'),
+    text1 = document.createTextNode('Hi '),
+    text2 = document.createTextNode('Cody');
+
+p.appendChild(text1);
+p.appendChild(text2);
+div.appendChild(p);
+
+console.log(document.querySelector('div p').childNodes.length);
+
+</script>
+</body>
+</html>
+```
 
 ## 8 DocumentFragment 节点
 
