@@ -2646,7 +2646,7 @@ console.log(frag.textContent);
 - 当文档片段附加到 DOM 时，它会从文档片段传输到其附加的位置。 它不再存在于创建它的位置的内存中。
 - 追加片段时，文档片段本身不会添加到 DOM 中。
 
-### 8.3 将 DocumentFragment 添加到实时 DOM
+### 8.3 将 DocumentFragment 添加到实时 DOM 树
 
 通过向 appendChild() 和 insertBefore() 节点方法传递一个 documentFragment 参数，documentFragment 的子节点将作为子节点传输到调用方法的 DOM 节点。
 
