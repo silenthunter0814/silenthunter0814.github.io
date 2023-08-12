@@ -3168,6 +3168,24 @@ styleSheet.disabled = true;
 
 ### 10.1 插入和执行 JavaScript 概述
 
+JavaScript 可以通过包含外部 JavaScript 文件或编写页面级内联方式插入到 HTML 文档中，这基本上是将外部 JavaScript 文件的内容作为文本节点逐字嵌入到 HTML 页面中。  
+不要将属性事件处理程序中包含的元素内联 JavaScript (`<div onclick="alert('yo')"></div>`) 与页面内联 JavaScript (`<script>alert('hi')</script>`) 混淆。  
+两种方法都需要使用 `<script>` 元素节点。 `<script>` 元素可以包含 JavaScript 代码，也可以使用 src 属性链接到外部 JavaScript 文件。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js"></script>
+
+<script>
+console.log('hi');
+</script>
+</body>
+</html>
+```
+
+### 10.2 JavaScript 默认同步解析
 
 ## 11 DOM 事件
 
