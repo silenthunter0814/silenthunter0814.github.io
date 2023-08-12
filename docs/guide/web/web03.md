@@ -2408,21 +2408,7 @@ NOTE:
     
 <script>
 
-var text = document.querySelector('p').firstChild;
 
-text.appendData('!');
-console.log(text.data);
-
-text.deleteData(7, 5);
-console.log(text.data);
-
-text.insertData(7, 'Blue ');
-console.log(text.data);
-
-text.replaceData(7, 5, 'Bunny ');
-console.log(text.data);
-
-console.log(text.substringData(7, 10));
 
 </script>
 </body>
