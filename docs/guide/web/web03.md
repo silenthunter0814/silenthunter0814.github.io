@@ -2623,6 +2623,46 @@ console.log(p.firstChild.textContent);
 
 ### 8.1 DocumentFragment 对象概述
 
+DocumentFragment 接口表示没有父级的最小文档对象。
+
+- Document 的轻量级版本，存储由节点组成的文档结构的片段，就像标准文档一样。 
+- 文档片段不是活动文档树结构的一部分。 对片段所做的更改不会影响文档。
+
+### 8.2 使用 createDocumentFragment() 创建 DocumentFragment
+
+创建一个新的空 DocumentFragment，可以向其中添加 DOM 节点以构建离屏 DOM 树。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<script>
+
+var frag = document.createDocumentFragment();
+
+["blue", "green", "red", "blue", "pink"].forEach(function(e) {
+    var li = document.createElement('li');
+    li.textContent = e;
+    frag.appendChild(li);
+});
+
+console.log(frag.textContent);
+
+</script>
+</body>
+</html>
+```
+
+当将 documentFragment 注入活动节点结构时，使用 documentFragment 在内存中创建节点结构非常有效。
+- 文档片段可以包含任何类型的节点（`<body>` 或 `<html>` 除外）。
+- 当文档片段附加到 DOM 时，它会从文档片段传输到其附加的位置。 它不再存在于创建它的位置的内存中。
+- 追加片段时，文档片段本身不会添加到 DOM 中。
+
+### 8.3 将 DocumentFragment 添加到实时 DOM
+
+
+
 
 ## 9 CSS 样式表和 CSS 规则
 
