@@ -2646,39 +2646,7 @@ console.log(frag.textContent);
 - 当文档片段附加到 DOM 时，它会从文档片段传输到其附加的位置。 它不再存在于创建它的位置的内存中。
 - 追加片段时，文档片段本身不会添加到 DOM 中。
 
-### 8.3 将 DocumentFragment 添加到实时DOM树
 
-通过向 appendChild() 和 insertBefore() 节点方法传递一个 documentFragment 参数，documentFragment 的子节点将作为子节点传输到调用方法的 DOM 节点。
-
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<body>
-
-<ul></ul>
-
-<script>
-
-var ul = document.querySelector('ul');
-var frag = document.createDocumentFragment();
-
-["blue", "green", "red", "blue", "pink"].forEach(function(e) {
-    var li = document.createElement('li');
-    li.textContent = e;
-    frag.appendChild(li);
-});
-
-ul.appendChild(frag);
-console.log(ul.outerHTML);
-console.assert(frag.childNodes.length === 0);
-
-</script>
-</body>
-</html>
-```
-
-- 作为参数传递给插入节点方法的文档片段将插入整个子节点结构，忽略 documentFragment 节点本身。
 
 ### 8.4 在 documentFragment 上使用 innerHTML
 
