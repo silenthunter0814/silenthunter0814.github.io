@@ -91,8 +91,7 @@ function sidebarGuide() {
       items: [
         { text: 'Markdown Notes', link: '/guide/markdown.notes.md' },
         { text: '03 DOM 启示录', link: '/guide/web/web031' }
-      ]
-      
+      ]      
     }
   ]
 }
