@@ -3291,6 +3291,10 @@ Array.prototype.slice.call(document.scripts).forEach(function(script){
 
 ### 11.1 DOM 事件概述
 
+Event 接口表示 DOM 中发生的事件。
+
+事件可以由用户操作触发，例如 单击鼠标按钮或敲击键盘，或由 API 生成来表示异步任务的进度。 它还可以通过编程方式触发，例如通过调用元素的 HTMLElement.click() 方法，或者定义事件，然后使用 EventTarget.dispatchEvent() 将其发送到指定目标。
+
 可以使用内联属性事件处理程序、属性事件处理程序或 addEventListener() 方法来完成事件设置。 
 
 在下面的代码中，演示了这三种设置事件的模式。 所有三种模式都添加了一个单击事件，每当鼠标单击 html 文档中的 `<div>` 时就会调用该事件。
@@ -3326,6 +3330,49 @@ div.addEventListener('click',function(){
 使用属性事件处理程序的缺点是一次只能将一个值分配给事件属性。 这意味着，在将事件分配为属性值时，您不能向 DOM 节点添加多个属性事件处理程序。 
 
 下面的代码显示了一个示例，它为 onclick 属性分配了两次值，调用事件时使用最后设置的值。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+
+<div>click me</div>
+
+<script>
+
+var div = document.querySelector('div');
+
+div.onclick = function(){
+    console.log('I\'m first, but I get overidden/replace');
+};
+div.onclick = function(){
+    console.log('I win');
+};
+
+</script> 
+</body>
+</html>
+```
+
+### 11.2 DOM 事件类型
+
+元素节点、文档对象和窗口对象的最常见的预定义事件。
+
+- 用户界面事件
+
+
+|      事件类型      |            事件描述            |
+|----------------|----------------------------|
+| Window: load   | 当整个页面加载完毕后，包括所有依赖的资源       |
+| Window: unload | 当用户代理删除资源时                 |
+| Window: error  | 当资源无法加载或无法使用时（例如，脚本出现执行错误） |
+| Window: resize | 当文档视图（窗口）调整大小时             |
+| scroll         | 当用户滚动文档或元素时                |
+| contextmenu    | 当尝试打开上下文菜单时                |
+
+
+
 
 ## 12 创建 dom.js - 一个受 jQuery 启发的现代浏览器 DOM 库
 
