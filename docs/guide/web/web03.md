@@ -2786,6 +2786,134 @@ console.log(frag.childNodes);
 
 ### 9.1 CSS 样式表概述
 
+将样式表添加到 HTML 文档中:
+- 使用 HTMLLinkElement 节点（即 `<link href="stylesheet.css" rel="stylesheet" type="text/css">`）
+- 使用 HTMLStyleElement 节点 （即 `<style></style>`）
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<link id="linkElement" href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css" rel="stylesheet" type="text/css">
+
+<style id="styleElement">
+body{background-color:#fff;}
+</style>
+
+</head>
+<body>
+
+<script>
+
+// ƒ HTMLLinkElement() { [native code] }
+console.log(document.querySelector('#linkElement').constructor);
+
+// ƒ HTMLStyleElement() { [native code] }
+console.log(document.querySelector('#styleElement').constructor);
+
+</script>
+</body>
+</html>
+```
+
+一旦样式表被添加到 HTML 文档中，它就由 CSSStylesheet 对象表示。  
+样式表内的每个 CSS 规则（例如 body{background-color:red;}）都由 CSSStyleRule 对象表示。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<style id="styleElement">
+body{background-color:#fff;}
+</style>
+
+</head>
+<body>
+
+<script>
+
+var style = document.querySelector('#styleElement');
+
+// ƒ CSSStyleSheet() { [native code] }
+console.log(style.sheet.constructor);
+
+// ƒ CSSStyleRule() { [native code] }
+console.log(style.sheet.cssRules[0].constructor);
+
+</script>
+</body>
+</html>
+```
+
+- 选择包含样式表的元素（即 `<link>` 或 `<style>`）与访问表示样式表本身的实际对象 (CSSStyleSheet) 不同。
+
+### 9.2 访问 DOM 中的所有样式表（即 CSSStyleSheet 对象）
+
+Document 接口的 styleSheets 只读属性返回 CSSStyleSheet 对象的 StyleSheetList，用于显式链接 (`<link>`) 到或嵌入 (`<style>`) 到文档中的样式表。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<link href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css" rel="stylesheet" type="text/css">
+
+<style>
+body{background-color:red;}
+</style>
+
+</head>
+<body>
+
+<script>
+
+console.log(document.styleSheets.length);
+console.log(document.styleSheets[0]);
+console.log(document.styleSheets[1]);
+
+</script>
+</body>
+</html>
+```
+
+NOTE:
+- styleSheet 就像其他节点列表一样是实时的。
+- length 属性返回列表中包含的样式表数量，从 0 索引开始（即 document.styleSheets.length）。
+- 通过 querySelector 来访问指定的样式表 CSSStyleSheet 对象。
+
+### 9.3 CSSStyleSheet 属性和方法
+
+检查下面的代码中创建的数组，详细说明 CSSStyleSheet 节点可用的属性和方法。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<style id="styleElement">
+body{background-color:#fff;}
+</style>
+
+</head>
+<body>
+
+<script>
+
+var sheet = document.querySelector('#styleElement').sheet;
+
+var props = [];
+for (let prop in sheet) {
+    props.push(prop);   
+}
+
+console.log(props.sort());
+
+</script>
+</body>
+</html>
+```
 
 ## 10  DOM 中的 JavaScript
 
