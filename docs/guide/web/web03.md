@@ -2641,11 +2641,15 @@ console.log(frag.textContent);
 </html>
 ```
 
-
+当将 documentFragment 注入活动节点结构时，使用 documentFragment 在内存中创建节点结构非常有效。
+- 文档片段可以包含任何类型的节点（`<body>` 或 `<html>` 除外）。
+- 当文档片段附加到 DOM 时，它会从文档片段传输到其附加的位置。 它不再存在于创建它的位置的内存中。
+- 追加片段时，文档片段本身不会添加到 DOM 中。
 
 ### 8.3 将 DocumentFragment 添加到实时DOM树
 
 通过向 appendChild() 和 insertBefore() 节点方法传递一个 documentFragment 参数，documentFragment 的子节点将作为子节点传输到调用方法的 DOM 节点。
+
 
 ```html
 <!DOCTYPE html>
