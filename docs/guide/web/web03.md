@@ -3009,6 +3009,161 @@ console.log(sheet.cssRules[1]);
 
 CSSStyleSheet: insertRule（）和deleteRule（）方法提供了在样式表中处理CSS规则的能力。
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<style id="styleElement">
+p{line-height:1.4em; color:blue;} /*index 0*/
+p{font-size:50px;} /*index 1*/
+</style>
+
+</head>
+<body>
+
+<p>Hi</p>
+
+<script>
+
+var sheet = document.querySelector('#styleElement').sheet;
+
+sheet.insertRule('p {color: red}', 1);
+console.log(sheet.cssRules[1].cssText);
+
+sheet.deleteRule(1);
+console.log(sheet.cssRules[1].cssText);
+
+</script>
+</body>
+</html>
+```
+
+NOTE:
+- 插入和删除规则并不是一种常见的做法。
+
+### 9.8 使用 .style 属性编辑 CSSStyleRule 的值
+
+就像元素节点上的内联样式 .style 属性一样，CSSStyleRule 对象也有一个 .style 属性，可以对样式进行相同的操作。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<style id="styleElement">
+p{color:blue;}
+strong{color:green;}
+</style>
+
+</head>
+<body>
+
+<p>Hey <strong>Dude!</strong></p>
+
+<script>
+
+var sheet = document.querySelector('#styleElement').sheet;
+
+sheet.cssRules[0].style.color = 'red';
+sheet.cssRules[1].style.color = 'purple';
+
+console.log(sheet.cssRules[0].style.color);
+console.log(sheet.cssRules[1].style.color);
+
+</script>
+</body>
+</html>
+```
+
+### 9.9 创建新的内联 CSS 样式表
+
+为了在加载 HTML 页面之后即时制作新样式表，只需创建一个新的 `<style>` 节点，使用 innerHTML添加 CSS 规则，然后将 `<style>` 节点附加到 HTML 文档。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+
+<p>Hey <strong>Dude!</strong></p>
+
+<script>
+
+var style = document.createElement('style');
+
+style.innerHTML = 'body {color: red;} \
+    strong {color: blue;}';
+document.head.appendChild(style);
+
+</script>
+</body>
+</html>
+```
+
+### 9.10 编程方式将外部样式表添加到 HTML 文档
+
+要将 CSS 文件添加到 HTML 文档中，从编程中创建 `<link>` 元素节点，设置适当的属性，然后将 `<link>` 元素节点附加到 DOM 上。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+
+<script>
+
+var link = document.createElement('link');
+
+link.setAttribute('rel', 'stylesheet');
+link.setAttribute('type', 'text/css');
+link.setAttribute('id', 'linkElement');
+link.setAttribute('href', 'http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css');
+
+document.head.appendChild(link);
+console.log(document.querySelector('#linkElement'));
+
+</script>
+</body>
+</html>
+```
+
+### 9.11 使用 disabled 属性禁用/启用样式表
+
+使用 CSSStyleSheet.disabled 属性可以启用或禁用样式表。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<link id="linkElement" href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css" rel="stylesheet" type="text/css">
+
+<style id="styleElement">
+body{color:red;}
+</style>
+
+</head>
+<body>
+
+<script>
+
+var linkSheet = document.querySelector('#linkElement').sheet,
+    styleSheet = document.querySelector('#styleElement').sheet;
+
+console.log(linkSheet.disabled);
+console.log(styleSheet.disabled);
+
+linkSheet.disabled = true;
+styleSheet.disabled = true;
+
+</script>
+</body>
+</html>
+```
+
 
 ## 10  DOM 中的 JavaScript
 
