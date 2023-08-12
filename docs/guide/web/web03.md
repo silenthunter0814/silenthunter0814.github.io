@@ -2680,6 +2680,97 @@ console.assert(frag.childNodes.length === 0);
 
 - 作为参数传递给插入节点方法的文档片段将插入整个子节点结构，忽略 documentFragment 节点本身。
 
+
+### 8.4 在 documentFragment 上使用 innerHTML
+
+使用节点方法在内存中创建 DOM 结构可能会很冗长且费力。  
+解决这个问题的一种方法是创建一个 documentFragment，将 `<div>` 附加到该片段，然后使用innerHTML 属性用 HTML 字符串更新该片段。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<script>
+
+var div = document.createElement('div');
+var frag = document.createDocumentFragment();
+
+div.innerHTML = '<ul><li>foo</li><li>bar</li></ul>';
+frag.appendChild(div);
+
+console.log(frag.querySelectorAll('li').length);
+
+</script>
+</body>
+</html>
+```
+
+当需要附加使用 documentFragment 和 <div> 创建的 DOM 结构时，需要附加该结构以跳过 <div> 的注入。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<div></div>
+
+<script>
+
+var div = document.createElement('div');
+var frag = document.createDocumentFragment();
+
+div.innerHTML = '<ul><li>foo</li></ul><ul><li>bar</li></ul>';
+frag.appendChild(div);
+
+div = frag.querySelector('div');
+const DIV = document.querySelector('div');
+while (div.firstChild) {
+    DIV.appendChild(div.firstChild);
+}
+
+console.log(DIV.outerHTML);
+
+</script>
+</body>
+</html>
+```
+
+### 8.5 通过克隆在内存中留下包含节点的片段
+
+Node 接口的cloneNode(bool) 方法返回调用该方法的节点的副本。 它的参数控制节点中包含的子树是否也被克隆。
+
+追加文档片段时，片段中包含的节点也会从片段移动到要追加的结构。 要将片段的内容保留在内存中，以便在附加后保留节点，只需在附加时使用 cloneNode() 克隆 documentFragment 即可。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<ul></ul>
+
+<script>
+
+var ul = document.querySelector('ul');
+var frag = document.createDocumentFragment();
+
+["blue", "green", "red", "blue", "pink"].forEach((e) => {
+    var li = document.createElement('li');
+    li.textContent = e;
+    frag.appendChild(li);
+});
+
+ul.appendChild(frag.cloneNode(true));
+
+console.log(ul.outerHTML);
+console.log(frag.childNodes);
+
+</script>
+</body>
+</html>
+```
+
+
 ## 10  DOM 中的 JavaScript
 
 
