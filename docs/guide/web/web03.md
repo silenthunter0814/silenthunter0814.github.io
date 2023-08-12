@@ -2648,7 +2648,7 @@ console.log(frag.textContent);
 
 ### 8.3 将 DocumentFragment 添加到实时 DOM
 
-通过向appendChild()和insertBefore()节点方法传递一个documentFragment参数，documentFragment的子节点将作为子节点传输到调用方法的DOM节点。
+通过向 appendChild() 和 insertBefore() 节点方法传递一个 documentFragment 参数，documentFragment 的子节点将作为子节点传输到调用方法的 DOM 节点。
 
 ```html
 <!DOCTYPE html>
