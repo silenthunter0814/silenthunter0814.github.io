@@ -2165,9 +2165,253 @@ NOTE:
 
 ### 6.5 使用 class 和 id 属性在元素上应用和删除 css 属性
 
+可以使用 class 和 id 属性在元素中添加或删除在内联样式表或外部样式表中定义的样式规则。 这是操作元素样式的最常见模式。   
+在下面的代码中，利用 setAttribute() 和 classList.add()，通过设置 class 和 id 属性值将内联样式规则应用于 `<div>`。 使用 removeAttribute() 和 classList.remove() 也可以删除这些CSS规则。
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+.foo{
+  background-color:red;
+  padding:10px;
+}
+#bar{
+  border:10px solid #000;
+  margin:10px;
+}
+</style>
+</head>
+<body>
+
+<div></div>
+    
+<script>
+
+var div = document.querySelector('div');
+
+div.setAttribute('id', 'bar');
+div.classList.add('foo');
+
+/*
+div.removeAttribute('id');
+div.classList.remove('foo');
+*/
+
+</script>
+</body>
+</html>
+```
 
 ## 7 文本节点
+
+### 7.1 Text object overview
+
+HTML 文档中的文本由 Text() 构造函数的实例表示，该函数生成文本节点。  
+当解析 HTML 文档时，混合在 HTML 页面元素中的文本将转换为文本节点。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<p>hi</p>
+    
+<script>
+
+var text = document.querySelector('p').firstChild;
+
+console.log(text.constructor);
+console.log(text);
+
+</script>
+</body>
+</html>
+```
+
+Text() 构造函数构造了文本节点:
+- Text > CharactorData > Node > EventTarget > Object
+
+### 7.2 文本对象和属性
+
+检查下面的代码中创建的数组，详细说明文本节点可用的属性和方法。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<p>hi</p>
+    
+<script>
+
+var text = document.querySelector('p').firstChild;
+
+console.log(Object.keys(text).sort());
+
+var props = [];
+for (let prop in text) {
+    props.push(prop);
+}
+console.log(props.sort());
+
+</script>
+</body>
+</html>
+```
+
+本章的上下文值得注意的属性和方法。
+- textContent
+- splitText()
+- appendData()
+- deleteData()
+- insertData()
+- replaceData()
+- subStringData()
+- normalize()
+- data
+- document.createTextNode()
+
+### 7.3 空白创建文本节点
+
+当通过浏览器或通过编程方式构造 DOM 时，文本节点是从空白和文本字符创建的
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<p id="p1"></p>
+<p id="p2"> </p>
+    
+<script>
+
+var p1 = document.querySelector('#p1');
+var p2 = document.querySelector('#p2');
+
+console.log(p1.firstChild);   // null
+console.log(p2.firstChild.nodeName);  // #text
+
+</script>
+</body>
+</html>
+```
+
+不要忘记 DOM 中的空白和文本字符通常由文本节点表示。 这当然意味着回车符被视为文本节点。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<p id="p1"></p>
+<p id="p2"></p>
+    
+<script>
+
+var p1 = document.querySelector('#p1');
+var p2 = document.querySelector('#p2');
+
+var sibling = p1.nextSibling;
+console.log(sibling);
+console.log(sibling.nextSibling === p2);
+
+</script>
+</body>
+</html>
+```
+
+- 如果可以使用键盘将字符或空格输入到 html 文档中，那么它就有可能被输入为文本节点。 
+- 除非最小化/压缩 html 文档，否则平均 html 页面包含大量空格和回车文本节点。
+
+### 7.4 创建和注入文本节点
+
+当浏览器输入 HTML 文档时，文本节点会自动为我们创建，并根据文档内容构建相应的 DOM。  
+之后，还可以使用 createTextNode() 以编程方式创建文本节点。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<div></div>
+    
+<script>
+
+var textNode = document.createTextNode('Hi');
+var div = document.querySelector('div');
+
+div.appendChild(textNode);
+console.log(div.outerHTML);
+
+</script>
+</body>
+</html>
+```
+
+也可以将文本节点注入到以编程方式创建的 DOM 结构中。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<div></div>
+    
+<script>
+
+var p = document.createElement('p'),
+    text = document.createTextNode('Hi'),
+    div = document.querySelector('div');
+
+p.appendChild(text);
+div.appendChild(p);
+
+console.log(div.innerHTML);
+
+</script>
+</body>
+</html>
+```
+
+### 7.5 使用 .data 或 nodeValue 获取文本节点值
+
+可以使用 .data 或 nodeValue 属性从节点中提取文本节点表示的文本值/数据。  
+这两者都返回文本节点中包含的文本。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<p>Hi, <strong>cody</strong></p>
+    
+<script>
+
+var p = document.querySelector('p');
+
+console.log(p.firstChild.data);
+console.log(p.firstChild.nodeValue);
+
+</script>
+</body>
+</html>
+```
+
+NOTE:
+- `<p>` 包含两个文本节点和元素（即 `<strong>`）节点。 
+- 我们仅获取 `<p>` 中包含的第一个子节点的值。
+
+### 7.6 使用 *Data()操作文本节点
+
+文本节点继承方法的 CharacterData 对象提供了用于操作和提取子值的方法:
+- appendData()
+- deleteData()
+- insertData()
+- replaceData()
+- subStringData()
+
 
 
 ## 8 DocumentFragment 节点
