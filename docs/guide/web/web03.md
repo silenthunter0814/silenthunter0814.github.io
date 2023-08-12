@@ -2562,11 +2562,66 @@ NOTE:
 
 ### 7.10 使用 normalize() 将同级文本节点合并为一个文本节点
 
+Node 接口的 normalize() 方法将指定节点及其所有子树放入规范化形式。  
+在规范化的子树中，子树中没有空的文本节点，也没有相邻的文本节点。  
 通常仅在以编程方式将文本添加到 DOM 时才会遇到同级文本节点。  
 为了消除不包含 Element 节点的同级 Text 节点，可以使用 normalize()。 这会将 DOM 中的同级文本节点连接成单个文本节点。
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<div></div>
+
+<script>
+
+var div = document.querySelector('div');
+
+var p = document.createElement('p'),
+    text1 = document.createTextNode('Hi'),
+    text2 = document.createTextNode('Cody');
+
+p.appendChild(text1);
+p.appendChild(text2);
+div.appendChild(p);
+
+console.log(p.childNodes.length);
+div.normalize();
+console.log(document.querySelector('p').childNodes.length);
+
+</script>
+</body>
+</html>
+```
+
+### 7.11 使用 splitText() 分割文本节点
+
+Text 接口的 splitText() 方法将 Text 节点按指定的偏移量分成两个节点，使树中的两个节点保持为同级节点。  
+返回一个新的 Text 节点，其中包含根据偏移量从原始文本中拆分出来的文本。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<p>Hey Yo!</p>
+
+<script>
+
+var p = document.querySelector('p');
+
+console.log(p.firstChild.splitText(4).data);
+console.log(p.firstChild.textContent);
+
+</script>
+</body>
+</html>
+```
 
 ## 8 DocumentFragment 节点
+
+### 8.1 DocumentFragment 对象概述
 
 
 ## 9 CSS 样式表和 CSS 规则
