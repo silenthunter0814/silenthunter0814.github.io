@@ -3164,9 +3164,9 @@ styleSheet.disabled = true;
 </html>
 ```
 
-
 ## 10  DOM 中的 JavaScript
 
+### 10.1 插入和执行 JavaScript 概述
 
 
 ## 11 DOM 事件
