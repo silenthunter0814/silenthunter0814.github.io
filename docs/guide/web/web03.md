@@ -3187,6 +3187,10 @@ console.log('hi');
 
 ### 10.2 JavaScript 默认同步解析
 
+默认情况下，当解析 DOM 时遇到 `<script>` 元素，它将停止解析文档，阻止任何进一步的渲染和下载，并执行 JavaScript。 因为此行为是阻塞的，并且不允许并行解析 DOM 或执行 JavaScriopt，所以它被认为是同步的。 如果 JavaScript 位于 html 文档外部，则阻塞会加剧，因为必须首先下载 JavaScript，然后才能对其进行解析。
+
+
+
 ## 11 DOM 事件
 
 
