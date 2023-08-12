@@ -2902,6 +2902,110 @@ console.log(props.sort());
 </html>
 ```
 
+### 9.4 CSSStyleRule 概述
+
+CSSStylerule 接口代表单个 CSS 样式规则。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<style id="styleElement">
+body{background-color:#fff;margin:20px;} /*this is a css rule*/
+p{line-height:1.4em; color:blue;} /*this is a css rule*/
+</style>
+
+</head>
+<body>
+
+<script>
+
+var sheet = document.querySelector('#styleElement').sheet;
+
+console.log(sheet.cssRules[0].cssText);
+console.log(sheet.cssRules[1].cssText);
+
+</script>
+</body>
+</html>
+```
+
+### 9.5 CSSStylerule 属性和方法
+
+检查下面代码中创建的数组，详细介绍了 CSSStylerululenode 可用的属性和方法。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<style id="styleElement">
+body{background-color:#fff;}
+</style>
+
+</head>
+<body>
+
+<script>
+
+var rule = document.querySelector('#styleElement').sheet.cssRules[0];
+
+var props = [];
+for (let prop in rule) {
+    props.push(prop);
+}
+console.log(props.sort());
+
+</script>
+</body>
+</html>
+```
+
+cssRule 对象使样式表中包含的规则（例如Body {Background-Color：Red;}）脚本（例如主体{Background-Color：red;}）。 该对象提供以下属性：
+- cssText
+- parentRule
+- parentStylesSheet
+- selectorText
+- style
+- type
+
+### 9.6使用 cssRules 在样式表中获取 CSS 规则列表
+
+cssRules 列表提供了特定样式表中所有 CSS 规则（即 CSSStylerule 对象）的列表（CSSRulesList）。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<style id="styleElement">
+body{background-color:#fff;margin:20px;}
+p{line-height:1.4em; color:blue;}
+</style>
+
+</head>
+<body>
+
+<script>
+
+var sheet = document.querySelector('#styleElement').sheet;
+
+console.log(sheet.cssRules);  // CSSRuleList
+console.log(sheet.cssRules.length);
+
+console.log(sheet.cssRules[0]);  // CSSStyleRule
+console.log(sheet.cssRules[1]);
+
+</script>
+</body>
+</html>
+```
+
+### 9.7 使用 .insertrule() 和 .deleterule() 插入和删除 CSS 规则
+
+CSSStyleSheet: insertrule（）和deleterule（）方法提供了在样式表中处理CSS规则的能力。
+
 ## 10  DOM 中的 JavaScript
 
 
