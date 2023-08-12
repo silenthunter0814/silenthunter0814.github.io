@@ -3005,9 +3005,9 @@ console.log(sheet.cssRules[1]);
 </html>
 ```
 
-### 9.7 使用 .insertrule() 和 .deleterule() 插入和删除 CSS 规则
+### 9.7 使用 .insertRule() 和 .deleteRule() 插入和删除 CSS 规则
 
-CSSStyleSheet: insertrule（）和deleterule（）方法提供了在样式表中处理CSS规则的能力。
+CSSStyleSheet: insertRule（）和deleteRule（）方法提供了在样式表中处理CSS规则的能力。
 
 
 ## 10  DOM 中的 JavaScript
