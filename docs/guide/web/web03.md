@@ -3911,5 +3911,33 @@ document.querySelector('table').addEventListener('click', (e) => {
 })(window);
 ```
 
+需要做的最后一件事是将 GetOrMakeDom.prototype 属性公开到全局范围。
+
+```js{17}
+(function(win) {
+    var global = win;
+    var doc = this.document;
+
+    var dom = function(params, context) {
+        return new GetOrMakeDom(params, context);
+    };
+
+    var GetOrMakeDom = function(params, context) {
+        
+    };
+
+    // expose dom to global scope
+    global.dom = dom;
+
+    // short cut to prototype
+    dom.fn = GetOrMakeDom.prototype;
+})(window);
+```
+
+现在，附加到 dom.fn 的任何内容实际上都是 GetOrMakeDOM.prototype 对象的属性，并且在从 GetOrMakeDOM 构造函数创建的任何对象实例的属性查找期间继承。
+
+### 12.4 创建传递给 dom() 的可选上下文参数
+
+
 
 ## END
