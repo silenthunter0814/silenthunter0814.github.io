@@ -3272,6 +3272,7 @@ console.log(document.body.innerHTML);
 <!DOCTYPE html>
 <html lang="en">
 <body>
+
 <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.0.6/jquery.mousewheel.min.js"></script>
@@ -3334,7 +3335,6 @@ div.addEventListener('click',function(){
 ```html
 <!DOCTYPE html>
 <html lang="en">
-
 <body>
 
 <div>click me</div>
@@ -3380,7 +3380,6 @@ div.onclick = function(){
 ```html
 <!DOCTYPE html>
 <html lang="en">
-
 <body>
 
 <div>click me to start event flow</div>
@@ -3414,7 +3413,6 @@ EventTarget 接口的 addEventListener() 方法设置一个函数，每当指定
 ```html
 <!DOCTYPE html>
 <html lang="en">
-
 <body>
 
 <div>mouse over me</div>
@@ -3451,7 +3449,6 @@ EventTarget 接口的 removeEventListener() 方法从目标中删除先前使用
 ```html
 <!DOCTYPE html>
 <html lang="en">
-
 <body>
 
 <div>click to say hi</div>
@@ -3484,7 +3481,6 @@ document.body.removeEventListener('click', function() {
 ```html
 <!DOCTYPE html>
 <html lang="en">
-
 <body>
 
 <div>click me</div>
@@ -3513,11 +3509,9 @@ this.addEventListener('load', function(event) {
 事件侦听器函数内部的 this 值传递给 AddeventListener() 方法将是对附加了事件的节点或对象的引用。  
 在下面的代码中，我将事件附加到 `<div>` ，然后在事件侦听器的内部使用 this 访问附加了事件的 `<div>` 元素。
 
-
 ```html
 <!DOCTYPE html>
 <html lang="en">
-
 <body>
 
 <div>click me</div>
@@ -3562,12 +3556,11 @@ document.body.addEventListener('click', function() {
 </html>
 ```
 
-使用event.currenttarget属性获取相同的引用，以调用事件侦听器的节点或对象。
+使用 Event.currenttarget 属性获取相同的引用，以调用事件侦听器的节点或对象。
 
 ```html
 <!DOCTYPE html>
 <html lang="en">
-
 <body>
 
 <div>click me</div>
@@ -3595,6 +3588,7 @@ document.querySelector('div').addEventListener('click', function(event) {
 
 由于事件流，因此可能会单击 `<div>`，其包含在 `<body>` 元素的内部，并在 `<body>` 元素上附加了单击事件侦听器被调用。发生这种情况时，事件对象传递给附加到 `<body>` 的事件侦听器函数，向事件发起的节点或对象（即目标）提供了引用（即 Event.target）。
 
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -3611,6 +3605,7 @@ document.body.addEventListener('click', function(event) {
 </script> 
 </body>
 </html>
+```
 
 ### 11.9 使用 preventDefault() 取消默认浏览器事件
 
