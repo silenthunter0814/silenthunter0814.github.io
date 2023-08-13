@@ -3857,7 +3857,7 @@ document.querySelector('table').addEventListener('click', (e) => {
 
 在下面的代码中，设置一个非常标准的立即调用函数表达式来创建这个私有作用域。 当调用 IIFE 时，global 的值将被设置为当前全局作用域（即 window）。
 
-```javascript
+```js
 (function(win) {
     var global = win;
     var doc = this.document;
@@ -3872,7 +3872,7 @@ document.querySelector('table').addEventListener('click', (e) => {
 
 在下面的代码中，我设置了 dom() 函数和参数，这些函数和参数传递给 GetOrMakeDOM 构造函数，调用该函数时将返回包含 DOM 节点的对象，然后从 dom() 返回该对象。
 
-```javascript{5-11}
+```js{5-11}
 (function(win) {
     var global = win;
     var doc = this.document;
@@ -3893,7 +3893,7 @@ document.querySelector('table').addEventListener('click', (e) => {
 
 在下面的代码中，global.dom = dom; 就可以了。
 
-```javascript
+```js{14}
 (function(win) {
     var global = win;
     var doc = this.document;
