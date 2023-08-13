@@ -3768,6 +3768,73 @@ div.addEventListener('click', function() {
 
 ### 11.13 模拟/触发鼠标事件
 
+在模拟鼠标事件的情况下，我们使用 CustomEvent 创建一个“MouseEvent”。 然后，鼠标事件被调度到我们想要模拟事件的元素上（即 html 文档中的 `<div>`）。 在下面的代码中，单击事件附加到页面中的 `<div>`。 不是单击 `<div>` 来调用单击事件，而是通过以编程方式设置鼠标事件并将该事件分派到 `<div>` 来触发或模拟该事件。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<div>no need to click, we programatically trigger it</div>    
+
+<script>
+
+const div = document.querySelector('div');
+
+const customClick = new CustomEvent("click", {
+    detail: { text: () => div.textContent }
+});
+
+div.addEventListener('click', (e) => {
+    console.log(e.detail.text());
+});
+
+div.dispatchEvent(customClick);
+
+</script> 
+</body>
+</html>
+```
+
+### 11.14 事件委托
+
+事件委托是利用事件流和单个事件侦听器来处理多个事件目标的编程行为。  
+想象一下，有一个行数和列数不受限制的表。 使用事件委托，我们可以将单个事件侦听器添加到 `<table>` 节点，该节点充当作为事件初始目标的节点或对象的委托。 
+
+在下面的代码示例中，单击任何 `<td>`（即事件的目标）会将其事件委托给 `<table>` 上的单击侦听器。 这一切都是由于事件流以及在这种特定情况下的冒泡阶段而成为可能的。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<p>Click a table cell</p>
+
+<table border="1">
+    <tbody>
+        <tr><td>row 1 column 1</td><td>row 1 column 2</td></tr>
+        <tr><td>row 2 column 1</td><td>row 2 column 2</td></tr>
+        <tr><td>row 3 column 1</td><td>row 3 column 2</td></tr>
+        <tr><td>row 4 column 1</td><td>row 4 column 2</td></tr>
+        <tr><td>row 5 column 1</td><td>row 5 column 2</td></tr>
+        <tr><td>row 6 column 1</td><td>row 6 column 2</td></tr>
+    </tbody>
+</table>   
+
+<script>
+
+document.querySelector('table').addEventListener('click', (e) => {
+    if (e.target.tagName.toLowerCase() === 'td') {
+        console.log(e.target.textContent);
+    }
+});
+
+</script> 
+</body>
+</html>
+```
+
+
 ## 12 创建 dom.js - 一个受 jQuery 启发的现代浏览器 DOM 库
 
 
