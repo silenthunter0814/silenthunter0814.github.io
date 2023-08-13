@@ -3868,7 +3868,7 @@ document.querySelector('table').addEventListener('click', (e) => {
 
 ### 12.3 创建 dom() 和 GetOrMakeDom() 函数，将 dom() 和 GetOrMakeDom.prototype 公开到全局作用域
 
-将创建一个函数，该函数将根据参数返回 DOM 节点（例如 {0:ELEMENT_NODE,1:ELEMENT_NODE,length:2}）的可链式包装集（即自定义数组类对象） 发送到函数中。 
+将创建一个函数，该函数将根据参数返回 DOM 节点（例如 `{0:ELEMENT_NODE,1:ELEMENT_NODE,length:2}`）的可链式包装集（即自定义数组类对象） 发送到函数中。 
 
 在下面的代码中，我设置了 dom() 函数和参数，这些函数和参数传递给 GetOrMakeDOM 构造函数，调用该函数时将返回包含 DOM 节点的对象，然后从 dom() 返回该对象。
 
@@ -3973,6 +3973,28 @@ document.querySelector('table').addEventListener('click', (e) => {
 通过上下文参数逻辑设置，接下来可以添加处理用于实际选择或创建节点的 params 参数所需的逻辑。
 
 ### 12.5 根据参数使用 DOM 节点引用填充对象并返回对象
+
+传递给 dom() 和 getOrMakeDom() 的 params 参数类型有所不同。 
+
+- 传递的值类型可以是以下任意一种：
+- css 选择器字符串（例如 `dom('body')`）
+- html 字符串（例如 `dom('<p>Hellow</p><p> World!</p>')`）
+- 元素节点（例如 `dom(document.body)`）
+- 元素节点数组（例如 `dom([document.body])`）
+- NodeList（例如 `dom(document.body.children)`）
+- HTML 集合（例如 `dom(document.all)`）
+- dom() 对象本身。 （例如 `dom(dom())`）
+
+传递参数的结果是构造一个可链式对象，其中包含对 DOM 或文档片段中的节点（例如 `{0:ELEMENT_NODE,1:ELEMENT_NODE,length:2}`）的引用。 让我们检查一下如何使用上述每个参数来生成包含节点引用的对象。
+
+下面的代码显示了允许如此多种参数类型的逻辑，并从一个简单的检查开始，以验证 params 是否未定义、空字符串或带有空格的字符串。 如果是这种情况，我们将值为 0 的 length 属性添加到通过调用 GetOrMakeDOM 构造的对象并返回该对象，以便函数的执行结束。 如果 params 不是 false（或类似 false）值，则函数继续执行。
+
+接下来，检查参数值（如果是字符串）是否包含 HTML。 如果字符串包含 HTML，则创建一个文档片段，并将该字符串用作文档片段中包含的 `<div>` 的 innerHTML 值，以便将该字符串转换为 DOM 结构。 将 html 字符串转换为节点树后，该结构将循环访问顶级节点，并且对这些节点的引用将传递给 GetOrMakeDom 创建的对象。 如果字符串不包含 HTML，则函数继续执行。
+
+下一个检查只是验证 params 是否是对单个节点的引用，如果是，我们将对它的引用包装在一个对象中并返回它。否则，我们非常确定 params 值是 html 集合、节点列表、数组、字符串选择器或从 dom() 创建的对象。 如果它是字符串选择器，则通过在 currentContext 上调用 queryselectorAll() 方法来创建节点列表。 如果它不是字符串选择器，我们将循环遍历 html 集合、节点列表、数组或对象，提取节点引用并将这些引用用作从调用 GetOrMakeDom 发送回的对象中包含的值。
+
+GetOrMakeDom() 函数内部的所有逻辑可能有点让人不知所措，只需意识到构造函数的要点是构造一个包含对节点的引用的对象（例如 `{0:ELEMENT_NODE,1:ELEMENT_NODE,length:2}`）并且 返回该对象给 dom()。
+
 
 
 ## END
