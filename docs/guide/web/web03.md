@@ -3976,7 +3976,7 @@ document.querySelector('table').addEventListener('click', (e) => {
 
 传递给 dom() 和 getOrMakeDom() 的 params 参数类型有所不同。 
 
-- 传递的值类型可以是以下任意一种：
+传递的值类型可以是以下任意一种：
 - css 选择器字符串（例如 `dom('body')`）
 - html 字符串（例如 `dom('<p>Hellow</p><p> World!</p>')`）
 - 元素节点（例如 `dom(document.body)`）
