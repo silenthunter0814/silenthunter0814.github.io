@@ -3938,6 +3938,41 @@ document.querySelector('table').addEventListener('click', (e) => {
 
 ### 12.4 创建传递给 dom() 的可选上下文参数
 
+当调用 dom() 时，它还会调用 GetOrMakeDom 函数，并将发送到 dom() 的参数传递给它。 当调用 GetOrMakeDOM 构造函数时，我们需要做的第一件事是确定上下文。 可以通过传递用于选择节点或节点引用本身的选择器字符串来设置使用 DOM 的上下文。 如果将上下文传递给 dom() 函数的目的并不明显，则可以将元素节点的搜索限制到 DOM 树的特定分支。 
+
+在下面的代码中，我将上下文默认为在全局范围内找到的当前文档。 如果上下文参数可用，我确定它是什么（即字符串或节点），然后使节点在上下文中传递或通过 querySelectorAll() 选择一个节点。
+
+```js{10-17}
+(function(win) {
+    var global = win;
+    var doc = this.document;
+
+    var dom = function(params, context) {
+        return new GetOrMakeDom(params, context);
+    };
+
+    var GetOrMakeDom = function(params, context) {
+        var currentContext = doc;
+        if (context) {
+            if (context.nodeType) {
+                currentContext = context;
+            } else {
+                currentContext = doc.querySelector(context);
+            }
+        }
+    };
+
+    // expose dom to global scope
+    global.dom = dom;
+
+    // short cut to prototype
+    dom.fn = GetOrMakeDom.prototype;
+})(window);
+```
+
+通过上下文参数逻辑设置，接下来可以添加处理用于实际选择或创建节点的 params 参数所需的逻辑。
+
+### 12.5 根据参数使用 DOM 节点引用填充对象并返回对象
 
 
 ## END
