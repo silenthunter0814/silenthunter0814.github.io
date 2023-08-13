@@ -3837,6 +3837,79 @@ document.querySelector('table').addEventListener('click', (e) => {
 
 ## 12 创建 dom.js - 一个受 jQuery 启发的现代浏览器 DOM 库
 
+### 12.1 dom.js 概述
+
+将 dom.js 视为库的基础，用于选择 DOM 节点并使用它们执行某些操作。 dom.js 代码将提供一个函数，用于从 DOM 中选择（或创建）某些内容，然后用它执行某些操作。 
+
+下面展示了 dom() 函数的一些示例。
+
+选择文档中第一个 ul 中的所有 li 并获取第一个 li 的 innerHTML:  
+`dom('li', 'ul').html();`  
+
+使用文档片段创建 html 结构并获取 ul 的 innerHTML:  
+`dom('<ul><li>hi</li></ul>').html();`
+
+对于大多数读者来说，本章只是一个练习，将本书中的信息应用到 JavaScript DOM 库中。 对于其他人来说，这可能只是对 jQuery 本身以及当今 JavaScript 框架中使用的任何 DOM 操作逻辑有所了解。 理想情况下，最后，我希望这个练习能够激励读者在情况合适时根据需要制作自己的微 DOM 抽象。 话虽如此，让我们开始吧。
+
+### 12.2 创建唯一的作用域
+
+为了保护 dom.js 代码免受全局作用域的影响，首先创建一个独特的作用域，它可以在其中生存和运行，而不必担心全局作用域中的冲突。 
+
+在下面的代码中，设置一个非常标准的立即调用函数表达式来创建这个私有作用域。 当调用 IIFE 时，global 的值将被设置为当前全局作用域（即 window）。
+
+```javascript
+(function(win) {
+    var global = win;
+    var doc = this.document;
+})(window);
+```
+
+在 IIFE 内部，我们设置了对窗口和文档对象（即 doc）的引用，以加快对 IIFE 内部这些对象的访问。
+
+### 12.3 创建 dom() 和 GetOrMakeDom() 函数，将 dom() 和 GetOrMakeDom.prototype 公开到全局作用域
+
+将创建一个函数，该函数将根据参数返回 DOM 节点（例如 {0:ELEMENT_NODE,1:ELEMENT_NODE,length:2}）的可链式包装集（即自定义数组类对象） 发送到函数中。 
+
+在下面的代码中，我设置了 dom() 函数和参数，这些函数和参数传递给 GetOrMakeDOM 构造函数，调用该函数时将返回包含 DOM 节点的对象，然后从 dom() 返回该对象。
+
+```javascript
+(function(win) {
+    var global = win;
+    var doc = this.document;
+
+    var dom = function(params, context) {
+        return new GetOrMakeDom(params, context);
+    };
+
+    var GetOrMakeDom = function(params, context) {
+        
+    };
+})(window);
+```
+
+为了从 IIFE 设置的私有作用域之外访问/调用 dom() 函数，我们必须将 dom 函数（即创建引用）公开到全局作用域。 
+
+这是通过在全局作用域中创建一个名为 dom 的属性并将该属性指向本地 dom() 函数来完成的。当从全局作用域访问 dom 时，它将指向本地作用域 dom() 函数。 
+
+在下面的代码中，global.dom = dom; 就可以了。
+
+```javascript
+(function(win) {
+    var global = win;
+    var doc = this.document;
+
+    var dom = function(params, context) {
+        return new GetOrMakeDom(params, context);
+    };
+
+    var GetOrMakeDom = function(params, context) {
+        
+    };
+
+    // expose dom to global scope
+    global.dom = dom;
+})(window);
+```
 
 
 ## END
