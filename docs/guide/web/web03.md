@@ -3653,7 +3653,120 @@ document.body.addEventListener('click', () => {
 
 ### 11.10 使用 stopPropagation() 停止事件流
 
-事件接口的 stopPropagation() 方法阻止了捕获和冒泡阶段中当前事件的进一步传播。 但是，它不能阻止任何默认行为发生。 例如，单击链接仍在处理。
+事件接口的 stopPropagation() 方法阻止了捕获和冒泡阶段中当前事件的进一步传播。  
+
+在下面的代码中，连接到 `<body>` 的 ONCLICK 事件永远不会被调用，因为在单击 `<div>` 时，我们阻止了该事件在 DOM 冒泡。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<div>click me</div>    
+
+<script>
+
+const div = document.querySelector('div');
+
+div.addEventListener('click', () => {
+    console.log('me too, but nothing from the event flow!');
+});
+
+div.addEventListener('click', (event) => {
+    console.log('invoked all click events attached, but cancel capture and bubble event phases');
+    event.stopPropagation();
+});
+
+div.addEventListener('click', () => {
+    console.log('me too, but nothing from the event flow!');
+});
+
+document.body.addEventListener('click', () => {
+    console.log('What, denied from being invoked!');
+});
+
+</script> 
+</body>
+</html>
+```
+
+NOTE:
+- 附加到 `<div>` 的其他点击事件仍然被调用。
+- 它不能阻止任何默认行为发生。 例如，单击链接仍在处理。
+
+### 11.11 使用 stopImmediatePropagation() 阻止同一事件的其他听众被调用
+
+如果将几个侦听器连接到同一事件类型的同一元素上，则按添加的顺序调用它们。 如果在一个这样的调用中调用 stopImmediatePropagation()，则不会在该元素或任何其他元素上调用其余的侦听器。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<div>click me</div>    
+
+<script>
+
+const div = document.querySelector('div');
+
+div.addEventListener('click', () => {
+    console.log('I get invoked because I was attached first');
+})
+
+div.addEventListener('click', (event) => {
+    console.log('I get invoked, but stop any other click events on this target');
+    event.stopImmediatePropagation();
+});
+
+div.addEventListener('click', () => {
+    console.log('I get stopped from the previous click event listener');
+});
+
+document.body.addEventListener('click', () => {
+    console.log('What, denied from being invoked!');
+})
+
+</script> 
+</body>
+</html>
+```
+
+### 11.12 自定义事件
+
+使用 CustomEvent 接口自定义事件。该接口从其父级 Event 继承了方法。  
+CustomEvent.detail: 返回初始化事件时传递的任何数据。  
+EventTarget 的 dispatchEvent() 方法将事件发送到对象，以适当的顺序（同步）调用受影响的事件侦听器。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<div>click me</div>    
+
+<script>
+
+const div = document.querySelector('div');
+
+const customEvent = new CustomEvent("awesome", {
+    bubbles: true,
+    detail: { text: "It's awesome!" }
+});
+
+document.body.addEventListener("awesome", (e) => {
+    console.log(e.detail.text);
+});
+
+div.addEventListener('click', function() {
+    this.dispatchEvent(customEvent);
+});
+
+</script> 
+</body>
+</html>
+```
+
+### 11.13 模拟/触发鼠标事件
 
 ## 12 创建 dom.js - 一个受 jQuery 启发的现代浏览器 DOM 库
 
