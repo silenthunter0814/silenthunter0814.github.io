@@ -48,7 +48,7 @@ export default {
     },
     lineNumbers: true,
     theme: {
-      light: "vitesse-light",
+      light: "github-light",
       dark: "vitesse-dark"
     }
   },
