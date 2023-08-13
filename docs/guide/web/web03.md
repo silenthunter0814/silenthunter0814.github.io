@@ -3481,7 +3481,184 @@ document.body.removeEventListener('click', function() {
 
 默认情况下，为事件调用的处理程序或回调函数会发送一个参数，其中包含有关事件本身的所有相关信息。
 
+```html
+<!DOCTYPE html>
+<html lang="en">
 
+<body>
+
+<div>click me</div>
+
+<script>
+
+// PointerEvent > MouseEvent > UIEvent > Event > Object
+document.querySelector('div').addEventListener('click', function(event) {
+    console.log(event);
+});
+
+// Event > Object
+this.addEventListener('load', function(event) {
+    console.log(event);
+});
+
+</script> 
+</body>
+</html>
+```
+
+每个事件都会根据事件类型包含略有不同的属性（例如 MouseEvent，KeyboardEvent，WheelEvent）。
+
+### 11.7 使用 AddEventListener() 时 this 的值
+
+事件侦听器函数内部的 this 值传递给 AddeventListener() 方法将是对附加了事件的节点或对象的引用。  
+在下面的代码中，我将事件附加到 `<div>` ，然后在事件侦听器的内部使用 this 访问附加了事件的 `<div>` 元素。
+
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+
+<div>click me</div>
+
+<script>
+
+var div = document.querySelector('div');
+
+div.addEventListener('click', function() {
+    console.log(this);    // div
+});
+
+</script> 
+</body>
+</html>
+```
+
+当事件作为事件流的一部分调用时，该值将保留为侦听器附加的节点或对象的值。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+
+<div>click me</div>
+
+<script>
+
+var div = document.querySelector('div');
+
+div.addEventListener('click', function() {
+    console.log(this);    // div
+});
+
+document.body.addEventListener('click', function() {
+    console.log(this);    // body
+})
+
+</script> 
+</body>
+</html>
+```
+
+使用event.currenttarget属性获取相同的引用，以调用事件侦听器的节点或对象。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+
+<div>click me</div>
+
+<script>
+
+document.addEventListener('click', (event) => {
+    console.log('document', event.currentTarget);
+})
+
+document.body.addEventListener('click', function(event) {
+    console.log('body', event.currentTarget);
+})
+
+document.querySelector('div').addEventListener('click', function(event) {
+    console.log('div', event.currentTarget);
+});
+
+</script> 
+</body>
+</html>
+```
+
+### 11.8 引用事件的目标 target，而不是调用事件的节点或对象
+
+由于事件流，因此可能会单击 `<div>`，其包含在 `<body>` 元素的内部，并在 `<body>` 元素上附加了单击事件侦听器被调用。发生这种情况时，事件对象传递给附加到 `<body>` 的事件侦听器函数，向事件发起的节点或对象（即目标）提供了引用（即 Event.target）。
+
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+
+<div>click me</div>
+
+<script>
+
+document.body.addEventListener('click', function(event) {
+    console.log(event.currentTarget, event.target);
+});
+
+</script> 
+</body>
+</html>
+
+### 11.9 使用 preventDefault() 取消默认浏览器事件
+
+Event:preventDefault() 方法告诉用户代理，如果事件未明确处理，则不应按照通常的方式采取其默认操作。
+
+在下面的代码中，使用 preventDefault() 可以防止在 `<a>`，`<aput>` 和 `<textarea>` 上发生的默认事件。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+
+<a href="http://google.com">no go</a>
+
+<input type="checkbox" />
+
+<textarea></textarea>
+    
+
+<script>
+
+document.querySelector('a').addEventListener('click', (event) => {
+    event.preventDefault();
+});
+
+document.querySelector('input').addEventListener('click', (event) => {
+    event.preventDefault();
+});
+
+document.querySelector('textarea').addEventListener('keypress', (event) => {
+    event.preventDefault();
+});
+
+document.body.addEventListener('click', () => {
+    console.log('thie event flow still flows!');
+});
+
+</script> 
+</body>
+</html>
+```
+
+- preventDefault() 方法不会阻止事件传播（即冒泡或捕获阶段）。
+
+### 11.10 使用 stopPropagation() 停止事件流
+
+事件接口的 stopPropagation() 方法阻止了捕获和冒泡阶段中当前事件的进一步传播。 但是，它不能阻止任何默认行为发生。 例如，单击链接仍在处理。
 
 ## 12 创建 dom.js - 一个受 jQuery 启发的现代浏览器 DOM 库
 
