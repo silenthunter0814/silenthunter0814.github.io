@@ -46,7 +46,11 @@ export default {
     config: (md) => {
       md.use(mathjax3);
     },
-    lineNumbers: true
+    lineNumbers: true,
+    theme: {
+      light: "vitesse-light",
+      dark: "vitesse-dark"
+    }
   },
 }
   
