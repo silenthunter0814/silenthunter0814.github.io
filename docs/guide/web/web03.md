@@ -3372,6 +3372,115 @@ div.onclick = function(){
 | contextmenu    | 当尝试打开上下文菜单时                |
 
 
+### 11.3 事件流
+
+当事件被调用时，事件通过 DOM 流动或传播，在其他节点和 JavaScript 对象上触发相同的事件。  
+事件流可以编程为捕获阶段（即 DOM 树主干到分支）或冒泡阶段（即 DOM 树分支到主干）或两者兼而有之。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+
+<div>click me to start event flow</div>
+
+<script>
+
+window.addEventListener('click', () => console.log(1), true);
+document.addEventListener('click', () => console.log(2), true);
+document.documentElement.addEventListener('click', () => console.log(3), true);
+document.body.addEventListener('click', () => console.log(4), true);
+document.querySelector('div').addEventListener('click', () => console.log(5), true);
+document.querySelector('div').addEventListener('click', () => console.log(6));
+document.body.addEventListener('click', ()=> console.log(7));
+document.documentElement.addEventListener('click', () => console.log(8));
+document.addEventListener('click', () => console.log(9));
+window.addEventListener('click', () => console.log(10));
+
+</script> 
+</body>
+</html>
+```
+
+通常，假设事件是在冒泡阶段调用的。
+
+### 11.4 为 Element 节点、window 对象和 Document 对象添加事件监听器
+
+EventTarget 接口的 addEventListener() 方法设置一个函数，每当指定的事件传递到目标时就会调用该函数。
+
+常见目标是 Element 或其子项、Document 和 Window，但目标可以是支持事件的任何对象。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+
+<div>mouse over me</div>
+
+<script>
+
+window.addEventListener('mousemove', () => {
+    console.log('moving over window');
+}, false);
+
+document.addEventListener('mousemove', () => {
+    console.log('moving over document');
+});
+
+document.querySelector('div').addEventListener('mousemove', () => {
+    console.log('moving over div');
+});
+
+</script> 
+</body>
+</html>
+```
+
+addEventListener() 方法采用三个参数:
+- 侦听的事件类型。 事件类型字符串不包含事件处理程序所需的“on”前缀（即 onmousemove）。 
+- 事件发生时要调用的函数。 
+- 一个布尔值，指示是否应在事件流的捕获阶段或冒泡阶段触发事件。
+
+### 11.5 删除事件监听器
+
+EventTarget 接口的 removeEventListener() 方法从目标中删除先前使用EventTarget.addEventListener() 注册的事件侦听器。  
+使用事件类型、事件监听器函数本身以及可能影响匹配过程的各种可选选项的组合来识别要删除的事件监听器。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+
+<div>click to say hi</div>
+
+<script>
+
+var saying = function() { console.log('hi'); };
+
+document.body.addEventListener('click', function() {
+    console.log('dude');
+});
+document.querySelector('div').addEventListener('click', saying);
+
+document.querySelector('div').removeEventListener('click', saying);
+document.body.removeEventListener('click', function() {
+    console.log('dude');
+});
+
+</script> 
+</body>
+</html>
+```
+
+使用 addEventListener() 方法添加的匿名函数无法删除。
+
+### 11.6 从事件对象获取事件属性
+
+默认情况下，为事件调用的处理程序或回调函数会发送一个参数，其中包含有关事件本身的所有相关信息。
+
 
 
 ## 12 创建 dom.js - 一个受 jQuery 启发的现代浏览器 DOM 库
