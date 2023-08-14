@@ -3995,6 +3995,79 @@ document.querySelector('table').addEventListener('click', (e) => {
 
 GetOrMakeDom() 函数内部的所有逻辑可能有点让人不知所措，只需意识到构造函数的要点是构造一个包含对节点的引用的对象（例如 `{0:ELEMENT_NODE,1:ELEMENT_NODE,length:2}`）并且 返回该对象给 dom()。
 
+```js{9, 21-59}
+(function(win) {
+    var global = win;
+    var doc = this.document;
+
+    var dom = function(params, context) {
+        return new GetOrMakeDom(params, context);
+    };
+
+    var tag = /^\s*<(\w+|!)[^>]*>/;
+
+    var GetOrMakeDom = function(params, context) {
+        var currentContext = doc;
+        if (context) {
+            if (context.nodeType) {
+                currentContext = context;
+            } else {
+                currentContext = doc.querySelector(context);
+            }
+        }
+
+        // if no params, return empty dom() object
+        if (!params || params === '' || typeof params === 'string' && params.trim() === '') {
+            this.length = 0;
+            return this;
+        }
+
+        if (typeof params === 'string' && tag.test(params)) {
+            var div = currentContext.createElement('div');
+            div.className = 'hippo-doc-frag-wrapper';
+            var frag = currentContext.createDocumentFragment();
+            frag.appendChild(div);
+            console.assert(div === frag.querySelector('div'));
+            div.innerHTML = params;
+            var nChild = div.children.length;
+            for (let i = 0; i < nChild; i++) {
+                this[i] = div.children[i];
+            }
+            this.length = nChild;
+            return this;
+        }
+
+        if (typeof params === 'object' && params.nodeName) {
+            this.length = 1;
+            this[0] = params;
+            return this;
+        }
+
+        var nodes;
+        if (typeof params !== 'string') {
+            nodes = params;
+        } else {
+            nodes = currentContext.querySelectorAll(params.trim());
+        }
+        var length = nodes.length;
+        for (let i = 0; i < length; i++) {
+            this[i] = nodes[i];
+        }
+        this.length = length;
+        return this;
+    };
+
+    // expose dom to global scope
+    global.dom = dom;
+
+    // short cut to prototype
+    dom.fn = GetOrMakeDom.prototype;
+})(window);
+```
+
+### 12.6 创建 each() 方法并使其成为可链接的方法
+
+
 
 
 ## END
