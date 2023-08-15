@@ -3995,7 +3995,7 @@ document.querySelector('table').addEventListener('click', (e) => {
 
 GetOrMakeDom() 函数内部的所有逻辑可能有点让人不知所措，只需意识到构造函数的要点是构造一个包含对节点的引用的对象（例如 `{0:ELEMENT_NODE,1:ELEMENT_NODE,length:2}`）并且 返回该对象给 dom()。
 
-```js{9, 21-59}
+```js{9,21-59}
 (function(win) {
     var global = win;
     var doc = this.document;
