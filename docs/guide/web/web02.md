@@ -250,6 +250,35 @@ i *= 2;
 
 - 字符串表达式
 
+```js
+var s1 = 'hello';
+var s2 = 'world';
+
+var s = s1 + ' ' + s2;
+console.log(s);
+
+s1 += ' ' + "world";
+console.log(s1);
+```
+
+- 关系表达式
+
+`>`, `>=`, `<`, `<=`, `===`, `!==`
+
+关系表达式运算结果为 Boolean 类型。
+
+- 逻辑表达式
+
+`&&`, `||`, `!`
+
+
+
+```js
+console.log(3 < 2);
+console.log("hello" === "hello");
+console.log(typeof true === 'boolean');
+```
+
 ### 1.4 if else 语句
 
 ### 1.5 while for 循环语句
