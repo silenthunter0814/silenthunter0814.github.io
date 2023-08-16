@@ -277,6 +277,59 @@ console.log(typeof true === 'boolean');
 
 `&&`, `||`, `!`
 
+逻辑与表达式： `expr1 && expr2`
+  - 如果 `expr1` 值为真，`(expr1 && expr2) === expr2`
+  - 如果 `expr1` 值为假，`(expr1 && expr2) === expr1`
+
+```js
+var a, b;
+
+a = 1
+console.log((a && b) === undefined);
+
+a = null;
+console.log((a && b) === null);
+```
+
+逻辑或表达式： `expr1 || expr2`
+  - 如果 `expr1` 值为真，`(expr1 || expr2) === expr1`
+  - 如果 `expr2` 值为假，`(expr1 | expr2) === expr2`
+
+```js
+var a, b;
+
+a = "hello";
+console.log((a || b) === 'hello');
+
+a = '';
+console.log((a || b) === undefined);
+```
+
+逻辑非表达式： `!(expr)`
+  - 如果 `expr` 值为真，`!(expr) === false`
+  - 如果 `expr` 值为假，`!(expr) === true`
+
+```js
+console.log(!3, !'hi', ![], !{});
+
+console.log(!0, !'', !null, !undefined);
+```
+
+- 模板字符串
+
+又称为模板字面量或模板文字，是用反引号 (`) 字符分隔的文字，允许多行字符串、带有嵌入表达式的字符串插值。
+
+```js
+console.log(`hello world`);
+
+console.log(`line1
+line2`);
+
+console.log(`the value is: ${2/5}`);
+
+console.log(`\${2/5}` === '${2/5}');
+```
+
 
 ### 1.4 if else 语句
 
