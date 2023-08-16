@@ -71,6 +71,8 @@ JavaScript 提供了两大类数据类型：原始类型和对象类型。
 
 算术表达式： `3 + 4`, `2 - 5 * 6`, `5 * (1 + 2) / 3`
 
+
+
 #### String
 
 字符串类型是字符序列。 它在源代码中定义为字符串文字，用引号或双引号括起来:
@@ -92,6 +94,12 @@ string"
 
 `"hello " + "world"` -> `"hello world"`
 
+`typeof` 运算符  
+typeof 运算符返回一个字符串，表示操作数的类型。
+
+`console.log(tyepof 23)    // 'number'`   
+`console.log(typeof "hello")    // 'string'`
+
 #### Boolean
 
 JavaScript 为布尔值定义了两个保留字：`true` 和 `false`。 多个比较操作运算符返回其中之一。如 `>, <, >=, <=, ===, !===`。
@@ -108,6 +116,21 @@ null
 ```
 
 其余的都被认为是 `true`。
+
+#### null
+
+null 是一个特殊值，表示不存在值。  
+这在其他语言中也是一个常见的概念，例如在 Python 中可以称为 nil 或 None。
+
+#### undefined
+
+undefined 表示变量尚未初始化且值不存在。
+
+它通常由没有返回值的函数返回。 当函数接受参数但调用者未设置该参数时，该参数是未定义的。
+
+要检测值是否未定义，请使用以下构造：
+
+`typeof variable === 'undefined'`
 
 
 ### 1.3 变量，表达式和简单语句
