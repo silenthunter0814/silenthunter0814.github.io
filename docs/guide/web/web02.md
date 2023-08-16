@@ -248,7 +248,7 @@ i = i * 2;
 i *= 2;
 ```
 
-- 字符串表达式
+- 字符串表达式 `+`
 
 ```js
 var s1 = 'hello';
@@ -267,17 +267,16 @@ console.log(s1);
 
 关系表达式运算结果为 Boolean 类型。
 
-- 逻辑表达式
-
-`&&`, `||`, `!`
-
-
-
 ```js
 console.log(3 < 2);
 console.log("hello" === "hello");
 console.log(typeof true === 'boolean');
 ```
+
+- 逻辑表达式
+
+`&&`, `||`, `!`
+
 
 ### 1.4 if else 语句
 
