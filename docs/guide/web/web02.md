@@ -54,9 +54,9 @@ JavaScript 提供了两大类数据类型：原始类型和对象类型。
 原始类型：
 - Numbers 8 字节浮点数
 - String 只读字符串
-- Booleans 值为 `true` 或 `false`
+- Boolean 值为 `true` 或 `false`
 - null 值为 空 的对象类型
-- undefined 数据类型未定义
+- undefined 
 
 #### Numbers
 
@@ -81,7 +81,7 @@ string"
 ```
  
 字符串可以包含可以在打印字符串时解释的转义序列，例如 \n 创建新行。 当需要在引号括起来的字符串中输入引号时，反斜杠也很有用，以防止字符被解释为结束引号：
-- `'hello\n`
+- `'hello\n'`
 - `'I\'m a coder'` 等同于 `"I'm a coder"`
 
 
