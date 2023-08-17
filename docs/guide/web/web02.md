@@ -333,6 +333,36 @@ console.log(`\${2/5}` === '${2/5}');
 
 ### 1.4 if else 语句
 
+JavaScript 条件选择语句。有三种主要形式。
+
+- `if` 语句
+
+语法格式：
+
+```js
+if (condition) {
+    statements;
+}
+```
+
+如果 `condition` 为真，执行大括号内语句。无论如何，代码继续向下执行。
+
+```js
+var hero;
+
+// hero = "Bard"; 
+
+if (hero) {
+    console.log("My name is: " + hero);
+}
+
+console.log("anyway, code goes here!");
+```
+
+- `if ... else` 语句
+
+- `if ... else if ... else` 语句
+
 ### 1.5 while for 循环语句
 
 ### 1.6 switch 多路选择语句
