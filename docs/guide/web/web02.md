@@ -221,7 +221,7 @@ let my-name;    // 算术运算符 '-' 不允许用于变量命名
 
 JS 中的表达式可以分为几类。
 
-- 赋值表达式: `variable =  expression` 
+1. 赋值表达式: `variable =  expression` 
 
 ```js
 var x, y;
@@ -232,7 +232,7 @@ y = x;
 y = x = 4;
 ```
 
-- 算术表达式  
+2. 算术表达式  
   在此类别下包含所有计算结果为数字的表达式：
 
 ```js
@@ -248,7 +248,7 @@ i = i * 2;
 i *= 2;
 ```
 
-- 字符串表达式 `+`
+3. 字符串表达式 `+`
 
 ```js
 var s1 = 'hello';
@@ -265,7 +265,7 @@ console.log(s1);
 
 `cosole.log('age = ' + 18);  // 'age = 18'`
 
-- 关系表达式
+4. 关系表达式
 
 `>`, `>=`, `<`, `<=`, `===`, `!==`
 
@@ -277,11 +277,11 @@ console.log("hello" === "hello");
 console.log(typeof true === 'boolean');
 ```
 
-- 逻辑表达式
+5 逻辑表达式
 
 `&&`, `||`, `!`
 
-逻辑与表达式： `expr1 && expr2`
+- 逻辑与表达式： `expr1 && expr2`
   - 如果 `expr1` 值为真，`(expr1 && expr2) === expr2`
   - 如果 `expr1` 值为假，`(expr1 && expr2) === expr1`
 
@@ -295,7 +295,7 @@ a = null;
 console.log((a && b) === null);
 ```
 
-逻辑或表达式： `expr1 || expr2`
+- 逻辑或表达式： `expr1 || expr2`
   - 如果 `expr1` 值为真，`(expr1 || expr2) === expr1`
   - 如果 `expr2` 值为假，`(expr1 | expr2) === expr2`
 
@@ -309,7 +309,7 @@ a = '';
 console.log((a || b) === undefined);
 ```
 
-逻辑非表达式： `!(expr)`
+- 逻辑非表达式： `!(expr)`
   - 如果 `expr` 值为真，`!(expr) === false`
   - 如果 `expr` 值为假，`!(expr) === true`
 
@@ -319,7 +319,7 @@ console.log(!3, !'hi', !'0', ![], !{});
 console.log(!0, !'', !null, !undefined);
 ```
 
-- 模板字符串
+6. 模板字符串
 
 又称为模板字面量或模板文字，是用反引号 (`) 字符分隔的文字，允许多行字符串、带有嵌入表达式的字符串插值。
 
