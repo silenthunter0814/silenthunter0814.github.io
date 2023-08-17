@@ -262,6 +262,10 @@ s1 += ' ' + "world";
 console.log(s1);
 ```
 
+当字符串和数值连接时，数值类型被自动转换为字符串，然后执行字符串连接：
+
+`cosole.log('age = ' + 18);  // 'age = 18'`
+
 - 关系表达式
 
 `>`, `>=`, `<`, `<=`, `===`, `!==`
@@ -406,6 +410,39 @@ if (cond1) {
 
 多路选择语句，最后的 `else` 子句是可选的。
 
+```js
+var age = 8;
+
+if (age <= 12) {
+    console.log("child");
+} else if (age <= 18) {
+    console.log('young');
+} else {    /* optional */
+    console.log('adult');
+}
+
+console.log("anyway, code goes here!");
+
+```
+
+- `?:` 三元运算符
+
+语法格式：
+
+`condition ? exprIfTrue : exprIfFalse`
+
+  - `condition`: Boolean 值用作条件的表达式。
+  - `exprIfTrue`: 如果条件计算结果为真值（等于或可以转换为真值），则执行的表达式。
+  - `exprIfFalse`: 如果条件为假（即具有可以转换为假的值），则执行的表达式。
+  
+```js
+var a, b, max;
+
+a = 3;
+b = 10;
+max = a > b ? a : b;
+console.log('max = ' + max);
+```
 
 ### 1.5 while for 循环语句
 
