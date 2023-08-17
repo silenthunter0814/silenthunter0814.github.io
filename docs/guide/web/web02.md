@@ -361,7 +361,50 @@ console.log("anyway, code goes here!");
 
 - `if ... else` 语句
 
+语法格式：
+
+```js
+if (condition) {
+    statements1;
+} else {
+    statememts2;
+}
+```
+
+如果 `condition` 为真，执行`statements1`；否则，执行 `else` 子句的 `statements2`。无论如何，代码继续向下执行。
+
+```js
+var age = 18;
+
+// age = 25;
+
+if (age > 20) {
+    console.log("I have to get a job");
+} else {
+    console.log('i should study hard');
+}
+
+console.log("anyway, code goes here!");
+```
+
 - `if ... else if ... else` 语句
+
+语法格式：
+
+```js
+if (cond1) {
+    stmts1;
+} else if (cond2) {
+    stmts2;
+} else if (condN) {
+    stmtsN;
+} else {
+    stmts;
+}
+```
+
+多路选择语句，最后的 `else` 子句是可选的。
+
 
 ### 1.5 while for 循环语句
 
