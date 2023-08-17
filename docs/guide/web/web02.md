@@ -443,7 +443,21 @@ max = a > b ? a : b;
 console.log('max = ' + max);
 ```
 
+### 1.5 while for 循环语句
 
+循环是重复执行直到满足特定条件的指令序列。
+
+#### 1.5.1 while 循环
+
+while 语句创建一个循环，只要测试条件计算结果为 true，该循环就会执行指定的语句。 在执行语句之前评估条件。
+
+语法格式：
+
+```js
+while (condition) {
+    statements
+}
+```
 
 ```js
 var n, x;
