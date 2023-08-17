@@ -520,6 +520,31 @@ for (let i = n; i > 0; i--) {
 console.log('sum = ' + sum);
 ```
 
+#### 1.5.3 `continue` 和 `break` 语句
+
+- `continue` 终止执行当前循环中的语句，并继续执行下一次迭代循环。
+- `break` 终止当前循环，并将程序控制转移到终止语句后面的语句。
+
+打印连续自然数中的偶数：
+
+```js
+var n = 1;
+
+while (true) {
+    if (n > 10) {
+        break;
+    }
+    if (n % 2 === 1) {
+        n++
+        continue;
+    }
+    console.log(n);
+    n += 1;
+}
+
+console.log("anyway, code goes here");
+```
+
 ### 1.6 switch 多路选择语句
 
 ## 2 Function 函数
