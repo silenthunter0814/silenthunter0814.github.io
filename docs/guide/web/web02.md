@@ -444,7 +444,7 @@ max = a > b ? a : b;
 console.log('max = ' + max);
 ```
 
-### 1.5 while for 循环语句
+### 1.5 while, for 循环语句
 
 循环是重复执行直到满足特定条件的指令序列。
 
