@@ -527,7 +527,7 @@ console.log('sum = ' + sum);
 
 打印连续自然数中的偶数：
 
-```js{5, 9}
+```js{5,9}
 var n = 1;
 
 while (true) {
