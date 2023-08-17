@@ -472,6 +472,55 @@ while (n < 3) {
 console.log('x = ' + x);
 ```
 
+计算 `1, 2, ... n` n个自然数值和：
+
+```js
+var n, sum;
+
+n = 10;
+sum = 0;
+while (n > 0) {
+    sum += n;
+    n--;
+}
+console.log('sum = ' + sum);
+```
+
+### 1.5.2 for 循环
+
+for 语句创建一个循环，该循环由三个可选表达式组成，用括号括起来并用分号分隔，后跟要在循环中执行的语句。
+
+语法格式：
+
+```js
+for (init; test; update) {
+    statements
+}
+```
+```js
+var s = '';
+
+for (let cnt = 0; cnt < 10; cnt++) {
+    s += cnt;
+}
+console.log(s);
+
+console.log(typeof cnt === 'undefined');
+```
+
+`for` 语句和 `while` 语句通常可以进行等价转换:
+
+```js
+var n, sum;
+
+n = 10;
+sum = 0;
+for (let i = n; i > 0; i--) {
+    sum += i;
+}
+console.log('sum = ' + sum);
+```
+
 ### 1.6 switch 多路选择语句
 
 ## 2 Function 函数
