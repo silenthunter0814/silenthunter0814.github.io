@@ -315,7 +315,7 @@ console.log((a || b) === undefined);
   - 如果 `expr` 值为假，`!(expr) === true`
 
 ```js
-console.log(!3, !'hi', ![], !{});
+console.log(!3, !'hi', !'0', ![], !{});
 
 console.log(!0, !'', !null, !undefined);
 ```
@@ -346,7 +346,7 @@ JavaScript 条件选择语句。有三种主要形式。
 
 ```js
 if (condition) {
-    statements;
+    statements
 }
 ```
 
@@ -370,9 +370,9 @@ console.log("anyway, code goes here!");
 
 ```js
 if (condition) {
-    statements1;
+    statements1
 } else {
-    statememts2;
+    statememts2
 }
 ```
 
@@ -398,13 +398,13 @@ console.log("anyway, code goes here!");
 
 ```js
 if (cond1) {
-    stmts1;
+    stmts1
 } else if (cond2) {
     stmts2;
 } else if (condN) {
-    stmtsN;
+    stmtsN
 } else {
-    stmts;
+    stmts
 }
 ```
 
@@ -445,6 +445,32 @@ console.log('max = ' + max);
 ```
 
 ### 1.5 while for 循环语句
+
+循环是重复执行直到满足特定条件的指令序列。
+
+### 1.5.1 while 循环
+
+while 语句创建一个循环，只要测试条件计算结果为 true，该循环就会执行指定的语句。 在执行语句之前评估条件。
+
+语法格式：
+
+```js
+while (condition) {
+    statements
+}
+```
+
+```js
+var n, x;
+
+x = 0;
+n = 0;  // must be initialized
+while (n < 3) {
+    n++;
+    x += n;
+}
+console.log('x = ' + x);
+```
 
 ### 1.6 switch 多路选择语句
 
