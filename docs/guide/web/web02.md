@@ -585,9 +585,9 @@ function square(num) {
 }
 ```
 
-
-
 `return` 语句结束函数执行并指定要返回给函数调用者的值。
+
+调用函数
 
 ## 3 Object 对象
 
