@@ -595,7 +595,7 @@ function square(num) {
 ```js
 var name = function(para1, para2) {
     //function body
-}
+};
 ```
 
 定义一个名为 add 的表达式函数：
@@ -604,7 +604,7 @@ var name = function(para1, para2) {
 var add = function(num1, num2) {
     var sum = num1 + num2;
     return sum;
-}
+};
 
 var num = add(2, 3);
 console.log(num);
@@ -645,7 +645,7 @@ console.log(add(2, 3));
 // or
 var add = (num1, num2) => {
     return num1 + num2;
-}
+};
 console.log(add(2, 3));
 ```
 
