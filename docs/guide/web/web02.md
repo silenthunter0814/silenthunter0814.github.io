@@ -612,6 +612,48 @@ console.log(num);
 
 我们调用 `add(2, 3)`，并将函数的运行结果 `sum` 通过 `return` 语句返回，并赋值给 `num` 变量。
 
+3. 箭头函数表达式
+
+```js
+() => expression
+
+param => expression
+
+(para) => expression
+
+(para1, paraN) => expression
+
+() => {
+    statements
+}
+
+para => {
+    statements
+}
+
+(para1, paraN) => {
+    statements
+}
+```
+
+前面的 `add()` 函数可以简写为箭头函数形式：
+
+```js
+var add = (num1, num2) => num1 + num2;
+console.log(add(2, 3));
+
+// or
+var add = (num1, num2) => {
+    return num1 + num2;
+}
+console.log(add(2, 3));
+```
+
+箭头函数表达式是传统函数表达式的紧凑替代品，具有一些语义差异和使用方面的故意限制：
+- 箭头函数没有自己的 this、arguments 或 super 绑定，因此不应该用作方法。
+- 箭头函数不能用作构造函数。 使用 new 调用它们会引发类型错误。 他们也无权访问 new.target 关键字。
+- 箭头函数不能在其函数体内使用yield，也不能创建为生成器函数。
+
 ## 3 Object 对象
 
 ## 4 Array 数组
