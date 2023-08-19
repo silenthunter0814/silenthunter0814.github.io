@@ -747,7 +747,7 @@ console.log(hero["name"], hero['age']);
 
 `object.propertyName === object["propertyName']`
  
-### 3.2 对象方法
+### 3.2 对象方法和 `this` 关键字
 
 对象中还可以包含函数，为了同对象属性进行区别，通常称作对象方法。
 
@@ -768,7 +768,7 @@ hero.says();
 ```js
 var hero = {
     "name": "Bard",
-    says() {
+    says() {    /* or: says: function() { */
         console.log("hello");
     },
     "age": 20
@@ -776,5 +776,21 @@ var hero = {
 
 hero.says();
 ```
+
+方法中的 “this”  
+当函数作为对象里的方法被调用时，this 被设置为调用该函数的对象。
+
+```js{4}
+var hero = {
+    "name": "Bard",
+    says: function() {
+        console.log(this.name);
+    }
+};
+
+hero.says();
+```
+
+在本例中, `this` 被设置为 `hero` 对象。
 
 ## 4 Array 数组
