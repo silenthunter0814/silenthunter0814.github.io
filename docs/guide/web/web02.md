@@ -836,8 +836,34 @@ hero.heroName = 'Jax';
 console.log(hero.heroName);
 ```
 
+### 3.4 `in` 运算符 和 `for ... in` 遍历对象属性
 
+1. `in` 运算符  
+如果指定的属性在指定的对象或其原型链中，则 in 运算符返回 true。
 
-`in` 运算符
+```js
+var hero = {
+    name: "Bard",
+    age: 20
+};
+
+console.log('name' in hero);
+console.log('interest' in hero);    // false
+```
+
+2. `for ... in` 遍历对象属性
+
+`for...in` 语句以任意顺序迭代一个对象的除 `Symbol` 以外的可枚举属性，包括继承的可枚举属性。
+
+```js
+var hero = {
+    name: "Bard",
+    age: 20
+};
+
+for (let prop in hero) {
+    console.log(prop + ': ' + hero[prop]);
+}
+```
 
 ## 4 Array 数组
