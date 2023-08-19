@@ -656,7 +656,49 @@ console.log(add(2, 3));
 
 ### 2.2 递归函数
 
+递归是一个调用自身的过程。调用自身的函数称为递归函数。  
+递归函数必须有一个停止调用自身的条件。否则，该函数将被无限期地调用。
 
+```js
+function recursion() {
+    // function code
+
+    recursion();
+
+    // function code
+}
+
+recursion();
+```
+
+为了防止无限递归，通常使用 `if...else` 语句（或类似方法），其中一个分支进行递归调用，而另一个分支不进行递归调用。
+
+```js
+function recursion() {
+    if (cond) {
+        recursion();
+    } else {
+        // stop calling recursion()
+    }
+}
+
+recursion();
+```
+
+求阶乘:
+
+```js
+function factorial(x) {
+    if (x === 0) {
+        return 1;
+    }
+    var y = factorial(x - 1);
+    return x * y;
+}
+
+console.log(factorial(3));
+
+```
 
 ## 3 Object 对象
 
