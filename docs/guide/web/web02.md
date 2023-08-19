@@ -793,4 +793,51 @@ hero.says();
 
 在本例中, `this` 被设置为 `hero` 对象。
 
+### 3.3 对象上的 `get` 和 `set` 语法
+
+getter 和 setter 提供对对象属性的访问的特殊方法。Getter 用于读取属性值，而 Setter 用于将值写入属性。
+- 允许控制如何访问和修改对象属性。
+- 可用于在将数据设置为对象之前验证数据。
+- 可用于创建动态计算的属性。
+
+1. get
+
+用于访问对象属性的函数。  
+使用 get 关键字定义，后跟一个函数。该函数不带参数并返回一个值。
+
+```js{3-5,8}
+var hero = {
+    name: "Bard",
+    get heroName() {
+        return this.name;
+    }
+};
+
+console.log(hero.heroName);
+```
+
+2. set
+
+用于设置对象中属性的值。set 方法接受一个参数。
+
+```js{6-8,12}
+var hero = {
+    name: "Bard",
+    get heroName() {
+        return this.name;
+    },
+    set heroName(value) {
+        this.name = value;
+    }
+};
+console.log(hero.heroName);
+
+hero.heroName = 'Jax';
+console.log(hero.heroName);
+```
+
+
+
+`in` 运算符
+
 ## 4 Array 数组
