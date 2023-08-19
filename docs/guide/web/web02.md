@@ -702,4 +702,48 @@ console.log(factorial(3));
 
 ## 3 Object 对象
 
+Object 是 JavaScript 的一种数据类型。它用于存储各种键值集合和更复杂的实体。  
+可以使用对象字面量的方式创建对象。
+
+创建一个空对象：
+
+```js
+var hero = {};
+var person = {};
+
+console.log(typeof hero === 'object');
+console.log(hero && hero !== person);
+```
+
+创建新对象并进行初始化：
+
+```js
+var hero = {
+    name: "Bard",
+    age: 1
+};
+console.log(hero);
+console.log(hero.name, hero.age);
+
+hero.name = "Jax";
+console.log(hero.name);
+```
+
+使用 `.` 运算符访问对象成员，使用规则等同于变量。
+
+声明一个对象后，稍后可以任意添加新的对象成员：
+
+```js
+var hero = {};
+
+hero.name = "Bard";
+hero.age = 20;
+
+console.log(hero["name"], hero['age']);
+```
+对象成员也可以通过 `[]` 运算符访问，但是要注意使用的是成员名称字符串:
+
+`object.propertyName === object["propertyName']`
+
+
 ## 4 Array 数组
