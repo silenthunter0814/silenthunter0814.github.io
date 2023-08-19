@@ -705,6 +705,8 @@ console.log(factorial(3));
 Object 是 JavaScript 的一种数据类型。它用于存储各种键值集合和更复杂的实体。  
 可以使用对象字面量的方式创建对象。
 
+### 3.1 对象创建和属性访问
+
 创建一个空对象：
 
 ```js
@@ -744,6 +746,35 @@ console.log(hero["name"], hero['age']);
 对象成员也可以通过 `[]` 运算符访问，但是要注意使用的是成员名称字符串:
 
 `object.propertyName === object["propertyName']`
+ 
+### 3.2 对象方法
 
+对象中还可以包含函数，为了同对象属性进行区别，通常称作对象方法。
+
+```js
+var hero = {
+    "name": "Bard",
+    "age": 20
+};
+
+hero.says = function() {
+    console.log("hello world!");
+}
+hero.says();
+```
+
+在定义对象时直接定义内部方法：
+
+```js
+var hero = {
+    "name": "Bard",
+    says() {
+        console.log("hello");
+    },
+    "age": 20
+};
+
+hero.says();
+```
 
 ## 4 Array 数组
