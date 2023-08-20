@@ -900,7 +900,7 @@ var animals = ['cat', 'dog'];
 
 1. `for ... of` 遍历数组
 
-```js
+```js{8-10}
 var heros = ['Jax', 'Bard', 'Pyke'];
 
 for (let i = 0; i < heros.length; i++) {
