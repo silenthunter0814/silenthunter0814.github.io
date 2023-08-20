@@ -867,3 +867,34 @@ for (let prop in hero) {
 ```
 
 ## 4 Array 数组
+
+### 4.1 数组定义
+
+创建一个数组：
+
+```js
+var heros = [];
+console.log(heros !== null && heros.length === 0);
+
+heros[0] = "Bard";
+heros[1] = "Jax";
+console.log(heros.length);
+for (let i = 0; i < heros.length; i++) {
+    console.log(heros[i]);
+}
+
+heros[0] = 'Pyke';
+console.log(heros[0]);
+
+// initializae
+var animals = ['cat', 'dog'];
+```
+
+在 JavaScript 中，数组不是基本类型，而是具有以下核心特征的 Array 对象：
+  - 数组是可调整大小的，并且可以包含不同的数据类型。
+  - 不能使用任意字符串作为索引访问数组元素，但必须使用非负整数（或它们各自的字符串形式）作为索引访问。
+  - 数组的索引从 0 开始：数组的第一个元素在索引 0 处，第二个在索引 1 处，以此类推，最后一个元素是数组的 length 属性减去 1 的值。
+  - 数组具有 `length` 属性，并根据数组的大小动态改变。
+
+### 4.2 数组方法
+
