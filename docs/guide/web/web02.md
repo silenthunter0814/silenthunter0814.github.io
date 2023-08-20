@@ -702,6 +702,42 @@ console.log(factorial(3));
 
 ### 2.3 回调函数
 
+回调函数是作为参数传递到另一个函数的函数，然后在外部函数内部调用该函数以完成某种例程或操作。
+
+```js
+function hero(name, callback) {
+    var desc = callback(name);
+    console.log(desc);
+}
+
+function desc(name) {
+    var heroDesc = 'Hero ' + name + ' not defined';
+
+    if (name === 'Bard') {
+        heroDesc = name + ' mage';
+    } else if (name === 'Jax') {
+        heroDesc = name + ' archer';
+    }
+    return heroDesc;
+}
+
+hero("Jax", desc);
+hero('Annie', desc);
+```
+
+setTimeout() 全局函数和匿名回调  
+设置一个计时器，一旦计时器到期，该计时器就会执行函数或指定的代码段。
+
+```js
+function callback() {
+    console.log('After 1 sec, I say "hello world"');
+}
+setTimeout(callback, 1000);
+
+setTimeout(function() {
+    console.log('After 0.5 sec, I say "hello world"');
+}, 500);
+```
 
 ## 3 Object 对象
 
