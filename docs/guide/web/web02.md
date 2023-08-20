@@ -700,6 +700,9 @@ console.log(factorial(3));
 
 ```
 
+### 2.3 回调函数
+
+
 ## 3 Object 对象
 
 Object 是 JavaScript 的一种数据类型。它用于存储各种键值集合和更复杂的实体。  
