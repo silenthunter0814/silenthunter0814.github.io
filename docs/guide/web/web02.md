@@ -898,3 +898,17 @@ var animals = ['cat', 'dog'];
 
 ### 4.2 数组方法
 
+1. `for ... of` 遍历数组
+
+```js
+var heros = ['Jax', 'Bard', 'Pyke'];
+
+for (let i = 0; i < heros.length; i++) {
+    console.log(i + ': ' + heros[i]);
+}
+
+// Using for ... of loop
+for (let hero of heros) {
+    console.log(hero);
+}
+```
