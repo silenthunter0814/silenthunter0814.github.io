@@ -957,3 +957,76 @@ for (let hero of heros) {
 
 2. `push(), pop()` 方法
 
+- `push()` 方法将指定元素添加到数组末尾并返回数组的新长度。
+- `pop()` 方法从数组中删除最后一个元素并返回该元素。 该方法改变数组的长度。
+
+```js
+var arr = [];
+
+for (let i = 1; i < 5; i++) {
+    arr.push(i);
+}
+for (let e of arr) {
+    console.log(e);
+}
+
+while (arr.length) {
+    console.log(arr.pop());
+}
+```
+
+3. `unshift(), shift()` 方法
+
+- `unshift()` 方法将指定元素添加到数组的开头并返回数组的新长度。
+- `shift()` 方法从数组中删除第一个元素并返回该删除的元素。 该方法改变数组的长度。
+
+```js
+var arr = [];
+
+for (let i = 1; i < 5; i++) {
+    arr.unshift(i);
+}
+for (let e of arr) {
+    console.log(e);
+}
+
+while (arr.length) {
+    console.log(arr.shift());
+}
+```
+
+4. `sort()` 排序  
+
+- `sort()` 方法对数组的元素进行就地排序，并返回对同一数组（现已排序）的引用。
+- 默认排序将元素转换为字符串，然后比较它们的 UTF-16 代码单元值序列。
+
+```js
+var arr = [3, 12, 10, 9, 6];
+
+arr.sort();
+for (let e of arr) {
+    console.log(e);
+}
+
+// [10, 12, 3, 6, 9] not expected
+```
+
+通过提供比较函数，以确保正确的排序。
+以下代码按照英雄的年龄进行排序：
+
+```js
+var heros = [
+    {name: "Bard", age: 20},
+    {name: "Jax", age: 18},
+    {name: "Annie", age: 19}
+];
+
+heros.sort((a, b) => {
+    return a.age - b.age;
+});
+
+for (let hero of heros) {
+    console.log(hero.age, hero.name);
+}
+```
+
