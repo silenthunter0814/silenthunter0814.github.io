@@ -277,7 +277,7 @@ console.log("hello" === "hello");
 console.log(typeof true === 'boolean');
 ```
 
-5 逻辑表达式
+5. 逻辑表达式
 
 `&&`, `||`, `!`
 
