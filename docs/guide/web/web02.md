@@ -1040,16 +1040,93 @@ var heros = [
     {name: "Annie", age: 19}
 ];
 
+heros.forEach(e => {
+    console.log('forEach(): ', e.name, e.age);
+});
+
 heros.each = function(callback) {
     for (let hero of this) {
         callback(hero);
     }
 };
-heros.each(e => {
+heros.each((e) => {
     console.log('each(): ', e.name, e.age);
 });
-
-heros.forEach(e => {
-    console.log('forEach(): ', e.name, e.age);
-});
 ```
+
+6. `map()` 方法
+
+创建一个新数组，其中填充了对调用数组中每个元素调用所提供函数的结果。
+
+```js
+var heros = [
+    {name: "Bard", age: 20},
+    {name: "Jax", age: 18},
+    {name: "Annie", age: 19}
+];
+
+var names = heros.map(e => e.name);
+console.log(names);
+```
+
+下面的代码是 `map()` 的简单实现：
+
+```js
+var heros = [
+    {name: "Bard", age: 20},
+    {name: "Jax", age: 18},
+    {name: "Annie", age: 19}
+];
+
+heros.map = function(callback) {
+    console.log("map() implementation");
+    var map = [];
+    for (let e of this) {
+        map.push(callback(e));
+    }
+    return map;
+};
+
+var ages = heros.map(e => {
+    return e.age;
+});
+console.log(ages);
+```
+
+7. `reduce()` 方法
+
+按顺序对数组的每个元素执行用户提供的“reducer”回调函数，并传入前一个元素计算的返回值。  
+对数组的所有元素运行缩减程序的最终结果是单个值。
+
+```js
+var numbers = [5, 6, 8, 2, 1];
+
+var sum = numbers.reduce((sum, element) => {
+    return sum + element;
+}, 0);
+
+console.log(typeof sum, sum);
+```
+
+下面的代码是 `redue()` 的简化实现：
+
+```js
+var numbers = [5, 6, 8, 2, 1];
+
+numbers.reduce = function(reducer, init) {
+    console.log("reduce() implemention");
+    var result;
+
+    result = init === undefined ? 0 : init;
+    for (let e of this) {
+        result = reducer(result, e);
+    }
+    return result;
+};
+
+var sum = numbers.reduce((sum, e) => sum + e);
+console.log(sum);
+```
+
+## 5 对象原型和原型链
+
