@@ -1029,4 +1029,27 @@ for (let hero of heros) {
     console.log(hero.age, hero.name);
 }
 ```
+5. `forEach()` 方法
 
+为每个数组元素执行一次提供的函数。
+
+```js
+var heros = [
+    {name: "Bard", age: 20},
+    {name: "Jax", age: 18},
+    {name: "Annie", age: 19}
+];
+
+heros.each = function(callback) {
+    for (let hero of this) {
+        callback(hero);
+    }
+};
+heros.each(e => {
+    console.log('each(): ', e.name, e.age);
+});
+
+heros.forEach(e => {
+    console.log('forEach(): ', e.name, e.age);
+});
+```
