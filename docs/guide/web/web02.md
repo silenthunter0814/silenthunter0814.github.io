@@ -1206,3 +1206,46 @@ var jax = new Hero("Jax", 18);
 bard.says();
 jax.says();
 ```
+
+### 5.3 继承和原型链
+
+当谈到继承时，JavaScript 只有一种结构：对象。  
+每个对象都有一个私有属性，该属性保存到另一个对象（称为其原型）的链接。  
+该原型对象有自己的原型，依此类推，直到到达原型为 null 的对象。
+
+JavaScript 对象有一个到原型对象的链接。  
+当尝试访问对象的属性时，不仅会在该对象上查找该属性，还会在该对象的原型、原型的原型等上查找，直到找到具有匹配名称的属性或已到达原型链的末端。
+
+符号 `someObject.[[Prototype]]` 用于指定 `someObject` 的原型。  
+可以分别使用 `Object.getPrototypeOf()` 和 `Object.setPrototypeOf()` 函数访问和修改 `[[Prototype]]` 内部槽。
+
+打印对象的原型链：
+
+```js
+var prototypeChains = function(obj) {
+    if (obj === null || obj === undefined) return;
+    
+    var chains = "[[Prototype]] :";
+    var proto = Object.getPrototypeOf(obj);
+
+    while (proto) {
+        chains += ' -> ' + proto.constructor.name;
+        proto = Object.getPrototypeOf(proto);
+    }
+    chains += ' -> ' + 'null';
+    console.log(chains);
+}
+
+function Hero(name, age) {
+    this.name = name;
+    this.age = age;
+}
+var bard = new Hero("Bard", 20);
+
+prototypeChains(bard);
+prototypeChains(Hero);
+prototypeChains({});
+prototypeChains([]);
+prototypeChains("");
+prototypeChains(0);
+```
