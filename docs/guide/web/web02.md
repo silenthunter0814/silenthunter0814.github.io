@@ -1130,3 +1130,5 @@ console.log(sum);
 
 ## 5 对象原型和原型链
 
+JavaScript 中几乎所有对象都是 `Object` 的实例； 典型的对象从 `Object.prototype` 继承属性（包括方法），尽管这些属性可能被隐藏（也称为覆盖）。
+
