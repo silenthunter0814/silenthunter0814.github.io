@@ -1148,7 +1148,7 @@ function Hero(name, age) {
 }
 ```
 
-2. `new` 操作符
+2. `new` 操作符  
 当使用 `new` 关键字调用函数时，该函数将被用作构造函数。 `new` 将执行以下操作：
   - 创建一个空对象，称为新的实例 `newInstance`。
   - 将 `newInstance` 的 `[[Prototype]]` 隐藏属性指向构造函数的原型属性 `constructor.prototype`。
@@ -1167,8 +1167,7 @@ var jax = new Hero("Jax", 18);
 console.log(bard, jax);
 ```
 
-3. `prototype` 原型方法
-
+3. `prototype` 原型方法  
 可以在任何时候向构造函数的原型属性添加方法，并在其实例中立即可用。
 
 ```js{5-7}
