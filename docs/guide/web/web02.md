@@ -1187,11 +1187,11 @@ bard.says();
 jax.says();
 ```
 
-### `class` 类语法
+### 5.2 `class` 类语法
 
 类只是构造函数的语法糖。一切仍然以同样的方式进行。
 
-```js{1,9}
+```js{1-9}
 class Hero{
     constructor(name, age) {
         this.name = name;
