@@ -1186,3 +1186,24 @@ var jax = new Hero("Jax", 18);
 bard.says();
 jax.says();
 ```
+
+### `class` 类语法
+
+类只是构造函数的语法糖。一切仍然以同样的方式进行。
+
+```js{1,9}
+class Hero{
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+    says() {
+        console.log(this.name + ": hello world!");
+    }
+}
+var bard = new Hero("Bard", 20);
+var jax = new Hero("Jax", 18);
+
+bard.says();
+jax.says();
+```
