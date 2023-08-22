@@ -1128,7 +1128,61 @@ var sum = numbers.reduce((sum, e) => sum + e);
 console.log(sum);
 ```
 
-## 5 对象原型和原型链
+## 5 对象和继承
 
 JavaScript 中几乎所有对象都是 `Object` 的实例； 典型的对象从 `Object.prototype` 继承属性（包括方法），尽管这些属性可能被隐藏（也称为覆盖）。
 
+### 5.1 构造函数和 `new` 操作符
+
+常规的 `{...}` 对象字面量语法允许创建一个对象。  
+当需要创建很多类似的对象，并存在许多共同的方法时，使用构造函数是更好的选择。
+
+1. 构造函数
+  - 函数命名以大写字母开头。
+  - 只能由 `new` 操作符来执行。
+
+```js
+function Hero(name, age) {
+    this.name = name;
+    this.age = age;
+}
+```
+
+2. `new` 操作符
+当使用 `new` 关键字调用函数时，该函数将被用作构造函数。 `new` 将执行以下操作：
+  - 创建一个空对象，称为新的实例 `newInstance`。
+  - 将 `newInstance` 的 `[[Prototype]]` 隐藏属性指向构造函数的原型属性 `constructor.prototype`。
+  - 使用给定参数执行构造函数，将 `newInstance` 绑定为 `this` 上下文。
+  - 如果构造函数返回一个对象，则该返回值将成为整个 `new` 表达式的结果。 否则返回 `newInstance`。
+
+```js{6,7}
+function Hero(name, age) {
+    this.name = name;
+    this.age = age;
+}
+
+var bard = new Hero("Bard", 20);  // {name: "Bard", age: 20}
+var jax = new Hero("Jax", 18);
+
+console.log(bard, jax);
+```
+
+3. `prototype` 原型方法
+
+可以在任何时候向构造函数的原型属性添加方法，并在其实例中立即可用。
+
+```js{5-7}
+function Hero(name, age) {
+    this.name = name;
+    this.age = age;
+}
+Hero.prototype.says = function() {
+    console.log(this.name + ": hello world!");
+}
+
+var bard = new Hero("Bard", 20);
+var jax = new Hero("Jax", 18);
+
+bard.says();
+jax.says();
+```
