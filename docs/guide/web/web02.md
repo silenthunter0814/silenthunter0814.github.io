@@ -1237,7 +1237,7 @@ var prototypeChains = function(obj) {
     }
     chains += ' -> ' + 'null';
     console.log(chains);
-}
+};
 
 function Hero(name, age) {
     this.name = name;
