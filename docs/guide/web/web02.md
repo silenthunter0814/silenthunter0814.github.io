@@ -1219,7 +1219,10 @@ JavaScript 对象有一个到原型对象的链接。
 符号 `someObject.[[Prototype]]` 用于指定 `someObject` 的原型。  
 可以分别使用 `Object.getPrototypeOf()` 和 `Object.setPrototypeOf()` 函数访问和修改 `[[Prototype]]` 内部槽。
 
-打印对象的原型链：
+#### 5.3.1 打印对象的原型链
+
+使用 `Object.getPrototypeOf()` 静态方法获取对象的原型，通过迭代获取原型的原型，直到 `null`结束。
+
 
 ```js
 var prototypeChains = function(obj) {
@@ -1249,3 +1252,40 @@ prototypeChains([]);
 prototypeChains("");
 prototypeChains(0);
 ```
+#### 5.3.2 获取对象原型的所有属性和方法
+
+`Object.getOwnPropertyNames()` 静态方法返回一个数组，其包含给定对象中所有自有属性（包括不可枚举属性，但不包括使用 symbol 值作为名称的属性）。
+
+```js
+var props = Object.getOwnPropertyNames(Object.prototype);
+console.log("Object property length: " + props.length);
+for (let prop of props) {
+    console.log(prop);
+}
+
+props = Object.getOwnPropertyNames(Array.prototype);
+console.log("Arry property length: " + props.length);
+for (let prop of props) {
+    console.log(prop);
+}
+```
+
+如果只想获取可枚举属性，使用 Object.keys() 或 for...in 循环。  
+Object.keys() 静态方法返回一个由给定对象自身的可枚举的字符串键属性名组成的数组。
+
+```js
+var hero = {
+    name: "Bard",
+    age: 20,
+    says: function() {
+        console.log(this.name + ": hello world");
+    }
+};
+
+var keys = Object.keys(hero);
+console.log(keys);
+for (let key of keys) {
+    console.log(key);
+}
+```
+
