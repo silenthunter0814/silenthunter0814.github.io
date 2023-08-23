@@ -1304,4 +1304,31 @@ for (let key of keys) {
 
 ### 6.1 访问 `DOM`
 
-在使用 `DOM` 时，
+在使用 `DOM` 时，不需要做任何其他特殊的操作，都可以立即开始使用 `document` 或 `window` 对象的 API 来操作文档本身，或网页中的任何元素（文档的子元素）。
+
+当文档加载时，创建一个新的 h1 元素，向该元素添加文本，然后将其添加到文档的树中：
+
+```js
+window.onload = () => {
+    const h1 = document.createElement('h1');
+    const text = document.createTextNode("Welcome MDN");
+    h1.appendChild(text);
+    document.body.appendChild(h1);
+}
+```
+
+### 6.2 基本数据类型
+
+各种对象和类型的术语描述:
+- `document`: `DOM` 树的根。操作页面文档的入口。
+- `Node`: 文档中的每个对象都是某种类型的节点。 在 HTML 文档中，对象可以是元素节点，也可以是文本节点或属性节点。
+- `Element`: 元素类型基于节点。元素对象实现 DOM Element 接口以及更基本的 Node 接口。
+- `NodeList`: 一个元素数组，类似于 `document.querySelectorAll()`` 方法返回的类型。
+- `Attr`: 属性是 `DOM` 中的节点，就像元素一样。
+- `NamedNodeMap`: 类数组，但项目成员通过名称或索引访问。
+
+常见的术语注意事项：
+- `Attr` 节点称为属性
+- `DOM`` 节点数组称为 `nodeList`
+
+
