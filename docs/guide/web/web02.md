@@ -1266,6 +1266,7 @@ for (let prop of props) {
 props = Object.getOwnPropertyNames(Array.prototype);
 console.log("Arry property length: " + props.length);
 for (let prop of props) {
+    document.write(prop + '</br>');
     console.log(prop);
 }
 ```
