@@ -1623,7 +1623,57 @@ id.style.border = '1px solid purple';
 
 ```js
 const byClass = document.getElementsByClassName('demo');
-for (let cls of byClass) {
-    cls.style.border = '1px solid orange';
+for (let i = 0; i < byClass.length; i++) {
+    byClass[i].style.border = '1px solid orange';
 }
 ```
+
+3. 通过标签访问元素
+
+访问页面上多个元素的一种不太具体的方法是通过其 `HTML` 标签名称。 使用 `getElementsByTagName()` 方法按标签访问元素。
+
+```js
+const byTag = document.getElementsByTagName('article');
+
+for (let tag of byTag) {
+    tag.style.border = '1px solid blue';
+}
+```
+
+4. 查询选择器
+
+要访问单个元素，使用 `querySelector()` 方法。
+
+`const query = document.querySelector('#demo-query');`
+
+`id` 属性的选择器是井号 (`#`)。
+
+对于具有多个元素（例如类或标签）的选择器，querySelector() 将返回与查询匹配的第一个元素。 
+
+可以使用 querySelectorAll() 方法来收集与特定查询匹配的所有元素。
+类属性的选择器是句点 (`.`):
+
+```js
+var queryAll = document.querySelectorAll('.demo-query-all');
+
+queryAll.forEach(query => {
+    query.style.border = '1px solid green';
+});
+```
+
+使用 forEach() 方法，可以将绿色应用于所有匹配元素的边框属性。
+
+使用 `querySelector()`，逗号分隔值充当 OR 运算符。  
+使用 `querySelectorAll()`，逗号分隔值充当 AND 运算符。
+
+```js
+var byOr = document.querySelector('div, article');
+byOr;
+// <div id="demo">Access me by ID</div>
+
+var byAnd = document.querySelectorAll('div, article');
+byAnd;    // NodeList(8)
+```
+
+使用查询选择器方法非常强大，因为可以像在 `CSS` 文件中一样访问 `DOM` 中的任何元素或元素组(`NodeList`)。
+
