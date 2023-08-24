@@ -1355,7 +1355,7 @@ window.onload = () => {
 
 可以看到如下输出：
 
-```
+```html
 <body>
     <h1>Document Object Model</h1>
 </body>
@@ -1371,11 +1371,19 @@ window.onload = () => {
 
 切换到 `Elements` 选项卡，或者再次在控制台中输入 `document.body`，将看到 `DOM` 已更改:
 
-```
+```html
 <body style="background-color: red;">
     <h1>Document Object Model</h1>
 </body>
 ```
+
+注意：为了更改 `CSS` 背景颜色属性，我们必须在 `JavaScript` 中输入 `backgroundColor`。 任何带连字符的 `CSS` 属性都将在 `JavaScript` 中以驼峰命名法编写。
+
+我们输入的 `JavaScript` 代码将红色分配给 `body` 的背景颜色，现在是 `DOM` 的一部分。
+
+但是，网站的源代码不会改变，也不会受到客户端 `JavaScript` 的影响。 如果刷新页面，我们在控制台中添加的新代码将会消失。
+
+`DOM` 可能具有与 `HTML` 源代码不同的输出的另一种情况是源代码中存在错误。 一个常见的例子是表格标签 - 表格内需要 `tbody` 标签，但开发人员经常无法将其包含在 `HTML` 中。 浏览器会自动纠正错误并添加 `tbody`。 `DOM` 还会修复尚未关闭的标签。
 
 ### 6.2 基本数据类型
 
