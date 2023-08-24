@@ -1778,3 +1778,26 @@ console.log(html.parentElementNode);  // undefined
 | firstElementChild | First Child Element Node |
 | lastElementChild  | Last Child Element Node  |
 
+`childNodes` 属性将返回节点的每个子节点的实时列表。  
+您可能期望 `ul` 元素获得三个 `li` 元素。 让我们测试一下它检索到了什么:
+
+```js
+ul.childNodes;
+// Output: NodeList(7) [text, li, text, li, text, li, text]
+```
+
+除了三个 `li` 元素之外，它还获得四个文本节点。 这是因为我们编写了自己的 HTML（它不是由 JavaScript 生成的），并且元素之间的缩进在 DOM 中被计为文本节点。 这并不直观，因为 DevTools 的 Elements 选项卡会删除空白节点。
+
+如果我们尝试使用 `firstChild` 属性更改第一个子节点的背景颜色，则会失败，因为第一个节点是文本。
+
+```js
+ul.firstChild.style.background = 'yellow';
+// Output: Uncaught TypeError...
+```
+
+在这些类型的情况下，存在 `children`、`firstElementChild` 和 `lastElementChild` 属性，以仅检索元素节点。 `ul.children` 将仅返回三个 `li` 元素。
+
+使用 `firstElementChild`，我们可以改变 `ul` 中第一个 `li` 的背景颜色。
+
+`ul.firstElementChild.style.background = 'yellow';`
+
