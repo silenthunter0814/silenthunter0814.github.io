@@ -1834,3 +1834,26 @@ for (let node of p.childNodes) {
 
 #### 6.4.4 兄弟节点
 
+节点的兄弟节点是 DOM 中同一树级别上的任何类型节点。 文本、元素和注释节点都可以是同级节点。
+
+
+|        Property        |             Gets              |
+|------------------------|-------------------------------|
+| previousSibling        | Previous Sibling Node         |
+| nextSibling            | Next Sibling Node             |
+| previousElementSibling | Previous Sibling Element Node |
+| nextElementSibling     | Next Sibling Element Node     |
+
+有一组属性用于遍历所有节点，还有一组属性仅用于元素节点。 
+- `previousSibling` 和 `nextSibling` 将获取紧邻指定节点之前或之后的下一个节点
+- `previousElementSibling` 和 `nextElementSibling` 将仅获取元素节点。
+
+```js
+const tiger = ul.children[1];
+
+tiger.nextElementSibling.style.background = 'coral';
+tiger.previousElementSibling.style.background = 'aquamarine';
+```
+
+### 6.5 更改 DOM
+
