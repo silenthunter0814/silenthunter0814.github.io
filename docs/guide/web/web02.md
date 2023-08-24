@@ -1801,3 +1801,27 @@ ul.firstChild.style.background = 'yellow';
 
 `ul.firstElementChild.style.background = 'yellow';`
 
+当进行基本的 DOM 操作时，特定于元素的属性非常有用。 在 JavaScript 生成的 Web 应用程序中，更有可能使用选择所有节点的属性，因为在这种情况下不会存在空白换行符和缩进。
+
+`for...of` 循环可用于迭代所有子元素:
+
+```js
+for (let child of ul.children) {
+    child.style.background = 'yellow';
+}
+```
+
+由于我们的 `p` 元素内部同时包含文本和元素，因此使用 `childNodes`` 属性访问该信息:
+
+```js
+for (let node of p.childNodes) {
+    console.log(node);
+}
+
+/* Output:
+"The world's leading source on "
+<strong>shark</strong>
+" related information."
+*/
+```
+
