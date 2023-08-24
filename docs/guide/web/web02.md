@@ -1539,6 +1539,81 @@ button.addEventListener('click', () => {
 });
 ```
 
-使用 addEventListener() 方法，我们将告诉按钮监听单击，并在单击后将背景颜色更改为紫红色。
+使用 addEventListener() 方法，我们将告诉按钮监听单击，并在单击后将背景颜色更改为红色。
 
+### 6.3 访问 `DOM` 中的元素
+
+可以通过多种方法访问 DOM 中的元素：ID、类、标签和查询选择器。
+
+这是五种元素访问方法的表格概述：
+
+
+|       Gets       | Selector Syntax |          Method          |
+|------------------|-----------------|--------------------------|
+| ID               | #demo           | getElementById()         |
+| Class            | .demo           | getElementsByClassName() |
+| Tag              | demo            | getElementsByTagName()   |
+| Selector(single) |                 | querySelector()          |
+| Selector(all)    |                 | querySelectorAll()       |
+
+```html
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Accessing Elements in the DOM</title>
+
+  <style>
+    html { font-family: sans-serif; color: #333; }
+    body { max-width: 500px; margin: 0 auto; padding: 0 15px; }
+    div, article { padding: 10px; margin: 5px; border: 1px solid #dedede; }
+  </style>
+
+</head>
+
+<body>
+
+  <h1>Accessing Elements in the DOM</h1>
+
+  <h2>ID (#demo)</h2>
+  <div id="demo">Access me by ID</div>
+
+  <h2>Class (.demo)</h2>
+  <div class="demo">Access me by class (1)</div>
+  <div class="demo">Access me by class (2)</div>
+
+  <h2>Tag (article)</h2>
+  <article>Access me by tag (1)</article>
+  <article>Access me by tag (2)</article>
+
+  <h2>Query Selector</h2>
+  <div id="demo-query">Access me by query</div>
+
+  <h2>Query Selector All</h2>
+  <div class="demo-query-all">Access me by query all (1)</div>
+  <div class="demo-query-all">Access me by query all (2)</div>
+
+</body>
+
+</html>
+```
+
+在此 `HTML` 文件中，有许多元素，我们将使用不同的文档方法访问这些元素。
+
+1. 通过 ID 访问元素
+
+访问 `DOM` 中单个元素的最简单方法是通过其唯一 `ID`。 您可以使用文档对象的 `getElementById()` 方法按 `ID` 获取元素。
+
+```js
+const id = document.getElementById('demo');
+console.log(id);
+// <div id="demo">Access me by ID</div>
+
+id.style.border = '1px solid purple;';
+```
+
+通过将边框属性更改为紫色，可以确保访问正确的元素。
 
