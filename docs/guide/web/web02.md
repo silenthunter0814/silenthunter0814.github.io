@@ -1717,7 +1717,7 @@ byAnd;    // NodeList(8)
 
 在此示例网站中，在样式标签中添加了一些基本的 CSS，以使每个元素明显可见，并且在脚本中创建了一些变量，以便于访问一些元素。 由于 `h1`、`p` 和 `ul` 中只有一个，因此我们可以访问每个 getElementsByTagName 属性上的第一个索引。
 
-1. 根节点
+#### 6.4.1 根节点
 
 `document` 对象是 DOM 中每个节点的根。 该对象实际上是 `window` 对象的一个属性，`window` 对象是代表浏览器中选项卡的全局顶级对象。 窗口对象可以访问工具栏、窗口的高度和宽度、提示和警报等信息。 文档由内窗口内部的内容组成。
 
@@ -1733,7 +1733,7 @@ byAnd;    // NodeList(8)
 
 由于 `html`、`head` 和 `body` 元素非常常见，因此它们在文档中具有自己的属性。
 
-2. 父节点
+#### 6.4.2 父节点
 
 DOM 中的节点被称为父节点、子节点和兄弟节点，具体取决于它们与其他节点的关系。 任何节点的父节点都是其上一级的节点，或者在 DOM 层次结构中更接近文档的节点。  
 有两个属性可以获取父级：
@@ -1764,7 +1764,7 @@ console.log(html.parentElementNode);  // undefined
 几乎所有节点的父节点都是元素节点，因为文本和注释不能成为其他节点的父节点。 但是，`html` 的父级是文档节点，因此 `parentElement` 返回 `undefined`。  
 一般来说，在遍历 DOM 的时候，`parentNode` 比较常用。
 
-3. 子节点
+#### 6.4.3 子节点
 
 节点的 `children` 节点是其下一级的节点。 超出一层嵌套的任何节点通常称为后代。
 
@@ -1824,4 +1824,13 @@ for (let node of p.childNodes) {
 " related information."
 */
 ```
+
+`childNode` 和 `Children` 不会返回具有所有 Array 属性和方法的数组，但它们的外观和行为与 JavaScript 数组类似。  
+可以通过索引号访问节点，或查找它们的长度属性。
+
+`document.body.children[3].lastElementChild.style.background = 'fuchsia';`
+
+使用父属性和子属性，可以检索 DOM 中的任何节点。
+
+#### 6.4.4 兄弟节点
 
