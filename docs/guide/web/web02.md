@@ -1481,7 +1481,7 @@ nav;
 注意：`HTML` 生成 `DOM` 时，`HTML` 源代码的缩进将创建许多空文本节点，这些节点在 `DevTools Elements` 选项卡中不可见。
 
 
-识别节点类型
+#### 6.2.3 识别节点类型
 
 文档中的每个节点都有一个节点类型，可通过 `nodeType` 属性访问。
 
@@ -1505,5 +1505,40 @@ $0.nodeName
 ```
 
 除了 `nodeType` 之外，还可以使用 `nodeValue` 属性来获取文本或注释节点的值，并使用 `nodeName` 来获取元素的标签名称。
+
+#### 6.2.4 使用事件修改 DOM
+
+创建一个交互式按钮，单击该钮即可执行背景颜色改变：
+
+```js
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <title>Learning the DOM</title>
+  </head>
+
+  <body>
+    <h1>Document Object Model</h1> 
+    <button id="changeBackground">Change Background Color</button>
+    
+    <script src="./scripts.js"></script>
+  </body>
+
+</html>
+```
+
+`JavaScript` 中的事件是用户采取的操作。 当用户将鼠标悬停在某个元素上、单击某个元素或按下键盘上的特定键时，这些都是事件类型。 
+
+```js
+// scripts.js
+var button = document.getElementById('changeBackground');
+
+button.addEventListener('click', () => {
+    document.body.style.backgroundColor = 'red';
+});
+```
+
+使用 addEventListener() 方法，我们将告诉按钮监听单击，并在单击后将背景颜色更改为紫红色。
 
 
