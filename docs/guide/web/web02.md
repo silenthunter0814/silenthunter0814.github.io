@@ -1488,7 +1488,9 @@ nav;
 
 |  Node Type   | Value |         Example          |
 |--------------|-------|--------------------------|
-| ELEMENT_NODE |     1 | <body>,<p>               |
+| ELEMENT_NODE |     1 | `<body>,<p>`               |
 | TEXT_NODE    |     3 | 不属于元素的文本                 |
-| COMMENT_NODE |     8 | <!-- an HTML comment --> |
+| COMMENT_NODE |     8 | `<!-- an HTML comment -->` |
+
+在开发人员工具的“元素”选项卡中，每当单击并突出显示 `DOM` 中的任何行时，`== $0` 的值就会出现在它的旁边。 这是通过键入 `$0` 来访问开发人员工具中当前活动元素的非常方便的方法。
 
