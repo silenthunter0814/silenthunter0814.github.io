@@ -1377,11 +1377,11 @@ window.onload = () => {
 </body>
 ```
 
-注意：为了更改 `CSS` 背景颜色属性，我们必须在 `JavaScript` 中输入 `backgroundColor`。 任何带连字符的 `CSS` 属性都将在 `JavaScript` 中以驼峰命名法编写。
+注意：为了更改 CSS 背景颜色属性，我们必须在 JavaScript 中输入 `backgroundColor`。 任何带连字符的 CSS 属性都将在 JavaScript 中以驼峰命名法编写。
 
-我们输入的 `JavaScript` 代码将红色分配给 `body` 的背景颜色，现在是 DOM 的一部分。
+我们输入的 JavaScript 代码将红色分配给 `body` 的背景颜色，现在是 DOM 的一部分。
 
-但是，网站的源代码不会改变，也不会受到客户端 `JavaScript` 的影响。 如果刷新页面，我们在控制台中添加的新代码将会消失。
+但是，网站的源代码不会改变，也不会受到客户端 JavaScript 的影响。 如果刷新页面，我们在控制台中添加的新代码将会消失。
 
 DOM 可能具有与 HTML 源代码不同的输出的另一种情况是源代码中存在错误。 一个常见的例子是表格标签 - 表格内需要 `tbody` 标签，但开发人员经常无法将其包含在 HTML 中。 浏览器会自动纠正错误并添加 `tbody`。 DOM 还会修复尚未关闭的标签。
 
@@ -1389,7 +1389,7 @@ DOM 可能具有与 HTML 源代码不同的输出的另一种情况是源代码�
 
 #### 6.2.1 HTML 术语和元素访问
 
-了解 HTML 和 `JavaScript` 术语对于理解如何使用 DOM 至关重要。 
+了解 HTML 和 JavaScript 术语对于理解如何使用 DOM 至关重要。 
 
 这里我们有一个锚元素，它是指向 `index.html` 的链接:
 
@@ -1402,7 +1402,7 @@ DOM 可能具有与 HTML 源代码不同的输出的另一种情况是源代码�
 
 开始标签和结束标签之间的所有内容组合起来构成了整个 HTML 元素。
 
-使用 `JavaScript` 访问元素的最简单方法是通过 `id` 属性。
+使用 JavaScript 访问元素的最简单方法是通过 `id` 属性。
 
 ```html{10}
 <!DOCTYPE html>
@@ -1528,7 +1528,7 @@ $0.nodeName
 </html>
 ```
 
-`JavaScript` 中的事件是用户采取的操作。 当用户将鼠标悬停在某个元素上、单击某个元素或按下键盘上的特定键时，这些都是事件类型。 
+JavaScript 中的事件是用户采取的操作。 当用户将鼠标悬停在某个元素上、单击某个元素或按下键盘上的特定键时，这些都是事件类型。 
 
 ```js
 // scripts.js
@@ -1675,11 +1675,11 @@ var byAnd = document.querySelectorAll('div, article');
 byAnd;    // NodeList(8)
 ```
 
-使用查询选择器方法非常强大，因为可以像在 `CSS` 文件中一样访问 DOM 中的任何元素或元素组(`NodeList`)。
+使用查询选择器方法非常强大，因为可以像在 CSS 文件中一样访问 DOM 中的任何元素或元素组(`NodeList`)。
 
 ### 6.4 遍历 DOM
 
-学习如何在 DOM 树中上下导航以及从一个分支移动到另一个分支对于理解如何使用 `JavaScript` 和 HTML 至关重要。
+学习如何在 DOM 树中上下导航以及从一个分支移动到另一个分支对于理解如何使用 JavaScript 和 HTML 至关重要。
 
 ```html
 <!DOCTYPE html>
@@ -1715,7 +1715,7 @@ byAnd;    // NodeList(8)
 </html>
 ```
 
-在此示例网站中，在样式标签中添加了一些基本的 `CSS`，以使每个元素明显可见，并且在脚本中创建了一些变量，以便于访问一些元素。 由于 `h1`、`p` 和 `ul` 中只有一个，因此我们可以访问每个 getElementsByTagName 属性上的第一个索引。
+在此示例网站中，在样式标签中添加了一些基本的 CSS，以使每个元素明显可见，并且在脚本中创建了一些变量，以便于访问一些元素。 由于 `h1`、`p` 和 `ul` 中只有一个，因此我们可以访问每个 getElementsByTagName 属性上的第一个索引。
 
 1. 根节点
 
@@ -1737,6 +1737,44 @@ byAnd;    // NodeList(8)
 
 DOM 中的节点被称为父节点、子节点和兄弟节点，具体取决于它们与其他节点的关系。 任何节点的父节点都是其上一级的节点，或者在 DOM 层次结构中更接近文档的节点。  
 有两个属性可以获取父级：
-- `parentNode`
-- `parentElement`
+- `parentNode` : Parent Node
+- `parentElement` : Parent Element Node
+
+在我们的例子中：
+- `html` 是 `head`、`body` 和 `script` 的父级。
+- `body` 是 `h1`、`h2`、`p` 和 `ul` 的父级，但不是 `li`，因为 `li` 比 `body` 低两级。
+
+```js
+p.parentNode;
+// Output: <body>...</body>
+
+p.parentNode.parentNode;
+// Output: <html>...</html>
+```
+
+使用 `parentNode` 两次，我们检索了 `p` 的祖父节点。
+
+```js
+const html = document.documentElement;
+
+console.log(html.parentNode);  // #document
+console.log(html.parentElementNode);  // undefined
+```
+
+几乎所有节点的父节点都是元素节点，因为文本和注释不能成为其他节点的父节点。 但是，`html` 的父级是文档节点，因此 `parentElement` 返回 `undefined`。  
+一般来说，在遍历 DOM 的时候，`parentNode` 比较常用。
+
+3. 子节点
+
+节点的 `children` 节点是其下一级的节点。 超出一层嵌套的任何节点通常称为后代。
+
+
+|     Property      |           Gets           |
+|-------------------|--------------------------|
+| childNodes        | Child Nodes              |
+| firstChild        | First Child Node         |
+| lastChild         | Last Child Node          |
+| children          | Element Child Nodes      |
+| firstElementChild | First Child Element Node |
+| lastElementChild  | Last Child Element Node  |
 
