@@ -1619,7 +1619,7 @@ id.style.border = '1px solid purple';
 
 2. 按类访问元素
 
-`class` 属性用于访问 DOM 中的一个或多个特定元素。 可以使用 `getElementsByClassName()` 方法获取具有给定类名的所有元素。
+`class` 属性用于访问 `DOM` 中的一个或多个特定元素。 可以使用 `getElementsByClassName()` 方法获取具有给定类名的所有元素。
 
 ```js
 const byClass = document.getElementsByClassName('demo');
@@ -1648,9 +1648,9 @@ for (let tag of byTag) {
 
 `id` 属性的选择器是井号 (`#`)。
 
-对于具有多个元素（例如类或标签）的选择器，querySelector() 将返回与查询匹配的第一个元素。 
+对于具有多个元素（例如类或标签）的选择器，`querySelector()` 将返回与查询匹配的第一个元素。 
 
-可以使用 querySelectorAll() 方法来收集与特定查询匹配的所有元素。
+可以使用 `querySelectorAll()` 方法来收集与特定查询匹配的所有元素。
 类属性的选择器是句点 (`.`):
 
 ```js
@@ -1661,10 +1661,10 @@ queryAll.forEach(query => {
 });
 ```
 
-使用 forEach() 方法，可以将绿色应用于所有匹配元素的边框属性。
+使用 `forEach()`` 方法，可以将绿色应用于所有匹配元素的边框属性。
 
-使用 `querySelector()`，逗号分隔值充当 OR 运算符。  
-使用 `querySelectorAll()`，逗号分隔值充当 AND 运算符。
+使用 `querySelector()`，逗号分隔值充当 `OR` 运算符。  
+使用 `querySelectorAll()`，逗号分隔值充当 `AND` 运算符。
 
 ```js
 var byOr = document.querySelector('div, article');
@@ -1676,4 +1676,6 @@ byAnd;    // NodeList(8)
 ```
 
 使用查询选择器方法非常强大，因为可以像在 `CSS` 文件中一样访问 `DOM` 中的任何元素或元素组(`NodeList`)。
+
+### 6.4 遍历 `DOM`
 
