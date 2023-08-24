@@ -1387,19 +1387,7 @@ window.onload = () => {
 
 ### 6.2 了解 `DOM` 树和 `Node` 节点
 
-各种对象和类型的术语描述:
-- `document`: `DOM` 树的根。操作页面文档的入口。
-- `Node`: 文档中的每个对象都是某种类型的节点。 在 HTML 文档中，对象可以是元素节点，也可以是文本节点或属性节点。
-- `Element`: 元素类型基于节点。元素对象实现 DOM Element 接口以及更基本的 Node 接口。
-- `NodeList`: 一个元素数组，类似于 `document.querySelectorAll()`` 方法返回的类型。
-- `Attr`: 属性是 `DOM` 中的节点，就像元素一样。
-- `NamedNodeMap`: 类数组，但项目成员通过名称或索引访问。
-
-常见的术语注意事项：
-- `Attr` 节点称为属性
-- `DOM` 节点数组称为 `nodeList`
-
-1. `HTML` 术语
+#### 6.2.1 `HTML` 术语和元素访问
 
 了解 `HTML` 和 `JavaScript` 术语对于理解如何使用 `DOM` 至关重要。 
 
@@ -1457,3 +1445,39 @@ nav;
 
 // <a id="nav" href="https://developer.mozilla.org">welcome MDN</a>
 ```
+
+#### 6.2.2 `DOM` 树和 `Node` 节点
+
+`DOM` 中的所有项目都定义为节点(`Node`)。 节点有很多种类型，最常使用的主要有以下三种：
+- `Element` 节点
+- `Text` 节点
+- `Comment` 节点
+
+当 `HTML` 元素是 `DOM` 中的项目时，它被称为元素节点。 元素之外的任何单独文本都是文本节点，`HTML` 注释是注释节点。  
+除了这三种节点类型外，`document` 本身就是一个文档节点，它是所有其他节点的根。
+
+`DOM` 由嵌套节点的树结构组成，通常称为 `DOM` 树。  
+`DOM` 中的节点也称为父节点、子节点和兄弟节点，具体取决于它们与其他节点的关系。
+
+```html
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Learning About Nodes</title>
+  </head>
+
+  <body>
+    <h1>An element node</h1>
+    <!-- a comment node -->
+    A text node.
+  </body>
+
+</html>
+```
+
+`html` 元素节点是父节点。 `head` 和 `body` 是兄弟节点，是 `html` 的子级。 `body` 包含三个子节点，它们都是兄弟节点——节点的类型不会改变它的嵌套级别。
+
+注意：`HTML` 生成 `DOM` 时，`HTML` 源代码的缩进将创建许多空文本节点，这些节点在 `DevTools Elements` 选项卡中不可见。
+
+
