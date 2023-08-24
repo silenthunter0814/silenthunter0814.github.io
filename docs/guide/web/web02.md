@@ -1385,7 +1385,7 @@ window.onload = () => {
 
 `DOM` 可能具有与 `HTML` 源代码不同的输出的另一种情况是源代码中存在错误。 一个常见的例子是表格标签 - 表格内需要 `tbody` 标签，但开发人员经常无法将其包含在 `HTML` 中。 浏览器会自动纠正错误并添加 `tbody`。 `DOM` 还会修复尚未关闭的标签。
 
-### 6.2 基本数据类型
+### 6.2 了解 `DOM` 树和 `Node` 节点
 
 各种对象和类型的术语描述:
 - `document`: `DOM` 树的根。操作页面文档的入口。
@@ -1397,6 +1397,63 @@ window.onload = () => {
 
 常见的术语注意事项：
 - `Attr` 节点称为属性
-- `DOM`` 节点数组称为 `nodeList`
+- `DOM` 节点数组称为 `nodeList`
 
+1. `HTML` 术语
 
+了解 `HTML` 和 `JavaScript` 术语对于理解如何使用 `DOM` 至关重要。 
+
+这里我们有一个锚元素，它是指向 `index.html` 的链接:
+
+`<a href="index.html">Home</a>`
+
+- `a`: 标签 `tag`
+- `href`: 属性 `attribute`
+- `index.html`: 属性值
+- `home` 文本 `text`。
+
+开始标签和结束标签之间的所有内容组合起来构成了整个 `HTML` 元素。
+
+使用 `JavaScript` 访问元素的最简单方法是通过 `id` 属性。
+
+```html{10}
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <title>Learning the DOM</title>
+  </head>
+
+  <body>
+    <h1>Document Object Model</h1>
+    <a id="nav" href="index.html">Home</a>
+  </body>
+
+</html>
+```
+
+使用 `getElementById()` 方法来访问整个元素。 在控制台中，输入以下内容：
+
+```js
+document.getElementById('nav');
+
+/* output:
+<a id="nav" href="index.html">Home</a>
+*/
+```
+
+我们可以将元素输出存入变量中，而不是每次想要访问导航链接时都键入该对象和方法：
+
+`var nav = document.getElementById('nav');`
+
+`nav` 变量包含我们的锚元素。 从这里，我们可以轻松修改属性和值。  
+例如，我们可以通过更改 `href` 属性来更改链接的位置，textContent 属性来更改文本内容：：
+
+```js
+nav = document.getElementById('nav');
+nav.href = 'https://developer.mozilla.org';
+nav.textContent = 'welcome MDN';
+nav;
+
+// <a id="nav" href="https://developer.mozilla.org">welcome MDN</a>
+```
