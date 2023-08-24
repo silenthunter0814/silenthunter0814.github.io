@@ -1317,6 +1317,66 @@ window.onload = () => {
 }
 ```
 
+1. `document` 文档对象
+
+创建一个index.html文件，在浏览器中打开，同时打开开发者控制台。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <title>Learning the DOM</title>
+  </head>
+
+  <body>
+    <h1>Document Object Model</h1>
+  </body>
+
+</html>
+```
+
+在开发者控制台输入：
+
+`document;` 
+
+并回车，可以看到与元素选项卡相同的内容。
+
+文档对象 `document` 对象是一个内置对象，具有许多属性和方法，我们可以使用它们来访问和修改网站。
+
+2. `DOM` 和 `HTML` 源代码区别
+
+- DOM 由客户端 JavaScript 修改
+- 浏览器自动修复源代码中的错误
+
+在控制台输入：
+
+`document.body;`
+
+可以看到如下输出：
+
+```
+<body>
+    <h1>Document Object Model</h1>
+</body>
+```
+
+`document` 是一个对象，`body` 是用点表示法访问的该对象的属性。 将 `document.body` 提交到控制台会输出 `body` 元素及其内部的所有内容。
+
+在控制台中，我们可以更改页面上对象的一些实时属性。 我们将编辑样式属性，将背景颜色更改为红色。 在控制台中输入：
+
+`document.body.style.backgroundColor = 'red';`
+
+输入并提交上述代码后，将能看到网站的实时更新，背景颜色发生变化。
+
+切换到 `Elements` 选项卡，或者再次在控制台中输入 `document.body`，将看到 `DOM` 已更改:
+
+```
+<body style="background-color: red;">
+    <h1>Document Object Model</h1>
+</body>
+```
+
 ### 6.2 基本数据类型
 
 各种对象和类型的术语描述:
