@@ -1603,7 +1603,7 @@ button.addEventListener('click', () => {
 
 在此 `HTML` 文件中，有许多元素，我们将使用不同的文档方法访问这些元素。
 
-1. 通过 ID 访问元素
+1. 通过 `ID` 访问元素
 
 访问 `DOM` 中单个元素的最简单方法是通过其唯一 `ID`。 您可以使用文档对象的 `getElementById()` 方法按 `ID` 获取元素。
 
