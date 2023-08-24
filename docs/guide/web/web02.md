@@ -1612,7 +1612,7 @@ const id = document.getElementById('demo');
 console.log(id);
 // <div id="demo">Access me by ID</div>
 
-id.style.border = '1px solid purple;';
+id.style.border = '1px solid purple';
 ```
 
 通过将边框属性更改为紫色，可以确保访问正确的元素。
@@ -1621,3 +1621,9 @@ id.style.border = '1px solid purple;';
 
 `class` 属性用于访问 DOM 中的一个或多个特定元素。 可以使用 `getElementsByClassName()` 方法获取具有给定类名的所有元素。
 
+```js
+const byClass = document.getElementsByClassName('demo');
+for (let cls of byClass) {
+    cls.style.border = '1px solid orange';
+}
+```
