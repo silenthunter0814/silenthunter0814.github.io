@@ -1481,3 +1481,14 @@ nav;
 注意：`HTML` 生成 `DOM` 时，`HTML` 源代码的缩进将创建许多空文本节点，这些节点在 `DevTools Elements` 选项卡中不可见。
 
 
+识别节点类型
+
+文档中的每个节点都有一个节点类型，可通过 `nodeType` 属性访问。
+
+
+|  Node Type   | Value |         Example          |
+|--------------|-------|--------------------------|
+| ELEMENT_NODE |     1 | <body>,<p>               |
+| TEXT_NODE    |     3 | 不属于元素的文本                 |
+| COMMENT_NODE |     8 | <!-- an HTML comment --> |
+
