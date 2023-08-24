@@ -1294,17 +1294,17 @@ for (let key of keys) {
 `Object.values()` 静态方法返回一个给定对象的自有可枚举字符串键属性值组成的数组。
 
 
-## 6 `DOM` 文档对象模型
+## 6 DOM 文档对象模型
 
-文档对象模型（`DOM`）是 `web` 上构成文档结构和内容的对象的数据表示。
+文档对象模型（DOM）是 `web` 上构成文档结构和内容的对象的数据表示。
 
-`DOM` 模型用一个逻辑树来表示一个文档，树的每个分支的终点都是一个节点 (`node`)，每个节点都包含着对象 (`objects`)。  
-`DOM` 的方法 (methods) 以特定方式操作 `DOM` 树，这些方法可以改变文档的结构、样式或者内容。  
+DOM 模型用一个逻辑树来表示一个文档，树的每个分支的终点都是一个节点 (`Node`)，每个节点都包含着对象 (`objects`)。  
+DOM 的方法 (methods) 以特定方式操作 DOM 树，这些方法可以改变文档的结构、样式或者内容。  
 节点(`node`)可以关联上事件处理器，一旦某一事件被触发了，那些事件处理器就会被执行。
 
-### 6.1 访问 `DOM`
+### 6.1 访问 DOM
 
-在使用 `DOM` 时，不需要做任何其他特殊的操作，都可以立即开始使用 `document` 或 `window` 对象的 API 来操作文档本身，或网页中的任何元素（文档的子元素）。
+在使用 DOM 时，不需要做任何其他特殊的操作，都可以立即开始使用 `document` 或 `window` 对象的 API 来操作文档本身，或网页中的任何元素（文档的子元素）。
 
 当文档加载时，创建一个新的 h1 元素，向该元素添加文本，然后将其添加到文档的树中：
 
@@ -1344,7 +1344,7 @@ window.onload = () => {
 
 文档对象 `document` 对象是一个内置对象，具有许多属性和方法，我们可以使用它们来访问和修改网站。
 
-2. `DOM` 和 `HTML` 源代码区别
+2. DOM 和 HTML 源代码区别
 
 - DOM 由客户端 JavaScript 修改
 - 浏览器自动修复源代码中的错误
@@ -1369,7 +1369,7 @@ window.onload = () => {
 
 输入并提交上述代码后，将能看到网站的实时更新，背景颜色发生变化。
 
-切换到 `Elements` 选项卡，或者再次在控制台中输入 `document.body`，将看到 `DOM` 已更改:
+切换到 `Elements` 选项卡，或者再次在控制台中输入 `document.body`，将看到 DOM 已更改:
 
 ```html
 <body style="background-color: red;">
@@ -1379,17 +1379,17 @@ window.onload = () => {
 
 注意：为了更改 `CSS` 背景颜色属性，我们必须在 `JavaScript` 中输入 `backgroundColor`。 任何带连字符的 `CSS` 属性都将在 `JavaScript` 中以驼峰命名法编写。
 
-我们输入的 `JavaScript` 代码将红色分配给 `body` 的背景颜色，现在是 `DOM` 的一部分。
+我们输入的 `JavaScript` 代码将红色分配给 `body` 的背景颜色，现在是 DOM 的一部分。
 
 但是，网站的源代码不会改变，也不会受到客户端 `JavaScript` 的影响。 如果刷新页面，我们在控制台中添加的新代码将会消失。
 
-`DOM` 可能具有与 `HTML` 源代码不同的输出的另一种情况是源代码中存在错误。 一个常见的例子是表格标签 - 表格内需要 `tbody` 标签，但开发人员经常无法将其包含在 `HTML` 中。 浏览器会自动纠正错误并添加 `tbody`。 `DOM` 还会修复尚未关闭的标签。
+DOM 可能具有与 HTML 源代码不同的输出的另一种情况是源代码中存在错误。 一个常见的例子是表格标签 - 表格内需要 `tbody` 标签，但开发人员经常无法将其包含在 HTML 中。 浏览器会自动纠正错误并添加 `tbody`。 DOM 还会修复尚未关闭的标签。
 
-### 6.2 了解 `DOM` 树和 `Node` 节点
+### 6.2 了解 DOM 树和 `Node` 节点
 
-#### 6.2.1 `HTML` 术语和元素访问
+#### 6.2.1 HTML 术语和元素访问
 
-了解 `HTML` 和 `JavaScript` 术语对于理解如何使用 `DOM` 至关重要。 
+了解 HTML 和 `JavaScript` 术语对于理解如何使用 DOM 至关重要。 
 
 这里我们有一个锚元素，它是指向 `index.html` 的链接:
 
@@ -1400,7 +1400,7 @@ window.onload = () => {
 - `index.html`: 属性值
 - `home` 文本 `text`。
 
-开始标签和结束标签之间的所有内容组合起来构成了整个 `HTML` 元素。
+开始标签和结束标签之间的所有内容组合起来构成了整个 HTML 元素。
 
 使用 `JavaScript` 访问元素的最简单方法是通过 `id` 属性。
 
@@ -1446,18 +1446,18 @@ nav;
 // <a id="nav" href="https://developer.mozilla.org">welcome MDN</a>
 ```
 
-#### 6.2.2 `DOM` 树和 `Node` 节点
+#### 6.2.2 DOM 树和 `Node` 节点
 
-`DOM` 中的所有项目都定义为节点(`Node`)。 节点有很多种类型，最常使用的主要有以下三种：
+DOM 中的所有项目都定义为节点(`Node`)。 节点有很多种类型，最常使用的主要有以下三种：
 - `Element` 节点
 - `Text` 节点
 - `Comment` 节点
 
-当 `HTML` 元素是 `DOM` 中的项目时，它被称为元素节点。 元素之外的任何单独文本都是文本节点，`HTML` 注释是注释节点。  
+当 HTML 元素是 DOM 中的项目时，它被称为元素节点。 元素之外的任何单独文本都是文本节点，HTML 注释是注释节点。  
 除了这三种节点类型外，`document` 本身就是一个文档节点，它是所有其他节点的根。
 
-`DOM` 由嵌套节点的树结构组成，通常称为 `DOM` 树。  
-`DOM` 中的节点也称为父节点、子节点和兄弟节点，具体取决于它们与其他节点的关系。
+DOM 由嵌套节点的树结构组成，通常称为 DOM 树。  
+DOM 中的节点也称为父节点、子节点和兄弟节点，具体取决于它们与其他节点的关系。
 
 ```html
 <!DOCTYPE html>
@@ -1478,7 +1478,7 @@ nav;
 
 `html` 元素节点是父节点。 `head` 和 `body` 是兄弟节点，是 `html` 的子级。 `body` 包含三个子节点，它们都是兄弟节点——节点的类型不会改变它的嵌套级别。
 
-注意：`HTML` 生成 `DOM` 时，`HTML` 源代码的缩进将创建许多空文本节点，这些节点在 `DevTools Elements` 选项卡中不可见。
+注意：HTML 生成 DOM 时，HTML 源代码的缩进将创建许多空文本节点，这些节点在 `DevTools Elements` 选项卡中不可见。
 
 
 #### 6.2.3 识别节点类型
@@ -1492,7 +1492,7 @@ nav;
 | TEXT_NODE    |     3 | 不属于元素的文本                 |
 | COMMENT_NODE |     8 | `<!-- an HTML comment -->` |
 
-在开发人员工具的“元素”选项卡中，每当单击并突出显示 `DOM` 中的任何行时，`== $0` 的值就会出现在它的旁边。 这是通过键入 `$0` 来访问开发人员工具中当前活动元素的非常方便的方法。
+在开发人员工具的“元素”选项卡中，每当单击并突出显示 DOM 中的任何行时，`== $0` 的值就会出现在它的旁边。 这是通过键入 `$0` 来访问开发人员工具中当前活动元素的非常方便的方法。
 
 在“元素”选项卡中，单击 `h1` 元素；在控制台中，使用 `nodeType`` 属性获取当前选定节点的节点类型。
 
@@ -1541,7 +1541,7 @@ button.addEventListener('click', () => {
 
 使用 addEventListener() 方法，我们将告诉按钮监听单击，并在单击后将背景颜色更改为红色。
 
-### 6.3 访问 `DOM` 中的元素
+### 6.3 访问 DOM 中的元素
 
 可以通过多种方法访问 DOM 中的元素：ID、类、标签和查询选择器。
 
@@ -1601,11 +1601,11 @@ button.addEventListener('click', () => {
 </html>
 ```
 
-在此 `HTML` 文件中，有许多元素，我们将使用不同的文档方法访问这些元素。
+在此 HTML 文件中，有许多元素，我们将使用不同的文档方法访问这些元素。
 
 1. 通过 `ID` 访问元素
 
-访问 `DOM` 中单个元素的最简单方法是通过其唯一 `ID`。 您可以使用文档对象的 `getElementById()` 方法按 `ID` 获取元素。
+访问 DOM 中单个元素的最简单方法是通过其唯一 `ID`。 您可以使用文档对象的 `getElementById()` 方法按 `ID` 获取元素。
 
 ```js
 const id = document.getElementById('demo');
@@ -1619,7 +1619,7 @@ id.style.border = '1px solid purple';
 
 2. 按类访问元素
 
-`class` 属性用于访问 `DOM` 中的一个或多个特定元素。 可以使用 `getElementsByClassName()` 方法获取具有给定类名的所有元素。
+`class` 属性用于访问 DOM 中的一个或多个特定元素。 可以使用 `getElementsByClassName()` 方法获取具有给定类名的所有元素。
 
 ```js
 const byClass = document.getElementsByClassName('demo');
@@ -1630,7 +1630,7 @@ for (let i = 0; i < byClass.length; i++) {
 
 3. 通过标签访问元素
 
-访问页面上多个元素的一种不太具体的方法是通过其 `HTML` 标签名称。 使用 `getElementsByTagName()` 方法按标签访问元素。
+访问页面上多个元素的一种不太具体的方法是通过其 HTML 标签名称。 使用 `getElementsByTagName()` 方法按标签访问元素。
 
 ```js
 const byTag = document.getElementsByTagName('article');
@@ -1675,7 +1675,68 @@ var byAnd = document.querySelectorAll('div, article');
 byAnd;    // NodeList(8)
 ```
 
-使用查询选择器方法非常强大，因为可以像在 `CSS` 文件中一样访问 `DOM` 中的任何元素或元素组(`NodeList`)。
+使用查询选择器方法非常强大，因为可以像在 `CSS` 文件中一样访问 DOM 中的任何元素或元素组(`NodeList`)。
 
-### 6.4 遍历 `DOM`
+### 6.4 遍历 DOM
+
+学习如何在 DOM 树中上下导航以及从一个分支移动到另一个分支对于理解如何使用 `JavaScript` 和 HTML 至关重要。
+
+```html
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Learning About Nodes</title>
+
+  <style>
+    * { border: 2px solid #dedede; padding: 15px; margin: 15px; }
+    html { margin: 0; padding: 0; }
+    body { max-width: 600px; font-family: sans-serif; color: #333; }
+  </style>
+</head>
+
+<body>
+  <h1>Shark World</h1>
+  <p>The world's leading source on <strong>shark</strong> related information.</p>
+  <h2>Types of Sharks</h2>
+  <ul>
+    <li>Hammerhead</li>
+    <li>Tiger</li>
+    <li>Great White</li>
+  </ul>
+</body>
+
+<script>
+  const h1 = document.getElementsByTagName('h1')[0];
+  const p = document.getElementsByTagName('p')[0];
+  const ul = document.getElementsByTagName('ul')[0];
+</script>
+
+</html>
+```
+
+在此示例网站中，在样式标签中添加了一些基本的 `CSS`，以使每个元素明显可见，并且在脚本中创建了一些变量，以便于访问一些元素。 由于 `h1`、`p` 和 `ul` 中只有一个，因此我们可以访问每个 getElementsByTagName 属性上的第一个索引。
+
+1. 根节点
+
+`document` 对象是 DOM 中每个节点的根。 该对象实际上是 `window` 对象的一个属性，`window` 对象是代表浏览器中选项卡的全局顶级对象。 窗口对象可以访问工具栏、窗口的高度和宽度、提示和警报等信息。 文档由内窗口内部的内容组成。
+
+下面是一个由每个文档将包含的根元素组成的图表。 即使将空白 HTML 文件加载到浏览器中，这三个节点也会被添加并解析到 DOM 中。
+
+
+|         Property         |   Node    |   Node Type   |
+|--------------------------|-----------|---------------|
+| document                 | #document | DOCUMENT_NODE |
+| document.documentElement | html      | ELEMENT_NODE  |
+| document.head            | head      | ELEMENT_NODE  |
+| document.body            | body      | ELEMENT_NODE  |
+
+由于 `html`、`head` 和 `body` 元素非常常见，因此它们在文档中具有自己的属性。
+
+2. 父节点
+
+DOM 中的节点被称为父节点、子节点和兄弟节点，具体取决于它们与其他节点的关系。 任何节点的父节点都是其上一级的节点，或者在 DOM 层次结构中更接近文档的节点。  
+有两个属性可以获取父级：
+- `parentNode`
+- `parentElement`
 
