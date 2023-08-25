@@ -2130,3 +2130,80 @@ activeDiv.classList.replace('active', 'warning');
 与 `className` 示例不同，使用 `classList.add()` 会将新类添加到现有类列表中。 还可以添加多个类作为逗号分隔的字符串。 还可以使用 `setAttribute` 来修改元素的类。
 
 #### 6.6.3 修改样式
+
+`style` 属性表示 HTML 元素上的内联样式。 通常，样式将通过样式表应用于元素，就像本文前面所做的那样，但有时您必须直接添加或编辑内联样式。
+
+创建一个新文件来演示使用 JavaScript 的编辑样式：
+
+```html
+<!DOCTYPE html>
+<html>
+<body>
+
+	<div style="height: 100px;
+	            width: 100px;
+	            border: 2px solid black;">Div</div>
+
+</body>
+</html>
+```
+
+编辑样式的一种选择是使用 `setAttribute()`：
+
+```js
+var div = document.querySelector('div');
+
+div.setAttribute('style', 'text-align: center');
+```
+
+但是，这将从元素中删除所有现有的内联样式。  
+由于这可能不是预期的效果，因此最好直接使用 style 属性：
+
+```js
+var div = document.querySelector('div');
+div.setAttribute('style', 'text-align: center');
+
+div.style.height = '100px';
+div.style.width = '100px';
+div.style.border = '2px solid black';
+```
+
+将 `div` 制作成圆形并垂直居中文本：
+
+```js
+var div = document.querySelector('div');
+
+div.style.borderRadius = '50%';
+div.style.display = 'flex';
+div.style.justifyContent = 'center';
+div.style.alignItems = 'center';
+```
+
+如果要对元素应用许多样式更改，最好的做法是将样式应用到样式表中的单独类，然后将该类添加到元素中。 但是，在某些情况下，修改内联样式属性是必要的或更直接的。
+
+#### 6.6.4 理解 JavaScript 中的事件
+
+事件是在浏览器中发生的操作，可以由用户或浏览器本身发起。 以下是网站上可能发生的常见事件的一些示例：
+- 页面加载完成
+- 用户单击按钮
+- 用户将鼠标悬停在下拉菜单上
+- 用户提交表单
+- 用户按下键盘上的某个键
+
+通过编写针对事件执行的 JavaScript 响应，开发人员可以向用户显示消息、验证数据、对按钮单击做出反应以及许多其他操作。
+
+本节将讨论事件处理程序、事件侦听器和事件对象。 介绍三种不同的编写代码来处理事件的方法，以及一些最常见的事件。
+
+1. 事件处理程序和事件监听器
+
+当用户单击按钮或按下某个键时，会触发一个事件。 这些分别称为单击事件或按键事件。
+
+事件处理程序是一个在事件触发时运行的 JavaScript 函数。
+
+事件侦听器将响应接口附加到元素，这允许该特定元素等待并“侦听”给定事件的触发。
+
+可以通过三种方式将事件分配给元素：
+- 内联事件处理程序
+- 事件处理程序属性
+- 事件监听器
+
