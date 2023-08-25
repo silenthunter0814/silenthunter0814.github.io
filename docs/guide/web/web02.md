@@ -2000,3 +2000,19 @@ todoList.lastElementChild.remove();
 
 ### 6.6 修改 DOM 中的属性、类和样式
 
+#### 6.6.1 修改属性
+
+属性是包含有关 HTML 元素的附加信息的值。 它们通常以名称/值对的形式出现，并且根据元素的不同可能是必需的。
+
+一些最常见的 HTML 属性是 `class`，`id` 和 `style` 属性以及 `img` 标签的 `src`，`a` 标签的 `href` 属性。
+
+在 JavaScript 中，我们有四种修改元素属性的方法：
+
+
+|      Method       |   Description   |                   Example                   |
+|-------------------|-----------------|---------------------------------------------|
+| hasAttribute()    | 返回 true 或 false | element.hasAttribute('href');               |
+| getAttribute()    | 返回指定属性的值或 null  | element.getAttribute('href');               |
+| setAttribute()    | 添加或更新指定属性的值     | element.setAttribute('href', 'index.html'); |
+| removeAttribute() | 从元素中删除属性        | element.removeAttribute('href');            |
+
