@@ -2353,3 +2353,157 @@ button.addEventListener('click', () => {
 
 事件监听器是目前 JavaScript 中处理事件最常见和首选的方式。
 
+#### 6.7.4 常见事件
+
+1. 鼠标事件  
+涉及单击鼠标按钮或悬停和移动鼠标指针的事件。 这些事件也对应于触摸设备上的等效操作。
+
+
+|   Event    |   Description   |
+|------------|-----------------|
+| click      | 当鼠标在元素上按下并释放时触发 |
+| dblclick   | 当元素被双击时触发       |
+| mouseenter | 当指针进入元素时触发      |
+| mouseleave | 当指针离开元素时触发      |
+| mousemove  | 每次指针在元素内移动时触发   |
+
+`click` 是由组合的 `mousedown` 和 `mouseup` 事件组成的复合事件，分别在按下或抬起鼠标按钮时触发。  
+串联使用 `mouseenter` 和 `mouseleave` 可重新创建悬停效果，只要鼠标指针位于元素上，该效果就会持续存在。
+
+2. 表单事件  
+表单事件是与表单相关的操作，例如选择或取消选择输入元素以及提交表单。
+
+
+| Event  |   Description    |
+|--------|------------------|
+| submit | 提交表单时触发          |
+| focus  | 当元素（例如输入）获得焦点时触发 |
+| blur   | 当元素失去焦点时触发       |
+
+当选择某个元素时（例如，通过单击鼠标或通过 TAB 键导航到该元素）即可获得焦点。
+
+使用 JavaScript 发送表单的优点是不需要重新加载页面即可提交表单，并且 JavaScript 可用于验证所需的输入字段。
+
+3. 键盘事件  
+键盘事件用于处理键盘操作，例如按下键、抬起键和按住键。
+
+
+
+|  Event   |  Description  |
+|----------|---------------|
+| keydown  | 当按下某个键时触发一次   |
+| keyup    | 释放按键时触发一次     |
+| keypress | 当按下产生字符值的键时连续触发 |
+
+注意： `keypress` 已弃用：不再推荐此功能。
+
+键盘事件具有用于访问各个按键的特定属性。
+
+如果将一个称为事件对象的参数传递给事件侦听器，就可以访问有关所发生操作的更多信息。  
+与键盘对象相关的两个属性包括键和代码。
+
+例如，如果用户按下键盘上的字母 `a` 键，则会显示与该键相关的以下属性：
+
+
+| Property | Description | Example |
+|----------|-------------|---------|
+| key      | 代表字符名称      | a       |
+| code     | 代表按下的物理按键   | KeyA    |
+
+编写以下代码：
+
+```js
+document.addEventListener('keydown', event => {
+    console.log('key: ' + event.key);
+    console.log('code: ' + event.code);
+});
+
+/* when press 'a' has output:
+key: a
+code: KeyA
+*/
+```
+
+`key` 属性是字符的名称，可以更改 - 例如，同时按 SHIFT 会得到 `A` 键。 `code` 属性表示键盘上的物理键。
+
+#### 6.7.5 事件对象
+
+`Event` 对象由所有事件都可以访问的属性和方法组成。  
+除了通用的 `Event` 对象之外，每种类型的事件都有自己的扩展，例如 `KeyboardEvent` 和 `MouseEvent`。
+
+`Event` 对象作为参数通过侦听器函数传递。 通常写为 `event` 或 `e`。  
+我们可以访问 `keydown` 事件的 code 属性来复制 PC 游戏的键盘控制：
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Events</title>
+</head>
+<body>
+
+  <p></p>
+
+</body>
+</html>
+```
+
+```js
+document.addEventListener('keydown', event => {
+    var p = document.querySelector('p');
+    var a = 'KeyA',
+        s = 'KeyS',
+        d = 'KeyD',
+        w = 'KeyW';
+
+    switch(event.code) {
+        case a:
+            p.textContent = 'Left';
+            break;
+        case s:
+            p.textContent = 'Down';
+            break;
+        case d:
+            p.textContent = 'Right';
+            break;
+        case w:
+            p.textContent = 'Up';
+            break;
+    }
+        
+});
+```
+
+最常用的事件属性之一是目标(`target`)属性：
+
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Events</title>
+    </head>
+    <body>
+        
+        <section>
+            <div id="one">One</div>
+            <div id="two">Two</div>
+            <div id="three">Three</div>
+        </section>
+        
+    </body>
+</html>
+```
+
+通过使用 `event.target`，我们可以在外部部分元素上放置一个事件侦听器，并获取最深层嵌套的元素（事件目标）:
+
+```js
+const section = document.querySelector('section');
+
+section.addEventListener('click', event => {
+    console.log(event.target);
+});
+```
+
+单击这些元素中的任何一个都会使用 `event.target` 将相关特定元素的输出返回到控制台。  
+这是非常有用的，因为它允许仅编写一个可用于访问许多嵌套元素的事件侦听器。
+
