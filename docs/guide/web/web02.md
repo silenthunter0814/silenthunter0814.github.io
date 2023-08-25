@@ -2053,3 +2053,17 @@ img.setAttribute('src','https://silenthunter0814.github.io/pub/assets/bilibili.p
 `hasAttribute()` 和 `getAttribute()` 方法通常与条件语句一起使用，`setAttribute()` 和 `removeAttribute()` 方法用于直接修改 DOM。
 
 #### 6.6.2 修改类
+
+CSS 类用于将样式应用于多个元素，这与每个页面只能存在唯一的 ID 不同。  
+在 JavaScript 中，有 `className` 和 `classList` 属性来处理 `class` 属性。
+
+
+|   Method/Property    |  Description  |                 Example                  |
+|----------------------|---------------|------------------------------------------|
+| className            | 获取或设置类值       | element.className;                       |
+| classList.add()      | 添加一个或多个类值     | element.classList.add('active');         |
+| classList.toggle()   | 打开或关闭类        | element.classList.toggle('active');      |
+| classList.contains() | 检查类值是否存在      | element.classList.contains('active');    |
+| classList.replace()  | 将现有的类值替换为新的类值 | element.classList.replace('old', 'new'); |
+| classList.remove()   | 删除一个类值        | element.classList.remove('active');      |
+
