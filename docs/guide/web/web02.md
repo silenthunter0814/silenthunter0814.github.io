@@ -2206,3 +2206,91 @@ div.style.alignItems = 'center';
 
 #### 6.7.1 内联事件处理程序属性
 
+从正带有按钮的 HTML 页面开始，直接在按钮上添加一个 `onclick` 属性。 属性值将是稍后创建的名为 `changeText()` 的函数。
+
+```html{8,12}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Events</title>
+</head>
+<body>
+
+	<button onclick="changeText()">Click me</button>
+
+	<p>Try to change me.</p>
+    
+  <script src="./events.js"></script>
+    
+</body>
+</html>
+```
+
+创建 `events.js` 文件，在其中，我们将创建 `changeText()` 函数，它将修改 `p` 元素的 `textContent`。
+
+```js
+const changeText = () => {
+    const p = document.querySelector('p');
+    p.textContent = "I changed because of an inline event handler.";
+}
+```
+
+内联事件处理程序是开始理解事件的直接方法，但它们通常不应该用于测试和教育目的之外的用途。
+
+可以将内联事件处理程序与 HTML 元素上的内联 CSS 样式进行比较。 维护单独的类样式表比在每个元素上创建内联样式要实用得多，就像维护完全通过单独的脚本文件处理的 JavaScript 比向每个元素添加处理程序更可行一样。
+
+#### 6.7.2 事件处理程序属性
+
+与内联处理程序非常相似，只是在 JavaScript 中设置元素的属性而不是 HTML。
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Events</title>
+</head>
+<body>
+
+	<button>Click me</button>
+
+	<p>I will change.</p>
+    
+  <script src="./events.js"></script>
+    
+</body>
+</html>
+```
+
+我们需要访问 JavaScript 中的按钮元素，然后分配函数引用：
+
+```js
+const changeText = () => {
+    const p = document.querySelector('p');
+    p.textContent = "I changed because of an event handler property.";
+}
+
+const button = document.querySelector('button');
+console.log(button.onclick === null);  // true
+button.onclick = changeText;
+```
+
+注意：事件处理程序不遵循大多数 JavaScript 代码所遵循的驼峰命名约定。 代码是 `onclick`，而不是 `onClick`。
+
+尝试设置多个单独的 onclick 属性将导致除最后一个之外的所有属性都被覆盖：
+
+```js{12,13}
+const p = document.querySelector('p');
+const button = document.querySelector('button');
+
+const changeText = () => {
+    p.textContext = "Will I change?";
+}
+
+const alterText = () => {
+    alert('Will I alert?');
+}
+
+button.onclick = changeText;
+button.onclick = alterText;
+```
+
