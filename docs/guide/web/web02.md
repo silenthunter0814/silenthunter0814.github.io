@@ -2206,7 +2206,7 @@ div.style.alignItems = 'center';
 
 #### 6.7.1 内联事件处理程序属性
 
-从正带有按钮的 HTML 页面开始，直接在按钮上添加一个 `onclick` 属性。 属性值将是稍后创建的名为 `changeText()` 的函数。
+从带有按钮的 HTML 页面开始，直接在按钮上添加一个 `onclick` 属性。 属性值将是稍后创建的名为 `changeText()` 的函数。
 
 ```html{8,12}
 <!DOCTYPE html>
@@ -2293,4 +2293,63 @@ const alterText = () => {
 button.onclick = changeText;
 button.onclick = alterText;
 ```
+
+#### 6.7.3 事件监听器
+
+事件侦听器监视元素上的事件。 使用 `addEventListener()` 方法来侦听事件，而不是将事件直接分配给元素上的属性。
+
+`addEventListener()` 采用两个强制参数 - 要侦听的事件和侦听器回调函数。
+
+```js
+const changeText = () => {
+    const p = document.querySelector('p');
+
+    p.textContent = "I changed because of an event listener.";
+}
+
+const button = document.querySelector('button');
+button.addEventListener('click', changeText);
+console.assert(button.onclick === null);
+```
+
+请注意，对于前两种方法，单击事件被称为 `onclick`，但对于事件侦听器，它被称为 `click`。 每个事件侦听器都会从单词中删除 `on`。
+
+可以在同一个元素上设置多个事件侦听器：
+
+```js
+const p = document.querySelector('p');
+const button = document.querySelector('button');
+
+const changeText = () => {
+	p.textContent = "Will I change?";
+}
+
+const alertText = () => {
+	alert('Will I alert?');
+}
+
+button.addEventListener('click', changeText);
+button.addEventListener('click', alertText);
+```
+
+在此示例中，这两个事件都会触发，一旦单击退出警报，就会向用户提供修改后的文本。
+
+通常，将使用匿名函数来代替事件侦听器上的函数引用。 匿名函数是没有命名的函数。
+
+```js
+const button = document.querySelector('button');
+
+button.addEventListener('click', () => {
+    const p = document.querySelector('p');
+    p.textContent = "Will I change?";
+});
+```
+
+还可以使用 `removeEventListener()` 函数从元素中删除一个或所有事件：
+
+`button.removeEventListener('click', alertText);`
+
+此外，还可以在文档 `document` 和窗口 `window` 对象上使用 `addEventListener()`。
+
+事件监听器是目前 JavaScript 中处理事件最常见和首选的方式。
 
