@@ -2067,3 +2067,66 @@ CSS 类用于将样式应用于多个元素，这与每个页面只能存在唯�
 | classList.replace()  | 将现有的类值替换为新的类值 | element.classList.replace('old', 'new'); |
 | classList.remove()   | 删除一个类值        | element.classList.remove('active');      |
 
+创建一个 HTML 文件来查看这些属性和方法的工作结果：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <style>
+        body {
+            max-width: 600px;
+            margin: 0 auto;
+            font-family: sans-serif;
+        }
+
+        .active {
+            border: 2px solid blue;
+        }
+
+        .warning {
+            border: 2px solid red;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        div {
+            border: 2px dashed lightgray;
+            padding: 15px;
+            margin: 5px;
+        }
+    </style>
+    <body>
+        <div>Div 1</div>
+        <div class="active">Div 2</div>
+    </body>
+</html>
+
+```
+
+可以使用 className 直接为类分配值：
+
+```js
+const div = document.querySelector('div');   // first div
+
+div.className = "warning";
+// <div class="warning">Div 1</div>
+```
+
+注意：如果元素上已经存在任何类，这将覆盖它们。 可以使用 `className` 属性添加多个以空格分隔的类，或者使用它而不使用赋值运算符来获取元素上类的当前值。
+
+修改类的另一种方法是通过 `classList` 属性，它附带了一些有用的方法：
+
+```js
+const activeDiv = document.querySelector('.active');
+
+activeDiv.classList.add('hidden');  // add hidden class
+activeDiv.classList.toggle('hidden');  // Switch between hidden true and false
+activeDiv.classList.remove('hidden');
+activeDiv.classList.replace('active', 'warning');
+```
+
+与 `className` 示例不同，使用 `classList.add()` 会将新类添加到现有类列表中。 还可以添加多个类作为逗号分隔的字符串。 还可以使用 `setAttribute` 来修改元素的类。
+
+#### 6.6.3 修改样式
