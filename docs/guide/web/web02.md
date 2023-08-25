@@ -1857,3 +1857,143 @@ tiger.previousElementSibling.style.background = 'aquamarine';
 
 ### 6.5 更改 DOM
 
+创建新节点并将其插入到 DOM 中，替换现有节点以及删除节点。
+
+#### 6.5.1 创建新节点
+
+`createElement()` 和 `createTextNode()` 方法用于在 DOM 中创建新节点。
+
+
+| Property/Method  |    Description     |
+|------------------|--------------------|
+| createElement()  | 创建一个新的元素节点         |
+| createTextNode() | 创建一个新的文本节点         |
+| node.textContent | 获取或设置元素节点的文本内容     |
+| node.innerHTML   | 获取或设置元素节点的 HTML 内容 |
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <title>Learning the DOM</title>
+  </head>
+
+  <body>
+    <h1>Document Object Model</h1>
+  </body>
+
+</html>
+```
+
+创建一个新的 `p` 元素：
+
+```js
+const p = document.createElement('p');
+console.log(p);
+// <p></p>
+
+p.textContent = "new paragraph.";
+console.log(p);
+// <p>new paragraph.</p>
+
+p.innerHTML = "paragraph with <strong>bold</strong> text.";
+console.log(p);
+// <p>paragraph with <strong>bold</strong> text.</p>
+```
+
+`createElement()` 和 `textContent` 的组合创建一个完整的元素节点。
+
+设置元素内容的另一种方法是使用 `innerHTML` 属性，它允许向元素添加 HTML 和文本。
+
+还可以使用 `createTextNode()` 方法创建文本节点:
+
+`const text = document.createTextNode("new text");`
+
+通过这些方法，我们创建了新的元素和文本节点，但它们在插入文档之前在网站的前端不可见。
+
+#### 6.5.2 将节点插入 DOM
+
+为了在前端查看创建的新文本节点和元素，需要将它们插入到文档中。
+
+
+|   Property/Method   |     Description     |
+|---------------------|---------------------|
+| node.appendChild()  | 添加一个节点作为父元素的最后一个子节点 |
+| node.insertBefore() | 将节点插入到父元素中指定兄弟节点之前  |
+| node.replaceChild() | 用新节点替换现有节点          |
+
+创建一个待办事项列表：
+
+```html
+<!DOCTYPE html>
+<html>
+    <body>
+        <ul>
+            <li>购买杂货</li>
+            <li>喂养宠物</li>
+            <li>洗衣</li>
+        </ul>
+    </body>
+</html>
+```
+
+追加待办事项：
+
+```js
+const todoList = document.querySelector('ul');
+
+var todo = document.createElement('li');
+todo.textContent = "Do homework";
+todoList.appendChild(todo);
+```
+
+新节点插入到列表的开头：
+
+```js
+todo = document.createElement('li');
+todo.textContent = "Pay bills";
+todoList.insertBefore(todo, todoList.firstElementChild);
+```
+
+修改现有的待办事项：
+
+```js
+const todoList = document.querySelector('ul');
+
+var modify = document.createElement('li');
+modify.textContent = 'Feed cat';
+
+todoList.replaceChild(modify, todoList.children[1]);
+```
+
+通过组合 `appendChild()`、`insertBefore()` 和 `replaceChild()`，可以在 DOM 中的任何位置插入节点和元素。
+
+#### 6.5.3 从 DOM 中删除节点
+
+可以使用 `removeChild()` 从父节点中删除子节点，也可以使用 `remove()` 删除节点本身。
+
+
+|       Method       |    Description    |
+|--------------------|-------------------|
+| node.removeChild() | Remove child node |
+| node.remove()      | Remove node       |
+
+使用上面的待办事项示例：
+
+```js
+const todoList = document.querySelector('ul');
+
+todoList.removeChild(todoList.lastElementChild);
+```
+
+另一种方法是直接在节点上使用 `remove()` 方法来删除节点本身：
+
+```js
+const todoList = document.querySelector('ul');
+
+todoList.children[1].remove();
+todoList.lastElementChild.remove();
+```
+
+从 DOM 中删除子元素的另一种方法是将父元素的 `innerHTML` 属性设置为空字符串（“”）。 这不是首选方法，因为它不太明确，但可能会在现有代码中看到它。
