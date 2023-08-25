@@ -2016,3 +2016,40 @@ todoList.lastElementChild.remove();
 | setAttribute()    | 添加或更新指定属性的值     | element.setAttribute('href', 'index.html'); |
 | removeAttribute() | 从元素中删除属性        | element.removeAttribute('href');            |
 
+创建一个包含 `img` 标签的 HTML 文件：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+	<img src="https://silenthunter0814.github.io/pub/assets/youtube.png">
+
+</body>
+</html>
+```
+
+现在可以即时测试所有属性方法：
+
+```js
+const img = document.querySelector('img');
+
+img.hasAttribute('src');  // true 
+
+img.getAttribute('src');
+// 'https://silenthunter0814.github.io/pub/assets/youtube.png'
+
+img.removeAttribute('src');  
+// remove the 'src' attribute and value
+
+img.setAttribute('src','https://silenthunter0814.github.io/pub/assets/bilibili.png');
+// new attribute value
+```
+
+最后，可以直接修改属性，通过为属性分配新值作为元素的属性：
+
+`img.src = 'https://silenthunter0814.github.io/pub/assets/youtube.png';`
+
+`hasAttribute()` 和 `getAttribute()` 方法通常与条件语句一起使用，`setAttribute()` 和 `removeAttribute()` 方法用于直接修改 DOM。
+
+#### 6.6.2 修改类
