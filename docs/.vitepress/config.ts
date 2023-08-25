@@ -1,7 +1,9 @@
 import mathjax3 from 'markdown-it-mathjax3';
 
 export default {
-  lang: 'en-US',
+  //lang: 'en-US',
+  lang: 'zh-CN',
+  charset: 'utf-8',
   title: 'Silent Hunter',  
   description: 'C语言从入门到大神系列',
   
