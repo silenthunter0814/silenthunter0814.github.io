@@ -2786,6 +2786,29 @@ promise.then((val) => {
 
 使用 `then` 语法可确保仅当 `setTimeout` 操作在 2000 毫秒后完成时才会记录响应。 所有这一切都是在没有嵌套回调的情况下完成的。
 
+Promise 还可以链接起来，将数据传递给多个异步操作:
+
+```js
+var promise = new Promise((resolve, reject) => {
+    setTimeout(() => resolve("resolving an async request!"), 2000);
+});
+
+promise.then((val) => {
+    return val + ' And chaining!';
+}).then((val) => {
+    console.log(val);
+});
+```
+
+由于 `then` 可以链接，因此它允许 `Promise` 的使用看起来比回调更加同步，因为它们不需要嵌套。 这将允许更容易维护和验证的可读代码。
+
+#### 7.3.3 错误处理
+
+对于异步请求，通常还必须处理错误 —— 如果 API 关闭，或者发送了格式错误或未经授权的请求。  
+承诺应该能够处理这两种情况。
+
+`getUsers` 函数将向 `Promise` 传递一个标志，并返回 `Promise`：
+
 
 
 ### Async/Await 异步关键字
