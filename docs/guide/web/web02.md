@@ -2618,7 +2618,65 @@ third();
 
 注意：还有另一个队列称为作业队列或微任务队列，用于处理 `Promise`。 像 `Promise` 这样的微任务比像 `setTimeout` 这样的宏任务具有更高的优先级。
 
-### 回调函数
+### 7.2 回调函数
+
+在 `setTimeout` 示例中，具有超时的函数在主顶级执行上下文中的所有内容之后运行。 但是，如果您想确保其中一个函数（例如第三个函数）在超时后运行，那么您将不得不使用异步编码方法。 这里的超时可以代表包含数据的异步API调用。
+
+处理这个问题的最初解决方案是使用回调函数。 回调函数没有特殊的语法； 它们只是一个作为参数传递给另一个函数的函数。 以另一个函数作为参数的函数称为高阶函数。 根据这个定义，任何函数如果作为参数传递，都可以成为回调函数。 回调本质上不是异步的，但可以用于异步目的。
+
+```js
+function fn() {
+    console.log("Just a function");
+}
+
+function highOrder(callback) {
+    callback();
+}
+
+highOrder(fn);
+```
+
+回到前面的例子：
+
+```js
+function first() {
+    console.log(1);
+}
+
+function second() {
+    setTimeout(()=>{
+        console.log(2);
+    }, 0);
+}
+
+function third() {
+    console.log(3);
+}
+```
+
+任务是让第三个函数始终延迟执行，直到第二个函数中的异步操作完成之后。 这就是回调发挥作用的地方:
+
+```js{5,8}
+function first() {
+    console.log(1);
+}
+
+function second(callback) {
+    setTimeout(()=>{
+        console.log(2);
+        callback();
+    }, 0);
+}
+
+function third() {
+    console.log(3);
+}
+
+first();
+second(third);
+```
+
+
 
 ### Promise 异步函数
 
