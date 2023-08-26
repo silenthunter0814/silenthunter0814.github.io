@@ -2557,6 +2557,27 @@ third();
 输出将基于函数调用的顺序：  
 `first() -> Second() -> Third()`
 
+在第二个函数中添加 `setTimeout` 来模拟异步请求：
+
+```js{4-8}
+function first() {
+    console.log(1);
+}
+function second() {
+    setTimeout(() => {
+        console.log(2);
+    }, 0);
+}
+function third() {
+    console.log(3);
+}
+
+first();
+second();
+third();
+```
+`setTimeout` 设置计时器并在指定时间后执行操作。  
+`setTimeout` 有两个参数：将异步运行的函数，以及调用该函数之前等待的时间。 在此代码中，将 `console.log` 包装在匿名函数中并将其传递给 `setTimeout`，然后将该函数设置为在 0 毫秒后运行。
 
 ### 回调函数
 
