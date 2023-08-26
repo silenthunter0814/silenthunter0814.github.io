@@ -4,6 +4,14 @@ keywords: JavaScript, js，HTML，初学者，教程
 author: silenthunter0814, Silent Hunter
 ---
 
+# web02 JavaScript 教程
+
+作者： silenthunter0814
+
+课程视频：
+- 油管: https://youtube.com/@silenthunter0814
+- B 站：https://space.bilibili.com/1551957972
+
 ---  
 <details>
 <summary>章节目录</summary>
@@ -11,8 +19,6 @@ author: silenthunter0814, Silent Hunter
 [[toc]]
 
 </details>
-
-# web02 JavaScript 教程
 
 环境需求
   - google chrome 浏览器
