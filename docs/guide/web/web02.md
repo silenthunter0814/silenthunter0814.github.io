@@ -2656,7 +2656,7 @@ function third() {
 
 任务是让第三个函数始终延迟执行，直到第二个函数中的异步操作完成之后。 这就是回调发挥作用的地方:
 
-```js{5,8}
+```js{5,8,17}
 function first() {
     console.log(1);
 }
@@ -2674,11 +2674,38 @@ function third() {
 
 first();
 second(third);
+
+// Output: 1 -> 2 => 3
 ```
 
+这里的关键要点是回调函数不是异步的 —— `setTimeout` 是负责处理异步任务的异步 Web API。 回调仅允许您了解异步任务何时完成并处理任务的成功或失败。
+
+回调函数是确保函数延迟执行直到另一个函数完成并返回数据的有效方法。 但是，由于回调的嵌套性质，如果有大量相互依赖的连续异步请求，代码最终可能会变得混乱。
+
+```js
+function hell() {
+    setTimeout(()=>{
+        console.log(1);
+        
+        setTimeout(()=>{
+            console.log(2);
+            
+            setTimeout(()=>{
+                console.log(3);
+            }, 500);
+        }, 2000);
+    }, 1000);
+}
+
+hell();
+```
+
+### `Promise`
+
+`Promise` 代表异步函数的完成。 它是一个将来可能返回值的对象。 它实现了与回调函数相同的基本目标，但具有许多附加功能和更易读的语法。  
+通常是异步 Web API 返回 `Promise` 供开发人员使用。
 
 
-### Promise 异步函数
 
 ### Async/Await 异步关键字
 
