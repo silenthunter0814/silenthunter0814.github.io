@@ -2809,9 +2809,129 @@ promise.then((val) => {
 
 `getUsers` 函数将向 `Promise` 传递一个标志，并返回 `Promise`：
 
+```js
+function getUsers(success) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (success) {
+                resolve([
+                    {id: 1, name: 'Jerry'},
+                    {id: 2, name: 'Elaine'},
+                    {id: 3, name: 'George'}
+                ]);
+            } else {
+                reject('Failed to fetch data!');
+            }
+        }, 1000);
+    });
+}
+```
 
+如果 `success` 为 `true`，则超时将用一些数据来完成。 如果为 `false`，则该函数将拒绝并显示错误。
 
-### Async/Await 异步关键字
+为了处理错误，使用 `catch` 实例方法。 这将提供一个失败回调，并将错误作为参数。
+
+运行 `getUsers` 命令，并将 `success` 设置为 `false`，对于成功情况使用 `then` 方法，对于错误情况使用 `catch` 方法：
+
+```js
+getUsers(false)
+    .then((val) => {
+        console.log(val);
+    })
+    .catch((err) => {
+        console.log(err);
+    });
+// Output: Failed to fetch data!
+```
+
+如果切换标志并解析，则 `catch` 将被忽略，并且数据将返回：
+
+```js
+getUsers(true)
+    .then((val) => {
+        console.log(val);
+    })
+    .catch((err) => {
+        console.log(err);
+    });
+/*
+(3) [{…}, {…}, {…}]
+0: {id: 1, name: 'Jerry'}
+1: {id: 2, name: 'Elaine'}
+2: {id: 3, name: 'George'}
+*/
+```
+
+下表列出了 `Promise` 对象的处理程序方法：
+
+|  Method   |                   Description                    |
+|-----------|--------------------------------------------------|
+| then()    | 处理解析。 返回一个 promise，并异步调用 onFulfilled 函数          |
+| catch()   | 处理拒绝。 返回一个 promise，并异步调用 onRejected 函数           |
+| finally() | 当 Promise 解决时调用。 返回一个 promise，并异步调用 onFinally 函数 |
+
+使用 `Promise` 比创建 `Promise` 更为常见。 通常，浏览器的 Web API 或第三方库将提供 `Promise`，只需使用它即可。
+
+### 7.4 使用带有 `Promise` 的 Fetch API
+
+Fetch API 是最有用且最常用的返回 `Promise` 的 Web API 之一，它允许通过网络发出异步资源请求。  
+`fetch` 是一个由两部分组成的过程，因此需要链接。 
+
+使用 GitHub API 来获取用户的数据，同时还处理任何潜在的错误：
+
+```js
+fetch('https://api.github.com/users/silenthunter0814')
+    .then((response) => {
+        return response.json();
+    })
+    .then((data) => {
+        console.log(data);
+    })
+    .catch((err) => {
+        console.error(err);
+    });
+```
+
+`fetch` 请求发送到 https://api.github.com/users/silenthunter0814 URL，该 URL 异步等待响应。 第一个 `then` 将响应传递给匿名函数，该匿名函数将响应格式化为 JSON 数据，然后将 JSON 传递给第二个 `then` 将数据记录到控制台。 `catch` 语句将所有错误记录到控制台。
+
+### 7.5 带有 `async/await` 的异步函数
+
+异步函数允许以同步的方式处理异步代码。 异步函数仍然在底层使用 `Promise`，但具有更传统的 JavaScript 语法。
+
+通过在函数前添加 `async` 关键字来创建异步函数：
+
+```js
+async function getUser() {
+    return {};
+}
+console.log(getUser()); 
+
+/* a Promise object
+Promise {<fulfilled>: {…}}
+    [[Prototype]]: Promise
+    [[PromiseState]]: "fulfilled"
+    [[PromiseResult]]: Object
+*/
+```
+
+尽管此函数尚未处理任何异步内容，但其行为与传统函数不同。  
+如果执行该函数，它会返回一个带有 `[[PromiseState]]` 和 `[[PromiseResult]]` 的 `Promise`，而不是返回值。
+
+这意味着可以使用 `then` 处理异步函数，就像处理 `Promise` 一样：
+
+```js
+async function getUser() {
+    return {};
+}
+
+getUser().then((val) => {
+    console.log(val);
+});
+// Output: object {}
+```
+
+对 `getUser` 的调用将返回值传递给匿名函数，该函数将值记录到控制台。
+
 
 ## 8 WEB 请求和表单操作
 
