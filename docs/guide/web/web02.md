@@ -2523,7 +2523,40 @@ section.addEventListener('click', event => {
 
 ## 7 事件循环和异步操作
 
-### 事件循环
+JavaScript 是单线程编程语言，具有同步执行模型，可以处理一个又一个操作，但是一次只能处理一条语句。  
+从 API 请求数据之类的操作可能需要不确定的时间，具体取决于请求的数据大小、网络连接速度和其他因素。 如果 API 调用以同步方式执行，则浏览器将无法处理任何用户输入，例如滚动或单击按钮，直到该操作完成。 这称为阻塞。
+
+为了防止阻塞行为，浏览器环境有许多 JavaScript 可以访问的异步 Web API，这意味着它们可以与其他操作并行运行，而不是顺序运行。
+
+本章主要内容：
+- 事件循环
+- 回调处理异步行为
+- Promise
+- async/await
+
+### 7.1 事件循环
+
+不使用任何异步 Web API 的 JavaScript 代码将以同步方式执行 - 一次一个、顺序执行：
+
+```js
+function first() {
+    console.log(1);
+}
+function second() {
+    console.log(2);
+}
+function third() {
+    console.log(3);
+}
+
+first();
+second();
+third();
+```
+
+输出将基于函数调用的顺序：  
+`first() -> Second() -> Third()`
+
 
 ### 回调函数
 
