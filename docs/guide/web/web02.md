@@ -2705,6 +2705,87 @@ hell();
 `Promise` 代表异步函数的完成。 它是一个将来可能返回值的对象。 它实现了与回调函数相同的基本目标，但具有许多附加功能和更易读的语法。  
 通常是异步 Web API 返回 `Promise` 供开发人员使用。
 
+#### 7.3.1 创建 `Promise``
+
+使用 `Promise(resolveFunc, rejectFunc)` 构造函数进行初始化，传递解析和拒绝参数。 解析和拒绝函数分别处理操作的成功和失败。
+
+编写以下行来声明一个 `promise`：
+
+`var promise = new Promise((resolve, reject) => {});`
+
+具有待处理状态和未定义的值：
+
+```js{4-7}
+console.log(promise);
+
+/* Output:
+Promise {<pending>}
+    [[Prototype]]: Promise
+    [[PromiseState]]: "pending"
+    [[PromiseResult]]: undefined
+*/
+```
+
+到目前为止，还没有为 `Promise` 设置任何内容，因此它将永远处于待处理状态。  
+要测试 `Promise`，可以做的第一件事是通过使用值解析来履行 `Promise`：
+
+```js
+var promise = new Promise((resolve, reject) => {
+    resolve("We did it!");
+});
+console.log(promise);
+
+/* Output:
+promise {<fulfilled>: 'We did it!'}
+    [[Prototype]]: Promise
+    [[PromiseState]]: "fulfilled"
+    [[PromiseResult]]: "We did it!"
+*/
+```
+
+`promise` 是一个可以返回值的对象。 成功完成后，该值将从未定义变为已填充数据。
+
+一个 `Promise` 可以有三种可能的状态：
+- `pending` 解决或拒绝之前的初始状态
+- `fulfilled` 操作成功，承诺已兑现
+- `rejected` 操作失败，承诺已被拒绝
+
+在履行或拒绝之后，`promise` 就被确定。
+
+#### 7.3.2 使用 `Promise`
+
+`Promise` 有一个名为 `then` 的方法，该方法将在 `Promise` 达到代码中的 `resolve` 后运行。  
+`then` 将 `Promise` 返回的值作为参数。
+
+```js{5-7}
+var promise = new Promise((resolve, reject) => {
+    resolve("We did it!");
+});
+
+promise.then((val) => {
+    console.log(val);
+});
+// Output: We did it!
+```
+
+`[[PromiseResult]]: "We did it!"` 值作为响应参数传递到匿名函数中。
+
+到目前为止，创建的示例并未涉及异步 Web API，它仅解释了如何创建、解析和使用本机 JavaScript `Promise`。  
+使用 `setTimeout`，可以测试异步请求：
+
+```js
+var promise = new Promise((resolve, reject) => {
+    setTimeout(() => resolve("resolving an async request!"), 2000);
+});
+
+promise.then((val) => {
+    console.log(val);
+});
+// Output: resolving an async request!
+```
+
+使用 `then` 语法可确保仅当 `setTimeout` 操作在 2000 毫秒后完成时才会记录响应。 所有这一切都是在没有嵌套回调的情况下完成的。
+
 
 
 ### Async/Await 异步关键字
