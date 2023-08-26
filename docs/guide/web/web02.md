@@ -4,6 +4,14 @@ keywords: JavaScript, js，HTML，初学者，教程
 author: silenthunter0814, Silent Hunter
 ---
 
+---  
+<details>
+<summary>章节目录</summary>
+
+[[toc]]
+
+</details>
+
 # web02 JavaScript 教程
 
 环境需求
