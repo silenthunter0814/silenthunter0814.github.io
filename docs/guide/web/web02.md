@@ -2945,6 +2945,23 @@ async function getUser() {
 getUser();
 ```
 
+这里的 `await` 运算符确保在 `request` 填充数据之前不会记录数据。  
+现在最终的数据可以在 `getUser` 函数内部处理，而不需要使用 `then`。
+
+使用 `try/catch` 模式来处理异常，而不是使用 `then` 的 `catch` 方法：
+
+```js{2,6,7}
+async function getUser() {
+    try {
+        var response = await fetch('https://api.github.com/users/silenthunter0814');
+        var data = await response.json();
+        console.log(data);
+    } catch (error) {
+        console.error(error);
+    }
+}
+```
+
 ## 8 WEB 请求和表单操作
 
 ### JSON 对象
