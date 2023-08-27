@@ -3189,33 +3189,33 @@ var url = 'https://jsonplaceholder.typicode.com/users';
 
 `response` 不是 JSON，而是一个具有一系列方法的对象。 要将返回的对象转换为 JSON，使用 `json()` 方法。
 
-JSON 数据仍需要处理。 添加另一个 `then()` 语句，其中包含一个带有名为 `data` 参数的函数：
+JSON 数据仍需要处理。 添加另一个 `then()` 语句，其中包含一个带有名为 `authors` 参数的函数：
 
 ```js
 fetch(url)
     .then((response) => {
         return response.json();
     })
-    .then((data) => {});
+    .then((authors) => {});
 ```
 
-`data` 是包含 10 个作者条目的 JSON 数组。  
-对于 `data` 中的每个作者，创建一个显示他们姓名和邮件地址的列表项。 map() 方法适合这种模式：
+`authors` 是包含 10 个作者条目的 JSON 数组。  
+对于 `authors` 中的每个作者，创建一个显示他们姓名和邮件地址的列表项。 forEach() 方法适合这种模式：
 
 ```js
 var ul = document.querySelector('#authors');
-var list = document.createDocumentFragment();
 var url = 'https://jsonplaceholder.typicode.com/users';
 
 fetch(url)
     .then((response) => {
         return response.json();
     })
-    .then((data) => {
-        var authors = data;
-        authors.map((author) => {
+    .then((authors) => {
+        var list = document.createDocumentFragment();
+        
+        authors.forEach((author) => {
             var li = document.createElement('li'),
-                name = document.createElement('h2'),
+                name = document.createElement('h3'),
                 email = document.createElement('span');
             name.innerHTML = `${author.name}`;
             email.innerHTML = `${author.email}`;
@@ -3224,6 +3224,7 @@ fetch(url)
             li.appendChild(email);
             list.appendChild(li);
         });
+        
         ul.appendChild(list);
     })
     .catch(function(error) {
@@ -3231,8 +3232,8 @@ fetch(url)
     });
 ```
 
-每个列表项都被附加到 DocumentFragment 列表中。 映射完成后，列表将附加到 `ul` 无序列表元素。  
-两个 `then()` 函数完成后，现在可以添加 catch() 函数。 此函数会将潜在的错误记录到控制台。
+每个列表项都被附加到 DocumentFragment 列表中。 `authors` 遍历完成后，`list` 列表将附加到 `ul` 无序列表元素。  
+两个 `then()` 函数完成后，现在可以添加 `catch()` 函数。 此函数会将潜在的错误记录到控制台。
 
 #### 8.3.3 处理 POST 请求
 
