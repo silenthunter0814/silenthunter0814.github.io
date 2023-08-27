@@ -2968,7 +2968,115 @@ async function getUser() {
 
 ## 8 WEB 请求和表单操作
 
-### JSON 对象
+### 8.1 JSON 对象
+
+JavaScript 对象表示法，用于序列化对象、数组、数字、字符串、布尔值和 null 的语法。
+
+JSON 对象有两个有用的方法来处理 JSON 格式的内容： `parse` 和 `stringify`。
+
+#### 8.1.1 `JSON.parse()`
+
+`JSON.parse()` 接受 JSON 字符串并将其转换为 JavaScript 对象。
+
+```js
+var user = '{"name":"Sammy","email":"sammy@example.com","plan":"Pro"}';
+
+var obj = JSON.parse(user);
+
+console.log(obj);
+/* Output:
+{name: 'Sammy', email: 'sammy@example.com', plan: 'Pro'}
+    email: "sammy@example.com"
+    name: "Sammy"
+    plan: "Pro"
+    [[Prototype]]: Object
+*/
+```
+
+`JSON.parse()` 可以采用一个函数作为第二个参数，该函数可以在返回对象值之前对其进行转换。
+
+```js
+var user = '{"name":"Sammy","email":"sammy@example.com","plan":"Pro"}';
+
+var obj = JSON.parse(user, (key, value) => {
+    if (typeof value === 'string') {
+        return value.toUpperCase();
+    }
+    return value;
+});
+
+console.log(obj);
+/* Output:
+{name: 'SAMMY', email: 'SAMMY@EXAMPLE.COM', plan: 'PRO'}
+email: "SAMMY@EXAMPLE.COM"
+name: "SAMMY"
+plan: "PRO"
+[[Prototype]]: Object
+*/
+```
+
+#### 8.1.2 `JSON.stringify()`
+
+`JSON.stringify()` 接受一个 JavaScript 对象并将其转换为 JSON 字符串。
+
+```js
+var obj = {
+    name: 'Sammy',
+    emal: 'sammy@example.com',
+    plan: 'Pro'
+};
+
+var user = JSON.stringify(obj);
+console.log(user);
+// {"name":"Sammy","emal":"sammy@example.com","plan":"Pro"}
+```
+
+`JSON.stringify()` 可以采用两个附加参数。 第一个是替换函数。 第二个是字符串或数字值，用作返回字符串中的空格。
+
+替换函数可用于过滤掉值，因为任何以未定义形式返回的值都将不在返回的字符串中：
+
+```js
+var obj = {
+    name: 'Sammy',
+    emal: 'sammy@example.com',
+    plan: 'Pro'
+};
+
+function replacer(key, value) {
+    if (key === 'emal') {
+        return undefined;
+    }
+    return value;
+}
+
+var user = JSON.stringify(obj, replacer);
+console.log(user);
+// {"name":"Sammy","plan":"Pro"}
+```
+
+`email` 键值对已从对象中删除。
+
+传入空格参数的示例：
+
+```js
+var obj = {
+    name: 'Sammy',
+    emal: 'sammy@example.com',
+    plan: 'Pro'
+};
+
+var user = JSON.stringify(obj, null, '...');
+console.log(user);
+/* Output:
+{
+..."name": "Sammy",
+..."emal": "sammy@example.com",
+..."plan": "Pro"
+}
+*/
+```
+
+缩进已替换为 `...`。
 
 ### GET 
 
