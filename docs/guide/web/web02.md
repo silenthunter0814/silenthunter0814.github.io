@@ -3239,15 +3239,42 @@ fetch(url)
 
 Fetch 默认为 GET 请求，但可以使用所有其他类型的请求、更改标头并发送数据。 
 
+要处理 POST 请求，需要设置 `Request` 对象并将其作为 `fetch` 函数的参数传递：
 
+`fetch(request).then(function(response) {});`
 
-### GET 
+`then()` 函数将包含处理从 JSONPlaceholder API 接收到的响应的代码。
 
-### POST
+这是创建的请求的完整代码：
 
-### PUT
+```js
+var url = 'https://jsonplaceholder.typicode.com/users';
+var author = {
+    name: 'Hero',
+    email: 'hero@example.com'
+};
+var request = new Request(url, {
+    method: 'POST',
+    body: JSON.stringify(author),
+    headers: new Headers({
+        'Content-Type': 'application/json; charset=UTF-8'
+    })
+});
 
-### DELETE
+fetch(request)
+    .then(response => {
+        return response.json();
+    })
+    .then(data => {
+        console.log(data);
+    })
+    .catch(error => {
+        console.log(error);
+    });
+// Output: {name: 'Hero', email: 'hero@example.com', id: 11}
+```
+
+通过链式 `then()` 解析，最终得到服务器返回的我们刚刚上传的 `author`。
 
 ## 9 jQuery 入门
 
