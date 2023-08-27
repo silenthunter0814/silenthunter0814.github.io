@@ -2932,6 +2932,18 @@ getUser().then((val) => {
 
 对 `getUser` 的调用将返回值传递给匿名函数，该函数将值记录到控制台。
 
+异步函数可以使用 `await` 运算符来处理在其中调用的 `promise`。 `await` 可以在异步函数中使用，并且会等到 `Promise` 解决后再执行指定的代码。  
+有了这些知识，可以使用 `async/await` 重写上一节中的 Fetch 请求：
+
+```js
+async function getUser() {
+    var response = await fetch('https://api.github.com/users/silenthunter0814');
+    var data = await response.json();
+    console.log(data);
+}
+
+getUser();
+```
 
 ## 8 WEB 请求和表单操作
 
