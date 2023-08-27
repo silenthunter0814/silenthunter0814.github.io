@@ -2966,7 +2966,7 @@ async function getUser() {
 
 现代异步 JavaScript 代码通常使用 `async/await` 语法进行处理，但了解 `Promise` 的工作原理非常重要，尤其是 `Promise` 能够提供 `async/await` 无法处理的其他功能，例如组合使用 `Promise` 的 `Promise.all()`。
 
-## 8 WEB 请求和表单操作
+## 8 WEB 请求
 
 ### 8.1 JSON 对象
 
