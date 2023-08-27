@@ -3078,6 +3078,168 @@ console.log(user);
 
 缩进已替换为 `...`。
 
+### 8.2 XMLHttpRequest 对象
+
+JavaScript 允许以异步方式获取数据。 最古老、最经典的方式是使用 XMLHttpRequest (XHR)。 
+它是一个构造函数，用于向服务器发送 HTTP 请求：
+
+`var req = new XMLHttpRequest();`
+
+现在有了 XHR 对象 `req`。 要发出 HTTP 请求，应该首先 `open` 打开请求：
+
+`req.open('GET', 'https://jsonplaceholder.typicode.com/todos/1');`
+
+XHR 方法不区分大小写， 可以将其写成“geT”，最终它将变为大写。 
+
+然后您可以将请求发送到服务器：
+
+`req.send();`
+
+要接收请求的响应，需要将回调函数附加到 XHR 对象:
+
+```js{6-8}
+var req = new XMLHttpRequest();
+
+req.open('GET', 'https://jsonplaceholder.typicode.com/todos/1');
+req.send();
+
+req.addEventListener('load', function() {
+    console.log(this.responseText);
+});
+
+/* Output:
+{
+  "userId": 1,
+  "id": 1,
+  "title": "delectus aut autem",
+  "completed": false
+}
+*/
+```
+
+应该使用普通函数而不是箭头函数，因为普通函数的 `this` 绑定到 XMLHttpRequest，而箭头函数绑定到 `window`。
+
+### 8.3 Fetch API
+
+Fetch API 提供了用于获取资源（包括通过网络）的接口。 它是 XMLHttpRequest 的更强大、更灵活的替代品。
+
+#### 8.3.1 Fetch API 语法
+
+`fetch()` 方法是 Window 和 Worker 上下文中的全局方法。  
+要发出请求并获取资源，使用 `fetch()` 方法：
+
+`var response = fetch(url);`
+
+`fetch()` 方法返回一个 `Promise` 对象。 在 `fetch()` 方法之后，添加 `Promise` 方法 `then()`：
+
+```js{2}
+fetch(url)
+    .then(function() {
+        // handle the response
+    });
+```
+
+如果返回的 `Promise` 是 `resolve`，则执行 `then()` 方法中的函数。 该函数包含用于处理从 API 接收的数据的代码。
+
+在 `then()` 方法之后，添加 `catch()` 方法：
+
+```js{5}
+fetch(url)
+    .then(function() {
+        // handle the response
+    })
+    .catch(function() {
+        // handle the error
+    });
+```
+
+`catch()` 方法用于处理 `reject`。 如果调用时发生错误，将执行 `catch()` 中的代码。
+
+#### 8.3.2 使用 Fetch 从 API 获取数据
+
+以下代码示例将基于 JSONPlaceholder API。 从中检索数据并将其显示在作者列表内的列表项中。
+
+```html
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>Authors</h1>
+    
+    <ul id="authors"></ul>
+    
+    <script src='./main.js'></script>
+</body>
+</html>
+```
+
+使用 DOM 选择器来获取 `ul`，并创建一个文档片段：
+
+```js
+var ul = document.querySelector('#authors');
+var list = document.createDocumentFragment();
+var url = 'https://jsonplaceholder.typicode.com/users';
+```
+
+所有附加的列表项都将添加到 `list` 列表中。  
+变量 `url` 保存 JSONPlaceholder API URL。
+
+使用 `fetch()` 并以 `url` 作为参数调用 JSONPlaceholder API：
+
+`fetch(url).then((response) => response.json())`
+
+`response` 不是 JSON，而是一个具有一系列方法的对象。 要将返回的对象转换为 JSON，使用 `json()` 方法。
+
+JSON 数据仍需要处理。 添加另一个 `then()` 语句，其中包含一个带有名为 `data` 参数的函数：
+
+```js
+fetch(url)
+    .then((response) => {
+        return response.json();
+    })
+    .then((data) => {});
+```
+
+`data` 是包含 10 个作者条目的 JSON 数组。  
+对于 `data` 中的每个作者，创建一个显示他们姓名和邮件地址的列表项。 map() 方法适合这种模式：
+
+```js
+var ul = document.querySelector('#authors');
+var list = document.createDocumentFragment();
+var url = 'https://jsonplaceholder.typicode.com/users';
+
+fetch(url)
+    .then((response) => {
+        return response.json();
+    })
+    .then((data) => {
+        var authors = data;
+        authors.map((author) => {
+            var li = document.createElement('li'),
+                name = document.createElement('h2'),
+                email = document.createElement('span');
+            name.innerHTML = `${author.name}`;
+            email.innerHTML = `${author.email}`;
+
+            li.appendChild(name);
+            li.appendChild(email);
+            list.appendChild(li);
+        });
+        ul.appendChild(list);
+    })
+    .catch(function(error) {
+        console.log(error);
+    });
+```
+
+每个列表项都被附加到 DocumentFragment 列表中。 映射完成后，列表将附加到 `ul` 无序列表元素。  
+两个 `then()` 函数完成后，现在可以添加 catch() 函数。 此函数会将潜在的错误记录到控制台。
+
+#### 8.3.3 处理 POST 请求
+
+Fetch 默认为 GET 请求，但可以使用所有其他类型的请求、更改标头并发送数据。 
+
+
+
 ### GET 
 
 ### POST
