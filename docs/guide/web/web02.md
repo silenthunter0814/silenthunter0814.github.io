@@ -2962,6 +2962,10 @@ async function getUser() {
 }
 ```
 
+如果程序收到错误，现在将跳到 `catch` 块并将该错误记录到控制台。
+
+现代异步 JavaScript 代码通常使用 `async/await` 语法进行处理，但了解 `Promise` 的工作原理非常重要，尤其是 `Promise` 能够提供 `async/await` 无法处理的其他功能，例如组合使用 `Promise` 的 `Promise.all()`。
+
 ## 8 WEB 请求和表单操作
 
 ### JSON 对象
