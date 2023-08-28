@@ -2599,6 +2599,58 @@ section.addEventListener('click', event => {
 单击这些元素中的任何一个都会使用 `event.target` 将相关特定元素的输出返回到控制台。  
 这是非常有用的，因为它允许仅编写一个可用于访问许多嵌套元素的事件侦听器。
 
+## 7 浏览器动画
+
+使用 JavaScript 制作动画时，其中一种方法是 `setTimeout()` 或 `setInterval()`` 来定期处理计时器。
+但这些函数在浏览器中效率较低，因此现在首选 `Window.requestAnimationFrame ()`。
+
+### 7.1 使用 setInterval 制作动画
+
+要使用 javascript 将元素设置为向右移动 400 像素的动画，基本要做的就是定期将其一次移动 10 像素。
+
+如果处理一帧的时间为 16 毫秒，那么动画将以 ~60fps 的速度运行，当处理 1 帧需要 33 毫秒时，动画以 30 fps 运行。  
+为了以恒定的速度制作动画，我们需要计算自上一帧以来的时间增量并按比例移动元素。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <style>
+        #animate {
+            background: red;
+            width: 40px;
+            height: 40px;
+        }
+    </style>
+    <body>
+        <div id="animate">DIV</div>
+        
+        <script src="./main.js"></script>
+    </body>
+</html>
+```
+
+```js
+function animate(id) {
+    var elem = document.getElementById(id);
+    var left = elem.style.left,
+        lastFrame = +new Date,
+        timer;
+
+    timer = setInterval(function() {
+        var now = +new Date,
+            deltaT = now - lastFrame;
+        elem.style.left = (left += 10 * deltaT / 16) + "px";
+        lastFrame = now;
+
+        if (left > 400) {
+            clearInterval(timer);
+        }
+    }, 16);
+}
+
+animate("animate");
+```
+
 ## 7 事件循环和异步操作
 
 JavaScript 是单线程编程语言，具有同步执行模型，可以处理一个又一个操作，但是一次只能处理一条语句。  
