@@ -2616,6 +2616,7 @@ section.addEventListener('click', event => {
 <html lang="en">
     <style>
         #animate {
+            position: absolute;
             background: red;
             width: 40px;
             height: 40px;
@@ -2632,7 +2633,7 @@ section.addEventListener('click', event => {
 ```js
 function animate(id) {
     var elem = document.getElementById(id);
-    var left = elem.style.left,
+    var left = 0,
         lastFrame = +new Date,
         timer;
 
