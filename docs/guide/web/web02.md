@@ -1142,6 +1142,84 @@ var sum = numbers.reduce((sum, e) => sum + e);
 console.log(sum);
 ```
 
+### 4.3 `iterator` 迭代器
+
+#### 4.3.1 迭代器
+
+迭代器是一个满足四个条件的对象：
+- 有一个名为next()的方法
+- 每次调用next()时按顺序返回值
+- 返回的对象为 `{value: any, done: false}`
+- 如果没有值返回（完成），则返回对象 `{value: any, done: true}`
+
+基于这个条件，我们来创建一个简单的迭代器:
+
+```js
+var iterator = {
+    count: 0,
+    next: function() {
+        this.count++;
+        return this.count <= 5 ? {
+            value: this.count * 2,
+            done: false
+        } : {done: true};
+    }
+};
+```
+
+每次调用 next() 时都会依次返回 2 到 10 之间的偶数的对象。
+
+使用迭代器：
+
+```js
+var it;
+while (!(it = iterator.next()).done) {
+    console.log(it.value);
+}
+/*
+var it = iterator.next();
+while (!it.done) {
+    console.log(it.value);
+    it = iterator.next();
+}
+*/
+```
+
+#### 4.3.2 可迭代对象
+
+可迭代对象是具有创建并返回迭代器 `[Symbol.iterator]()` 方法的对象。  
+Array 和 String 是可迭代对象。
+
+修改上节的例子变成可迭代对象：
+
+```js
+var iterator = {
+    count: 0,
+    next: function() {
+        this.count++;
+        return this.count <= 5 ? {
+            value: this.count * 2,
+            done: false
+        } : {done: true};
+    }
+};
+
+var iteratorObj = {
+    [Symbol.iterator]: function() {
+        return iterator;
+    }
+};
+```
+
+`for of` 语句从可迭代对象中一一提取值：
+
+```js
+for (let val of iteratorObj) {
+    console.log(val);
+}
+```
+
+
 ## 5 对象和继承
 
 JavaScript 中几乎所有对象都是 `Object` 的实例； 典型的对象从 `Object.prototype` 继承属性（包括方法），尽管这些属性可能被隐藏（也称为覆盖）。
