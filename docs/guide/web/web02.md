@@ -1149,10 +1149,10 @@ console.log(sum);
 迭代器是一个满足四个条件的对象：
 - 有一个名为next()的方法
 - 每次调用next()时按顺序返回值
-- 返回的对象为 `{value: any, done: false}`
-- 如果没有值返回（完成），则返回对象 `{value: any, done: true}`
+- 返回的对象为 `{value: nextVal, done: false}`
+- 如果没有值返回（完成），则返回对象 `{done: true, value: undefined}`
 
-基于这个条件，我们来创建一个简单的迭代器:
+基于这个条件，我们在类数组上创建一个简单的迭代器:
 
 ```js
 var iterator = {
@@ -1183,6 +1183,46 @@ while (!it.done) {
     it = iterator.next();
 }
 */
+```
+
+```js
+class Iterator {
+    constructor(arrayLike) {
+        this.i = 0;
+        this.array = arrayLike;
+    }
+    next() {
+        if (this.i < this.array.length) {
+            return {
+                value: this.array[this.i++],
+                done: false
+            };
+        }
+        return {done: true};        
+    }
+}
+
+var obj = {
+    0: 'zero',
+    1: 'one',
+    2: 'two',
+    length: 3,
+}
+obj[Symbol.iterator] = function() {
+    return new Iterator(this);
+};
+
+var it = obj[Symbol.iterator]();
+var val = it.next();
+while (!val.done) {
+    console.log(val.value);
+    val = it.next();
+}
+
+for (let elem of obj) {
+    console.log(elem);
+}
+
 ```
 
 #### 4.3.2 可迭代对象
