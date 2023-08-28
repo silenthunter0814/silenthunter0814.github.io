@@ -1213,10 +1213,10 @@ obj[Symbol.iterator] = function() {
 };
 
 var it = obj[Symbol.iterator]();
-var val = it.next();
-while (!val.done) {
-    console.log(val.value);
-    val = it.next();
+var resul = it.next();
+while (!resul.done) {
+    console.log(resul.value);
+    result = it.next();
 }
 
 for (let elem of obj) {
