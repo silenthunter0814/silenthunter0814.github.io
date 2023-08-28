@@ -2633,7 +2633,7 @@ section.addEventListener('click', event => {
 ```js
 function animate(id) {
     var elem = document.getElementById(id);
-    var left = 0,
+    var left = elem.offsetLeft,
         lastFrame = +new Date,
         timer;
 
