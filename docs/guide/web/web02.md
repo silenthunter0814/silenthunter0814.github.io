@@ -2704,15 +2704,15 @@ animate("animate");
 function animLoop(id) {
     var elem = document.getElementById(id);
     var left = elem.offsetLeft,
-        lastFrame = 0;
+        start = 0;
 
     function loop(now) {
         if (left <= 400) {            
-            var deltaT = now - lastFrame;
-            
+            var deltaT = now - start;
+
             if (deltaT < 8 || deltaT > 32) deltaT = 16;
             elem.style.left = (left += 10 * deltaT / 16) + "px"; 
-            lastFrame = now;
+            start = now;
             
             requestAnimationFrame(loop);
         }
