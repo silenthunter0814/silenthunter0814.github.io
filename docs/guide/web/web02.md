@@ -2709,7 +2709,8 @@ function animLoop(id) {
     function loop(now) {
         if (left <= 400) {            
             var deltaT = now - lastFrame;
-            deltaT = deltaT < 8 ? 8 : deltaT > 32 ? 32 : deltaT;
+            
+            if (deltaT < 8 || deltaT > 32) deltaT = 16;
             elem.style.left = (left += 10 * deltaT / 16) + "px"; 
             lastFrame = now;
             
