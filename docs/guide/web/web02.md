@@ -2641,7 +2641,7 @@ section.addEventListener('click', event => {
 
 ## 7 浏览器动画
 
-使用 JavaScript 制作动画时，其中一种方法是 `setTimeout()` 或 `setInterval()`` 来定期处理计时器。
+使用 JavaScript 制作动画时，其中一种方法是 `setTimeout()` 或 `setInterval()` 来定期处理计时器。
 但这些函数在浏览器中效率较低，因此现在首选 `Window.requestAnimationFrame ()`。
 
 ### 7.1 使用 setInterval 制作动画
@@ -2691,6 +2691,14 @@ function animate(id) {
 
 animate("animate");
 ```
+
+### 7.2 使用 `requestAnimationFrame` 进行动画处理
+
+告诉浏览器希望执行动画，并请求浏览器在下一次重绘之前调用指定的函数来更新动画。该方法采用回调作为参数，在重绘之前调用。
+
+`requestAnimationFrame(callback);`
+
+- `callback`: 当需要更新动画以进行下一次重绘时调用的函数。 回调函数传递一个 `DOMHighResTimeStamp` 参数，指示 `requestAnimationFrame()` 开始执行回调函数的时间点。
 
 ## 7 事件循环和异步操作
 
