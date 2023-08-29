@@ -2700,6 +2700,25 @@ animate("animate");
 
 - `callback`: 当需要更新动画以进行下一次重绘时调用的函数。 回调函数传递一个 `DOMHighResTimeStamp` 参数，指示 `requestAnimationFrame()` 开始执行回调函数的时间点。
 
+```js
+function animLoop(id) {
+    var elem = document.getElementById(id);
+    var left = elem.offsetLeft,
+        lastFrame = +new Date;
+
+    function loop(now) {
+        if (left <= 400) {
+            requestAnimationFrame(loop);
+            elem.style.left = (left += 5) + "px"; 
+            lastFrame = now;
+        }
+    }
+    loop(lastFrame);
+}
+
+animLoop("animate");
+```
+
 ## 7 事件循环和异步操作
 
 JavaScript 是单线程编程语言，具有同步执行模型，可以处理一个又一个操作，但是一次只能处理一条语句。  
