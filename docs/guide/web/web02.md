@@ -2704,7 +2704,7 @@ animate("animate");
 function animLoop(id) {
     var elem = document.getElementById(id);
     var left = elem.offsetLeft,
-        lastFrame = +new Date;
+        lastFrame = 0;
 
     function loop(now) {
         if (left <= 400) {            
