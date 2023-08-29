@@ -2709,8 +2709,9 @@ function animLoop(id) {
     function loop(now) {
         if (left <= 400) {
             requestAnimationFrame(loop);
-            elem.style.left = (left += 5) + "px"; 
-            lastFrame = now;
+            var deltaT = now - lastFrame;
+            deltaT = deltaT < 8 ? 8 : deltaT > 32 ? 32 : deltaT;
+            elem.style.left = (left += 5 * deltaT / 16) + "px"; 
         }
     }
     loop(lastFrame);
