@@ -2725,7 +2725,7 @@ animLoop("animate");
 
 
 
-## 7 事件循环和异步操作
+## 8 事件循环和异步操作
 
 JavaScript 是单线程编程语言，具有同步执行模型，可以处理一个又一个操作，但是一次只能处理一条语句。  
 从 API 请求数据之类的操作可能需要不确定的时间，具体取决于请求的数据大小、网络连接速度和其他因素。 如果 API 调用以同步方式执行，则浏览器将无法处理任何用户输入，例如滚动或单击按钮，直到该操作完成。 这称为阻塞。
@@ -2738,12 +2738,12 @@ JavaScript 是单线程编程语言，具有同步执行模型，可以处理一
 - Promise
 - async/await
 
-### 7.1 事件循环
+### 8.1 事件循环
 
 JavaScript 主机环境（浏览器）使用称为事件循环的概念来处理并发或并行事件。  
 JavaScript 一次只能执行一条语句，因此它需要通知事件循环何时执行哪条特定语句。 事件循环使用堆栈和队列的概念来处理此问题。
 
-#### 7.1.1 同步执行和异步执行
+#### 8.1.1 同步执行和异步执行
 
 不使用任何异步 Web API 的 JavaScript 代码将以同步方式执行 - 一次一个、顺序执行：
 
@@ -2796,7 +2796,7 @@ third();
 
 无论将超时设置为 0 秒还是 5 分钟，都没有什么区别——异步代码调用的 `console.log(2)` 将在同步顶级函数之后执行。 
 
-#### 7.1.2 stack 堆栈
+#### 8.1.2 stack 堆栈
 
 堆栈或调用堆栈保存当前正在运行的函数的状态。 JavaScript 将运行堆栈中的当前帧，然后将其删除并移至下一帧。
 
@@ -2814,7 +2814,7 @@ third();
 - 事件循环检查队列中是否有任何挂起的消息，并从 `setTimeout()` 中找到匿名函数，将该函数添加到堆栈中，该堆栈将 `2` 记录到控制台，然后将其从堆栈中删除。
 
 
-#### 7.1.3 queue 队列
+#### 8.1.3 queue 队列
 
 队列也称为消息队列或任务队列，是函数的等待区域。 每当调用堆栈为空时，事件循环就会从最旧的消息开始检查队列中是否有任何等待消息。 一旦找到，它就会将其添加到堆栈中，堆栈将执行消息中的函数。
 
@@ -2822,7 +2822,7 @@ third();
 
 注意：还有另一个队列称为作业队列或微任务队列，用于处理 `Promise`。 像 `Promise` 这样的微任务比像 `setTimeout` 这样的宏任务具有更高的优先级。
 
-### 7.2 回调函数
+### 8.2 回调函数
 
 在 `setTimeout` 示例中，具有超时的函数在主顶级执行上下文中的所有内容之后运行。 但是，如果您想确保其中一个函数（例如第三个函数）在超时后运行，那么您将不得不使用异步编码方法。 这里的超时可以代表包含数据的异步API调用。
 
@@ -2904,12 +2904,12 @@ function hell() {
 hell();
 ```
 
-### 7.3 `Promise`
+### 8.3 `Promise`
 
 `Promise` 代表异步函数的完成。 它是一个将来可能返回值的对象。 它实现了与回调函数相同的基本目标，但具有许多附加功能和更易读的语法。  
 通常是异步 Web API 返回 `Promise` 供开发人员使用。
 
-#### 7.3.1 创建 `Promise``
+#### 8.3.1 创建 `Promise``
 
 使用 `Promise(resolveFunc, rejectFunc)` 构造函数进行初始化，传递解析和拒绝参数。 解析和拒绝函数分别处理操作的成功和失败。
 
@@ -2956,7 +2956,7 @@ promise {<fulfilled>: 'We did it!'}
 
 在履行或拒绝之后，`promise` 就被确定。
 
-#### 7.3.2 使用 `Promise`
+#### 8.3.2 使用 `Promise`
 
 `Promise` 有一个名为 `then` 的方法，该方法将在 `Promise` 达到代码中的 `resolve` 后运行。  
 `then` 将 `Promise` 返回的值作为参数。
@@ -3006,7 +3006,7 @@ promise.then((val) => {
 
 由于 `then` 可以链接，因此它允许 `Promise` 的使用看起来比回调更加同步，因为它们不需要嵌套。 这将允许更容易维护和验证的可读代码。
 
-#### 7.3.3 错误处理
+#### 8.3.3 错误处理
 
 对于异步请求，通常还必须处理错误 —— 如果 API 关闭，或者发送了格式错误或未经授权的请求。  
 承诺应该能够处理这两种情况。
@@ -3076,7 +3076,7 @@ getUsers(true)
 
 使用 `Promise` 比创建 `Promise` 更为常见。 通常，浏览器的 Web API 或第三方库将提供 `Promise`，只需使用它即可。
 
-### 7.4 使用带有 `Promise` 的 Fetch API
+### 8.4 使用带有 `Promise` 的 Fetch API
 
 Fetch API 是最有用且最常用的返回 `Promise` 的 Web API 之一，它允许通过网络发出异步资源请求。  
 `fetch` 是一个由两部分组成的过程，因此需要链接。 
@@ -3098,7 +3098,7 @@ fetch('https://api.github.com/users/silenthunter0814')
 
 `fetch` 请求发送到 https://api.github.com/users/silenthunter0814 URL，该 URL 异步等待响应。 第一个 `then` 将响应传递给匿名函数，该匿名函数将响应格式化为 JSON 数据，然后将 JSON 传递给第二个 `then` 将数据记录到控制台。 `catch` 语句将所有错误记录到控制台。
 
-### 7.5 带有 `async/await` 的异步函数
+### 8.5 带有 `async/await` 的异步函数
 
 异步函数允许以同步的方式处理异步代码。 异步函数仍然在底层使用 `Promise`，但具有更传统的 JavaScript 语法。
 
@@ -3170,15 +3170,15 @@ async function getUser() {
 
 现代异步 JavaScript 代码通常使用 `async/await` 语法进行处理，但了解 `Promise` 的工作原理非常重要，尤其是 `Promise` 能够提供 `async/await` 无法处理的其他功能，例如组合使用 `Promise` 的 `Promise.all()`。
 
-## 8 WEB 请求
+## 9 WEB 请求
 
-### 8.1 JSON 对象
+### 9.1 JSON 对象
 
 JavaScript 对象表示法，用于序列化对象、数组、数字、字符串、布尔值和 null 的语法。
 
 JSON 对象有两个有用的方法来处理 JSON 格式的内容： `parse` 和 `stringify`。
 
-#### 8.1.1 `JSON.parse()`
+#### 9.1.1 `JSON.parse()`
 
 `JSON.parse()` 接受 JSON 字符串并将其转换为 JavaScript 对象。
 
@@ -3219,7 +3219,7 @@ plan: "PRO"
 */
 ```
 
-#### 8.1.2 `JSON.stringify()`
+#### 9.1.2 `JSON.stringify()`
 
 `JSON.stringify()` 接受一个 JavaScript 对象并将其转换为 JSON 字符串。
 
@@ -3282,7 +3282,7 @@ console.log(user);
 
 缩进已替换为 `...`。
 
-### 8.2 XMLHttpRequest 对象
+### 9.2 XMLHttpRequest 对象
 
 JavaScript 允许以异步方式获取数据。 最古老、最经典的方式是使用 XMLHttpRequest (XHR)。 
 它是一个构造函数，用于向服务器发送 HTTP 请求：
@@ -3323,11 +3323,11 @@ req.addEventListener('load', function() {
 
 应该使用普通函数而不是箭头函数，因为普通函数的 `this` 绑定到 XMLHttpRequest，而箭头函数绑定到 `window`。
 
-### 8.3 Fetch API
+### 9.3 Fetch API
 
 Fetch API 提供了用于获取资源（包括通过网络）的接口。 它是 XMLHttpRequest 的更强大、更灵活的替代品。
 
-#### 8.3.1 Fetch API 语法
+#### 9.3.1 Fetch API 语法
 
 `fetch()` 方法是 Window 和 Worker 上下文中的全局方法。  
 要发出请求并获取资源，使用 `fetch()` 方法：
@@ -3359,7 +3359,7 @@ fetch(url)
 
 `catch()` 方法用于处理 `reject`。 如果调用时发生错误，将执行 `catch()` 中的代码。
 
-#### 8.3.2 使用 Fetch 从 API 获取数据
+#### 9.3.2 使用 Fetch 从 API 获取数据
 
 以下代码示例将基于 JSONPlaceholder API。 从中检索数据并将其显示在作者列表内的列表项中。
 
@@ -3439,7 +3439,7 @@ fetch(url)
 每个列表项都被附加到 DocumentFragment 列表中。 `authors` 遍历完成后，`list` 列表将附加到 `ul` 无序列表元素。  
 两个 `then()` 函数完成后，现在可以添加 `catch()` 函数。 此函数会将潜在的错误记录到控制台。
 
-#### 8.3.3 处理 POST 请求
+#### 9.3.3 处理 POST 请求
 
 Fetch 默认为 GET 请求，但可以使用所有其他类型的请求、更改标头并发送数据。 
 
@@ -3479,6 +3479,10 @@ fetch(request)
 ```
 
 通过链式 `then()` 解析，最终得到服务器返回的我们刚刚上传的 `author`。
+
+### 9.4 表单数据作为 JSON 发布到 API
+
+
 
 ## 9 jQuery 入门
 
