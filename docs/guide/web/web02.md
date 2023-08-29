@@ -2723,6 +2723,8 @@ function animLoop(id) {
 animLoop("animate");
 ```
 
+
+
 ## 7 事件循环和异步操作
 
 JavaScript 是单线程编程语言，具有同步执行模型，可以处理一个又一个操作，但是一次只能处理一条语句。  
