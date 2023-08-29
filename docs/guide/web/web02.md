@@ -3482,6 +3482,52 @@ fetch(request)
 
 ### 9.4 表单数据作为 JSON 发布到 API
 
+首先创建表单页面：
+
+```html
+<!DOCTYPE html>
+<html>
+<body>
+
+<form action="https://jsonplaceholder.typicode.com/users" id="example-form">
+	<label for="first-name">
+		<strong>First Name:</strong>
+		<input type="text" name="first_name" id="first-name">
+	</label>
+
+	<label for="last-name">
+		Last Name:
+		<input type="text" name="last_name" id="last-name">
+	</label>
+
+	<input type="submit" value="Create new user">
+</form>    
+
+<script src="./form.js"></script>
+</body>
+</html>
+
+```
+
+1. 监听用户何时提交表单
+
+当用户单击表单的提交按钮或将焦点放在表单字段上并按键盘上的返回键时，浏览器将调度提交事件。
+
+```js
+
+```
+
+2. 使用 FormData 读取所有表单字段的值
+
+FormData API 提供了一种访问 HTML 表单中所有字段的值的直接方法：向其传递对表单元素的引用，它会完成剩下的工作。
+
+```js
+
+```
+
+3. 使用 fetch 将数据 POST 到 URL
+
+静态Object.fromEntries()方法将键值对列表转换为对象。
 
 
 ## 9 jQuery 入门
