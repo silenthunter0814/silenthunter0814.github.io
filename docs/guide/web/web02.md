@@ -2707,14 +2707,16 @@ function animLoop(id) {
         lastFrame = +new Date;
 
     function loop(now) {
-        if (left <= 400) {
-            requestAnimationFrame(loop);
+        if (left <= 400) {            
             var deltaT = now - lastFrame;
             deltaT = deltaT < 8 ? 8 : deltaT > 32 ? 32 : deltaT;
-            elem.style.left = (left += 5 * deltaT / 16) + "px"; 
+            elem.style.left = (left += 10 * deltaT / 16) + "px"; 
+            lastFrame = now;
+            
+            requestAnimationFrame(loop);
         }
     }
-    loop(lastFrame);
+    requestAnimationFrame(loop);
 }
 
 animLoop("animate");
