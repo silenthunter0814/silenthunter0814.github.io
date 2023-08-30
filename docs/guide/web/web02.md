@@ -3718,13 +3718,13 @@ async function getUser() {
 
 ## 10 WEB 请求
 
-### 10.1 JSON 对象
+### 11.1 JSON 对象
 
 JavaScript 对象表示法，用于序列化对象、数组、数字、字符串、布尔值和 null 的语法。
 
 JSON 对象有两个有用的方法来处理 JSON 格式的内容： `parse` 和 `stringify`。
 
-#### 10.1.1 `JSON.parse()`
+#### 11.1.1 `JSON.parse()`
 
 `JSON.parse()` 接受 JSON 字符串并将其转换为 JavaScript 对象。
 
@@ -3765,7 +3765,7 @@ plan: "PRO"
 */
 ```
 
-#### 10.1.2 `JSON.stringify()`
+#### 11.1.2 `JSON.stringify()`
 
 `JSON.stringify()` 接受一个 JavaScript 对象并将其转换为 JSON 字符串。
 
@@ -3828,7 +3828,7 @@ console.log(user);
 
 缩进已替换为 `...`。
 
-### 10.2 XMLHttpRequest 对象
+### 11.2 XMLHttpRequest 对象
 
 JavaScript 允许以异步方式获取数据。 最古老、最经典的方式是使用 XMLHttpRequest (XHR)。 
 它是一个构造函数，用于向服务器发送 HTTP 请求：
@@ -3869,11 +3869,11 @@ req.addEventListener('load', function() {
 
 应该使用普通函数而不是箭头函数，因为普通函数的 `this` 绑定到 XMLHttpRequest，而箭头函数绑定到 `window`。
 
-### 10.3 Fetch API
+### 11.3 Fetch API
 
 Fetch API 提供了用于获取资源（包括通过网络）的接口。 它是 XMLHttpRequest 的更强大、更灵活的替代品。
 
-#### 10.3.1 Fetch API 语法
+#### 11.3.1 Fetch API 语法
 
 `fetch()` 方法是 Window 和 Worker 上下文中的全局方法。  
 要发出请求并获取资源，使用 `fetch()` 方法：
@@ -3905,7 +3905,7 @@ fetch(url)
 
 `catch()` 方法用于处理 `reject`。 如果调用时发生错误，将执行 `catch()` 中的代码。
 
-#### 10.3.2 使用 Fetch 从 API 获取数据
+#### 11.3.2 使用 Fetch 从 API 获取数据
 
 以下代码示例将基于 JSONPlaceholder API。 从中检索数据并将其显示在作者列表内的列表项中。
 
@@ -3985,7 +3985,7 @@ fetch(url)
 每个列表项都被附加到 DocumentFragment 列表中。 `authors` 遍历完成后，`list` 列表将附加到 `ul` 无序列表元素。  
 两个 `then()` 函数完成后，现在可以添加 `catch()` 函数。 此函数会将潜在的错误记录到控制台。
 
-#### 10.3.3 处理 POST 请求
+#### 11.3.3 处理 POST 请求
 
 Fetch 默认为 GET 请求，但可以使用所有其他类型的请求、更改标头并发送数据。 
 
@@ -4026,7 +4026,7 @@ fetch(request)
 
 通过链式 `then()` 解析，最终得到服务器返回的我们刚刚上传的 `author`。
 
-### 10.4 表单数据作为 JSON 发布到 API
+### 11.4 表单数据作为 JSON 发布到 API
 
 首先创建表单页面：
 
@@ -4116,11 +4116,11 @@ form.addEventListener('submit',(event) => {
 })
 ```
 
-## 10 `this, bind, call, apply`
+## 12 `this, bind, call, apply`
 
 `this` 关键字是 JavaScript 中一个非常重要的概念，也是一个特别令人困惑的概念。 在 JavaScript 中，`this` 是对对象的引用。 `this` 引用的对象可以根据它是全局的、在对象上还是在构造函数中隐式地变化，也可以根据 `Function` 原型方法 `bind`, `call`, `apply` 的使用而显式地变化。
 
-### 10.1 `this`
+### 12.1 `this`
 
 隐式上下文
 有四种主要上下文可以隐式推断 this 的值：
