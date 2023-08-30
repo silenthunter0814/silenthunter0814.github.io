@@ -2855,10 +2855,10 @@ this.addEventListener('load', function(event) {
 
 每个事件都会根据事件类型包含略有不同的属性（例如 MouseEvent，KeyboardEvent，WheelEvent）。
 
-### 7.7 使用 AddEventListener() 时 this 的值
+### 7.7 使用 AddEventListener() 时 `this` 的值
 
-事件侦听器函数内部的 this 值传递给 AddeventListener() 方法将是对附加了事件的节点或对象的引用。  
-在下面的代码中，我将事件附加到 `<div>` ，然后在事件侦听器的内部使用 this 访问附加了事件的 `<div>` 元素。
+事件侦听器函数内部的 `this` 值传递给 AddeventListener() 方法将是对附加了事件的节点或对象的引用。  
+在下面的代码中，将事件附加到 `<div>` ，然后在事件侦听器的内部使用 `this` 访问附加了事件的 `<div>` 元素。
 
 ```html
 <!DOCTYPE html>
@@ -2880,7 +2880,7 @@ div.addEventListener('click', function() {
 </html>
 ```
 
-当事件作为事件流的一部分调用时，该值将保留为侦听器附加的节点或对象的值。
+当事件作为事件流的一部分调用时，`this` 值将保留为侦听器附加的节点或对象的值。
 
 ```html
 <!DOCTYPE html>
