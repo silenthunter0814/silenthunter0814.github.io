@@ -4268,7 +4268,137 @@ document.body.addEventListener('click', function(event) {
 - `event.target`：引发事件的“目标”元素，它在事件冒泡过程中不会发生变化。
 - `this`：是“当前”元素 `event.currentTarget`。
 
+### 11.2 `Function.prototype.call` 和 `Function.prototype.apply`
+
+`call` 和 `apply` 非常相似——它们使用指定的 `this` 上下文和可选参数调用函数。  
+- `call`： 将参数一一传递
+- `apply`： 将参数作为数组传递
+
+创建一个对象，并创建一个引用 `this` 但没有 `this` 上下文的函数：
+
+```js
+var book = {
+    title: "Secrets of the JavaScript Ninja",
+    author: "John Resig"
+};
+
+function summary() {
+  console.log(`${this.title} was written by ${this.author}.`);
+}
+
+summary();
+// Output: undefined was written by undefined.
+```
+
+由于 `summary` 和 `book` 没有联系，因此调用 `summary` 本身只会打印 `undefined`，因为它在全局对象上查找这些属性。
+
+在严格模式下尝试此操作将导致未捕获类型错误：无法读取未定义的属性“标题”，因为 `this` 本身是未定义的。
+
+但是，可以使用 `call` 或 `apply` 来调用函数上 `book` 的 `this` 上下文：
+
+```js
+summary.call(book);
+// or
+summary.apply(book);
+// Output: Secrets of the JavaScript Ninja was written by John Resig.
+```
+
+当应用这些方法时，$book 和 $summary 之间现在存在连接。 让我们确认一下这到底是什么：
+
+```js
+var book = {
+    title: "Secrets of the JavaScript Ninja",
+    author: "John Resig"
+};
+
+function fn() {
+    console.log(this);
+}
+
+fn.call(book);
+fn.apply(book);
+// book object
+```
+
+在这种情况下，`this` 实际上成为作为参数传递的对象。
+
+在需要传递参数的情况：
+
+```js
+var book = {
+    title: "Ninja",
+    author: "Resig"
+};
+
+function summary(year, month) {
+    var date = year + "-" + month;
+    console.log(date + " " + `${this.title} by ${this.author}.`);
+}
+
+summary.call(book, 2023, 10);
+// or 
+summary.apply(book, [2023, 10]);
+```
+
+对于 `apply`，将所有参数包装在一个数组中传递。
+
+在类数组上调用 `forEach(callback)` 方法：
+
+```js
+var heros = {
+    0: 'Bard',
+    1: 'Annie',
+    2: 'Jax',
+    length: 3
+};
+/* Uncaught TypeError: heros.forEach is not a function
+heros.forEach(hero => {
+    console.log(hero);
+});
+*/
+Array.prototype.forEach.call(heros, hero => {
+    console.log(hero);
+});
+```
+
+### 11.3 `Function.prototype.bind`
+
+有时，可能需要在另一个对象的 `this` 上下文中反复使用一个方法，在这种情况下，可以使用 `bind` 方法来创建一个带有显式绑定 `this` 的全新函数。
+
+```js
+var book = {
+    title: "Ninja",
+    author: "Resig"
+};
+
+function summary(year, month) {
+    var date = year + "-" + month;
+    console.log(date + " " + `${this.title} by ${this.author}.`);
+}
+
+var bookSummary = summary.bind(book);
+
+bookSummary(2023, 10);
+// Output: 2023-10 Ninja by Resig.
+```
+
+这是另一个 `bind` 例子：
+
+```js
+var heros = {
+    0: 'Bard',
+    1: 'Annie',
+    2: 'Jax',
+    length: 3
+};
+
+var forHeros = Array.prototype.forEach.bind(heros);
+
+forHeros(hero => {
+    console.log(hero);
+});
+```
 
 
-## 11 END 参考书目
+## 12 END 参考书目
 
