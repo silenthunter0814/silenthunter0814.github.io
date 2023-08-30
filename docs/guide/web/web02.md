@@ -3525,7 +3525,7 @@ form.addEventListener('submit',(event) => {
 2. 使用 FormData 读取所有表单字段的值
 
 FormData API 提供了一种访问 HTML 表单中所有字段的值的直接方法：向其传递对表单元素的引用。
-- `new FormData(refFrom)`：生成表单数据
+- `new FormData(refForm)`：生成表单数据
 - `Object.fromEntries()` 静态方法将键值对列表转换为一个对象。
 
 将这些方法调用链接起来，最后转换成 JSON 字符串：
