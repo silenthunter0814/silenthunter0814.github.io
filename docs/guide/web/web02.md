@@ -4134,7 +4134,8 @@ form.addEventListener('submit',(event) => {
 - 作为函数或类的构造函数
 - 作为 DOM 事件处理程序
 
-全局上下文
+#### 11.1.1 全局上下文
+
 在全局上下文中，`this` 指的是全局对象。 当在浏览器中工作时，全局上下文将是 `window`。 当使用 Node.js 时，全局上下文是 `global`。
 
 `console.log(this);    // Output: Window {0: global, ...}`
@@ -4167,7 +4168,7 @@ fn();    // Output: undefined
 
 一般来说，使用严格模式会更安全，以减少出现意外范围的可能性。 很少有人想使用 `this` 来引用窗口对象。
 
-对象方法中的 `this`
+#### 11.1.2 对象方法中的 `this`
 
 方法是对象上的函数，或者对象可以执行的任务。 方法使用 `this` 来引用对象的属性。
 
@@ -4188,6 +4189,47 @@ bard.describe();
 
 在嵌套对象中，`this` 指的是该方法的当前对象范围。
 
+```js
+var bard  = {
+    name: "Bard",
+    age: 20,
+    address: {
+        galaxy: "银河系",
+        star: "蓝星",
+        village: "地球村",
+        details() {
+            console.log(this.galaxy + " " + this.star + " " + this.village);
+        }
+    },
+    describe() {
+        console.log(`${this.name} is a hero, ${this.age} years old.`);
+    }
+};
+
+bard.address.details();
+// Output: 银河系 蓝星 地球村
+```
+
+#### 11.1.3 构造函数中的 `this`
+
+当使用 `new` 关键字时，构造函数或类会创建构造原型的实例。
+
+```js
+function Hero(name, age) {
+    this.name = name;
+    this.age = age;
+}
+Hero.prototype.describe = function() {
+    console.log(`${this.name} is a hero, ${this.age} years old.`);
+};
+
+var jax = new Hero("Jax", 18);
+jax.describe();    // Jax is a hero, 18 years old.
+```
+
+在此上下文中，`this` 现在绑定到 `Hero` 的实例，即 `jax` 对象。
+
+类上的构造函数与函数上的构造函数的作用相同:
 
 ## 11 END 参考书目
 
