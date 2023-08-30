@@ -4231,5 +4231,22 @@ jax.describe();    // Jax is a hero, 18 years old.
 
 类上的构造函数与函数上的构造函数的作用相同:
 
+```js
+class Hero {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+    describe() {
+        console.log(`${this.name} is a hero, ${this.age} years old.`);
+    }
+}
+
+var jax = new Hero("Jax", 18);
+jax.describe();    // Jax is a hero, 18 years old.
+```
+
+#### 11.1.4 DOM 事件处理程序
+
 ## 11 END 参考书目
 
