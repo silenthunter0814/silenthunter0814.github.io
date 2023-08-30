@@ -4248,5 +4248,28 @@ jax.describe();    // Jax is a hero, 18 years old.
 
 #### 11.1.4 DOM 事件处理程序
 
+在浏览器中，事件处理程序有一个特殊的 `this` 上下文。 在 `addEventListener` 调用的事件处理程序中， `this` 将引用 `event.currentTarget`。  
+通常，开发人员会根据需要简单地使用 `event.target` 或 `event.currentTarget` 来访问 DOM 中的元素，但由于 `this` 引用在此上下文中发生变化，因此了解这一点很重要。
+
+```js
+var btn = document.createElement('button');
+btn.textContent = "Click me";
+document.body.appendChild(btn);
+
+btn.addEventListener('click', function(event) {
+    console.log(this);
+});
+
+document.body.addEventListener('click', function(event) {
+    console.log(this, event.target);
+});
+```
+
+`this` 与 `event.target` 的区别：
+- `event.target`：引发事件的“目标”元素，它在事件冒泡过程中不会发生变化。
+- `this`：是“当前”元素 `event.currentTarget`。
+
+
+
 ## 11 END 参考书目
 
