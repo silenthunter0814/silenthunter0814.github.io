@@ -4057,7 +4057,6 @@ fetch(request)
 <script src="./form.js"></script>
 </body>
 </html>
-
 ```
 
 1. 监听用户何时提交表单
@@ -4095,10 +4094,10 @@ form.addEventListener('submit',(event) => {
     event.preventDefault();
     
     var url = event.target.action,
-        author = JSON.stringify(Object.fromEntries(new FormData(event.target)));
+        user = JSON.stringify(Object.fromEntries(new FormData(event.target)));
     var request = new Request(url, {
         method: "POST",
-        body: author,
+        body: user,
         headers: new Headers({
             'Content-Type': 'application/json; charset=UTF-8'
         })
@@ -4118,7 +4117,7 @@ form.addEventListener('submit',(event) => {
         .catch(error => {
             console.log(error);
         });
-})
+});
 ```
 
 ## 11 `this, bind, call, apply`
