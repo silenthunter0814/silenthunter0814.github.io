@@ -3571,17 +3571,7 @@ form.addEventListener('submit',(event) => {
 ```
 
 
-## 9 jQuery 入门
 
-### 配置和使用 jQuery
 
-### jQuery 选择器
-
-### jQuery 事件
-
-### jQuery 效果
-
-### Ajax
-
-## 11 END 参考书目
+## 10 END 参考书目
 
