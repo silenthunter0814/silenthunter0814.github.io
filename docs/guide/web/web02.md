@@ -3514,20 +3514,61 @@ fetch(request)
 当用户单击表单的提交按钮或将焦点放在表单字段上并按键盘上的返回键时，浏览器将调度提交事件。
 
 ```js
-
+var form = document.getElementById("example-form");
+form.addEventListener('submit',(event) => {
+    event.preventDefault();
+    ...
+}
 ```
+`event.preventDefault()` 阻止表单事件向上冒泡传播。
 
 2. 使用 FormData 读取所有表单字段的值
 
-FormData API 提供了一种访问 HTML 表单中所有字段的值的直接方法：向其传递对表单元素的引用，它会完成剩下的工作。
+FormData API 提供了一种访问 HTML 表单中所有字段的值的直接方法：向其传递对表单元素的引用。
+- `new FormData(refFrom)`：生成表单数据
+- `Object.fromEntries()` 静态方法将键值对列表转换为一个对象。
 
-```js
-
-```
+将这些方法调用链接起来，最后转换成 JSON 字符串：
+- `var jsonData = JSON.stringify(Object.fromEntries(new FormData(event.target)));`
 
 3. 使用 fetch 将数据 POST 到 URL
 
-静态Object.fromEntries()方法将键值对列表转换为对象。
+新建 `Request` 对象，设置 POST 法方法，发送的 `body`，文档标头。
+
+这是完成的代码：
+
+```js
+var form = document.getElementById("example-form");
+
+form.addEventListener('submit',(event) => {
+    event.preventDefault();
+    
+    var url = event.target.action,
+        author = JSON.stringify(Object.fromEntries(new FormData(event.target)));
+    var request = new Request(url, {
+        method: "POST",
+        body: author,
+        headers: new Headers({
+            'Content-Type': 'application/json; charset=UTF-8'
+        })
+    });
+
+    fetch(request)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("response failed!");
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data);
+            console.log(JSON.stringify(data));
+        })
+        .catch(error => {
+            console.log(error);
+        });
+})
+```
 
 
 ## 9 jQuery 入门
