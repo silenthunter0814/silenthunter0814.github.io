@@ -4303,7 +4303,7 @@ summary.apply(book);
 // Output: Secrets of the JavaScript Ninja was written by John Resig.
 ```
 
-当应用这些方法时，$book 和 $summary 之间现在存在连接。 让我们确认一下这到底是什么：
+当应用这些方法时，`book` 和 `summary`` 之间现在存在连接。 让我们确认一下这到底是什么：
 
 ```js
 var book = {
