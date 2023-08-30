@@ -3533,7 +3533,7 @@ FormData API 提供了一种访问 HTML 表单中所有字段的值的直接方�
 
 3. 使用 fetch 将数据 POST 到 URL
 
-新建 `Request` 对象，设置 POST 法方法，发送的 `body`，文档标头。
+新建 `Request` 对象，设置 POST 方法，发送的 `body`，文档标头。
 
 这是完成的代码：
 
