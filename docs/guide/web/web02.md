@@ -3570,8 +3570,73 @@ form.addEventListener('submit',(event) => {
 })
 ```
 
+## 10 `this, bind, call, apply`
+
+`this` 关键字是 JavaScript 中一个非常重要的概念，也是一个特别令人困惑的概念。 在 JavaScript 中，`this` 是对对象的引用。 `this` 引用的对象可以根据它是全局的、在对象上还是在构造函数中隐式地变化，也可以根据 `Function` 原型方法 `bind`, `call`, `apply` 的使用而显式地变化。
+
+### 10.1 `this`
+
+隐式上下文
+有四种主要上下文可以隐式推断 this 的值：
+- `global` 全局上下文
+- 作为对象内的方法
+- 作为函数或类的构造函数
+- 作为 DOM 事件处理程序
+
+全局上下文
+在全局上下文中，`this` 指的是全局对象。 当在浏览器中工作时，全局上下文将是 `window`。 当使用 Node.js 时，全局上下文是 `global`。
+
+`console.log(this);    // Output: Window {0: global, ...}`
+
+可以看到 `this` 是 `window`，是浏览器的全局对象。
+
+函数有自己的变量上下文。 顶级函数内 `this` 仍将保留全局对象 `Window` 的引用。
+
+编写一个顶级函数，或者一个不与任何对象关联的函数，如下所示：
+
+```js
+function fn() {
+    console.log(this);
+}
+fn();    // Output: Window {0: global, ...}
+```
+
+即使在函数内，`this` 仍然引用 `Window` 全局对象。
+
+当使用严格模式时，全局上下文中函数内的 `this` 上下文将是 `undefined`。
+
+```js
+'use strict';
+
+function fn() {
+    console.log(this);
+}
+fn();    // Output: undefined
+```
+
+一般来说，使用严格模式会更安全，以减少出现意外范围的可能性。 很少有人想使用 `this` 来引用窗口对象。
+
+对象方法中的 `this`
+
+方法是对象上的函数，或者对象可以执行的任务。 方法使用 `this` 来引用对象的属性。
+
+```js
+var bard  = {
+    name: "Bard",
+    age: 20,
+    describe() {
+        console.log(`${this.name} is a hero, ${this.age} years old.`);
+    }
+};
+
+bard.describe();
+// Output: Bard is a hero, 20 years old.
+```
+
+在此示例中，`this` 与 `bard` 相同。
+
+在嵌套对象中，`this` 指的是该方法的当前对象范围。
 
 
-
-## 10 END 参考书目
+## 11 END 参考书目
 
