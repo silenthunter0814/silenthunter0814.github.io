@@ -2639,12 +2639,558 @@ section.addEventListener('click', event => {
 单击这些元素中的任何一个都会使用 `event.target` 将相关特定元素的输出返回到控制台。  
 这是非常有用的，因为它允许仅编写一个可用于访问许多嵌套元素的事件侦听器。
 
-## 7 浏览器动画
+## 7 DOM 事件
+
+### 7.1 DOM 事件概述
+
+Event 接口表示 DOM 中发生的事件。
+
+事件可以由用户操作触发，例如 单击鼠标按钮或敲击键盘，或由 API 生成来表示异步任务的进度。 它还可以通过编程方式触发，例如通过调用元素的 HTMLElement.click() 方法，或者定义事件，然后使用 EventTarget.dispatchEvent() 将其发送到指定目标。
+
+可以使用内联属性事件处理程序、属性事件处理程序或 addEventListener() 方法来完成事件设置。 
+
+在下面的代码中，演示了这三种设置事件的模式。 所有三种模式都添加了一个单击事件，每当鼠标单击 html 文档中的 `<div>` 时就会调用该事件。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<body onclick="console.log('fire/trigger attribure event handler')">
+
+<h1>Event Handler</h1>
+<div>click me</div>
+
+<script>
+
+var div = document.querySelector('div');
+
+div.onclick = function(){
+    console.log('fire/trigger property event handler');
+};
+
+div.addEventListener('click',function(){
+    console.log('fire/trigger addEventListener');
+});
+
+</script> 
+</body>
+</html>
+```
+
+虽然将事件附加到 DOM 的所有这三种模式都以编程方式安排事件，但只有 addEventListener() 提供了健壮且有组织的解决方案。 内联属性事件处理程序将 JavaScript 和 HTML 混合在一起，最佳实践建议将这些内容分开。
+
+使用属性事件处理程序的缺点是一次只能将一个值分配给事件属性。 这意味着，在将事件分配为属性值时，您不能向 DOM 节点添加多个属性事件处理程序。 
+
+下面的代码显示了一个示例，它为 onclick 属性分配了两次值，调用事件时使用最后设置的值。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<div>click me</div>
+
+<script>
+
+var div = document.querySelector('div');
+
+div.onclick = function(){
+    console.log('I\'m first, but I get overidden/replace');
+};
+div.onclick = function(){
+    console.log('I win');
+};
+
+</script> 
+</body>
+</html>
+```
+
+### 7.2 DOM 事件类型
+
+元素节点、文档对象和窗口对象的最常见的预定义事件。
+
+- 用户界面事件
+
+
+|      事件类型      |            事件描述            |
+|----------------|----------------------------|
+| Window: load   | 当整个页面加载完毕后，包括所有依赖的资源       |
+| Window: unload | 当用户代理删除资源时                 |
+| Window: error  | 当资源无法加载或无法使用时（例如，脚本出现执行错误） |
+| Window: resize | 当文档视图（窗口）调整大小时             |
+| scroll         | 当用户滚动文档或元素时                |
+| contextmenu    | 当尝试打开上下文菜单时                |
+
+
+### 7.3 事件流
+
+当事件被调用时，事件通过 DOM 流动或传播，在其他节点和 JavaScript 对象上触发相同的事件。  
+事件流可以编程为捕获阶段（即 DOM 树主干到分支）或冒泡阶段（即 DOM 树分支到主干）或两者兼而有之。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<div>click me to start event flow</div>
+
+<script>
+
+window.addEventListener('click', () => console.log(1), true);
+document.addEventListener('click', () => console.log(2), true);
+document.documentElement.addEventListener('click', () => console.log(3), true);
+document.body.addEventListener('click', () => console.log(4), true);
+document.querySelector('div').addEventListener('click', () => console.log(5), true);
+document.querySelector('div').addEventListener('click', () => console.log(6));
+document.body.addEventListener('click', ()=> console.log(7));
+document.documentElement.addEventListener('click', () => console.log(8));
+document.addEventListener('click', () => console.log(9));
+window.addEventListener('click', () => console.log(10));
+
+</script> 
+</body>
+</html>
+```
+
+通常，假设事件是在冒泡阶段调用的。
+
+### 7.4 为 Element 节点、window 对象和 Document 对象添加事件监听器
+
+EventTarget 接口的 addEventListener() 方法设置一个函数，每当指定的事件传递到目标时就会调用该函数。
+
+常见目标是 Element 或其子项、Document 和 Window，但目标可以是支持事件的任何对象。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<div>mouse over me</div>
+
+<script>
+
+window.addEventListener('mousemove', () => {
+    console.log('moving over window');
+}, false);
+
+document.addEventListener('mousemove', () => {
+    console.log('moving over document');
+});
+
+document.querySelector('div').addEventListener('mousemove', () => {
+    console.log('moving over div');
+});
+
+</script> 
+</body>
+</html>
+```
+
+addEventListener() 方法采用三个参数:
+- 侦听的事件类型。 事件类型字符串不包含事件处理程序所需的“on”前缀（即 onmousemove）。 
+- 事件发生时要调用的函数。 
+- 一个布尔值，指示是否应在事件流的捕获阶段或冒泡阶段触发事件。
+
+### 7.5 删除事件监听器
+
+EventTarget 接口的 removeEventListener() 方法从目标中删除先前使用EventTarget.addEventListener() 注册的事件侦听器。  
+使用事件类型、事件监听器函数本身以及可能影响匹配过程的各种可选选项的组合来识别要删除的事件监听器。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<div>click to say hi</div>
+
+<script>
+
+var saying = function() { console.log('hi'); };
+
+document.body.addEventListener('click', function() {
+    console.log('dude');
+});
+document.querySelector('div').addEventListener('click', saying);
+
+document.querySelector('div').removeEventListener('click', saying);
+document.body.removeEventListener('click', function() {
+    console.log('dude');
+});
+
+</script> 
+</body>
+</html>
+```
+
+使用 addEventListener() 方法添加的匿名函数无法删除。
+
+### 7.6 从事件对象获取事件属性
+
+默认情况下，为事件调用的处理程序或回调函数会发送一个参数，其中包含有关事件本身的所有相关信息。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<div>click me</div>
+
+<script>
+
+// PointerEvent > MouseEvent > UIEvent > Event > Object
+document.querySelector('div').addEventListener('click', function(event) {
+    console.log(event);
+});
+
+// Event > Object
+this.addEventListener('load', function(event) {
+    console.log(event);
+});
+
+</script> 
+</body>
+</html>
+```
+
+每个事件都会根据事件类型包含略有不同的属性（例如 MouseEvent，KeyboardEvent，WheelEvent）。
+
+### 7.7 使用 AddEventListener() 时 this 的值
+
+事件侦听器函数内部的 this 值传递给 AddeventListener() 方法将是对附加了事件的节点或对象的引用。  
+在下面的代码中，我将事件附加到 `<div>` ，然后在事件侦听器的内部使用 this 访问附加了事件的 `<div>` 元素。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<div>click me</div>
+
+<script>
+
+var div = document.querySelector('div');
+
+div.addEventListener('click', function() {
+    console.log(this);    // div
+});
+
+</script> 
+</body>
+</html>
+```
+
+当事件作为事件流的一部分调用时，该值将保留为侦听器附加的节点或对象的值。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+
+<div>click me</div>
+
+<script>
+
+var div = document.querySelector('div');
+
+div.addEventListener('click', function() {
+    console.log(this);    // div
+});
+
+document.body.addEventListener('click', function() {
+    console.log(this);    // body
+})
+
+</script> 
+</body>
+</html>
+```
+
+使用 Event.currenttarget 属性获取相同的引用，以调用事件侦听器的节点或对象。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<div>click me</div>
+
+<script>
+
+document.addEventListener('click', (event) => {
+    console.log('document', event.currentTarget);
+})
+
+document.body.addEventListener('click', function(event) {
+    console.log('body', event.currentTarget);
+})
+
+document.querySelector('div').addEventListener('click', function(event) {
+    console.log('div', event.currentTarget);
+});
+
+</script> 
+</body>
+</html>
+```
+
+### 7.8 引用事件的目标 target，而不是调用事件的节点或对象
+
+由于事件流，因此可能会单击 `<div>`，其包含在 `<body>` 元素的内部，并在 `<body>` 元素上附加了单击事件侦听器被调用。发生这种情况时，事件对象传递给附加到 `<body>` 的事件侦听器函数，向事件发起的节点或对象（即目标）提供了引用（即 Event.target）。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+
+<div>click me</div>
+
+<script>
+
+document.body.addEventListener('click', function(event) {
+    console.log(event.currentTarget, event.target);
+});
+
+</script> 
+</body>
+</html>
+```
+
+### 7.9 使用 preventDefault() 取消默认浏览器事件
+
+Event:preventDefault() 方法告诉用户代理，如果事件未明确处理，则不应按照通常的方式采取其默认操作。
+
+在下面的代码中，使用 preventDefault() 可以防止在 `<a>`，`<aput>` 和 `<textarea>` 上发生的默认事件。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+
+<a href="http://google.com">no go</a>
+
+<input type="checkbox" />
+
+<textarea></textarea>
+    
+
+<script>
+
+document.querySelector('a').addEventListener('click', (event) => {
+    event.preventDefault();
+});
+
+document.querySelector('input').addEventListener('click', (event) => {
+    event.preventDefault();
+});
+
+document.querySelector('textarea').addEventListener('keypress', (event) => {
+    event.preventDefault();
+});
+
+document.body.addEventListener('click', () => {
+    console.log('thie event flow still flows!');
+});
+
+</script> 
+</body>
+</html>
+```
+
+- preventDefault() 方法不会阻止事件传播（即冒泡或捕获阶段）。
+
+### 7.10 使用 stopPropagation() 停止事件流
+
+事件接口的 stopPropagation() 方法阻止了捕获和冒泡阶段中当前事件的进一步传播。  
+
+在下面的代码中，连接到 `<body>` 的 ONCLICK 事件永远不会被调用，因为在单击 `<div>` 时，我们阻止了该事件在 DOM 冒泡。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<div>click me</div>    
+
+<script>
+
+const div = document.querySelector('div');
+
+div.addEventListener('click', () => {
+    console.log('me too, but nothing from the event flow!');
+});
+
+div.addEventListener('click', (event) => {
+    console.log('invoked all click events attached, but cancel capture and bubble event phases');
+    event.stopPropagation();
+});
+
+div.addEventListener('click', () => {
+    console.log('me too, but nothing from the event flow!');
+});
+
+document.body.addEventListener('click', () => {
+    console.log('What, denied from being invoked!');
+});
+
+</script> 
+</body>
+</html>
+```
+
+NOTE:
+- 附加到 `<div>` 的其他点击事件仍然被调用。
+- 它不能阻止任何默认行为发生。 例如，单击链接仍在处理。
+
+### 7.11 使用 stopImmediatePropagation() 阻止同一事件的其他听众被调用
+
+如果将几个侦听器连接到同一事件类型的同一元素上，则按添加的顺序调用它们。 如果在一个这样的调用中调用 stopImmediatePropagation()，则不会在该元素或任何其他元素上调用其余的侦听器。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<div>click me</div>    
+
+<script>
+
+const div = document.querySelector('div');
+
+div.addEventListener('click', () => {
+    console.log('I get invoked because I was attached first');
+})
+
+div.addEventListener('click', (event) => {
+    console.log('I get invoked, but stop any other click events on this target');
+    event.stopImmediatePropagation();
+});
+
+div.addEventListener('click', () => {
+    console.log('I get stopped from the previous click event listener');
+});
+
+document.body.addEventListener('click', () => {
+    console.log('What, denied from being invoked!');
+})
+
+</script> 
+</body>
+</html>
+```
+
+### 7.12 自定义事件
+
+使用 CustomEvent 接口自定义事件。该接口从其父级 Event 继承了方法。  
+CustomEvent.detail: 返回初始化事件时传递的任何数据。  
+EventTarget 的 dispatchEvent() 方法将事件发送到对象，以适当的顺序（同步）调用受影响的事件侦听器。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<div>click me</div>    
+
+<script>
+
+const div = document.querySelector('div');
+
+const customEvent = new CustomEvent("awesome", {
+    bubbles: true,
+    detail: { text: "It's awesome!" }
+});
+
+document.body.addEventListener("awesome", (e) => {
+    console.log(e.detail.text);
+});
+
+div.addEventListener('click', function() {
+    this.dispatchEvent(customEvent);
+});
+
+</script> 
+</body>
+</html>
+```
+
+### 7.13 模拟/触发鼠标事件
+
+在模拟鼠标事件的情况下，我们使用 CustomEvent 创建一个“MouseEvent”。 然后，鼠标事件被调度到我们想要模拟事件的元素上（即 html 文档中的 `<div>`）。 在下面的代码中，单击事件附加到页面中的 `<div>`。 不是单击 `<div>` 来调用单击事件，而是通过以编程方式设置鼠标事件并将该事件分派到 `<div>` 来触发或模拟该事件。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<div>no need to click, we programatically trigger it</div>    
+
+<script>
+
+const div = document.querySelector('div');
+
+const customClick = new CustomEvent("click", {
+    detail: { text: () => div.textContent }
+});
+
+div.addEventListener('click', (e) => {
+    console.log(e.detail.text());
+});
+
+div.dispatchEvent(customClick);
+
+</script> 
+</body>
+</html>
+```
+
+### 7.14 事件委托
+
+事件委托是利用事件流和单个事件侦听器来处理多个事件目标的编程行为。  
+想象一下，有一个行数和列数不受限制的表。 使用事件委托，我们可以将单个事件侦听器添加到 `<table>` 节点，该节点充当作为事件初始目标的节点或对象的委托。 
+
+在下面的代码示例中，单击任何 `<td>`（即事件的目标）会将其事件委托给 `<table>` 上的单击侦听器。 这一切都是由于事件流以及在这种特定情况下的冒泡阶段而成为可能的。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<p>Click a table cell</p>
+
+<table border="1">
+    <tbody>
+        <tr><td>row 1 column 1</td><td>row 1 column 2</td></tr>
+        <tr><td>row 2 column 1</td><td>row 2 column 2</td></tr>
+        <tr><td>row 3 column 1</td><td>row 3 column 2</td></tr>
+        <tr><td>row 4 column 1</td><td>row 4 column 2</td></tr>
+        <tr><td>row 5 column 1</td><td>row 5 column 2</td></tr>
+        <tr><td>row 6 column 1</td><td>row 6 column 2</td></tr>
+    </tbody>
+</table>   
+
+<script>
+
+document.querySelector('table').addEventListener('click', (e) => {
+    if (e.target.tagName.toLowerCase() === 'td') {
+        console.log(e.target.textContent);
+    }
+});
+
+</script> 
+</body>
+</html>
+```
+
+## 8 浏览器动画
 
 使用 JavaScript 制作动画时，其中一种方法是 `setTimeout()` 或 `setInterval()` 来定期处理计时器。
 但这些函数在浏览器中效率较低，因此现在首选 `Window.requestAnimationFrame ()`。
 
-### 7.1 使用 setInterval 制作动画
+### 8.1 使用 setInterval 制作动画
 
 要使用 javascript 将元素设置为向右移动 400 像素的动画，基本要做的就是定期将其一次移动 10 像素。
 
@@ -2692,7 +3238,7 @@ function animate(id) {
 animate("animate");
 ```
 
-### 7.2 使用 `requestAnimationFrame` 进行动画处理
+### 8.2 使用 `requestAnimationFrame` 进行动画处理
 
 告诉浏览器希望执行动画，并请求浏览器在下一次重绘之前调用指定的函数来更新动画。该方法采用回调作为参数，在重绘之前调用。
 
@@ -2725,7 +3271,7 @@ animLoop("animate");
 
 
 
-## 8 事件循环和异步操作
+## 9 事件循环和异步操作
 
 JavaScript 是单线程编程语言，具有同步执行模型，可以处理一个又一个操作，但是一次只能处理一条语句。  
 从 API 请求数据之类的操作可能需要不确定的时间，具体取决于请求的数据大小、网络连接速度和其他因素。 如果 API 调用以同步方式执行，则浏览器将无法处理任何用户输入，例如滚动或单击按钮，直到该操作完成。 这称为阻塞。
@@ -2738,12 +3284,12 @@ JavaScript 是单线程编程语言，具有同步执行模型，可以处理一
 - Promise
 - async/await
 
-### 8.1 事件循环
+### 9.1 事件循环
 
 JavaScript 主机环境（浏览器）使用称为事件循环的概念来处理并发或并行事件。  
 JavaScript 一次只能执行一条语句，因此它需要通知事件循环何时执行哪条特定语句。 事件循环使用堆栈和队列的概念来处理此问题。
 
-#### 8.1.1 同步执行和异步执行
+#### 9.1.1 同步执行和异步执行
 
 不使用任何异步 Web API 的 JavaScript 代码将以同步方式执行 - 一次一个、顺序执行：
 
@@ -2796,7 +3342,7 @@ third();
 
 无论将超时设置为 0 秒还是 5 分钟，都没有什么区别——异步代码调用的 `console.log(2)` 将在同步顶级函数之后执行。 
 
-#### 8.1.2 stack 堆栈
+#### 9.1.2 stack 堆栈
 
 堆栈或调用堆栈保存当前正在运行的函数的状态。 JavaScript 将运行堆栈中的当前帧，然后将其删除并移至下一帧。
 
@@ -2814,7 +3360,7 @@ third();
 - 事件循环检查队列中是否有任何挂起的消息，并从 `setTimeout()` 中找到匿名函数，将该函数添加到堆栈中，该堆栈将 `2` 记录到控制台，然后将其从堆栈中删除。
 
 
-#### 8.1.3 queue 队列
+#### 9.1.3 queue 队列
 
 队列也称为消息队列或任务队列，是函数的等待区域。 每当调用堆栈为空时，事件循环就会从最旧的消息开始检查队列中是否有任何等待消息。 一旦找到，它就会将其添加到堆栈中，堆栈将执行消息中的函数。
 
