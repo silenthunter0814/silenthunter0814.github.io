@@ -2313,331 +2313,336 @@ div.style.alignItems = 'center';
 
 如果要对元素应用许多样式更改，最好的做法是将样式应用到样式表中的单独类，然后将该类添加到元素中。 但是，在某些情况下，修改内联样式属性是必要的或更直接的。
 
-### 6.7 理解 JavaScript 中的事件
 
-事件是在浏览器中发生的操作，可以由用户或浏览器本身发起。 以下是网站上可能发生的常见事件的一些示例：
-- 页面加载完成
-- 用户单击按钮
-- 用户将鼠标悬停在下拉菜单上
-- 用户提交表单
-- 用户按下键盘上的某个键
+### 6.7 元素节点几何和滚动几何
 
-通过编写针对事件执行的 JavaScript 响应，开发人员可以向用户显示消息、验证数据、对按钮单击做出反应以及许多其他操作。
+在 Web 浏览器中查看 HTML 文档时，DOM 节点会被解析并绘制为可视形状。 
+为了以编程方式检查并在某些情况下操纵节点的视觉表示和几何测量，存在一组 API 来确定元素节点的几何形状（即使用偏移量的大小和位置），以及用于操作可滚动节点和获取滚动节点值的挂钩。
 
-本节将讨论事件处理程序、事件侦听器和事件对象。 介绍三种不同的编写代码来处理事件的方法，以及一些最常见的事件。
+#### 6.7.1 获取元素相对于 offsetParent 的 offsetTop 和 offsetLeft 值
 
-事件处理程序和事件监听器  
-当用户单击按钮或按下某个键时，会触发一个事件。 这些分别称为单击事件或按键事件。  
-事件处理程序是一个在事件触发时运行的 JavaScript 函数。  
-事件侦听器将响应接口附加到元素，这允许该特定元素等待并“侦听”给定事件的触发。
+使用 offsetTop 和 offsetLeft 属性，我们可以从 offsetParent 获取元素节点的偏移像素值。
 
-可以通过三种方式将事件分配给元素：
-- 内联事件处理程序
-- 事件处理程序属性
-- 事件监听器
+下面代码中的属性 offsetLeft 和 offsetTop 告诉我们 id 为 red 的 `<div>` 距 offsetParent 的顶部和左侧 60px（即本例中的 `<body>` 元素）。
 
-#### 6.7.1 内联事件处理程序属性
-
-从带有按钮的 HTML 页面开始，直接在按钮上添加一个 `onclick` 属性。 属性值将是稍后创建的名为 `changeText()` 的函数。
-
-```html{8,12}
+```html
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Events</title>
+<style>
+body{margin:0;}
+#blue{height:100px;width:100px;background-color:blue;border:10px solid gray; padding:25px;margin:25px;}
+#red{height:50px;width:50px;background-color:red;border:10px solid gray;}
+</style>
 </head>
 <body>
 
-	<button onclick="changeText()">Click me</button>
+<div id="blue"><div id="red"></div></div>
+    
+<script>
 
-	<p>Try to change me.</p>
-    
-  <script src="./events.js"></script>
-    
+var div = document.querySelector('#red');
+
+console.log(div.offsetLeft);   // 60
+console.log(div.offsetTop);   // 60
+console.log(div.offsetParent);   // <body>
+
+</script>
 </body>
 </html>
 ```
 
-创建 `events.js` 文件，在其中，我们将创建 `changeText()` 函数，它将修改 `p` 元素的 `textContent`。
+检查下图，显示代码在浏览器中直观显示的内容，以帮助您了解 offsetLeft 和 offsetTop 值是如何确定的。 图像中显示的红色 `<div>` 距 offsetParent 正好 60 像素。
 
-```js
-const changeText = () => {
-    const p = document.querySelector('p');
-    p.textContent = "I changed because of an inline event handler.";
-}
-```
+![](https://silenthunter0814.github.io/pub/web02/6.1.png)
 
-内联事件处理程序是开始理解事件的直接方法，但它们通常不应该用于测试和教育目的之外的用途。
+请注意，测量的是从红色 `<div>` 元素的外边框到 offsetParent（即 `<body>`）的内边框。
 
-可以将内联事件处理程序与 HTML 元素上的内联 CSS 样式进行比较。 维护单独的类样式表比在每个元素上创建内联样式要实用得多，就像维护完全通过单独的脚本文件处理的 JavaScript 比向每个元素添加处理程序更可行一样。
-
-#### 6.7.2 事件处理程序属性
-
-与内联处理程序非常相似，只是在 JavaScript 中设置元素的属性而不是 HTML。
+如前所述，如果将上面代码中的蓝色 `<div>` 更改为绝对位置，这将改变 offsetParent 的值。  
+在下面的代码中，绝对定位蓝色 `<div>` 将导致从 offsetLeft 和 offsetTop 返回的值报告偏移量（即 25px）。 这是因为偏移父级现在是蓝色的 `<div>` 而不是 `<body>` 。
 
 ```html
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Events</title>
+<style>
+#blue{height:100px;width:100px;background-color:blue;border:10px solid gray; padding:25px;margin:25px;position:absolute;}
+#red{height:50px;width:50px;background-color:red;border:10px solid gray;}
+</style>
 </head>
 <body>
 
-	<button>Click me</button>
+<div id="blue"><div id="red"></div></div>
+    
+<script>
 
-	<p>I will change.</p>
-    
-  <script src="./events.js"></script>
-    
+var div = document.querySelector('#red');
+
+console.log(div.offsetLeft);   // 25
+console.log(div.offsetTop);   // 25
+console.log(div.offsetParent);   // <div id="blue">
+
+</script>
 </body>
 </html>
 ```
 
-我们需要访问 JavaScript 中的按钮元素，然后分配函数引用：
+下面显示的浏览器视图的图像阐明了当 offsetParent 为蓝色 `<div>` 时从 offsetLeft 和 offsetTop 返回的新测量值。
 
-```js
-const changeText = () => {
-    const p = document.querySelector('p');
-    p.textContent = "I changed because of an event handler property.";
-}
+![](https://silenthunter0814.github.io/pub/web02/6.2.png)
 
-const button = document.querySelector('button');
-console.log(button.onclick === null);  // true
-button.onclick = changeText;
-```
+#### 6.7.2 使用 getBoundingClientRect() 获取元素的上、右、下、左边框边缘相对于视口的偏移量
 
-注意：事件处理程序不遵循大多数 JavaScript 代码所遵循的驼峰命名约定。 代码是 `onclick`，而不是 `onClick`。
+使用 getBoundingClientRect() 方法，我们可以获得在浏览器视口中绘制的元素在边框边缘之外相对于视口的上边缘和左边缘的位置。  
+这意味着左边缘和右边缘是从元素的外边框边缘到视口的左边缘进行测量的。 顶部和底部边缘是从元素的外边框边缘到视口的顶部边缘进行测量的。
 
-尝试设置多个单独的 onclick 属性将导致除最后一个之外的所有属性都被覆盖：
-
-```js{12,13}
-const p = document.querySelector('p');
-const button = document.querySelector('button');
-
-const changeText = () => {
-    p.textContext = "Will I change?";
-}
-
-const alterText = () => {
-    alert('Will I alert?');
-}
-
-button.onclick = changeText;
-button.onclick = alterText;
-```
-
-#### 6.7.3 事件监听器
-
-事件侦听器监视元素上的事件。 使用 `addEventListener()` 方法来侦听事件，而不是将事件直接分配给元素上的属性。
-
-`addEventListener()` 采用两个强制参数 - 要侦听的事件和侦听器回调函数。
-
-```js
-const changeText = () => {
-    const p = document.querySelector('p');
-
-    p.textContent = "I changed because of an event listener.";
-}
-
-const button = document.querySelector('button');
-button.addEventListener('click', changeText);
-console.assert(button.onclick === null);
-```
-
-请注意，对于前两种方法，单击事件被称为 `onclick`，但对于事件侦听器，它被称为 `click`。 每个事件侦听器都会从单词中删除 `on`。
-
-可以在同一个元素上设置多个事件侦听器：
-
-```js
-const p = document.querySelector('p');
-const button = document.querySelector('button');
-
-const changeText = () => {
-	p.textContent = "Will I change?";
-}
-
-const alertText = () => {
-	alert('Will I alert?');
-}
-
-button.addEventListener('click', changeText);
-button.addEventListener('click', alertText);
-```
-
-在此示例中，这两个事件都会触发，一旦单击退出警报，就会向用户提供修改后的文本。
-
-通常，将使用匿名函数来代替事件侦听器上的函数引用。 匿名函数是没有命名的函数。
-
-```js
-const button = document.querySelector('button');
-
-button.addEventListener('click', () => {
-    const p = document.querySelector('p');
-    p.textContent = "Will I change?";
-});
-```
-
-还可以使用 `removeEventListener()` 函数从元素中删除一个或所有事件：
-
-`button.removeEventListener('click', alertText);`
-
-此外，还可以在文档 `document` 和窗口 `window` 对象上使用 `addEventListener()`。
-
-事件监听器是目前 JavaScript 中处理事件最常见和首选的方式。
-
-#### 6.7.4 常见事件
-
-1. 鼠标事件  
-涉及单击鼠标按钮或悬停和移动鼠标指针的事件。 这些事件也对应于触摸设备上的等效操作。
-
-
-|   Event    |   Description   |
-|------------|-----------------|
-| click      | 当鼠标在元素上按下并释放时触发 |
-| dblclick   | 当元素被双击时触发       |
-| mouseenter | 当指针进入元素时触发      |
-| mouseleave | 当指针离开元素时触发      |
-| mousemove  | 每次指针在元素内移动时触发   |
-
-`click` 是由组合的 `mousedown` 和 `mouseup` 事件组成的复合事件，分别在按下或抬起鼠标按钮时触发。  
-串联使用 `mouseenter` 和 `mouseleave` 可重新创建悬停效果，只要鼠标指针位于元素上，该效果就会持续存在。
-
-2. 表单事件  
-表单事件是与表单相关的操作，例如选择或取消选择输入元素以及提交表单。
-
-
-| Event  |   Description    |
-|--------|------------------|
-| submit | 提交表单时触发          |
-| focus  | 当元素（例如输入）获得焦点时触发 |
-| blur   | 当元素失去焦点时触发       |
-
-当选择某个元素时（例如，通过单击鼠标或通过 TAB 键导航到该元素）即可获得焦点。
-
-使用 JavaScript 发送表单的优点是不需要重新加载页面即可提交表单，并且 JavaScript 可用于验证所需的输入字段。
-
-3. 键盘事件  
-键盘事件用于处理键盘操作，例如按下键、抬起键和按住键。
-
-
-
-|  Event   |  Description  |
-|----------|---------------|
-| keydown  | 当按下某个键时触发一次   |
-| keyup    | 释放按键时触发一次     |
-| keypress | 当按下产生字符值的键时连续触发 |
-
-注意： `keypress` 已弃用：不再推荐此功能。
-
-键盘事件具有用于访问各个按键的特定属性。
-
-如果将一个称为事件对象的参数传递给事件侦听器，就可以访问有关所发生操作的更多信息。  
-与键盘对象相关的两个属性包括键和代码。
-
-例如，如果用户按下键盘上的字母 `a` 键，则会显示与该键相关的以下属性：
-
-
-| Property | Description | Example |
-|----------|-------------|---------|
-| key      | 代表字符名称      | a       |
-| code     | 代表按下的物理按键   | KeyA    |
-
-编写以下代码：
-
-```js
-document.addEventListener('keydown', event => {
-    console.log('key: ' + event.key);
-    console.log('code: ' + event.code);
-});
-
-/* when press 'a' has output:
-key: a
-code: KeyA
-*/
-```
-
-`key` 属性是字符的名称，可以更改 - 例如，同时按 SHIFT 会得到 `A` 键。 `code` 属性表示键盘上的物理键。
-
-#### 6.7.5 事件对象
-
-`Event` 对象由所有事件都可以访问的属性和方法组成。  
-除了通用的 `Event` 对象之外，每种类型的事件都有自己的扩展，例如 `KeyboardEvent` 和 `MouseEvent`。
-
-`Event` 对象作为参数通过侦听器函数传递。 通常写为 `event` 或 `e`。  
-我们可以访问 `keydown` 事件的 code 属性来复制 PC 游戏的键盘控制：
+在下面的代码中，创建一个 50px X 50px `<div>`，边框为 10px，边距为 100px。 为了获取 `<div>` 每个边框边缘的像素距离，在 `<div>` 上调用 getBoundingClientRect() 方法，该方法返回一个包含 top、right、bottom 和 left 属性的对象。
 
 ```html
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Events</title>
+<style>
+body{margin:0;}
+div{height:50px;width:50px;background-color:red;border:10px solid gray;margin:100px;}
+</style>
 </head>
 <body>
 
-  <p></p>
+<div></div>
+    
+<script>
 
+var rect = document.querySelector('div').getBoundingClientRect();
+
+console.log(rect.top, rect.right, rect.bottom, rect.left);
+
+</script>
 </body>
 </html>
 ```
 
-```js
-document.addEventListener('keydown', event => {
-    var p = document.querySelector('p');
-    var a = 'KeyA',
-        s = 'KeyS',
-        d = 'KeyD',
-        w = 'KeyW';
+下图显示了上述代码的浏览器渲染视图，并添加了一些测量指示器，以准确显示 getBoudingClientRect() 的计算方式。
 
-    switch(event.code) {
-        case a:
-            p.textContent = 'Left';
-            break;
-        case s:
-            p.textContent = 'Down';
-            break;
-        case d:
-            p.textContent = 'Right';
-            break;
-        case w:
-            p.textContent = 'Up';
-            break;
-    }
-        
-});
-```
+![](https://silenthunter0814.github.io/pub/web02/6.3.png)
 
-最常用的事件属性之一是目标(`target`)属性：
+`<div>` 元素的顶部外边框边缘距视口顶部边缘 100 像素。 元素 `<div>` 的右外边框边缘距视口左边缘 170 像素。 元素 `<div>` 的底部外边框边缘距视口顶部边缘 170 像素。 元素 `<div>` 的左外边框边缘距视口左边缘 100px。
+
+#### 6.7.3 获取视口中的元素大小 (border + padding + content)
+
+getBoundingClientRect() 返回一个具有顶部、右侧、底部和左侧属性/值的对象，还具有高度和宽度属性/值。 height 和 width 属性指示元素的大小，其中总大小是通过将 div 的内容、其内边距和边框添加在一起而得出的。
 
 ```html
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Events</title>
-    </head>
-    <body>
-        
-        <section>
-            <div id="one">One</div>
-            <div id="two">Two</div>
-            <div id="three">Three</div>
-        </section>
-        
-    </body>
+<html lang="en">
+<head>
+<style>
+div{height: 25px;width:25px;background-color:red;border:25px solid gray;padding:25px;}
+</style>
+</head>
+<body>
+
+<div></div>
+    
+<script>
+
+var rect = document.querySelector('div').getBoundingClientRect();
+
+console.log(rect.height, rect.width);  // 125 125
+
+// 25px border + 25px padding + 25 content + 25 padding + 25 border = 125
+
+</script>
+</body>
 </html>
 ```
 
-通过使用 `event.target`，我们可以在外部部分元素上放置一个事件侦听器，并获取最深层嵌套的元素（事件目标）:
+还可以使用 offsetHeight 和 offsetWidth 属性找到完全相同的大小值。 在下面的代码中，我利用这些属性来获取 getBoundingClientRect() 提供的相同的精确高度和宽度值。
 
-```js
-const section = document.querySelector('section');
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+div{height: 25px;width:25px;background-color:red;border:25px solid gray;padding:25px;}
+</style>
+</head>
+<body>
 
-section.addEventListener('click', event => {
-    console.log(event.target);
-});
+<div></div>
+    
+<script>
+
+var div = document.querySelector('div');
+
+console.log(div.offsetHeight, div.offsetWidth);  // 125 125
+
+</script>
+</body>
+</html>
 ```
 
-单击这些元素中的任何一个都会使用 `event.target` 将相关特定元素的输出返回到控制台。  
-这是非常有用的，因为它允许仅编写一个可用于访问许多嵌套元素的事件侦听器。
+#### 6.7.4 获取视口中不包括边框的元素大小 (padding + content)
+
+clientWidth 和 clientHeight 属性通过将元素的内容及其填充（不包括边框大小）相加来返回元素的总大小。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+div{height: 25px;width:25px;background-color:red;border:25px solid gray;padding:25px;}
+</style>
+</head>
+<body>
+
+<div></div>
+    
+<script>
+
+var div = document.querySelector('div');
+
+console.log(div.clientHeight, div.clientWidth);  // 75 75
+
+// 2 x 25px padding + 25 content
+
+</script>
+</body>
+</html>
+```
+
+#### 6.7.5 使用 elementFromPoint() 获取视口中特定点的最顶层元素
+
+使用 elementFromPoint() 可以在文档中的特定点获取对 html 文档中最顶层元素的引用。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+div{height:50px;width:50px;background-color:red;position:absolute;top:50px;left:50px;}
+</style>
+</head>
+<body>
+
+<div id="bottom"></div><div id="top"></div>
+    
+<script>
+
+console.log(document.elementFromPoint(50, 50));
+
+</script>
+</body>
+</html>
+```
+
+#### 6.7.6 使用 scrollHeight 和 scrollWidth 获取正在滚动的元素的大小
+
+scrollheight 和 scrollwidth 属性提供滚动节点的高度和宽度。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+*{margin:0;padding:0;}
+div{height:100px;width:100px; overflow:auto;}
+p{height:1000px;width:1000px;background-color:red;}
+</style>
+</head>
+<body>
+
+<div><p></p></div>
+    
+<script>
+
+var div = document.querySelector('div');
+
+console.log(div.scrollHeight, div.scrollWidth);
+
+</script>
+</body>
+</html>
+```
+
+如果要滚动的节点小于滚动区域，使用 clientheight 和 clientwidth 确定可滚动区域中包含的节点的大小。
+
+#### 6.7.7 使用 scrolltop 和 scrollleft 获取和设置滚动像素
+
+- Element.scrollTop 属性获取或设置元素内容垂直滚动的像素数。scrollTop 值是从元素顶部到其最顶部可见内容的距离的度量。
+- Element.scrollLeft 属性获取或设置元素内容从其左边缘滚动的像素数。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+*{margin:0;padding:0;}
+div{height:100px;width:100px; overflow:auto;}
+p{height:1000px;width:1000px;background-color:red;}
+</style>
+</head>
+<body>
+
+<div><p></p></div>
+    
+<script>
+
+var div = document.querySelector('div');
+
+div.scrollTop = 750;
+div.scrollLeft = 750;
+console.log(div.scrollTop, div.scrollLeft);
+
+</script>
+</body>
+</html>
+```
+
+750 报告了像素滚动的数量，并指示左侧的 750PX 在视口中不可查看。
+
+只需将这些属性视为在左侧或顶部的视口中未显示的内容的像素测量值。
+
+#### 6.7.8 使用 scrollintoview() 将元素滚动到视图中
+
+通过选择可滚动的节点中包含的节点，可以使用 ScrollIntoview() 方法告诉所选的节点滚动到视图中。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+div{height:30px;width:30px; overflow:auto;}
+p{background-color:red;}
+</style>
+</head>
+<body>
+
+<div>
+<content>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>6</p>
+<p>7</p>
+<p>8</p>
+<p>9</p>
+<p>10</p>            
+</content>        
+</div>
+    
+<script>
+
+document.querySelector('content').children[4].scrollIntoView(true);
+
+</script>
+</body>
+</html>
+```
+
+参数 true 指示滚动到元素顶部，false 指示滚动到元素底部。
 
 ## 7 DOM 事件
 
