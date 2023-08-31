@@ -4120,6 +4120,32 @@ form.addEventListener('submit',(event) => {
 });
 ```
 
+对于多选项，可以进行如下处理：
+
+```js
+...
+
+    function getJSON(formData) {
+        var obj = Object.create(null);
+
+        formData.forEach((value, key) => {
+            if (obj[key] == null) {
+                obj[key] = value;
+            } else {
+                if (typeof obj[key] === 'object') {
+                    obj[key] = [obj[key]];
+                }
+                obj[key].push(value);
+            }
+        });
+        return JSON.stringify(obj);
+    }
+
+    var user = getJSON(new FormData(event.target)),    
+    var url = event.target.action;
+...
+```
+
 ## 11 `this, bind, call, apply`
 
 `this` 关键字是 JavaScript 中一个非常重要的概念，也是一个特别令人困惑的概念。 在 JavaScript 中，`this` 是对对象的引用。 `this` 引用的对象可以根据它是全局的、在对象上还是在构造函数中隐式地变化，也可以根据 `Function` 原型方法 `bind`, `call`, `apply` 的使用而显式地变化。
