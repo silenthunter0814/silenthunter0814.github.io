@@ -4142,7 +4142,7 @@ form.addEventListener('submit',(event) => {
     }
 
     var user = getJSON(new FormData(event.target)),    
-    var url = event.target.action;
+        url = event.target.action;
 ...
 ```
 
