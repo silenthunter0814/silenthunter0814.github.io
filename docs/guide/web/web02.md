@@ -4129,10 +4129,10 @@ form.addEventListener('submit',(event) => {
         var obj = Object.create(null);
 
         formData.forEach((value, key) => {
-            if (obj[key] == null) {
+            if (obj[key] ==undefined) {
                 obj[key] = value;
             } else {
-                if (typeof obj[key] === 'object') {
+                if (!isArray(obj[key])) {
                     obj[key] = [obj[key]];
                 }
                 obj[key].push(value);
