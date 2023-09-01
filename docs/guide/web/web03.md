@@ -23,7 +23,10 @@ authors: John Resig, Bear Bibeault, Josip Maras
 ## 0 ES6 速查表
 
 1. 模板文字将表达式嵌入到字符串中  
+
+```js
 `${ninja}`
+```
 
 2. 块作用域变量  
   - 使用新的 `let` 关键字创建块级变量：  
