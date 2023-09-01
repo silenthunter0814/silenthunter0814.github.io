@@ -120,3 +120,109 @@ JavaScript 由对象和原型、函数和闭包之间的密切关系组成。其
 - 测试
 - 性能分析
 
+#### 1.3.1 调试
+调试 JavaScript 过去意味着使用警报来验证变量的值。 幸运的是，调试 JavaScript 代码的能力已得到显着提高。
+
+Chrome DevTools 是一组直接内置于 Google Chrome 浏览器中的 Web 开发人员工具。 DevTools 可以帮助您即时编辑页面并快速诊断问题，最终帮助您更快地构建更好的网站。
+
+#### 1.3.2 测试
+
+测试的主要工具是断言函数，其目的是断言前提是真还是假。 通过指定断言，可以检查代码是否按预期运行。
+
+1. index.html
+
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Test Suite</title>
+        <meta charset="utf-8">
+        
+        <script src="./assert.js"></script>
+        <link rel="stylesheet" type="text/css" href="./assert.css">
+        
+    </head>
+    <body>
+        
+        <script src="./ninja.js"></script>
+    </body>
+</html>
+```
+
+2. assert.css
+
+```css
+body {
+	font-family: sans-serif;
+	font-size: 12pt;
+}
+
+#results {
+	background-color: #e0e0e0;
+	border-radius: 1em;
+	padding: 1em;
+	list-style-position: inside;
+}
+
+#results li {
+	margin-bottom: 0.2em;
+}
+
+#results li.pass {
+	color: green;
+}
+
+#results li.fail {
+	color: red;
+	text-decoration: line-through;
+}
+```
+
+3. assert.js
+
+```js
+function assert(value, text) {
+    var li = document.createElement("li");
+    li.className = value ? "pass" : "fail";
+    li.appendChild(document.createTextNode(text));
+    var results = document.getElementById("results");
+    if (!results) {
+        results = document.createElement("ul");
+        results.setAttribute('id','results');
+        document.body.appendChild(results);
+    }
+    results.appendChild(li);
+}
+
+function pass(text) { assert(true, text); }
+function fail(text) { assert(false, text); }
+function report(text) { pass(text); }
+```
+
+4. ninja.js
+
+```js
+window.onload = function() {
+    assert(true, "The test suite is running.");
+    assert(false, "Fail!");
+};
+```
+
+#### 1.3.3 性能分析
+
+我们将在本书后面使用如下代码来收集性能信息：
+
+```js{4,11}
+var maxCount = 5e7,
+    sum = 0.0;
+
+console.time("My operation");
+
+for(let n = 0; n < maxCount; n++) {
+    /* perform the operation to be measured */
+    sum += n * 0.01;
+}
+
+console.timeEnd("My operation");
+```
+
