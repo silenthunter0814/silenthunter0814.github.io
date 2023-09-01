@@ -12,7 +12,6 @@ authors: John Resig, Bear Bibeault, Josip Maras
 - 油管: https://youtube.com/@silenthunter0814
 - B 站：https://space.bilibili.com/1551957972
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/MC9WIS_Spr4?si=z3sZ25mHE37bEhX_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ---  
 <details>
