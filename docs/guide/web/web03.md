@@ -562,3 +562,148 @@ console.log(flight.hasOwnProperty('number'));
 console.log(!flight.hasOwnProperty('constructor'));
 ```
 
+### 3.7 Enumeration 枚举
+
+`for in` 语句可以循环遍历对象中的所有属性名称。 枚举将包括所有属性 - 包括您可能不感兴趣的函数和原型属性 - 因此有必要过滤掉您不想要的值。 最常见的过滤器是 `hasOwnProperty` 方法并使用 `typeof` 来排除函数：
+
+```js
+for (let name in another_stooge) {
+    if (typeof another_stooge[name] !== 'function') {
+        document.writeln(name + ': ' + another_stooge[name]);
+    }
+}
+```
+
+无法保证名称的顺序，因此请做好名称以任何顺序出现的准备。 如果要确保属性按特定顺序出现，最好完全避免使用 `for in` 语句，而是创建一个包含正确顺序的属性名称的数组：
+
+```js
+var properties = [
+    'first-name',
+    'middle-name',
+    'last-name',
+    'profession'
+];
+for (let i = 0; i < properties.length; i += 1) {
+    document.writeln(properties[i] + ': ' +
+                    another_stooge[properties[i]]);
+}
+```
+
+通过使用 `for` 而不是 `for in`，我们能够获得我们想要的属性，而不必担心可能会从原型链中挖掘出什么，并且我们以正确的顺序获得了它们。
+
+### 3.8 Delete
+
+删除运算符可用于从对象中删除属性。 如果对象有属性，它将从该对象中删除该属性。 它不会触及原型链接中的任何对象。
+
+从对象中删除属性可能会让原型链接中的属性显现出来：
+
+```js
+stooge.nickname = 'Curly';
+another_stooge.nickname = 'Moe';
+
+delete another_stooge.nickname;
+another_stooge.nickname    // 'Curly'
+```
+
+### 3.9 Global Abatement 减少全局变量
+
+JavaScript 可以轻松定义可以保存应用程序所有资源的全局变量。 不幸的是，全局变量削弱了程序的弹性，应该避免。
+
+最小化全局变量的使用的一种方法是为您的应用程序创建一个全局变量：
+
+`var MYAPP = {};`
+
+然后该变量将成为您的应用程序的容器：
+
+```js
+var MYAPP = {};
+
+MYAPP.stooge = {
+    "first-name": "Joe",
+    "last-name": "Howard"
+};
+
+MYAPP.flight = {
+    airline: "Oceanic",
+    number: 815,
+    departure: {
+        IATA: "SYD",
+        time: "2004-09-22 14:55",
+        city: "Sydney"
+    },
+    arrival: {
+        IATA: "LAX",
+        time: "2004-09-23 10:42",
+        city: "Los Angeles"
+    }
+};
+```
+
+通过将全局变量减少到一个名称，可以显着减少与其他应用程序、小部件或库发生不良交互的可能性。 程序也变得更易于阅读，因为很明显 MYAPP.stooge 指的是顶级结构。 在下一章中，我们将看到使用闭包进行信息隐藏的方法，这是另一种有效的全局消除技术。
+
+## 4 Functions 
+
+函数包含一组语句。 函数是 JavaScript 的基本模块化单元。 它们用于代码重用、信息隐藏和组合。 函数用于指定对象的行为。 一般来说，编程技巧是将一组需求分解为一组函数和数据结构。
+
+### 4.1 Function Objects 函数对象
+
+JavaScript 中的函数是对象。 对象是具有到原型对象的隐藏链接的名称/值对的集合。 从对象字面量生成的对象链接到 Object.prototype。 函数对象链接到 Function.prototype （它本身链接到 Object.prototype）。 每个函数还创建了两个附加的隐藏属性：函数的上下文和实现函数行为的代码。
+
+每个函数对象也是使用原型属性创建的。 它的值是一个具有构造函数属性的对象，其值为函数。 这与 Function.prototype 的隐藏链接不同。 这种复杂结构的含义将在下一章中揭示。
+
+由于函数是对象，因此可以像任何其他值一样使用它们。 函数可以存储在变量、对象和数组中。 函数可以作为参数传递给函数，并且函数可以从函数返回。 此外，由于函数是对象，因此函数可以具有方法。
+
+函数的特殊之处在于它们可以被调用。
+
+### 4.2 Function Literal 函数字面量
+
+函数对象是用函数文字创建的：
+
+```js
+var add = function (a, b) {
+    return a + b;
+};
+```
+
+函数文字有四个部分。 第一部分是保留字 `function`。
+
+可选的第二部分是函数的名称。 该函数可以使用其名称来递归调用自身。 调试器和开发工具也可以使用该名称来识别该函数。 如果函数没有给出名称，如前面的示例所示，则称该函数是匿名的。
+
+第三部分是函数的参数集，用括号括起来。 括号内是一组零个或多个参数名称，以逗号分隔。 这些名称将在函数中定义为变量。 与普通变量不同，它们不会被初始化为未定义，而是被初始化为调用函数时提供的实参。
+
+第四部分是一组用花括号括起来的语句。 这些语句是函数的主体。 它们在调用函数时执行。
+
+函数文字可以出现在表达式可以出现的任何地方。 函数可以在其他函数内部定义。 内部函数当然可以访问其参数和变量。 内部函数还可以访问其嵌套函数的参数和变量。 由函数文字创建的函数对象包含到该外部上下文的链接。 这称为闭包。 这是巨大表现力的源泉。
+
+### 4.3 Invocation 调用
+
+调用函数会暂停当前函数的执行，并将控制权和参数传递给新函数。 除了声明的参数之外，每个函数还接收两个附加参数：this 和arguments。 this参数在面向对象编程中非常重要，它的值由调用模式决定。 JavaScript中有四种调用模式：方法调用模式、函数调用模式、构造函数调用模式和 `apply` 调用模式。 这些模式的不同之处在于额外参数的初始化方式。
+
+调用运算符是一对括号，位于生成函数值的任何表达式之后。 括号可以包含零个或多个表达式，以逗号分隔。 每个表达式产生一个参数值。 每个参数值都将分配给函数的参数名称。 当实参数量和形参数量不匹配时，不会出现运行时错误。 如果参数值太多，多余的参数值将被忽略。 如果参数值太少，未定义的值将替换缺失的值。 对参数值没有类型检查：任何类型的值都可以传递给任何参数。
+
+#### 4.3.1 方法调用模式
+
+当函数存储为对象的属性时，我们将其称为方法。 当调用方法时， `this` 会绑定到该对象。 如果调用表达式包含细化（即 .dot 表达式或 [下标] 表达式），则将其作为方法调用：
+
+```js
+/*
+创建 myObject. 它有一个值和一个增量方法。 增量方法采用可选参数。 如果参数不是数字，则使用 1 作为默认值。
+*/
+
+var myObject = {
+    value: 0,
+    increment: function (inc) {
+        this.value += typeof inc === 'number' ? inc : 1;
+    }
+};
+
+myObject.increment();
+document.writeln(myObject.value);    // 1
+
+myObject.increment(2);
+document.writeln(myObject.value);    // 3
+```
+
+方法可以使用 `this` 来访问对象，以便它可以从对象中检索值或修改对象。 `this` 到对象的绑定发生在调用时。 这种非常晚的绑定使得使用这种方法的函数具有高度的可重用性。 从 `this` 中获取对象上下文的方法称为公共方法。
+
+#### 4.3.2 函数调用模式
