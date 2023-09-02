@@ -323,3 +323,73 @@ Table 2-1. Operator precedence
 ---  
 ![](https://silenthunter0814.github.io/pub/web03/2.23.png)
 
+`typeof` 生成的值有 `“number”`、`“string”`、`“boolean”`、`“undefined”`、`“function”`和 `“object”`。 如果判断数组，需要使用 `Array.isArray(arr)` 进行判断。
+
+如果 `!` 的操作数是 `true`，它会产生 `false`。 否则，它产生 `true`。
+
+`+` 运算符进行算术加法或连接。 如果您希望它相加，请确保两个操作数都是数字。
+
+即使两个操作数都是整数，`/` 运算符也可以产生非整数结果。
+
+如果第一个操作数为假，&& 运算符将生成其第一个操作数的值。 否则，它生成第二个操作数的值。
+
+![](https://silenthunter0814.github.io/pub/web03/2.24.png)
+
+`||` 如果第一个操作数为真，则运算符生成其第一个操作数的值。 否则，它生成第二个操作数的值。
+
+![](https://silenthunter0814.github.io/pub/web03/2.25.png)
+
+调用会导致函数值的执行。 调用运算符是函数值后面的一对括号。 括号可以包含将传递给函数的参数。 第 4 章将详细介绍函数。
+
+![](https://silenthunter0814.github.io/pub/web03/2.26.png)
+
+细化用于指定对象或数组的属性或元素。 这将在下一章中详细描述。
+
+### 2.7 Literals 文字/字面量
+
+对象字面量是指定新对象的一种方便的表示法。 属性的名称可以指定为名称或字符串。 下一章将详细介绍对象字面量。
+
+![](https://silenthunter0814.github.io/pub/web03/2.27.png)
+
+![](https://silenthunter0814.github.io/pub/web03/2.28.png)
+
+![](https://silenthunter0814.github.io/pub/web03/2.29.png)
+
+数组文字是指定新数组的便捷表示法。 第 6 章将详细介绍数组文字。
+
+![](https://silenthunter0814.github.io/pub/web03/2.30.png)
+
+第 7 章将详细介绍正则表达式。
+
+### 2.8 Functions 函数
+
+![](https://silenthunter0814.github.io/pub/web03/2.31.png)
+
+![](https://silenthunter0814.github.io/pub/web03/2.32.png)
+
+![](https://silenthunter0814.github.io/pub/web03/2.33.png)
+
+函数字面量定义函数值。 它可以有一个可选名称，可以用来递归地调用自身。 它可以指定一个参数列表，这些参数将充当由调用参数初始化的变量。 函数体包括变量定义和语句。 第 4 章将详细介绍函数。
+
+## Object 对象
+
+JavaScript 的简单类型有数字、字符串、布尔值（`true` 和 `false`）、`null` 和 `undefined`。 所有其他值都是对象。 数字、字符串和布尔值与对象类似，因为它们具有方法，但它们是不可变的。 JavaScript 中的对象是可变键控集合。 在 JavaScript 中，数组是对象，函数是对象，正则表达式是对象，当然，对象也是对象。
+
+对象是属性的容器，其中属性具有名称和值。 属性名称可以是任何字符串，包括空字符串。 属性值可以是除未定义之外的任何 JavaScript 值。
+
+JavaScript 中的对象是无类的。 新属性的名称或属性的值没有限制。 对象对于收集和组织数据很有用。 对象可以包含其他对象，因此它们可以轻松表示树或图结构。
+
+JavaScript 包含原型链接功能，允许一个对象继承另一个对象的属性。 如果使用得当，这可以减少对象初始化时间和内存消耗。
+
+### 3.1 对象字面量
+
+对象字面量为创建新对象值提供了非常方便的表示法。 对象字面量是一对围绕零个或多个名称/值对的大括号。 对象字面量可以出现在表达式可以出现的任何地方：
+
+```js
+var empty_object = {};
+
+var stooge = {
+    "first-name": "Jerome",
+    "last-name": "Howard"
+};
+```
