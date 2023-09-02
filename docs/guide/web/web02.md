@@ -4132,7 +4132,7 @@ form.addEventListener('submit',(event) => {
             if (obj[key] === undefined) {
                 obj[key] = value;
             } else {
-                if (!isArray(obj[key])) {
+                if (!Array.isArray(obj[key])) {
                     obj[key] = [obj[key]];
                 }
                 obj[key].push(value);

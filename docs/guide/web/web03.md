@@ -317,6 +317,9 @@ Table 2-1. Operator precedence
 | >= <= > <               | 关系          |
 | === !==                 | 相等于         |
 | &&                      | 逻辑与         |
-| ||                      | 逻辑或         |
+| `||`                      | 逻辑或         |
 | ?:                      | 三元          |
+
+---  
+![](https://silenthunter0814.github.io/pub/web03/2.23.png)
 
