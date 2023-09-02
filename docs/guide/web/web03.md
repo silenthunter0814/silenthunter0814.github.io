@@ -371,7 +371,7 @@ Table 2-1. Operator precedence
 
 函数字面量定义函数值。 它可以有一个可选名称，可以用来递归地调用自身。 它可以指定一个参数列表，这些参数将充当由调用参数初始化的变量。 函数体包括变量定义和语句。 第 4 章将详细介绍函数。
 
-## Object 对象
+## 3 Object 对象
 
 JavaScript 的简单类型有数字、字符串、布尔值（`true` 和 `false`）、`null` 和 `undefined`。 所有其他值都是对象。 数字、字符串和布尔值与对象类似，因为它们具有方法，但它们是不可变的。 JavaScript 中的对象是可变键控集合。 在 JavaScript 中，数组是对象，函数是对象，正则表达式是对象，当然，对象也是对象。
 
@@ -393,3 +393,118 @@ var stooge = {
     "last-name": "Howard"
 };
 ```
+
+属性的名称可以是任何字符串，包括空字符串。 如果属性名称是合法的 JavaScript 名称而不是保留字，则对象字面量中属性名称周围的引号是可选的。 因此“first-name”周围需要引号，但first_name 周围的引号是可选的。 逗号用于分隔键值对属性。
+
+属性的值可以从任何表达式获取，包括另一个对象文字。 对象可以嵌套：
+
+```js
+var flight = {
+    airline: "Oceanic",
+    number: 815,
+    departure: {
+        IATA: "SYD",
+        time: "2004-09-22 14:55",
+        city: "Sydney"
+    },
+    arrival: {
+        IATA: "LAX",
+        time: "2004-09-23 10:42",
+        city: "Los Angeles"
+    }
+};
+```
+
+### 3.2 Retrieval 对象访问
+
+通过将字符串表达式包装在 `[ ]` 后缀中，可以从对象中检索值。 如果字符串表达式是字符串文字，并且它是合法的 JavaScript 名称而不是保留字，则可以使用 `.` 记号代替。 `.` 运算符是首选表示法，因为它更紧凑并且读起来更好：
+
+```js
+stooge["first-name"]    //"Jerome"
+flist.departure.IATA    // "SYD"
+```
+
+如果尝试检索不存在的成员，则会生成未定义的值：
+
+```js
+stooge["middle-name"]    // undefined
+flight.status            // undefined
+stooge["FIRST-NAME"]     // undefined
+```
+
+`||` 运算符可用于填充默认值：
+
+```js
+var middle = stooge["middle-name"] || "(none)";
+var status = flight.status || "unknown";
+```
+
+尝试从未定义中检索值将引发 TypeError 异常。 可以使用 `&&` 运算符来防止这种情况：
+
+```js
+flight.equipment    // undefined
+flight.equipment.model    // throw "TypeError"
+flight.equipment && flight.equipment.model     // undefined
+```
+
+### 3.3 Update 属性更新
+
+对象中的值可以通过赋值来更新。 如果属性名称已存在于对象中，则替换属性值：  
+`stooge['first-name'] = 'Jerome';`
+
+如果该对象尚不具有该属性名称，则该对象将被增加新属性：
+
+```js
+stooge['middle-name'] = 'Lester';
+stooge.nickname = 'Curly';
+flight.equipment = {
+    model: 'Boeing 777'
+};
+flight.status = 'overdue';
+```
+
+### 3.4 Reference 引用
+
+对象通过引用传递。 它们永远不会被复制：
+
+```js
+var stooge = {};
+var x = stooge;
+x.nickname = 'Curly';
+var nick = stooge.nickname;
+console.assert(nick === x.nickname);
+
+var a = {}, b = {}, c = {};
+console.assert(a !== b);
+
+a = b = c = {};
+console.assert(a === b);
+```
+
+### 3.5 Prototype 原型
+
+每个对象都链接到一个原型对象，它可以从中继承属性。 所有从对象字面量创建的对象都链接到 `Object.prototype`，这是 JavaScript 的标准对象。
+
+当创建一个新对象时，可以选择应该作为其原型的对象。 JavaScript 提供的执行此操作的机制混乱而复杂，但可以显着简化。 我们将向 Object 函数添加一个 `create` 方法。 `create` 方法创建一个使用旧对象作为其原型的新对象。 下一章将详细介绍函数。
+
+```js
+/* JavaScript 已提供此静态方法： Object.create() */
+
+if (typeof Object.create !== 'function') {
+    Object.create = function (o) {
+        var F = function () {};
+        F.prototype = o;
+        return new F();
+    };
+}
+var another_stooge = Object.create(stooge);
+```
+
+原型链接对更新没有影响。 当我们对一个对象进行更改时，该对象的原型不会被触及：
+
+```js
+another_stooge['first-name'] = 'Harry';
+another_stooge['middle-name'] = 'Moses';
+another_stooge.nickname = 'Moe';
+```
+
