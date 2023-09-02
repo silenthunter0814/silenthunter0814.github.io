@@ -508,3 +508,57 @@ another_stooge['middle-name'] = 'Moses';
 another_stooge.nickname = 'Moe';
 ```
 
+原型链接仅用于检索。 如果我们尝试从对象中检索属性值，并且该对象缺少属性名称，则 JavaScript 会尝试从原型对象中检索属性值。 如果该对象缺少该属性，则它将转到其原型，依此类推，直到该过程最终以 `Object.prototype` 触底。 如果所需的属性在原型链中不存在，则结果是未定义的值。 这称为委托 (delegation)。
+
+原型关系是一种动态关系。 如果我们向原型添加一个新属性，该属性将立即在基于该原型的所有对象中可见：
+
+```js
+stooge.profession = 'actor';
+another_stooge.profession    // 'actor'
+```
+
+我们将在第 6 章中看到更多关于原型链的内容。
+
+### 3.6 Reflection 反射
+
+通过尝试检索属性并检查获得的值，可以轻松检查对象以确定其具有哪些属性。 `typeof` 运算符对于确定属性的类型非常有帮助：
+
+```js
+var flight = {
+    airline: "Oceanic",
+    number: 815,
+    departure: {
+        IATA: "SYD",
+        time: "2004-09-22 14:55",
+        city: "Sydney"
+    },
+    arrival: {
+        IATA: "LAX",
+        time: "2004-09-23 10:42",
+        city: "Los Angeles"
+    }
+};
+flight.status = 'overdue';
+
+console.log(typeof flight.number === 'number');
+console.log(typeof flight.status === 'string');
+console.log(typeof flight.arrival === 'object');
+console.log(typeof flight.manifest === 'undefined');
+```
+
+必须小心，因为原型链上的任何属性都可以产生一个值：
+
+```js
+console.log(typeof flight.toString === 'function');
+console.log(typeof flight.constructor === 'function');
+```
+
+有两种方法可以处理这些不需要的属性。 第一个是让您的程序查找并拒绝函数值。 一般来说，当您反思时，您对数据感兴趣，因此您应该意识到某些值可能是函数。
+
+另一种方法是使用 `hasOwnProperty` 方法，如果对象具有特定属性，该方法将返回 `true`。 `hasOwnProperty` 方法不查看原型链：
+
+```js
+console.log(flight.hasOwnProperty('number'));
+console.log(!flight.hasOwnProperty('constructor'));
+```
+
