@@ -87,11 +87,84 @@ Function.prototype.method = function (name, func) {
 
 本章中介绍的优秀部分的语法比整个语言的语法要简单得多。
 
-### 2.1 Whitespace
+### 2.1 Whitespace 空白字符
 
 空白可以采用格式化字符或注释的形式。 空格通常无关紧要，但有时需要使用空格来分隔字符序列，否则这些字符序列将组合成单个标记。 例如，在：
 
 `var that = this;`
 
 `var` 和 `that` 之间的空格不能去掉，但其他空格可以去掉。
+
+![](https://silenthunter0814.github.io/pub/web03/2.1.png)
+
+JavaScript 提供两种形式的注释，以 `/* */` 形成的块注释和以 `//` 开头的行结束注释。
+
+块注释对于注释代码块并不安全。 例如：
+
+```js
+/*
+    var rm_a = /a*/.match(s);
+*/
+```
+
+将导致语法错误。
+
+### 2.2 Names 名称
+
+名称是一个字母，可选后跟一个或多个字母、数字或下划线。
+
+![](https://silenthunter0814.github.io/pub/web03/2.2.png)
+
+`$` 应被视作字符，可位于名称的任何位置。
+
+名称用于语句、变量、参数、属性名称、运算符和标签。
+
+### 2.3 Numbers 数字
+
+![](https://silenthunter0814.github.io/pub/web03/2.3.png)
+
+JavaScript 有单一数字类型。 在内部，它表示为 64 位浮点数。  
+它没有单独的整数类型，因此 1 和 1.0 是相同的值。
+
+`console.log(1.0 === 1);  // true`
+
+![](https://silenthunter0814.github.io/pub/web03/2.4.png)
+
+如果数字文字具有指数部分，则文字的值是通过将 `e` 之前的部分乘以 10 的 `e` 后面部分的幂来计算的。 所以 100 和 `1e2` 是相同的数字。
+
+负数可以通过使用 `-` 前缀运算符形成。
+
+`NaN` 值是一个数字值，它是无法产生正常结果的运算的结果。 `NaN` 不等于任何值，包括其本身。 可以使用 `isNaN(number)` 函数检测 NaN。
+
+值 `Infinity` 表示大于 1.79769313486231570e+308 的所有值。
+
+数字有方法（参见第 8 章）。 JavaScript 有一个 `Math` 对象，其中包含一组作用于数字的方法。 例如，`Math.floor(number)` 方法可用于将数字转换为整数。
+
+### 2.4 Strings 字符串
+
+字符串文字可以用单引号或双引号引起来。 它可以包含零个或多个字符。 `\`（反斜杠）是转义字符。 JavaScript 是在 Unicode 是 16 位字符集的时候构建的，因此 JavaScript 中的所有字符都是 16 位宽。
+
+现代浏览器大多设置为变长字符集：`charset="utf-8"`。这意味着字符可以是 8 位， 16 位或 32 位。
+
+JavaScript 没有字符类型。 要表示一个字符，请创建一个仅包含一个字符的字符串。
+
+![](https://silenthunter0814.github.io/pub/web03/2.5.png)
+
+![](https://silenthunter0814.github.io/pub/web03/2.6.png)
+
+转义序列允许将通常不允许的字符插入到字符串中，例如反斜杠、引号和控制字符。 `\u` 约定允许以数字方式指定字符代码点。  
+`console.log("A" === "\u0041");  // true`
+
+字符串具有长度属性。 例如：  
+`console.log("seven".length === 5);  // true`
+
+字符串是不可变的。 一旦制作完成，字符串就永远无法更改。 但是通过使用 `+` 运算符将其他字符串连接在一起可以很容易地创建一个新字符串。
+
+包含完全相同且顺序相同的字符的两个字符串被认为是同一个字符串。 所以：  
+`console.log('c' + 'a' + 't' === 'cat');`
+
+是真。
+
+字符串有方法（参见第 8 章）：
+`console.log('cat'.toUpperCase() === 'CAT');  // true`
 
