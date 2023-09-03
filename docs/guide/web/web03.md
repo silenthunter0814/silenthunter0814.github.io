@@ -708,3 +708,246 @@ document.writeln(myObject.value);    // 3
 方法可以使用 `this` 来访问对象，以便它可以从对象中检索值或修改对象。 `this` 到对象的绑定发生在调用时。 这种非常晚的绑定使得使用这种方法的函数具有高度的可重用性。 从 `this` 中获取对象上下文的方法称为公共方法。
 
 #### 4.3.2 函数调用模式
+
+当函数不是对象的属性时，则将其作为函数调用：
+
+```js
+var add = function (a, b) {
+    return a + b;
+};
+
+var sum = add(3, 4);    // 7
+```
+
+当使用此模式调用函数时， `this` 会绑定到全局对象。 这是语言设计中的一个错误。 如果语言设计正确，当调用内部函数时，`this` 仍然会绑定到外部函数的 `this` 变量。 此错误的结果是方法无法使用内部函数来帮助其完成工作，因为内部函数不共享该方法对对象的访问权限，因为它的 this 绑定到了错误的值。 幸运的是，有一个简单的解决方法。 如果该方法定义了一个变量并为其分配了 `this` 的值，则内部函数将可以通过该变量访问 `this`。 按照惯例，该变量的名称是 `that`：
+
+```js
+var add = function (a, b) {
+    return a + b;
+};
+
+var myObject = {
+    value: 0,
+    increment: function (inc) {
+        this.value += typeof inc === 'number' ? inc : 1;
+    }
+};
+/* ------------------------------------------- */
+// Augment myObject with a double method.
+
+myObject.double = function () {
+    var that = this;    // workaround.
+
+    var helper = function() {
+        that.value = add(that.value, that.value);
+    };
+
+    helper();    // Invoke helper as a function.
+};
+myObject.increment();
+document.writeln(myObject.value);    // 1
+myObject.increment(2);
+document.writeln(myObject.value);    // 3
+
+// Invoke double as a method.
+myObject.double();
+document.writeln(myObject.value);    // 6
+```
+
+#### 4.3.3 构造函数调用模式
+
+JavaScript 是一种原型继承语言。 这意味着对象可以直接从其他对象继承属性。
+
+如果使用 `new` 前缀调用函数，则会创建一个新对象，其中包含指向函数原型成员值 (prototype) 的隐藏链接，并且 `this` 将绑定到该新对象。
+
+`new` 前缀还改变了 `return` 语句的行为。 接下来我们将看到更多相关内容。
+
+```js
+/*
+创建一个名为 Quo 的构造函数。它创建一个具有 status 属性的对象。
+*/
+
+var Quo = function (string) {
+    this.status = string;
+};
+
+// Give all instances of Quo a public method called get_status
+Quo.prototype.get_status = function () {
+    return this.status;
+};
+
+// Make an instance of Quo.
+var myQuo = new Quo("confused");
+
+document.writeln(myQuo.get_status());    // confused
+```
+
+旨在与 `new` 前缀一起使用的函数称为构造函数。 按照惯例，它们保存在名称大写的变量中。 如果在没有 `new` 前缀的情况下调用构造函数，则可能会在没有编译时或运行时警告的情况下发生非常糟糕的事情，因此大小写约定非常重要。
+
+不建议使用这种风格的构造函数。 我们将在下一章中看到更好的替代方案。
+
+#### 4.3.4 Apply 调用模式
+
+因为 JavaScript 是一种函数式面向对象语言，所以函数可以有方法。
+
+`apply` 方法让我们可以构造一个参数数组来调用函数。 它还可以让我们选择 `this` 的值。 `apply` 方法有两个参数。 第一个是应该绑定的 `this` 值。 第二个是参数数组。
+
+```js{6,23}
+var add = function (a, b) {
+    return a + b;
+};
+
+var array = [3, 4];
+var sum = add.apply(null, array);    // sum is 7
+document.writeln(sum);
+
+/*
+statusObject 不是继承自 Quo.prototype，但是即使 statusObject 没有 get_status 方法，
+我们也可以调用 statusObject 上的 get_status 方法。
+*/
+var Quo = function (string) {
+    this.status = string;
+};
+Quo.prototype.get_status = function () {
+    return this.status;
+};
+
+var statusObject = {
+    status: 'A-OK'
+};
+var status = Quo.prototype.get_status.apply(statusObject);
+document.writeln(status);
+```
+
+### 4.4 Arguments 参数数组
+
+调用函数时可以使用的一个额外参数是参数数组。 它使函数可以访问调用时提供的所有参数，包括未分配给参数的多余参数。 这使得编写带有未指定数量的参数的函数成为可能：
+
+```js
+/*
+创建一个添加很多东西的函数。
+请注意，在函数内部定义变量 sum 不会干扰函数外部定义的 sum。 
+该函数只能看到内部变量 sum。
+*/
+
+var sum = function () {
+    var i, sum = 0;
+    
+    for (i = 0; i < arguments.length; i += 1) {
+        sum += arguments[i];
+    }
+    return sum;
+};
+
+document.writeln(sum(4, 8, 15, 16, 23, 42));    // 108
+```
+
+这不是一个特别有用的模式。 在第 6 章中，我们将看到如何向数组添加类似的方法。
+
+由于设计错误，`arguments` 并不是真正的数组。 它是一个类似数组的对象。 `arguments` 有一个 `length` 属性，但它缺少所有数组方法。 我们将在本章末尾看到该设计错误的后果。
+
+### 4.5 Return 返回语句
+
+当调用函数时，它从第一个语句开始执行，并在遇到关闭函数体的 `}` 时结束。 这会导致函数将控制权返回给调用该函数的程序部分。
+
+`return` 语句可用于使函数提前返回。 当执行 `return` 时，函数立即返回，而不执行剩余的语句。
+
+函数总是返回一个值。 如果未指定返回值，则返回 `undefined`。
+
+如果使用 `new` 前缀调用该函数并且返回值不是对象，则返回 `this` （新对象）。
+
+### 4.6 Exceptions 异常
+
+JavaScript 提供了异常处理机制。 异常是不寻常的（但并非完全意外的）事故，会干扰程序的正常流程。 当检测到此类事故时，您的程序应该抛出异常：
+
+```js
+var add = function (a, b) {
+    if (typeof a !== 'number' || typeof b !== 'number') {
+        throw {
+            name: 'TypeError',
+            message: 'add needs numbers'
+        };
+    }
+    return a + b;
+}
+```
+
+`throw` 语句中断函数的执行。 应该给它一个异常对象，其中包含标识异常类型的名称属性和描述性消息属性。 您还可以添加其他属性。
+
+异常对象将被传递到 `try` 语句的 `catch` 子句：
+
+```js
+// Make a try_it function that calls the new add function incorrectly.
+var try_it = function () {
+    try {
+        add("seven");
+    } catch (e) {
+        document.writeln(e.name + ': ' + e.message);
+    }
+}
+
+try_it();
+```
+
+如果在 `try` 块内引发异常，控制权将转到其 `catch` 子句。
+
+`try` 语句有一个 `catch` 块，可以捕获所有异常。 如果您的处理取决于异常的类型，则异常处理程序将必须检查名称以确定异常的类型。
+
+### 4.7 Augmenting Types 扩充类型
+
+JavaScript 允许增强该语言的基本类型。 在第 3 章中，我们看到向 `Object.prototype` 添加一个方法使得该方法可用于所有对象。 这也适用于函数、数组、字符串、数字、正则表达式和布尔值。
+
+例如，通过扩充 Function.prototype，我们可以使一个方法可用于所有函数：
+
+```js
+Function.prototype.method = function (name, func) {
+    this.prototype[name] = func;
+    return this;
+};
+```
+
+通过使用 `method` 方法扩充 `Function.prototype`，我们不再需要键入原型属性的名称。 现在可以隐藏那一点丑陋了。
+
+JavaScript 没有单独的整数类型，因此有时需要仅提取数字的整数部分。 JavaScript 提供的方法很丑陋。 我们可以通过向 `Number.prototype` 添加整数方法来修复它。 它使用 `Math.ceil` 或 `Math.floor`，具体取决于数字的符号：
+
+```js
+Number.method('integer', function () {
+    return Math[this < 0 ? 'ceil' : 'floor'](this);
+});
+
+document.writeln((-10 / 3).integer());    // -3
+```
+
+JavaScript 缺少删除字符串末尾空格的方法。 这是一个很容易修复的疏忽：
+
+```js
+// Now, JavaScript has String.prototype.trim() method
+
+String.method('myTrim', function () {
+    return this.replace(/^\s+|\s+$/g, '');
+});
+
+var s = "    neat    ";
+document.writeln('"' + s.trim() + '"');
+document.writeln('"' + s.myTrim() + '"');
+```
+
+我们的修剪方法使用正则表达式。 我们将在第 7 章中看到更多有关正则表达式的内容。
+
+通过扩充基本类型，我们可以显着提高语言的表达能力。 由于 JavaScript 原型继承的动态特性，所有值都会立即赋予新方法，甚至是在创建方法之前创建的值。
+
+基本类型的原型是公共结构，因此混合库时必须小心。 一种防御技术是仅在已知方法缺失时才添加该方法：
+
+```js
+// Add a method conditionally.
+
+Function.prototype.method = function (name, func) {
+    if (!this.prototype[name]) {
+        this.prototype[name] = func;
+        return this;
+    }
+};
+```
+
+另一个问题是 `for in` 语句与原型的交互很差。 我们在第 3 章中看到了几种缓解这种情况的方法：我们可以使用 `hasOwnProperty` 方法来筛选继承的属性，并且我们可以查找特定类型。
+
