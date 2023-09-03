@@ -1801,3 +1801,201 @@ var cat = function (spec) {
 var myCat = cat({name: 'Henrietta'});
 ```
 
+函数式模式还为我们提供了一种处理 `super` 方法的方法。 我们将创建一个 `superior` 方法，它接受方法名称并返回调用该方法的函数。 即使属性发生更改，该函数也会调用原始方法：
+
+```js
+Function.prototype.method = function (name, func) {
+    if (!this.prototype[name]) {
+        this.prototype[name] = func;
+        return this;
+    }
+};
+
+Object.method('superior', function (name) {
+    var that = this,
+        method = that[name];
+    return function () {
+        return method.apply(that, arguments);
+    };
+});
+```
+
+让我们在一个很像 `cat` 的 `Coolcat` 上尝试一下，除了它有一个更酷的 `get_name` 方法来调用 `super` 方法。 它只需要一点准备。 我们将声明一个 `super_get_name` 变量并将调用上级方法的结果分配给它：
+
+```js
+var coolcat = function (spec) {
+    var that = cat(spec),
+        super_get_name = that.superior('get_name');
+    that.get_name = function (n) {
+        return 'like ' + super_get_name() + ' baby';
+    };
+    return that;
+};
+
+var myCoolCat = coolcat({name: 'Bix'});
+var name = myCoolCat.get_name();
+//    'like meow Bix meow baby'
+```
+
+函数模式具有很大的灵活性。 它比伪经典模式需要更少的工作，并且为我们提供了更好的封装和信息隐藏以及对超级方法的访问。
+
+如果对象的所有状态都是私有的，则该对象是防篡改的。 对象的属性可以被替换或删除，但对象的完整性不会受到损害。 如果我们以函数式风格创建一个对象，并且该对象的所有方法都不使用 this 或 that，那么该对象是持久的。 持久对象只是充当功能的函数的集合。
+
+持久对象不能受到损害。 除非方法允许，否则对持久对象的访问不会使攻击者能够访问对象的内部状态。
+
+最后是完整的示例代码：
+
+```js
+Function.prototype.method = function (name, func) {
+    if (!this.prototype[name]) {
+        this.prototype[name] = func;
+        return this;
+    }
+};
+
+Object.method('superior', function (name) {
+    var that = this,
+        method = that[name];
+    return function () {
+        return method.apply(that, arguments);
+    };
+});
+
+var mammal = function (spec) {
+    var that = {};
+
+    that.get_name = function () {
+        return spec.name;
+    };
+    that.says = function () {
+        return spec.saying || '';
+    };
+    return that;
+};
+
+var cat = function (spec) {
+    spec.saying = spec.saying || 'meow';
+    var that = mammal(spec);
+    that.purr = function (n) {
+        var i, s = '';
+        for (i = 0; i < n; i += 1) {
+            if (s) {
+                s += '-';
+            }
+            s += 'r';
+        }
+        return s;
+    };
+    that.get_name = function () {
+        return that.says() + ' ' + spec.name + ' ' + that.says();
+    };
+    return that;
+};
+
+var coolcat = function (spec) {
+    var that = cat(spec),
+        super_get_name = that.superior('get_name');
+    that.get_name = function (n) {
+        return 'like ' + super_get_name() + ' baby';
+    };
+    return that;
+};
+
+var myCoolCat = coolcat({name: 'Bix'});
+var name = myCoolCat.get_name();
+//    'like meow Bix meow baby'
+
+console.log(myCoolCat);
+```
+
+### 5.5 Parts 部件
+
+我们可以用几组部件来组合对象。 例如，我们可以创建一个函数，可以为任何对象添加简单的事件处理功能。 它添加了一个 `on` 方法、一个 `fire` 方法和一个私有事件注册表：
+
+```js
+/*
+在对象上触发事件。 该事件可以是包含事件名称的字符串，也可以是包含事件名称的类型属性的对象。 将调用由“on”方法注册的与事件名称匹配的处理程序。
+
+如果此事件存在处理程序数组，则循环遍历它并按顺序执行处理程序。
+
+处理程序记录包含一个方法和一个可选的参数数组。 如果方法是名称，则查找函数。
+
+调用处理程序。 如果记录包含参数，则传递它们。 否则，传递事件对象。
+
+注册事件。 制作处理程序记录。 将其放入处理程序数组中，如果该类型尚不存在则创建一个。
+*/
+
+var eventuality = function (that) {
+    var registry = {};
+
+    that.fire = function (event) {
+        var array,
+            func,
+            handler,
+            i,
+            type = typeof event === 'string' ? event : event.type;
+
+        if (registry.hasOwnProperty(type)) {
+            array = registry[type];
+            for (i = 0; i < array.length; i += 1) {
+                handler = array[i]
+                func = handler.method;
+                if (typeof func === 'string') {
+                    func = this[func];
+                }
+                func.apply(this, handler.parameters || [event]);
+            }
+        }
+        return this;
+    };
+
+    that.on = function (type, method, parameters) {
+        var handler = {
+            method: method,
+            parameters: parameters
+        };
+        if (registry.hasOwnProperty(type)) {
+            registry[type].push(handler);
+        } else {
+            registry[type] = [handler];
+        }
+        return this;
+    };
+    return that;
+};
+```
+
+我们可以在任何单独的对象上调用 eventuality，赋予它事件处理方法。 我们还可以在返回之前在构造函数中调用它：
+
+`eventuality(that);`
+
+通过这种方式，构造函数可以从一组部件组装对象。 JavaScript 的松散类型在这里是一个很大的好处，因为我们不必承受关心类沿袭的类型系统的负担。 相反，我们可以关注其内容的特征。
+
+```js
+var hero = {
+    name: "Bard",
+    age: 20,
+    getName: function() {
+        console.log(this.name);
+    }
+};
+
+eventuality(hero)
+    .on("getname", "getName")
+    .on("shout", function(p1, p2) {
+        console.log(this.name + ': ' + p1 + p2);
+    }, ["Hello ", "World!"]);
+
+hero.fire("getname")
+    .fire("shout");
+```
+
+## 6 Arrays 数组
+
+数组是内存的线性分配，其中的元素通过用于计算偏移量的整数进行访问。 数组可以是非常快的数据结构。 不幸的是，JavaScript 没有类似这种数组的东西。
+
+相反，JavaScript 提供了一个具有一些类似数组特征的对象。 它将数组下标转换为用于创建属性的字符串。 它比真正的数组慢得多，但使用起来更方便。 属性的检索和更新与对象的操作相同，只是整数属性名称有一个特殊的技巧。 数组有自己的文字格式。 数组还有一组更有用的内置方法，如第 8 章所述。
+
+### 6.1 Array Literals 数组字面量
+
+数组文字为创建新数组值提供了非常方便的表示法。 数组文字是一对方括号，将零个或多个值括起来，并用逗号分隔。 数组文字可以出现在表达式可以出现的任何地方。 第一个值将获取属性名称 `“0”`，第二个值将获取属性名称 `“1”`，依此类推：
