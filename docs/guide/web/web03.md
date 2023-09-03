@@ -951,3 +951,534 @@ Function.prototype.method = function (name, func) {
 
 另一个问题是 `for in` 语句与原型的交互很差。 我们在第 3 章中看到了几种缓解这种情况的方法：我们可以使用 `hasOwnProperty` 方法来筛选继承的属性，并且我们可以查找特定类型。
 
+### 4.8 Recursion 递归
+
+递归函数是直接或间接调用自身的函数。 递归是一种强大的编程技术，其中一个问题被分为一组相似的子问题，每个子问题都用一个简单的解决方案来解决。 通常，递归函数调用自身来解决其子问题。
+
+河内塔是一个著名的谜题。 该设备包括三个立柱和一组不同直径的圆盘，圆盘的中心有孔。 该设置将所有圆盘堆叠在源柱子上，较小的圆盘放在较大的圆盘之上。 目标是通过一次将一个圆盘移动到另一个柱子来将堆叠移动到目标柱子，而不是将较大的圆盘放在较小的圆盘上。 这个谜题有一个简单的递归解决方案：
+
+```js
+var hanoi = function hanoi(disc, src, aux, dst) {
+    if (disc > 0) {
+        hanoi(disc - 1, src, dst, aux);
+        document.writeln('Move disc ' + disc +
+                        ' from ' + src + ' to ' + dst);
+        hanoi(disc - 1, aux, src, dst);
+    }
+};
+hanoi(3, 'Src', 'Aux', 'Dst');
+```
+它为三张圆盘生成此解决方案：
+
+```js
+Move disc 1 from Src to Dst
+Move disc 2 from Src to Aux
+Move disc 1 from Dst to Aux
+Move disc 3 from Src to Dst
+Move disc 1 from Aux to Src
+Move disc 2 from Aux to Dst
+Move disc 1 from Src to Dst
+```
+
+`hanoi` 函数将一堆圆盘从一个柱子移动到另一个柱子，必要时使用辅助柱子。 它将问题分解为三个子问题。 首先，它通过将底部圆盘上方的子堆栈移动到辅助柱来揭开底部圆盘。 然后它可以将底部的圆盘移动到目标柱。 最后，它可以将子堆栈从辅助柱移动到目标柱。 子堆栈的移动是通过递归调用自身来解决这些子问题来处理的。
+
+`hanoi` 函数传递了要移动的圆盘的编号以及要使用的三个柱子。 当它调用自身时，它是要处理它当前正在处理的圆盘之上的圆盘。 最终，它将用一个不存在的圆盘号来调用。 在这种情况下，它什么也不做。 这种虚无的行为让我们相信该函数不会永远递归。
+
+递归函数在操作树结构（例如浏览器的文档对象模型（DOM））方面非常有效。 每个递归调用都会得到树的一小部分来处理：
+
+```js
+/*
+定义一个 walk_the_DOM 函数，该函数从某个给定节点开始按 HTML 源代码顺序访问树的每个节点。
+它调用一个函数，依次将每个节点传递给它。 walk_the_DOM 调用自身来处理每个子节点。
+*/
+var walk_the_DOM = function walk(node, func) {
+    func(node);
+    node = node.firstChild;
+    while (node) {
+        walk(node, func);
+        node = node.nextSibling;
+    }
+};
+
+/*
+定义 getElementsByAttribute 函数。 它采用属性名称字符串和可选的匹配值。 
+它调用 walk_the_DOM，向其传递一个在节点中查找属性名称的函数。 匹配的节点累积在结果数组中。
+*/
+var getElementsByAttribute = function (att, value) {
+    var results = [];
+
+    walk_the_DOM(document.body, function (node) {
+        var actual = node.nodeType === 1 && node.getAttribute(att);
+        if (typeof actual === 'string' &&
+           (actual === value || typeof value !== 'string')) {
+            results.push(node);
+           }
+    });
+    return results;
+};
+
+console.log(getElementsByAttribute("src"));
+```
+
+某些语言提供尾递归优化。 这意味着，如果一个函数返回递归调用自身的结果，则该调用将被替换为循环，这可以显着加快速度。 不幸的是，JavaScript 目前不提供尾递归优化。 深度递归的函数可能会因耗尽返回堆栈而失败：
+
+```js
+/*
+使用尾递归创建阶乘函数。 它是尾递归的，因为它返回调用自身的结果。
+*/
+// JavaScript does not currently optimize this form.
+
+var factorial = function factorial(i, a) {
+    a = a || 1;
+    if (i < 2) {
+        return a;
+    }
+    return factorial(i - 1, a * i);
+};
+document.writeln(factorial(4));    // 24
+```
+
+### 4.9 Scope 作用域
+
+编程语言中的作用域控制变量和参数的可见性和生命周期。 这对程序员来说是一项重要的服务，因为它减少了命名冲突并提供自动内存管理：
+
+```js
+var foo = function () {
+    var a = 3, b = 5;
+
+    var bar = function () {
+        var b = 7, c = 11;
+
+        // a == 3, b == 7, c == 11
+        a += b + c;
+
+        // a == 21, b == 7, c == 11
+    };
+    // a == 3, b == 5, c is undefined
+    bar();
+
+    // a == 21, b == 5
+};
+```
+
+大多数使用 C 语法的语言都有块作用域。 块（用大括号括起来的语句列表）中定义的所有变量从块外部都是不可见的。 当块执行完成时，可以释放块中定义的变量。 这是一件好事。
+
+现代 JavaScript 提供了块作用域，使用 `let` 关键字进行声明：
+
+```js
+for (let i ...) {
+    let a;
+    ...
+}
+```
+
+### 4.10 Closure 作用域
+
+关于作用域的好消息是，内部函数可以访问定义它们的函数的参数和变量（除了 `this` 和 `arguments`）。 这是一件非常好的事情。
+
+我们的 `getElementsByAttribute` 函数之所以有效，是因为它声明了一个 `results` 变量，并且它传递给 `walk_the_DOM` 的内部函数也可以访问 `results` 变量。
+
+一个更有趣的情况是内部函数的生命周期比外部函数长。
+
+之前，我们创建了一个具有值和增量方法的 `myObject`。 假设我们想要保护该值免遭未经授权的更改。
+
+我们将通过调用返回对象字面量的函数来初始化 `myObject`，而不是使用对象字面量来初始化 `myObject`。 该函数定义了一个值变量。 该变量始终可用于 `increment` 和 `getValue` 方法，但函数的作用域使其对程序的其余部分隐藏：
+
+```js{12}
+var myObject = (function () {
+    var value = 0;
+
+    return {
+        increment: function (inc) {
+            value += typeof inc === 'number' ? inc : 1;
+        },
+        getValue: function () {
+            return value;
+        }
+    };
+})();
+
+myObject.increment();
+document.writeln(myObject.getValue());    // 1
+```
+
+我们没有为 `myObject` 分配函数。 我们正在分配调用该函数的结果。 注意高亮行的 `( )`。 该函数返回一个包含两个方法的对象，并且这些方法继续享有访问 `value` 变量的特权。
+
+本章前面的 `Quo` 构造函数生成了一个带有 `status` 属性和 `get_status` 方法的对象。 但这似乎不太有趣。 为什么要对可以直接访问的属性调用 `getter` 方法？ 如果状态属性是私有的，那就更有用了。 因此，让我们定义一种不同类型的 `quo` 函数来做到这一点：
+
+```js
+/*
+创建一个名为 quo 的函数。 它使用 get_status 方法和私有状态属性创建一个对象。
+*/
+
+var quo = function (status) {
+    return {
+        get_status: function () {
+            return status;
+        }
+    };
+};
+
+// Make an instance of quo.
+var myQuo = quo("amazed");
+document.writeln(myQuo.get_status());
+```
+
+`quo` 函数被设计为在没有 `new` 前缀的情况下使用，因此名称不大写。 当我们调用 `quo` 时，它返回一个包含 `get_status` 方法的新对象。 对该对象的引用存储在 `myQuo` 中。 即使 `quo` 已经返回， `get_status` 方法仍然具有对 `quo` 的 `status` 属性的特权访问。 `get_status` 并没有访问参数的副本； 而是访问参数本身。 这是可能的，因为该函数可以访问创建它的上下文。 这称为闭包。
+
+让我们看一个更有用的例子：
+
+```js
+// 定义一个函数，将 DOM 节点的颜色设置为黄色，然后淡化为白色。
+
+var fade = function (node) {
+    var level = 1;
+    var step = function () {
+        var hex = level.toString(16);
+        node.style.backgroundColor = '#FFFF' + hex + hex;
+        if (level < 15) {
+            level += 1;
+            setTimeout(step, 100);
+        }        
+    };
+    setTimeout(step, 100);
+};
+
+fade(document.body);
+```
+
+我们调用 `fade`，并为其传递 `document.body`（由 HTML 标签创建的节点）。 `fade` 将 `level` 设置为 1。它定义了一个 `step` 函数。 它调用 `setTimeout`，向其传递 `step` 函数和时间（100 毫秒）。 然后它返回——`fade` 函数结束。
+
+突然，大约十分之一秒后，`step` 函数被调用。 它从 `fade` 的 `level` 中生成一个 16 进制字符。 然后它修改淡入淡出节点的背景颜色。 然后它会查看淡入淡出的级别。 如果尚未变为白色，则会增加淡入淡出级别并使用 setTimeout 安排自身再次运行。
+
+突然，`step` 函数再次被调用。 但这一次，`fade` 的 `level` 是 2。`fade` 刚刚返回，但只要一个或多个 `fade` 内部函数需要它们，它的变量就会继续存在。
+
+重要的是要理解内部函数可以访问外部函数的实际变量而不是副本，以避免出现以下问题。
+
+BAD EXAMPLE  
+```js
+/*
+创建一个函数，以错误的方式将事件处理函数分配给节点数组。
+当您单击节点时，警报框应该显示该节点的序号。 但它始终显示节点数。
+*/
+var add_the_handlers = function (nodes) {
+    var i;
+    for (i = 0; i < nodes.length; i += 1) {
+        nodes[i].onclick = function (e) {
+            alert(i);
+        };
+    }
+};
+```
+
+`add_the_handlers` 函数旨在为每个处理程序提供一个唯一的编号 `i`。 它失败是因为处理函数绑定到变量 `i`，而不是函数创建时变量 `i` 的值。
+
+BETTER EXAMPLE  
+```js
+/*
+创建一个将事件处理函数分配给节点数组的函数。 当您单击某个节点时，警报框将显示该节点的序号。
+*/
+var add_the_handlers = function (nodes) {
+    var helper = function (i) {
+        return function (e) {
+            alert(i);
+        };
+    };
+    var i;
+    for (i = 0; i < nodes.length; i += 1) {
+        nodes[i].onclick = helper(i);
+    }
+};
+```
+
+避免在循环内创建函数。 正如我们在坏例子中看到的那样，这可能会造成计算上的浪费，并且可能会导致混乱。 我们通过在循环外部创建一个辅助函数来避免混淆，该函数将提供一个绑定到 `i` 的当前值的函数。
+
+### 4.11 Callbacks 回调
+
+函数可以更轻松地处理不连续事件。 例如，假设有一个序列，从用户交互开始，向服务器发出请求，最后显示服务器的响应。 简单的写法是：
+
+```js
+request = prepare_the_request();
+response = send_request_synchronously(request);
+display(response);
+```
+
+这种方法的问题是网络上的同步请求将使客户端处于冻结状态。 如果网络或服务器速度缓慢，响应能力的下降将是不可接受的。
+
+更好的方法是发出异步请求，提供一个回调函数，当收到服务器的响应时将调用该回调函数。 异步函数会立即返回，因此客户端不会被阻塞：
+
+```js
+request = prepare_the_request();
+send_request_asynchronously(request, function (response) {
+    display(response);
+});
+```
+
+我们将一个函数参数传递给 `send_request_asynchronously` 函数，该函数将在响应可用时被调用。
+
+### 4.12 Module 模块
+
+我们可以使用函数和闭包来制作模块。 模块是呈现接口但隐藏其状态和实现的函数或对象。 通过使用函数来生成模块，我们几乎可以完全消除对全局变量的使用，从而减轻 JavaScript 最糟糕的功能之一。
+
+例如，假设我们想使用 `deentityify` 方法来扩充 String。 它的工作是在字符串中查找 HTML 实体并用其等效项替换它们。 将实体的名称及其等效项保留在对象中是有意义的。 但是我们应该把对象放在哪里呢？ 我们可以把它放在一个全局变量中，但是全局变量是邪恶的。 我们可以在函数本身中定义它，但这会产生运行时成本，因为每次调用函数时都必须对文字进行求值。 理想的方法是将其放入闭包中，并且也许提供一个可以添加其他实体的额外方法：
+
+```js{23}
+Function.prototype.method = function (name, func) {
+    if (!this.prototype[name]) {
+        this.prototype[name] = func;
+        return this;
+    }
+};
+
+String.method('deentityify', function () {
+    // The entity table. It maps entity names to characters.
+    var entity = {
+        quot: '"',
+        lt: '<',
+        gt: '>'
+    };
+
+    // Return the deentityify method.
+    return function () {
+        return this.replace(/&([^&;]+);/g, function (a ,b) {
+            var r = entity[b];
+            return typeof r === 'string' ? r : a;
+        });
+    };
+}());
+
+document.writeln('&lt;&quot;&gt;'.deentityify());    // <">
+```
+
+注意最后高亮行。 我们立即使用 `( )` 运算符调用刚刚创建的函数。 该调用创建并返回成为 `deentityify` 方法的函数。
+
+模块模式利用函数作用域和闭包来创建绑定和私有的关系。 在此示例中，只有 `deentityify` 方法可以访问实体数据结构。
+
+模块的一般模式是定义私有变量和函数的函数； 创建特权函数，通过闭包，该函数将有权访问私有变量和函数； 返回特权函数或将它们存储在可访问的位置。
+
+使用模块模式可以消除全局变量的使用。 它促进信息隐藏和其他良好的设计实践。 它在封装应用程序和其他单例方面非常有效。
+
+它还可用于生产安全的对象。 假设我们想要创建一个生成序列号的对象：
+
+```js
+/*
+生成一个生成唯一字符串的对象。 唯一的字符串由两部分组成：前缀和序列号。
+该对象附带了用于设置前缀和序列号的方法，以及生成唯一字符串的 gensym 方法。
+*/
+var serial_maker = function () {
+    var prefix = '';
+    var seq = 0;
+    return {
+        set_prefix: function (p) {
+            prefix = String(p);
+        },
+        set_seq: function (s) {
+            seq = s;
+        },
+        gensym: function () {
+            var result = prefix + seq;
+            seq += 1;
+            return result;
+        }
+    };
+};
+
+var seqer = serial_maker();
+seqer.set_prefix('Q');
+seqer.set_seq(1000);
+var unique = seqer.gensym();    // "Q1000"
+```
+
+这些方法不使用 `this` 或 `that`。 因此，无法破坏 `seqer`。 除非方法允许，否则无法获取或更改前缀或序列。 `seqer` 对象是可变的，因此可以替换方法，但这仍然无法访问其秘密。 `seqer` 只是函数的集合，这些函数是授予使用或修改秘密状态的特定权力的功能。
+
+如果我们将 `seqer.gensym` 传递给第三方函数，该函数将能够生成唯一的字符串，但无法更改前缀或 `seq`。
+
+### 4.13 Cascade 级联
+
+有些方法没有返回值。 例如，设置或更改对象状态的方法通常不返回任何内容。 如果我们让这些方法返回 `this` 而不是 `undefined`，我们就可以启用级联。 在级联中，我们可以在一条语句中按顺序调用同一对象上的许多方法。 
+
+```js
+var hero = {
+    name: "Bard",
+    age: 20,
+    displayName: function() {
+        console.log(this.name);
+        return this;
+    },
+    updateAge: function(age) {
+        this.age = age;
+        return this;
+    },
+    displayAge: function() {
+        console.log(this.age);
+        return this;
+    }
+};
+
+hero
+    .displayName()
+    .displayAge();
+
+hero
+    .updateAge(30)
+    .displayAge();
+```
+
+启用级联的 Ajax 库允许我们以如下方式编写：
+
+```js
+getElement('myBoxDiv')
+    .move(350, 150)
+    .width(100)
+    .height(100)
+    .color('red')
+    .border('10px outset')
+    .padding('4px')
+    .appendText("Please stand by")
+    .on('mousedown', function (m) {
+         this.startDrag(m, this.getNinth(m));
+     })
+     .on('mousemove', 'drag')
+     .on('mouseup', 'stopDrag')
+     .later(2000, function ( ) {
+         this
+             .color('yellow')
+             .setHTML("What hath God wraught?")
+             .slide(400, 40, 200, 200);
+     });
+
+tip('This box is resizeable');
+```
+
+在此示例中，`getElement` 函数生成一个对象，该对象为 `id="myBoxDiv"` 的 DOM 元素提供功能。 这些方法允许我们移动元素、更改其尺寸和样式以及添加行为。 这些方法中的每一个都会返回对象，因此调用的结果可用于下一次调用。
+
+级联可以产生非常具有表现力的接口。 它可以帮助控制接口的倾向，即试图同时执行太多操作。
+
+### 4.14 Curry 柯里化
+
+函数就是值，我们可以用有趣的方式操纵函数值。 柯里化允许我们通过组合函数和参数来生成新函数：
+
+```js
+var add = function (a, b) {
+    return a + b;
+};
+
+var add1 = add.curry(1);
+document.writeln(add1(6));    // 7
+```
+
+`add1` 是通过将 1 传递给 `add` 的 `curry` 方法而创建的函数。 `add1` 函数将 1 添加到其参数中。 JavaScript 没有 `curry` 方法，但我们可以通过增强 `Function.prototype` 来解决这个问题：
+
+```js
+Function.prototype.method = function (name, func) {
+    if (!this.prototype[name]) {
+        this.prototype[name] = func;
+        return this;
+    }
+};
+
+Function.method('curry', function () {
+    var args = arguments, that = this;
+    return function () {
+        return that.apply(null, args.concat(arguments));
+    };
+});    // Something isn't right...
+```
+
+`curry` 方法的工作原理是创建一个包含原始函数和 `curry` 参数的闭包。 它返回一个函数，该函数在被调用时返回调用该原始函数的结果，并向其传递来自 `curry` 调用和当前调用的所有参数。 它使用 Array concat 方法将两个参数数组连接在一起。
+
+不幸的是，正如我们之前看到的，参数数组不是数组，因此它没有 `concat` 方法。 为了解决这个问题，我们将对两个参数数组应用数组切片方法。 这会生成使用 `concat` 方法正确运行的数组：
+
+```js
+Function.method('curry', function () {
+    var slice = Array.prototype.slice,
+        args = slice.apply(arguments),
+        that = this;
+    return function () {
+        return that.apply(null, args.concat(slice.apply(arguments)));
+    };
+});
+```
+
+### 4.15 Memoization 记忆化
+
+函数可以使用对象来记住先前操作的结果，从而可以避免不必要的工作。 这种优化称为记忆化。 JavaScript 的对象和数组对此非常方便。
+
+假设我们想要一个递归函数来计算斐波那契数。 斐波那契数是前两个斐波那契数之和。 前两个是 0 和 1：
+
+```js
+var fibonacci = function (n) {
+    return n < 2 ? n : fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+for (var i = 0; i <= 10; i += 1) {
+    document.writeln('//' + i + ': ' + fibonacci(i));
+}
+```
+
+这可行，但它做了很多不必要的工作。 斐波那契函数被调用 453 次。 我们调用它 11 次，而它在计算可能最近已经计算过的值时调用自身 442 次。 如果我们记住这个函数，我们可以显着减少它的工作量。
+
+我们将把记忆结果保存在一个备忘录数组中，我们可以将其隐藏在闭包中。 当我们的函数被调用时，它首先查看它是否已经知道结果。 如果是，它可以立即返回：
+
+```js
+var fibonacci = (function () {
+    var memo = [0, 1];
+    var fib = function (n) {
+        var result = memo[n];
+        if (typeof result !== 'number') {
+            result = fib(n - 1) + fib(n - 2);
+            memo[n] = result;
+        }
+        return result;
+    };
+    return fib;
+})();
+```
+
+该函数返回相同的结果，但仅调用了 29 次。 我们调用了 11 次。 它调用自己18次来获得之前记忆的结果。
+
+我们可以通过创建一个帮助我们创建记忆函数的函数来概括这一点。 `memoizer` 函数将采用初始备忘录数组和公式函数。 它返回一个管理备忘录存储并根据需要调用公式函数的递归函数。 我们将 `recur` 函数和函数的参数传递给 `formula` 函数：
+
+```js
+var memoizer = function (memo, formula) {
+    var recur = function (n) {
+        var result = memo[n];
+        if (typeof result !== 'number') {
+            result = formula(recur, n);
+            memo[n] = result;
+        }
+        return result;
+    };
+    return recur;
+};
+```
+
+我们现在可以使用 `memoizer` 定义斐波那契，提供初始 `memo` 数组和公式函数：
+
+```js
+var fibonacci = memoizer([0, 1], function (recur, n) {
+    return recur(n - 1) + recur(n - 2);
+});
+
+fibonacci(10);  // 55
+```
+
+通过设计产生其他函数的函数，我们可以显着减少我们必须做的工作量。 例如，要生成一个记忆阶乘函数，我们只需要提供基本阶乘公式：
+
+```js
+var factorial = memoizer([1, 1], function (recur, n) {
+    return n * recur(n - 1);
+});
+
+factorial(5);  // 120
+```
+
+## 5 Inheritance 继承
+
+继承是大多数编程语言中的一个重要主题。
+
+JavaScript 提供了一组丰富的代码重用模式。 它可以模仿经典模式，但它也支持其他更具表现力的模式。 JavaScript 中可能的继承模式集非常多。 在本章中，我们将讨论一些最简单的模式。 更复杂的结构是可能的，但通常最好保持简单。
+
+在经典语言中，对象是类的实例，并且一个类可以从另一个类继承。 JavaScript 是一种原型语言，这意味着对象直接从其他对象继承。
+
+
