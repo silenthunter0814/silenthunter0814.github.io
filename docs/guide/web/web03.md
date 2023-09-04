@@ -2385,6 +2385,8 @@ test('123.45D-67');    // false
 
 `parse_number` 成功识别了符合我们规范的字符串和不符合我们规范的字符串，但对于那些不符合我们规范的字符串，它没有向我们提供有关它们为何或在何处未通过数字测试的信息。
 
+![](https://silenthunter0814.github.io/pub/web03/7.2.png)
+
 让我们分解一下 `parse_number`。
 
 - `/^`, `$/i` :  
@@ -2403,3 +2405,70 @@ test('123.45D-67');    // false
 - `(?:e[+\-]?\d+)?` :  
 另一个可选的非捕获组。 它匹配 `e` 或 `E`、可选正负符号和一个或多个数字。
 
+### 7.2 Construction 构造
+
+有两种方法可以创建 RegExp 对象。 首选方法是使用正则表达式文字。
+
+![](https://silenthunter0814.github.io/pub/web03/7.3.png)
+
+正则表达式文字包含在斜杠内。
+
+可以在正则表达式上设置三个标志。 它们用字母 `g`、`i` 和 `m` 表示，这些标志直接附加到 RegExp 文字的末尾：
+
+Table 7-1. Flags for regular expressions
+| Flag  |          Meaning           |
+|-------|----------------------------|
+| g     | Global (匹配多次； 其确切含义因方法而异)  |
+| i     | Insensitive (忽略字符大小写)      |
+| m     | Multiline (^ 和 $ 可以匹配行结束符) |
+
+创建一个与 JavaScript 字符串匹配的正则表达式对象：
+
+```js
+var my_regexp = /"(?:\\.|[^\\\"])*"/g;
+
+document.writeln(my_regexp.test('"\n"'));    // true
+document.writeln(my_regexp.test('"\\"'));    // false
+```
+
+制作正则表达式的另一种方法是使用 `RegExp` 构造函数。 构造函数接受一个字符串并将其编译为 `RegExp` 对象。  
+构建字符串时必须小心，因为反斜杠在正则表达式中的含义与在字符串文字中的含义有些不同。 通常需要加倍反斜杠并转义引号。
+
+创建一个与 JavaScript 字符串匹配的正则表达式对象：  
+`var my_regexp = new RegExp("'(?:\\\\.|[^\\\\\\'])*'", 'g'));`
+
+第二个参数是指定标志的字符串。 当必须在运行时使用程序员无法获得的材料生成正则表达式时，`RegExp` 构造函数非常有用。
+
+RegExp 对象包含表 7-2 中列出的属性：
+
+|  Property   |         Use          |
+|-------------|----------------------|
+| global      | 如果使用 g 标志则为 true。    |
+| ignoreCase  | 如果使用了 i 标志则为 true。   |
+| lastIndex   | 开始下一次执行匹配的索引。 最初它为零。 |
+| multiline   | 如果使用 m 标志则为 true。    |
+| source      | 正则表达式的源文本。           |
+
+由正则表达式文字创建的 RegExp 对象不共享单个实例：
+
+```js
+function make_a_matcher() {
+    return /a/gi;
+}
+
+var x = make_a_matcher();
+var y = make_a_matcher();
+var z = x;
+
+// Beware: x and y are NOT the same object!
+x.lastIndex = 10;
+document.writeln(y.lastIndex);    // 0
+console.assert(x !== y);
+console.assert(x === z);
+```
+
+### 7.3 Elements 元素
+
+让我们更仔细地看看组成正则表达式的元素。
+
+#### 7.3.1 Regexp Choice
