@@ -1997,3 +1997,291 @@ hero.fire("getname")
 ### 6.1 Array Literals 数组字面量
 
 数组文字为创建新数组值提供了非常方便的表示法。 数组文字是一对方括号，将零个或多个值括起来，并用逗号分隔。 数组文字可以出现在表达式可以出现的任何地方。 第一个值将获取属性名称 `“0”`，第二个值将获取属性名称 `“1”`，依此类推：
+
+```js
+var empty = [];
+var numbers = [
+    'zero', 'one', 'two', 'three', 'four',
+    'five', 'six', 'seven', 'eight', 'nine'
+];
+
+empty[1];        // undefined
+numbers[1];      // 'one'
+
+empty.length;    // 0
+numbers.length;  // 10
+```
+
+对象字面量：
+
+```js
+var numbers_object = {
+    '0': 'zero', '1': 'one', '2': 'two',
+    '3': 'three', '4': 'four', '5': 'five',
+    '6': 'six', '7': 'seven', '8': 'eight',
+    '9': 'nine'
+};
+```
+
+产生类似的结果。 `numbers` 和 `numbers_object` 都是包含10 个属性的对象，并且这些属性具有完全相同的名称和值。 但也存在显着差异。 `numbers` 继承自 `Array.prototype`，而 `numbers_object` 继承自 `Object.prototype`，因此 `numbers` 继承了更多有用的方法。 此外，`numbers` 具有神秘的 `length` 属性，而 numbers_object 则没有。
+
+在大多数语言中，数组的元素都必须具有相同的类型。 JavaScript 允许数组包含任意值的混合：
+
+```js
+var misc = [
+    'string', 98.6, true, false, null, undefined,
+    ['nested', 'array'], {object: true}, NaN, Infinity
+];
+misc.length    // 10
+```
+
+### 6.2 Length 长度属性
+
+每个数组都有一个长度属性。 与大多数其他语言不同，JavaScript 的数组长度没有上限。 如果存储下标大于或等于当前长度的元素，则长度将增加以包含新元素。 不存在数组边界错误。
+
+`length` 属性是数组中最大的整数属性名称加一。 这不一定是数组中属性的数量：
+
+```js
+var myArray = [];
+myArray.length    // 0
+
+myArray[1000] = true;
+myArray.length    // 1001
+// myArray contains one property.
+```
+
+`[]` 后缀下标运算符使用表达式的 `toString` 方法（如果有）将其表达式转换为字符串。 该字符串将用作属性名称。 如果字符串看起来像一个大于或等于数组当前长度且小于 4,294,967,295 的正整数，则数组的长度将设置为新下标加一。
+
+长度可以明确设置。 增大长度并不会为数组分配更多空间。 减小长度将导致所有下标大于或等于新长度的属性被删除：
+
+```js
+numbers.length = 3;
+// numbers is ['zero', 'one', 'two']
+```
+
+可以通过分配数组的当前长度来将新元素附加到数组的末尾：
+
+```js
+numbers[numbers.length] = 'shi';
+// numbers is ['zero', 'one', 'two', 'shi']
+```
+
+有时使用 `push` 方法来完成同样的事情会更方便：
+
+```js
+numbers.push('go');
+// numbers is ['zero', 'one', 'two', 'shi', 'go']
+```
+
+### 6.3 Delete 删除
+
+由于 JavaScript 的数组实际上是对象，因此可以使用删除运算符从数组中删除元素：
+
+```js
+delete numbers[2];
+// numbers is ['zero', 'one', undefined, 'shi', 'go']
+```
+
+不幸的是，这在阵列中留下了一个洞。 这是因为被删除元素右侧的元素保留其原始名称。 您通常想要的是向右递减每个元素的名称。
+
+幸运的是，JavaScript 数组有一个 `splice` 方法。 它可以对数组进行手术，删除一些元素并用其他元素替换它们。 第一个参数是数组中的序数。 第二个参数是要删除的元素数量。 此时任何其他参数都会插入到数组中：
+
+```js
+numbers.splice(2, 1);
+// numbers is ['zero', 'one', 'shi', 'go']
+
+numbers.splice(2, 1, "x", "y");
+```
+
+值为 “shi” 的属性的键从 “3” 更改为 “2”。 由于必须删除已删除属性后的每个属性并使用新键重新插入，因此对于大型数组来说，这可能不会很快。
+
+### 6.4 Enumeration 枚举
+
+由于 JavaScript 的数组实际上是对象，因此 for in 语句可用于迭代数组的所有属性。 不幸的是， for in 不能保证属性的顺序，并且大多数数组应用程序都希望元素按数字顺序生成。 此外，仍然存在从原型链中挖掘出意外属性的问题。
+
+幸运的是，传统的 `for` 语句避免了这些问题。 它由三个子句控制 - 第一个子句初始化循环，第二个子句是 `while` 条件，第三个子句执行增量：
+
+```js
+for (let i = 0; i < numbers.length; i += 1) {
+    document.writeln(numbers[i]);
+}
+```
+
+最新的 JavaScript 提供了 `for of` 循环：
+
+```js
+for (let number of numbers) {
+    document.writeln(number);
+}
+```
+
+`for of` 循环需要提供了 `Symbol.iterator` 接口的对象，包括数组。
+
+### 6.5 Confusion 困惑
+
+JavaScript 程序中的一个常见错误是需要数组时使用对象，或者需要对象时使用数组。 规则很简单：当属性名称是小的连续整数时，应该使用数组。 否则，使用一个对象。
+
+JavaScript 本身对数组和对象之间的区别感到困惑。 `typeof` 运算符报告数组的类型是 `“object”`，这并不是很有帮助。
+
+最新的 JavaScript 提供了 `Array.isArray()` 方法确定传递的值是否为 `Array`。
+
+们可以通过定义自己的 is_array 函数来区分数组和对象：
+
+```js
+var is_array = function (value) {
+    return value && typeof value === 'object' && value.constructor === Array;
+};
+```
+
+它无法识别在不同窗口或框架中构造的数组，我们还得加倍努力：
+
+```js
+var is_array = function(value) {
+    return Object.prototype.toString.apply(value) === '[object Array]';
+};
+```
+
+### 6.5 Methods 方法
+
+JavaScript 提供了一组作用于数组的方法。 这些方法是存储在 Array.prototype 中的函数。 Array.prototype 可以被扩展。
+
+例如，假设我们要添加一个数组方法，该方法将允许我们对数组进行计算：
+
+```js
+Function.prototype.method = function (name, func) {
+    if (!this.prototype[name]) {
+        this.prototype[name] = func;
+        return this;
+    }
+};
+
+Array.method('reduce1', function (f, value) {
+    var i;
+    for (i = 0; i < this.length; i += 1) {
+        value = f(this[i], value);
+    }
+    return value;
+});
+```
+
+通过向 `Array.prototype` 添加函数，每个数组都会继承该方法。 在本例中，我们定义了一个带有函数和起始值的 `reduce1` 方法。 对于数组的每个元素，它使用元素和值调用函数，并计算一个新值。 当它完成时，它返回值。 如果我们传入一个将两个数字相加的函数，它就会计算总和。 如果我们传入一个将两个数字相乘的函数，它会计算乘积：
+
+```js
+var data = [4, 8, 15, 16, 23, 42];
+var add = function (a, b) {
+    return a + b;
+};
+var mult = function (a, b) {
+    return a * b;
+};
+
+var sum = data.reduce1(add, 0);    // 108
+var product = data.reduce1(mult, 1);    // 7418880
+```
+
+因为数组实际上是一个对象，所以我们可以直接向单个数组添加方法：
+
+```js
+data.total = function () {
+    return this.reduce1(add, 0);
+};
+
+var total = data.total();    // 108
+```
+
+由于字符串 `“total”` 不是整数，因此向数组添加 `total` 属性不会更改其长度 `length`。 当属性名称是整数时，数组最有用，但它们仍然是对象，并且对象可以接受任何字符串作为属性名称。
+
+在数组上使用 `Object.create` 方法没有用，因为它生成一个对象，而不是数组。 生成的对象将继承数组的值和方法，但它不会具有特殊的 `length` 属性。
+
+```js
+var a = ["zero", "one", "two"];
+
+var b = Object.create(a);
+
+console.log(Array.isArray(b));  // false
+```
+
+### 6.6 Dimensions 维度
+
+JavaScript 数组通常不会被初始化。 如果你用 `[]` 请求一个新数组，它将是空的。 JavaScript 应该提供某种形式的 `Array.dim` 方法来执行此操作，但我们可以轻松纠正这种疏忽：
+
+```js
+Array.dim = function (dimension, initial) {
+    var a = [], i;
+    for (i = 0; i < dimension; i += 1) {
+        a[i] = initial;
+    }
+    return a;
+};
+
+var myArray = Array.dim(10, 0);
+```
+
+JavaScript 不具有多维数组，但与大多数 C 语言一样，它可以具有数组的数组：
+
+```js
+var matrix = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8]
+];
+matrix[2][1];    // 7
+```
+
+要创建二维数组或数组的数组，您必须自己构建数组：
+
+```js
+/*
+注意：Array.dim(n, []) 在这里不起作用。 每个元素都会获得对同一个数组的引用，这将是非常糟糕的。
+*/
+for (i = 0; i < n; i += 1) {
+    my_array[i] = [];
+}
+```
+
+空矩阵的单元格最初的值未定义。 如果您希望它们具有不同的初始值，则必须显式设置它们：
+
+```js
+Array.matrix = function (m, n, initial) {
+    var a, i, j, mat = [];
+    for (i = 0; i < m; i += 1) {
+        a = [];
+        for (j = 0; j < n; j += 1) {
+            a[j] = initial;
+        }
+        mat[i] = a;
+    }
+    return mat;
+};
+
+var myMatrix = Array.matrix(4, 4, 0);
+console.log(myMatrix);
+
+// Method to make an identity matrix.
+Array.identity = function (n) {
+    var i, mat = Array.matrix(n, n, 0);
+    for (i = 0; i < n; i += 1) {
+        mat[i][i] = 1;
+    }
+    return mat;
+};
+
+myMatrix = Array.identity(4);
+console.log(myMatrix);
+```
+
+## 7 Regular Expressions 
+
+正则表达式是简单语言语法的规范。 正则表达式与从字符串中搜索、替换和提取信息的方法一起使用。 使用正则表达式的方法有:  
+- `regexp.exec`
+- `regexp.test`
+- `string.match`
+- `string.replace`
+- `string.search`
+- `string.split` 
+
+这些都将在第 8 章中进行描述。正则表达式通常比 JavaScript 中的等效字符串操作具有显着的性能优势。
+
+### 7.1 An Example
+
+这是一个例子。 它是一个匹配 URL 的正则表达式。 这本书的页数不是无限宽的，所以我把它分成了两行。 在 JavaScript 程序中，正则表达式必须位于一行中。 空白很重要：
