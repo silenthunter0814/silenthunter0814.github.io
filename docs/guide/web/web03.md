@@ -2352,3 +2352,18 @@ hash:    fragment
 
 让我们看另一个例子：匹配数字的正则表达式。 数字可以有一个带有可选减号的整数部分、一个可选的小数部分和一个可选的指数部分。
 
+```js
+document.writeln("Hello World");
+
+var parse_number = /^-?\d+(?:\.\d*)?(?:e[+\-]?\d+)?$/i;
+var test = function (num) {
+    document.writeln(parse_number.test(num));
+};
+
+test('1');   // true
+test('number');    // false
+test('98.6');    // true
+test('132.21.86.100');   // false
+test('123.45E-67');    // true
+test('123.45D-67');    // false
+```
