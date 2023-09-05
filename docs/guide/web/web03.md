@@ -3160,3 +3160,204 @@ var initial = name.charCodeAt(0);    // initial is 67
 
 `var s = 'C'.concat('a', 't'); // s is 'Cat'`
 
+#### 8.6.4 String.indexOf(searchString, position)
+
+`indexOf` 方法在字符串中搜索 `searchString`。 如果找到，则返回第一个匹配字符的位置； 否则，返回  -1。 可选的位置参数使搜索从字符串中的某个指定位置开始：
+
+```js
+var text = 'Mississippi';
+var p = text.indexOf('ss');  // p is 2
+p = text.indexOf('ss', 3);   // p is 5
+p = text.indexOf('ss', 6);   // p is -1
+```
+
+#### 8.6.5 string.lastIndexOf(searchString, position)
+
+`lastIndexOf` 方法与 `indexOf` 方法类似，不同之处在于它从字符串的末尾而不是前面进行搜索：
+
+```js
+var text = 'Mississipi';
+var p = text.lastIndexOf('ss');    // p is 5
+p = text.lastIndexOf('ss', 3);     // p is 2
+p = text.lastIndexOf('ss', 6);     // p is 5
+```
+
+#### 8.6.6 String.match(regexp)
+
+`match` 方法匹配一个字符串和一个正则表达式。 它如何做到这一点取决于 `g` 标志。  
+如果没有 `g` 标志，则调用 `string.match(regexp)` 的结果与调用 `regexp.exec(string)` 的结果相同。  
+如果正则表达式具有 `g` 标志，那么它会生成所有匹配项的数组，但不包括捕获组：
+
+```js
+var entityify = function () {
+    var character = {
+        '<': '&lt;',
+        '>': '&gt;',
+        '&': '&amp;',
+        '"': '&quot;'
+    };
+    return function () {
+        return this.replace(/[<>&"]/g, function (c) {
+            return character[c];
+        });
+    };
+}();
+
+var text = '<html><body bgcolor=linen><p>' +
+         'This is <b>bold<\/b>!<\/p><\/body><\/html>';
+var tags = /[^<>]+|<(\/?)([A-Za-z]+)([^<>]*)>/g;
+var a, i;
+
+a = text.match(tags);
+for (i = 0; i < a.length; i += 1) {
+    document.writeln('// [' + i + '] ' + entityify.apply(a[i]));
+}
+```
+
+#### 8.6.7 String.replace(searchValue, replaceValue)
+
+`Replace` 方法对字符串执行搜索和替换操作，生成一个新字符串。 `searchValue` 参数可以是字符串或正则表达式对象。 如果是字符串，则仅替换第一次出现的 `searchValue`，因此：
+
+`var result = "mother_in_law".replace('_', '-');`
+
+会产生 `"mother-in_law"`，这可能会让人失望。
+
+如果 `searchValue` 是正则表达式并且具有 `g` 标志，则它将替换所有出现的情况。 如果它没有 `g` 标志，那么它将仅替换第一次出现的位置。 `replaceValue` 可以是字符串或函数。 如果`replaceValue` 是一个字符串，则字符 $ 有特殊含义：
+
+```js
+// Capture 3 digits within parens
+var oldareacode = /\((\d{3})\)/g;
+var p = '(555)666-1212'.replace(oldareacode, '$1-');
+// p is 555-666-1212
+```
+
+
+|  $ 序列   | replace |
+|---------|---------|
+| $$      | $       |
+| $&      | 匹配的文本   |
+| $number | 捕获组文本   |
+| $`      | 匹配之前的文字 |
+| $'      | 匹配后的文本  |
+
+
+如果 `replaceValue` 是一个函数，则每次匹配都会调用它，并且函数返回的字符串将用作替换文本。 传递给函数的第一个参数是匹配的文本。 第二个参数是捕获组 `1` 的文本，下一个参数是捕获组 `2` 的文本，依此类推：
+
+```js
+/*
+返回 string.entityify 方法，该方法返回调用 replace 方法的结果。 
+它的 replaceValue 函数返回在对象中查找字符的结果。 对象的这种使用通常优于 switch 语句。
+*/
+Function.prototype.method = function (name, func) {
+    if (!this.prototype[name]) {
+        this.prototype[name] = func;
+        return this;
+    }
+};
+String.method('entityify', function () {
+    var character = {
+        '<': '&lt;',
+        '>': '&gt;',
+        '&': '&amp;',
+        '"': '&quot;'
+    };
+    return function () {
+        return this.replace(/[<>&"]/g, function (c) {
+            return character[c];
+        });
+    };
+}());
+alert("<&>".entityify());    // &lt;&amp;&gt;
+```
+
+#### 8.6.8 String.search(regexp)
+
+`search` 方法类似于 `indexOf` 方法，只不过它采用正则表达式对象而不是字符串。 如果有，则返回第一个匹配项的第一个字符的位置；如果搜索失败，则返回 -1。 `g` 标志被忽略。 没有位置参数：
+
+```js
+var text = 'and in it he says "Any damn fool could';
+var pos = text.search(/["']/);   // pos is 18
+```
+
+#### 8.6.9 String.slice(start,end)
+
+`slice` 方法通过复制字符串的一部分来创建一个新字符串。 `end` 参数是可选的，其默认值为 `string.length`。  
+`end` 参数比最后一个字符的位置大 1。 要获取从位置 `p` 开始的 `n` 个字符，使用 `string.slice(p,p + n)`。
+
+```js
+var text = 'and in it he says "Any damn fool could';
+var a = text.slice(18);
+// a is '"Any damn fool could'
+var b = text.slice(0, 3);
+// b is 'and'
+var c = text.slice(-5);
+// c is 'could'
+var d = text.slice(19, 32);
+// d is 'Any damn fool'
+```
+
+#### 8.6.10 String.split(separator, limit)
+
+`split` 方法通过将字符串拆分为多个片段来创建字符串数组。 可选的 `limit` 参数可以限制将被分割的块的数量。 分隔符参数可以是字符串或正则表达式。
+
+如果分隔符是空字符串，则会生成单个字符的数组：
+
+```js
+var digits = '0123456789';
+var a = digits.split('', 5);
+// a is ['0', '1', '2', '3', '4']
+```
+
+否则，将在字符串中搜索所有出现的分隔符。 分隔符之间的每个文本单元都会复制到数组中。 `g` 标志被忽略：
+
+```js
+var ip = '192.168.1.0';
+var b = ip.split('.');
+// b is ['192', '168', '1', '0']
+
+var c = '|a|b|c|'.split('|');
+// c is ['', 'a', 'b', 'c', '']
+
+var text = 'last, first ,middle';
+var d = text.split(/\s*,\s*/);
+// d is ['last', 'first', 'middle']
+```
+
+有一些特殊情况需要注意。 来自捕获组的文本将包含在拆分中：
+
+```js
+var text = 'last, first ,middle';
+var e = text.split(/\s*(,)\s*/);
+// e is ['last', ',', 'first', ',', 'middle']
+```
+
+当分隔符是正则表达式时，某些实现会抑制输出数组中的空字符串：
+
+```js
+var f = '|a|b|c|'.split(/\|/);
+// f is ['', 'a', 'b', 'c', '']
+// f is ['a', 'b', 'c'] on some systems
+```
+
+#### 8.6.11 String.substring(start,end)
+
+`substring` 方法与 `slice` 方法相同，只是它不处理负参数的调整。 没有理由使用子字符串方法。 使用切片代替。
+
+#### 8.6.12 String.toLowerCase( ) 
+
+`toLowerCase` 方法通过将该字符串转换为小写来生成一个新字符串。
+
+#### 8.6.13 String.toUpperCase( ) 
+
+`toUpperCase` 方法通过将该字符串转换为大写来生成一个新字符串。
+
+
+#### 8.6.14 String.fromCharCode(char…) 
+
+`String.fromCharCode` 函数从一系列数字生成字符串。
+
+```js
+var a = String.fromCharCode(67, 97, 116);
+// a is 'Cat'
+```
+
