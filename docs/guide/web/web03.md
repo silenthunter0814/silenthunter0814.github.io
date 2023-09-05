@@ -2582,3 +2582,581 @@ console.assert(x === z);
 ## 8 Methods 方法
 
 JavaScript 包含一小组可用于标准类型的标准方法。
+
+### 8.1 Array 数组
+
+#### 8.1.1 Array.prototype.concat()
+
+`concat(item...)` 方法用于合并两个或多个数组。 此方法不会更改现有数组，而是返回一个新数组。
+
+```js
+var a = ['a', 'b', 'c'];
+var b = ['x', 'y', 'z'];
+var c = a.concat(b, true);
+// c is ['a', 'b', 'c', 'x', 'y', 'z', true]
+```
+
+#### 8.1.2 Array.prototype.join()
+
+`join(sep)` 方法从数组创建一个字符串。 它通过将数组的每个元素创建一个字符串，然后将它们全部连接在一起并在它们之间使用分隔符来实现此目的。  
+默认分隔符是 `“,”`。 要连接而不分隔，使用空字符串作为分隔符。
+
+```js
+var a = ['a', 'b', 'c'];
+a.push('d');
+var c = a.join('');    // c is 'abcd'
+```
+
+#### 8.1.3 Array.prototype.pop()
+
+`pop` 和 `push` 方法使数组像堆栈一样工作。 `pop` 方法删除并返回该数组中的最后一个元素。 如果数组为空，则返回未定义。
+
+```js
+var a = ['a', 'b', 'c'];
+var c = a.pop();   // a is ['a', 'b'] & c is 'c'
+```
+
+`pop` 可以这样实现：
+
+```js
+Array.method('pop', function () {
+    return this.splice(this.length - 1, 1)[0];
+});
+```
+
+#### 8.1.4 Array.prototype.push()
+
+`push` 方法将项目追加到数组的末尾。 与 `concat` 方法不同，它修改数组并附加整个数组项。 它返回数组的新长度：
+
+```js
+var a = ['a', 'b', 'c'];
+var b = ['x', 'y', 'z'];
+var c = a.push(b, true);
+// a is  ['a', 'b', 'c', ['x', 'y', 'z'], true]
+// c is 5;
+```
+
+`push` 可以这样实现：
+
+```js
+Array.method('push', function () {
+    this.splice.apply(
+        this,
+        [this.length, 0].concat(Array.prototype.slice.apply(arguments)));
+    return this.length;
+});
+```
+
+#### 8.1.5 Array.prototype.reverse()
+
+`reverse` 方法通过反转元素的顺序来修改数组。 它返回数组：
+
+```js
+var a = ['a', 'b', 'c'];
+var b = a.reverse();
+// both a and b are ['c', 'b', 'a']
+console.log(a);
+console.assert(a === b);
+```
+
+#### 8.1.6 Array.prototype.shift()
+
+`shift` 方法从数组中删除第一个元素并返回该删除的元素。 该方法改变数组的长度。
+
+```js
+var a = ['a', 'b', 'c'];
+var c = a.shift();    // a is ['b', 'c'] & c is 'a'
+```
+
+`shift` 可以这样实现：
+
+```js
+Array.method('shift', function () {
+    return this.splice(0, 1)[0];
+});
+```
+
+#### 8.1.7 Array.prototype.unshift()
+
+`unshift` 方法类似于 `push` 方法，只不过它将项目推到数组的前面而不是末尾。 它返回数组的新长度：
+
+```js
+var a = ['a', 'b', 'c'];
+var r = a.unshift('?', '@');
+// a is ['?', '@', 'a', 'b', 'c']
+// r is 5
+console.log(a, r);
+```
+
+`unshift` 可以这样实现：
+
+```js
+Array.method('unshift', function () {
+    this.splice.apply(this, [0, 0].concat(Array.prototype.slice.apply(arguments)));
+    return this.length;
+});
+```
+
+
+#### 8.1.8 Array.prototype.slice()
+
+`slice(start, end)` 方法对数组的一部分进行浅表复制。 复制的第一个元素将是 `array[start]`。 它会在复制 `array[end]` 之前停止。 `end` 参数是可选的，默认为 array.length。  
+不要将切片 `slice` 与 `splice` 混淆。
+
+```js
+var a = ['a', 'b', 'c'];
+
+var b = a.slice();   // ['a', 'b', 'c']
+var c = a.slice(0, 1);    // b is ['a']
+var d = a.slice(1);    //c is ['b', 'c']
+var e = a.slice(1, 2);    // d is ['b']
+
+console.log(a, b, c, d, e);
+```
+
+#### 8.1.9 Array.prototype.sort()
+
+`sort` 方法对数组的内容进行就地排序。 它对数字数组的排序不正确：
+
+```js
+var n = [4, 8, 15, 16, 23, 42];
+n.sort();
+// n is [15, 16, 23, 4, 42, 8]
+console.log(n);
+```
+
+JavaScript 的默认比较函数假设要排序的元素是字符串。因此它在比较时将数字转换为字符串。
+
+可以提供自己的比较函数：
+
+```js
+var n = [4, 8, 15, 16, 23, 42];
+
+n.sort((a, b) => {
+    return a - b;
+});
+console.log(n);
+// [4, 8, 15, 16, 23, 42]
+```
+
+该函数将对数字进行排序，但不会对字符串进行排序。 如果我们希望能够对任何简单值数组进行排序：
+
+```js
+var m = ['aa', 'bb', 'a', 4, 8, 15, 16, 23, 42];
+m.sort(function (a, b) {
+    if (a === b) {
+        return 0;
+    }
+    if (typeof a === typeof b) {
+        return a < b ? -1 : 1;
+    }
+    return typeof a < typeof b ? -1 : 1;
+});
+// m is [4, 8, 15, 16, 23, 42, 'a', 'aa', 'bb']
+console.log(m);
+```
+
+如果大小写不重要，则比较函数应在比较操作数之前将它们转换为小写。
+
+通过更智能的比较函数，我们可以对对象数组进行排序。 为了使一般情况变得更容易，我们编写一个函数来生成比较函数：
+
+```js
+/*
+函数 by 接受成员名称字符串并返回一个比较函数，该函数可用于对包含该成员的对象数组进行排序。
+*/
+
+var by = function (name) {
+    return function (o, p) {
+        var a, b;
+        if (typeof o === 'object' && typeof p === 'object' && o && p) {
+            a = o[name];
+            b = p[name];
+            if (a === b) {
+                return 0;
+            }
+            if (typeof a === typeof b) {
+                return a < b ? -1 : 1;
+            }
+            return typeof a < typeof b ? -1 : 1;
+        } else {
+            throw {
+                name: 'Error',
+                message: 'Expected an object when sorting by ' + name
+            };
+        }
+    };
+};
+
+var s = [
+    {first: 'Joe', last: 'Besser'},
+    {first: 'Moe', last: 'Howard'},
+    {first: 'Joe', last: 'DeRita'},
+    {first: 'Shemp', last: 'Howard'},
+    {first: 'Larry', last: 'Fine'},
+    {first: 'Curly', last: 'Howard'}
+];
+s.sort(by('first'));
+console.log(s);
+```
+
+排序方法不稳定，所以：
+
+`s.sort(by('first')).sort(by('last'));`
+
+不保证产生正确的序列。  
+如果想对多个键进行排序，我们可以修改 `by` 以获取第二个参数，这是另一个比较方法，当主键产生匹配时将调用该方法来打破平局：
+
+```js
+/*
+函数 by 接受成员名称字符串和可选的次要比较函数，并返回一个可用于对包含该成员的对象数组进行排序的比较函数。 当 o[name] 和 p[name] 相等时，使用次比较函数来打破平局。
+*/
+
+var by = function (name, minor) {
+    return function (o, p) {
+        var a, b;
+        if (typeof o === 'object' && typeof p === 'object' && o && p) {
+            a = o[name];
+            b = p[name];
+            if (a === b) {
+                return typeof minor === 'function' ? minor(o, p) : 0;
+            }
+            if (typeof a === typeof b) {
+                return a < b ? -1 : 1;
+            }
+            return typeof a < typeof b ? -1 : 1;
+        } else {
+            throw {
+                name: 'Error',
+                message: 'Expected an object when sorting by ' + name
+            };
+        }
+    };
+};
+
+var s = [
+    {first: 'Joe', last: 'Besser'},
+    {first: 'Moe', last: 'Howard'},
+    {first: 'Joe', last: 'DeRita'},
+    {first: 'Shemp', last: 'Howard'},
+    {first: 'Larry', last: 'Fine'},
+    {first: 'Curly', last: 'Howard'}
+];
+s.sort(by('last', by('first')));
+console.log(s);
+```
+
+#### 8.1.10 Array.prototype.splice()
+
+`splice(start, deleteCount, item…)` 方法从数组中删除元素，并用新项目替换它们。  
+`start` 参数是数组中位置的编号。 `deleteCount` 参数是从该位置开始删除的元素数。 如果有其他参数，这些项目将被插入到该位置。 它返回一个包含已删除元素的数组。
+
+拼接 `splice` 最流行的用途是从数组中删除元素。 不要混淆拼接和切片：
+
+```js
+var a = ['a', 'b', 'c'];
+var r = a.splice(1, 1, 'ache', 'bug');
+// a is ['a', 'ache', 'bug', 'c']
+// r is ['b']
+```
+
+`splice` 可以这样实现：
+
+```js
+var a = ['a', 'b', 'c'];
+
+a.splice = function (start, deleteCount) {
+    var max = Math.max,
+        min = Math.min,
+        delta,
+        element,
+        insertCount = max(arguments.length - 2, 0),
+        k = 0,
+        len = this.length,
+        new_len,
+        result = [],
+        shift_count;
+
+    start = start || 0;
+    if (start < 0) {
+        start += len;
+    }
+    start = max(min(start, len), 0);
+    deleteCount = max(min(typeof deleteCount === 'number' ? 
+                          deleteCount : len, len - start), 0);
+    delta = insertCount - deleteCount;
+    new_len = len + delta;
+    while (k < deleteCount) {
+        element = this[start + k];
+        if (element !== undefined) {
+            result[k] = element;
+        }
+        k += 1;
+    }
+    shift_count = len - start - deleteCount;
+    if (delta < 0) {
+        k = start + insertCount;
+        while (shift_count) {
+            this[k] = this[k - delta];
+            k += 1;
+            shift_count -= 1;
+        }
+        this.length = new_len;
+    } else if (delta > 0) {
+        k = 1;
+        while (shift_count) {
+            this[new_len -k] = this[len - k];
+            k += 1;
+            shift_count -= 1;
+        }
+        this.length = new_len;
+    }
+    for (k = 0; k < insertCount; k += 1) {
+        this[start + k] = arguments[k + 2];
+    }
+    return result;
+}
+
+var r = a.splice(1, 1, 'ache', 'bug');
+// a is ['a', 'ache', 'bug', 'c']
+// r is ['b']
+console.log(a, r);
+```
+
+### 8.2 Function 函数
+
+#### 8.2.1 Function.prototype.apply()
+
+`apply(thisArg, argArray)` 方法调用一个函数，传入将绑定到 `this` 的对象和一个可选的参数数组。 `apply` 方法用于 `apply` 调用模式（第 4 章）。
+
+`bind` 参考实现：
+
+```js
+Function.prototype.method = function (name, func) {
+    if (!this.prototype[name]) {
+        this.prototype[name] = func;
+        return this;
+    }
+};
+Function.method('bind', function (that) {
+    var method = this,
+        slice = Array.prototype.slice,
+        args = slice.apply(arguments, [1]);
+    return function () {
+        return method.apply(that,
+                           args.concat(slice.apply(arguments, [0])));
+    };
+});
+
+var x = function (n) {
+    return this.value + n;
+}.bind({value: 666});
+
+console.log(x(2));    // 668
+```
+
+### 8.3 Number 数字
+
+#### 8.3.1 number.toExponential
+
+`toExponential(fractionDigits)` 方法将此数字转换为指数形式的字符串。 可选的 `fractionDigits` 参数控制小数位数。 它应该在 0 到 20 之间：
+
+```js
+document.writeln(Math.PI.toExponential(0));
+document.writeln(Math.PI.toExponential(2));
+document.writeln(Math.PI.toExponential(7));
+document.writeln(Math.PI.toExponential(16));
+document.writeln(Math.PI.toExponential());
+
+/* Produces
+3e+0
+3.14e+0
+3.1415927e+0
+3.1415926535897931e+0
+3.141592653589793e+0
+*/
+```
+
+#### 8.3.2 number.toFixed
+
+`toFixed(fractionDigits)` 方法将此数字转换为十进制形式的字符串。 可选的 `fractionDigits` 参数控制小数位数。 它应该在 0 到 20 之间。默认值为 0：
+
+```js
+document.writeln(Math.PI.toFixed(0));
+document.writeln(Math.PI.toFixed(2));
+document.writeln(Math.PI.toFixed(7));
+document.writeln(Math.PI.toFixed(16));
+document.writeln(Math.PI.toFixed());
+
+/* Produces
+3
+3.14
+3.1415927
+3.1415926535897931
+3
+*/
+```
+
+#### 8.3.3 number.toString
+
+`toString(radix)` 方法将此数字转换为字符串。 可选的基数参数控制基数。 它应该在 2 到 36 之间。默认基数是以 10 为底。基数参数最常与整数一起使用，但它可以用于任何数字。
+
+最常见的情况 `number.toString( )` 可以更简单地写为 `String(number)`：
+
+```js
+document.writeln(Math.PI.toString(2));
+document.writeln(Math.PI.toString(8));
+document.writeln(Math.PI.toString(16));
+document.writeln(Math.PI.toString());
+
+/* Produces
+11.001001000011111101101010100010001000010110100011
+3.1103755242102643
+3.243f6a8885a3
+3.141592653589793
+*/
+```
+
+### 8.4 Object 对象
+
+#### 8.4.1 Object.prototype.hasOwnProperty()
+
+如果对象包含具有 `name` 的属性，则 `hasOwnProperty(name)` 方法返回 `true`。不检查原型链。
+
+```js
+var a = {member: true};
+var b = Object.create(a); // from Chapter 3
+var t = a.hasOwnProperty('member'); // t is true
+var u = b.hasOwnProperty('member'); // u is false
+var v = b.member; // v is true
+```
+
+#### 8.4.2 Object.method 静态方法
+
+- `create(proto)`  
+方法创建一个新对象，使用现有对象作为新创建对象的原型。
+
+- `entries(obj)`  
+返回给定对象自己的可枚举字符串键控属性键值对的数组。
+
+- `keys(obj)`  
+返回给定对象自己的可枚举字符串键控属性名称的数组。
+
+- `getPrototypeOf(obj)`  
+返回指定对象的原型（即内部 `[[Prototype]]` 属性的值）。
+
+打印给定对象的原型链：
+
+```js
+var prototypeChains = function(obj) {
+    if (obj === null || obj === undefined) return;
+    
+    var chains = "[[Prototype]] :";
+    var proto = Object.getPrototypeOf(obj);
+
+    while (proto) {
+        chains += ' -> ' + proto.constructor.name;
+        proto = Object.getPrototypeOf(proto);
+    }
+    chains += ' -> ' + 'null';
+    console.log(chains);
+};
+
+function Hero(name, age) {
+    this.name = name;
+    this.age = age;
+}
+var bard = new Hero("Bard", 20);
+
+prototypeChains(bard);
+prototypeChains(Hero);
+prototypeChains({});
+prototypeChains([]);
+prototypeChains("");
+prototypeChains(0);
+```
+
+### 8.5 RegExp 正则表达式
+
+#### 8.5.1 regexp.exec(string)
+
+如果成功匹配则返回一个数组。 数组的 0 元素将包含与正则表达式匹配的子字符串。 1 元素是组 `1` 捕获的文本，2 元素是组 `2` 捕获的文本，依此类推。 如果匹配失败，则返回null。
+
+如果有 `g` 标志，搜索从位置 `regexp.lastIndex`（最初为零）开始。 如果匹配成功，则 `regexp.lastIndex` 将设置为匹配后第一个字符的位置。 不成功的匹配会将 `regexp.lastIndex` 重置为 0。
+
+这允许您通过在循环中调用 `exec` 来搜索字符串中某个模式的多次出现。  
+有几件事需要注意：  
+- 如果提前退出循环，则必须在再次进入循环之前自行将 `regexp.lastIndex` 重置为 0。 m
+- `^` 因子仅在 `regexp.lastIndex` 为 0 时匹配：
+
+```js
+/*
+将简单的 html 文本分解为标签和文本。 （有关实体化方法，请参阅 string.replace。）
+对于每个标签或文本，生成一个包含以下内容的数组
+[0] 完全匹配的标签或文本
+[1] /，如果有的话
+[2]标签名称
+[3] 属性（如果有）
+*/
+
+var text = '<html><body bgcolor=linen><p>' +
+        'This is <b>bold<\/b>!<\/p><\/body><\/html>';
+var tags = /[^<>]+|<(\/?)([A-Za-z]+)([^<>]*)>/g;
+var a, i;
+
+while ((a = tags.exec(text))) {
+    for ( i = 0; i < a.length; i += 1) {
+        let s = '// [' + i + '] ' + a[i];
+        document.writeln(s);
+    }
+    document.writeln();
+}
+```
+
+#### 8.5.2 regexp.test(string)
+
+如果正则表达式与字符串匹配，则返回 `true`； 否则，返回 `false`。 不要在此方法中使用 `g` 标志：
+
+`var b = /&.+;/.test('frank &amp; beans');`
+
+`test` 可以这样实现：
+
+```js
+RegExp.method('test', function (string) {
+    return this.exec(string) !== null;
+});
+```
+
+### 8.6 String 字符串
+
+#### 8.6.1 String.charAt(pos)
+
+返回该字符串中位置 `pos` 处的字符。 如果 `pos` 小于零或大于或等于 `string.length`，则返回空字符串。 JavaScript 没有字符类型。 该方法的结果是一个字符串：
+
+```js
+var name = 'Curly';
+var initial = name.charAt(0);    // initial is 'C'
+```
+
+`charAt` 可以实现为：
+
+```js
+String.method('charAt', function (pos) {
+    return this.slice(pos, pos + 1);
+});
+```
+
+#### 8.6.2 String.charCodeAt(pos)
+
+与 `charAt` 相同，只是它不返回字符串，而是返回该字符串中位置 `pos` 处的字符的代码点值的整数表示形式。 如果 `pos` 小于零或大于或等于 `string.length`，则返回 `NaN`：
+
+```js
+var name = 'Curly';
+var initial = name.charCodeAt(0);    // initial is 67
+```
+
+#### 8.6.3 String.concat(string…)
+
+通过将其他字符串连接在一起来创建一个新字符串。 它很少使用，因为 `+` 运算符更方便：
+
+`var s = 'C'.concat('a', 't'); // s is 'Cat'`
+
