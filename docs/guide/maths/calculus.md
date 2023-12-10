@@ -181,3 +181,4 @@ $\lim_{x\to a}f(x)=-\infty$ &emsp;&emsp; $\lim_{x\to a^-}f(x)=-\infty$ &emsp;&em
 8. &emsp; $\lim_{x\to a}x =a$
 9. &emsp; $\lim_{x\to a}x^n =a^n$ &emsp; 其中 n 是正整数
 10. &emsp; $\lim_{x\to a}\sqrt[n]{x} = \sqrt[n]{x}$ &emsp; 其中 n 是正整数；n 是偶数假定 $a>0$
+11. &emsp; $\lim_{x\to a}\sqrt[n]{f(x)} = \sqrt[n]{\lim_{x\to a}f(x)}$ &emsp; 其中 n 是正整数；n 是偶数假定 $\lim_{x\to a}f(x)>0$
