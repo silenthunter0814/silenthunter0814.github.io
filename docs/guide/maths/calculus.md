@@ -192,3 +192,14 @@ $\lim_{x\to a}f(x)=-\infty$ &emsp;&emsp; $\lim_{x\to a^-}f(x)=-\infty$ &emsp;&em
 [1] &emsp; 定理 双边极限   
 $\lim_{x\to a}f(x) = L$ &emsp; 当且仅当 $\lim_{x\to a^-}f(x) = L = \lim_{x\to a^+}f(x)$
 
+[2] &emsp; 定理 极限比较  
+如果当 x 接近 a（除了可能在 a 处）时 $f(x)\le g(x)$ 并且当 x 接近 a 时 f 和 g 的极限都存在，则
+$$\lim_{x\to a}f(x) \le \lim_{x\to a}g(x)$$
+
+[3] &emsp; 挤压定理  
+如果 $f(x)\le g(x)\le h(x)$，当 x 接近 a（除了可能在 a 处）并且
+$$\lim_{x\to a}f(x) = \lim_{x\to a}h(x) = L$$
+则
+$$\lim_{x\to a}g(x) = L$$
+挤压定理有时也称为三明治定理。
+
