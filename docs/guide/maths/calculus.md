@@ -154,13 +154,13 @@ $\lim_{x\to a}f(x) = L$ &emsp; 当且仅当 $\lim_{x\to a^-}f(x) = L$ 并且 $\l
 $$\lim_{x\to a}f(x) = \infty$$
 意味着 f(x) 的值可以通过使 x 足够接近 a 但不等于 a 来任意大（我们希望多大）。
 
-[5] &emsp; 定义 负的无穷大  
+[5] &emsp; 定义 负的无穷大极限  
 设 f 是在 a 两侧定义的函数，但可能在 a 本身除外。 那么  
 $$\lim_{x\to a}f(x) = -\infty$$  
 意味着通过使 x 足够接近 a 但不等于 a，f(x) 的值可以变为任意大的负值。
 
 [6] &emsp; 定义 垂直渐近线  
 如果以下陈述至少之一为真，则垂直线 $x=a$ 称为曲线 $y=f(x)$ 的垂直渐近线：  
-&emsp; $\lim_{x\to a}f(x)=\infty$ &emsp;&emsp;&emsp; $\lim_{x\to a^-}f(x)=\infty$ &emsp;&emsp;&emsp; $\lim_{x\to a^+}f(x)=\infty$  
-&emsp; $\lim_{x\to a}f(x)=-\infty$ &emsp;&emsp; $\lim_{x\to a^-}f(x)=-\infty$ &emsp;&emsp; $\lim_{x\to a^+}f(x)=-\infty$  
+$\lim_{x\to a}f(x)=\infty$ &emsp;&emsp;&emsp; $\lim_{x\to a^-}f(x)=\infty$ &emsp;&emsp;&emsp; $\lim_{x\to a^+}f(x)=\infty$  
+$\lim_{x\to a}f(x)=-\infty$ &emsp;&emsp; $\lim_{x\to a^-}f(x)=-\infty$ &emsp;&emsp; $\lim_{x\to a^+}f(x)=-\infty$  
 
