@@ -86,12 +86,19 @@ function sidebarGuide() {
       ]
     },
     {
+      text: '数学',
+      collapsed: false,
+      items: [
+        { text: '斯图尔特 微积分', link: '/guide/maths/calculus' }
+      ]
+    }, 
+    {
       text: '操作系统和工具链',
       collapsed: false,
       items: [
         { text: '跟我学 Linux', link: '/guide/os/lfm' }
       ]
-    },   
+    },  
     {
       text: 'Private Channel',
       collapsed: false,
