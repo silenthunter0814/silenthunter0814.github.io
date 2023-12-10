@@ -181,4 +181,14 @@ $\lim_{x\to a}f(x)=-\infty$ &emsp;&emsp; $\lim_{x\to a^-}f(x)=-\infty$ &emsp;&em
 8. &emsp; $\lim_{x\to a}x =a$
 9. &emsp; $\lim_{x\to a}x^n =a^n$ &emsp; 其中 n 是正整数
 10. &emsp; $\lim_{x\to a}\sqrt[n]{x} = \sqrt[n]{x}$ &emsp; 其中 n 是正整数；n 是偶数假定 $a>0$
-11. &emsp; $\lim_{x\to a}\sqrt[n]{f(x)} = \sqrt[n]{\lim_{x\to a}f(x)}$ &emsp; 其中 n 是正整数；n 是偶数假定 $\lim_{x\to a}f(x)>0$
+11. &emsp; $\lim_{x\to a}\sqrt[n]{f(x)} = \sqrt[n]{\lim_{x\to a}f(x)}$  
+  &emsp; 其中 n 是正整数；n 是偶数假定 $\lim_{x\to a}f(x)>0$
+
+- 直接替换性质  
+  如果 f 是多项式或有理函数且 a 在 f 的定义域内，则
+  $$\lim_{x\to a}f(x) = f(a)$$
+  具有直接替换性质的函数称为在 a 处连续的函数。
+
+[1] &emsp; 定理 双边极限   
+$\lim_{x\to a}f(x) = L$ &emsp; 当且仅当 $\lim_{x\to a^-}f(x) = L = \lim_{x\to a^+}f(x)$
+
