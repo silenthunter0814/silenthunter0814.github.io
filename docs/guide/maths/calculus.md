@@ -169,10 +169,15 @@ $\lim_{x\to a}f(x)=-\infty$ &emsp;&emsp; $\lim_{x\to a^-}f(x)=-\infty$ &emsp;&em
 
 - 极限定律  
   假设 c 是常数并且极限  
-  &emsp; $\lim_{x\to a}f(x)$ &emsp; 和 &emsp; $\lim{x\to a}g(x)$  
+  &emsp; $\lim_{x\to a}f(x)$ &emsp; 和 &emsp; $\lim_{x\to a}g(x)$  
   存在。 那么  
 1. &emsp; $\lim_{x\to a}[f(x)+g(x)] = \lim_{x\to a}f(x) + \lim_{x\to a}g(x)$
 2. &emsp; $\lim_{x\to a}[f(x)-g(x)] = \lim_{x\to a}f(x) - \lim_{x\to a}g(x)$
 3. &emsp; $\lim_{x\to a}[cf(x)] = c\lim_{x\to a}f(x)$
 4. &emsp; $\lim_{x\to a}[f(x)g(x)] = \lim_{x\to a}f(x) \cdot \lim_{x\to a}g(x)$
 5. &emsp; $\lim_{x\to a}\frac{f(x)}{g(x)} = \frac{\lim_{x\to a}f(x)}{\lim_{x\to a}g(x)}$ &emsp; 如果 $\lim_{x\to a}g(x)\ne 0$
+6. &emsp; $\lim_{x\to a}[f(x)]^n = [\lim_{x\to a}f(x)]^n$ &emsp; 其中 n 是正整数  
+7. &emsp; $\lim_{x\to a}c =c$
+8. &emsp; $\lim_{x\to a}x =a$
+9. &emsp; $\lim_{x\to a}x^n =a^n$ &emsp; 其中 n 是正整数
+10. &emsp; $\lim_{x\to a}\sqrt[n]{x} = \sqrt[n]{x}$ &emsp; 其中 n 是正整数；n 是偶数假定 $a>0$
