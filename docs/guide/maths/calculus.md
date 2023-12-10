@@ -221,3 +221,17 @@ $$\lim_{x\to a}g(x) = L$$
   $$\lim_{x\to a^+}f(x) = L$$
   如果对于每个数字 $\varepsilon > 0$ 有一个数字 $\delta >0$ 使得  
   &emsp; 如果 &emsp; $a < x < a + \delta$ &emsp; 那么&emsp; $|f(x) - L| < \varepsilon$
+
+- 无限极限的精确定义  
+  设 f 是在某个包含数字 a 的开区间上定义的函数，但可能在 a 本身除外。 那么
+  $$\lim_{x\to a}f(x) = \infty$$
+  意味着对于每个正数 M 都有一个正数 $\delta$ 使得  
+  &emsp; 如果 &emsp; $0 < |x -a| < \delta$ &emsp; 那么&emsp; $f(x) > M$
+
+- 负的无穷大极限  
+  设 f 是在某个包含数字 a 的开区间上定义的函数，但可能在 a 本身除外。 那么
+  $$\lim_{x\to a}f(x) = -\infty$$
+  意味着对于每个负数 N 都有一个正数 $\delta$ 使得  
+  &emsp; 如果 &emsp; $0 < |x -a| < \delta$ &emsp; 那么&emsp; $f(x) < N$
+
+
