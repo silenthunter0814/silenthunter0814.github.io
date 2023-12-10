@@ -90,9 +90,19 @@ $$1=\frac{1}{2}+\frac{1}{4}+\frac{1}{8}+\frac{1}{16}+ \cdots+\frac{1}{2^n}+\cdot
 
 - 垂直和水平移动  
   假设 $c>0$，基于 $y=f(x)$ 的图形  
-  $y=f(x)+c$ &nbsp; 向上移动 `c` 个单位  
-  $y=f(x)-c$ &nbsp; 向下移动 `c` 个单位  
-  $y=f(x-c)$ &nbsp; 向右移动 `c` 个单位  
-  $y=f(x+c)$ &nbsp; 向左移动 `c` 个单位
+  $y=f(x)+c$， &nbsp; 向上移动 `c` 个单位  
+  $y=f(x)-c$， &nbsp; 向下移动 `c` 个单位  
+  $y=f(x-c)$， &nbsp; 向右移动 `c` 个单位  
+  $y=f(x+c)$， &nbsp; 向左移动 `c` 个单位
+
+
+- 垂直和水平拉伸和反射  
+  假设 $c>1$，基于 $y=f(x)$ 的图形  
+  $y=cf(x)$，&nbsp; 垂直拉伸 `c` 倍  
+  $y=(1/c)f(x)$，&nbsp; 垂直缩小 `c` 倍  
+  $y=f(cx)$，&nbsp; 水平缩小 `c` 倍  
+  $y=f(x/c)$，&nbsp; 水平拉伸 `c` 倍  
+  $y= -f(x)$，&nbsp; 反射 $y=f(x)$ 关于 `x` 轴的图形  
+  $y=f(-x)$，&nbsp; 反射 $y=f(x)$ 关于 `y` 轴的图形
 
 
