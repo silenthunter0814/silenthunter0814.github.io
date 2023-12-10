@@ -10,15 +10,15 @@
 
 ## 微积分预览
 
-[1] &emsp; 割线的斜率
+**[1] &emsp; 割线的斜率**
 
 $$m_{PQ}=\frac{f(x)-f(a)}{x-a}$$
 
-[2] &emsp; 切线的斜率
+**[2] &emsp; 切线的斜率**
 
 $$m=\lim_{x\to a}\frac{f(x)-f(a)}{x-a}$$
 
-[3] &emsp; 级数之和
+**[3] &emsp; 级数之和**
 
 $$1=\frac{1}{2}+\frac{1}{4}+\frac{1}{8}+\frac{1}{16}+ \cdots+\frac{1}{2^n}+\cdots$$
 
