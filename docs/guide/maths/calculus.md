@@ -235,3 +235,14 @@ $$\lim_{x\to a}g(x) = L$$
   &emsp; 如果 &emsp; $0 < |x -a| < \delta$ &emsp; 那么&emsp; $f(x) < N$
 
 
+### 1.8 连续性
+
+- 定义 连续  
+  函数 f 在数字 a 处连续如果
+  $$\lim_{x\to a}f(x) = f(a)$$
+请注意，如果 f 在 a 处连续，则定义 1 隐含地需要三件事：
+  1. 定义 f(a)（即 a 在 f 的定义域内）  
+  2. $\lim_{x\to a}f(x)$ 存在  
+  3. $\lim_{x\to a}f(x) = f(a)$
+
+
