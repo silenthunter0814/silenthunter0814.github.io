@@ -82,7 +82,8 @@ function sidebarGuide() {
         { text: '01 web 开发入门教程', link: '/guide/web/web01' },
         { text: '02 JavaScript 教程', link: '/guide/web/web02' },
         { text: '03 Javascript 语言精粹', link: '/guide/web/web03' },
-        { text: '04 Javascript 忍者秘籍', link: '/guide/web/web04' }
+        { text: '04 Javascript 忍者秘籍', link: '/guide/web/web04' },
+        { text: '05 Javascript 模块系统', link: '/guide/web/module' }
       ]
     },
     {
