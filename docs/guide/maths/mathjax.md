@@ -13,3 +13,16 @@ MathJax可以显示用LaTeX或MathML标记编写的数学符号。因为MathJax�
 
 $$\sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6}$$
 
+$$
+\left.x^2\right|_3^5 = 5^2-3^2
+$$
+
+$$
+x^2 |_3^5 = 5^2-3^2 \\\  
+$$
+
+```math
+\left (\frac{x}{y}\right )
+```
+
+$$\left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)$$
