@@ -1,5 +1,5 @@
 ---
-description: javascript 开发教程。jaascript 课程课件，学习笔记。  
+description: javascript 开发教程。javascript 课程课件，学习笔记。  
 keywords: JavaScript, js，HTML，初学者，教程  
 author: silenthunter0814, Silent Hunter
 ---
