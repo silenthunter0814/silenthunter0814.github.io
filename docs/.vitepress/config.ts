@@ -90,7 +90,8 @@ function sidebarGuide() {
       text: '数学',
       collapsed: false,
       items: [
-        { text: '斯图尔特 微积分', link: '/guide/maths/calculus' }
+        { text: '斯图尔特 微积分', link: '/guide/maths/calculus' },
+        { text: '积分技术', link: '/guide/maths/integral' }
       ]
     }, 
     {
